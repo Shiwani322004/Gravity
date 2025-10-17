@@ -1,10 +1,17 @@
-export const dynamic = 'force-dynamic'
+'use client'
+import React from 'react';
+import HeroServices from './HeroServices';
+import ProvenResults from './ProvenResults';
+import GetReady from './GetReady';
 
-export default function Services() {
+const ServicesIntro = () => {
   return (
-    <div>
-      <h1>Services</h1>
-      <p>Services page content</p>
+    <div className="min-h-screen bg-gradient-to-br from-white to-gray-50/30">
+      <HeroServices />
+      <ProvenResults />
+      <GetReady />
     </div>
-  )
-}
+  );
+};
+
+export default ServicesIntro;
