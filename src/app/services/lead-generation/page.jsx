@@ -7,7 +7,7 @@ import FormSection from './FormSection';
 
 const LeadGenerationPage = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-blue-50/20 to-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-white via-blue-50/30 to-gray-50/20 overflow-hidden">
       <LeadHero />
       <FeaturesSection />
       <ProcessSection />
