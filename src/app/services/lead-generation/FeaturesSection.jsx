@@ -5,7 +5,7 @@ import {
   Shield, Clock, Award, Brain, Rocket, Globe, Star, Play, ChevronDown,
   Database, Bot, MessageSquare, Calendar, Phone, Mail, Linkedin,
   Activity, Lock, Zap as Lightning, Trophy, Users2, Building2,
-  Sparkles, ChevronRight, ExternalLink, ArrowUpRight
+  Sparkles, ChevronRight, ExternalLink, ArrowUpRight, Menu, X
 } from 'lucide-react';
 
 const FeaturesSection = () => {
@@ -13,6 +13,7 @@ const FeaturesSection = () => {
   const [activeTab, setActiveTab] = useState('features');
   const [isVisible, setIsVisible] = useState(false);
   const [hoveredCard, setHoveredCard] = useState(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -32,6 +33,18 @@ const FeaturesSection = () => {
     return () => observer.disconnect();
   }, []);
 
+  // Handle window resize for responsive behavior
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const mainFeatures = [
     {
       icon: Brain,
@@ -40,9 +53,10 @@ const FeaturesSection = () => {
       keyMetric: "94% Accuracy",
       improvement: "+67% vs industry average",
       benefits: ["Real-time intent analysis", "Behavioral pattern recognition", "Predictive lead scoring", "Smart recommendation engine"],
-      gradient: "from-purple-500 to-indigo-600",
-      bgGradient: "from-purple-500/10 to-indigo-500/10",
-      glowColor: "purple-500/30"
+      gradient: "from-indigo-500 to-purple-600",
+      bgGradient: "from-indigo-50 to-purple-50",
+      glowColor: "indigo-500/20",
+      borderColor: "border-indigo-200"
     },
     {
       icon: Rocket,
@@ -52,8 +66,9 @@ const FeaturesSection = () => {
       improvement: "+340% engagement lift",
       benefits: ["Automated sequences", "Cross-platform sync", "Dynamic personalization", "Smart timing optimization"],
       gradient: "from-blue-500 to-cyan-600",
-      bgGradient: "from-blue-500/10 to-cyan-500/10",
-      glowColor: "blue-500/30"
+      bgGradient: "from-blue-50 to-cyan-50",
+      glowColor: "blue-500/20",
+      borderColor: "border-blue-200"
     },
     {
       icon: Target,
@@ -63,8 +78,9 @@ const FeaturesSection = () => {
       improvement: "3.2x more qualified leads",
       benefits: ["Dynamic scoring system", "Intent signal tracking", "Sales-ready alerts", "Custom qualification rules"],
       gradient: "from-emerald-500 to-teal-600",
-      bgGradient: "from-emerald-500/10 to-teal-500/10",
-      glowColor: "emerald-500/30"
+      bgGradient: "from-emerald-50 to-teal-50",
+      glowColor: "emerald-500/20",
+      borderColor: "border-emerald-200"
     },
     {
       icon: Zap,
@@ -74,8 +90,9 @@ const FeaturesSection = () => {
       improvement: "+156% pipeline velocity",
       benefits: ["Behavioral triggers", "Dynamic content paths", "ROI optimization", "Predictive timing"],
       gradient: "from-orange-500 to-red-600",
-      bgGradient: "from-orange-500/10 to-red-500/10",
-      glowColor: "orange-500/30"
+      bgGradient: "from-orange-50 to-red-50",
+      glowColor: "orange-500/20",
+      borderColor: "border-orange-200"
     }
   ];
 
@@ -83,86 +100,100 @@ const FeaturesSection = () => {
     { 
       icon: TrendingUp, 
       title: "Advanced Analytics", 
-      description: "Real-time performance dashboards with predictive insights",
+      description: "Real-time performance dashboards with predictive insights and comprehensive reporting",
       metric: "99.9% Uptime",
-      gradient: "from-blue-500 to-purple-600"
+      gradient: "from-blue-500 to-purple-600",
+      bgColor: "bg-blue-50",
+      textColor: "text-blue-700"
     },
     { 
       icon: Shield, 
       title: "Enterprise Security", 
-      description: "SOC2 Type II + GDPR compliance with zero-trust architecture",
+      description: "SOC2 Type II + GDPR compliance with zero-trust architecture and advanced encryption",
       metric: "Bank-Grade Security",
-      gradient: "from-green-500 to-emerald-600"
+      gradient: "from-green-500 to-emerald-600",
+      bgColor: "bg-green-50",
+      textColor: "text-green-700"
     },
     { 
       icon: Globe, 
       title: "Global Infrastructure", 
-      description: "Multi-region deployment with edge computing capabilities",
+      description: "Multi-region deployment with edge computing capabilities and CDN optimization",
       metric: "150+ Countries",
-      gradient: "from-purple-500 to-pink-600"
+      gradient: "from-purple-500 to-pink-600",
+      bgColor: "bg-purple-50",
+      textColor: "text-purple-700"
     },
     { 
       icon: Award, 
       title: "Proven Results", 
-      description: "Trusted by industry leaders and Fortune 500 companies",
+      description: "Trusted by industry leaders and Fortune 500 companies with measurable success",
       metric: "2,500+ Companies",
-      gradient: "from-orange-500 to-red-600"
+      gradient: "from-orange-500 to-red-600",
+      bgColor: "bg-orange-50",
+      textColor: "text-orange-700"
     }
   ];
 
   const integrations = [
-    { name: "Salesforce", logo: "🔷", category: "CRM" },
-    { name: "HubSpot", logo: "🟠", category: "CRM" },
-    { name: "Slack", logo: "💬", category: "Communication" },
-    { name: "Teams", logo: "💼", category: "Communication" },
-    { name: "Gmail", logo: "📧", category: "Email" },
-    { name: "Outlook", logo: "📨", category: "Email" },
-    { name: "LinkedIn", logo: "💼", category: "Social" },
-    { name: "Zapier", logo: "⚡", category: "Automation" }
+    { name: "Salesforce", logo: "🔷", category: "CRM", color: "text-blue-600" },
+    { name: "HubSpot", logo: "🟠", category: "CRM", color: "text-orange-600" },
+    { name: "Slack", logo: "💬", category: "Communication", color: "text-purple-600" },
+    { name: "Teams", logo: "💼", category: "Communication", color: "text-blue-600" },
+    { name: "Gmail", logo: "📧", category: "Email", color: "text-red-600" },
+    { name: "Outlook", logo: "📨", category: "Email", color: "text-blue-600" },
+    { name: "LinkedIn", logo: "💼", category: "Social", color: "text-blue-700" },
+    { name: "Zapier", logo: "⚡", category: "Automation", color: "text-yellow-600" }
   ];
 
   const testimonialStats = [
-    { value: "94%", label: "Customer Satisfaction", icon: Star, gradient: "from-yellow-500 to-orange-600" },
-    { value: "5.8x", label: "ROI Improvement", icon: TrendingUp, gradient: "from-green-500 to-emerald-600" },
-    { value: "67%", label: "Time Saved", icon: Clock, gradient: "from-blue-500 to-cyan-600" },
-    { value: "2.5k+", label: "Happy Customers", icon: Users2, gradient: "from-purple-500 to-pink-600" }
+    { value: "94%", label: "Customer Satisfaction", icon: Star, gradient: "from-yellow-500 to-orange-600", bg: "bg-yellow-50" },
+    { value: "5.8x", label: "ROI Improvement", icon: TrendingUp, gradient: "from-green-500 to-emerald-600", bg: "bg-green-50" },
+    { value: "67%", label: "Time Saved", icon: Clock, gradient: "from-blue-500 to-cyan-600", bg: "bg-blue-50" },
+    { value: "2.5k+", label: "Happy Customers", icon: Users2, gradient: "from-purple-500 to-pink-600", bg: "bg-purple-50" }
   ];
 
   const useCases = [
     {
       icon: Building2,
       title: "Enterprise Sales",
-      description: "Scale your enterprise sales process with AI-powered lead qualification and automated nurturing sequences.",
+      description: "Scale your enterprise sales process with AI-powered lead qualification and automated nurturing sequences that convert prospects into revenue.",
       features: ["Account-based marketing", "Multi-stakeholder engagement", "Long sales cycle optimization"],
-      gradient: "from-blue-500 to-purple-600"
+      gradient: "from-blue-500 to-purple-600",
+      bgColor: "bg-blue-50",
+      borderColor: "border-blue-200"
     },
     {
       icon: Rocket,
       title: "Startup Growth",
-      description: "Accelerate growth with lean sales processes, automated outreach, and data-driven optimization.",
+      description: "Accelerate growth with lean sales processes, automated outreach, and data-driven optimization tailored for fast-moving startups.",
       features: ["Rapid experimentation", "Cost-effective scaling", "Growth hacking tools"],
-      gradient: "from-emerald-500 to-teal-600"
+      gradient: "from-emerald-500 to-teal-600",
+      bgColor: "bg-emerald-50",
+      borderColor: "border-emerald-200"
     },
     {
       icon: Users2,
       title: "Agency Services",
-      description: "Manage multiple client campaigns with white-label solutions and comprehensive reporting.",
+      description: "Manage multiple client campaigns with white-label solutions, comprehensive reporting, and scalable automation workflows.",
       features: ["Multi-tenant architecture", "White-label branding", "Client reporting dashboards"],
-      gradient: "from-orange-500 to-red-600"
+      gradient: "from-orange-500 to-red-600",
+      bgColor: "bg-orange-50",
+      borderColor: "border-orange-200"
     }
   ];
 
   return (
     <>
-      {/* Enhanced Custom Styles */}
+      {/* Enhanced Custom Styles with better mobile optimization */}
       <style jsx>{`
         @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-20px); }
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(-15px) rotate(2deg); }
         }
         @keyframes pulse-glow {
-          0%, 100% { box-shadow: 0 0 30px rgba(0, 132, 255, 0.4); }
-          50% { box-shadow: 0 0 60px rgba(0, 132, 255, 0.8); }
+          0%, 100% { box-shadow: 0 4px 20px rgba(59, 130, 246, 0.15); }
+          50% { box-shadow: 0 8px 40px rgba(59, 130, 246, 0.25); }
         }
         @keyframes gradient-shift {
           0% { background-position: 0% 50%; }
@@ -173,17 +204,24 @@ const FeaturesSection = () => {
           0% { transform: translateX(-100%); }
           100% { transform: translateX(100%); }
         }
-        @keyframes glow-pulse {
-          0%, 100% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.3); }
-          50% { box-shadow: 0 0 40px rgba(0, 212, 255, 0.6); }
+        @keyframes fade-in-up {
+          0% { opacity: 0; transform: translateY(30px); }
+          100% { opacity: 1; transform: translateY(0); }
         }
+        @keyframes scale-in {
+          0% { transform: scale(0.9); opacity: 0; }
+          100% { transform: scale(1); opacity: 1; }
+        }
+        
         .animate-float { animation: float 6s ease-in-out infinite; }
         .animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
-        .animate-glow-pulse { animation: glow-pulse 2s ease-in-out infinite; }
+        .animate-fade-in-up { animation: fade-in-up 0.6s ease-out forwards; }
+        .animate-scale-in { animation: scale-in 0.5s ease-out forwards; }
         .animate-gradient { 
           background-size: 200% 200%;
           animation: gradient-shift 4s ease infinite;
         }
+        
         .shimmer-effect {
           position: relative;
           overflow: hidden;
@@ -195,150 +233,163 @@ const FeaturesSection = () => {
           left: 0;
           width: 100%;
           height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
           animation: shimmer 3s infinite;
         }
+        
         .glass-card {
-          background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
-          border: 1px solid rgba(255,255,255,0.2);
-          backdrop-filter: blur(20px);
+          background: rgba(255, 255, 255, 0.95);
+          border: 1px solid rgba(0, 0, 0, 0.1);
+          backdrop-filter: blur(10px);
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         }
-        .floating-elements {
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          pointer-events: none;
+        
+        .feature-card-hover:hover {
+          transform: translateY(-8px);
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
-        .floating-element {
-          position: absolute;
-          opacity: 0.15;
-          animation: float 8s ease-in-out infinite;
+        
+        @media (max-width: 768px) {
+          .mobile-stack {
+            flex-direction: column;
+          }
+          .mobile-center {
+            text-align: center;
+          }
+          .mobile-full {
+            width: 100%;
+          }
         }
       `}</style>
 
-      <section ref={sectionRef} className="relative py-32 bg-[#0B1426] overflow-hidden min-h-screen">
-        {/* Enhanced Background Elements */}
-        <div className="absolute inset-0">
-          <div className="absolute top-20 right-20 w-[600px] h-[600px] bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full mix-blend-multiply filter blur-3xl animate-float"></div>
-          <div className="absolute bottom-20 left-20 w-[500px] h-[500px] bg-gradient-to-br from-cyan-500/20 to-teal-500/20 rounded-full mix-blend-multiply filter blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-gradient-to-br from-purple-500/15 to-pink-500/15 rounded-full mix-blend-multiply filter blur-3xl animate-float" style={{ animationDelay: '4s' }}></div>
+      <section ref={sectionRef} className="relative py-16 sm:py-20 lg:py-32 bg-white overflow-hidden min-h-screen">
+        {/* Subtle Background Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          {/* Geometric patterns */}
+          <div className="absolute top-20 right-10 sm:right-20 w-32 sm:w-64 lg:w-96 h-32 sm:h-64 lg:h-96 bg-gradient-to-br from-blue-100/50 to-purple-100/50 rounded-full mix-blend-multiply filter blur-3xl animate-float"></div>
+          <div className="absolute bottom-20 left-10 sm:left-20 w-28 sm:w-56 lg:w-80 h-28 sm:h-56 lg:h-80 bg-gradient-to-br from-cyan-100/50 to-teal-100/50 rounded-full mix-blend-multiply filter blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-36 sm:w-72 lg:w-[500px] h-36 sm:h-72 lg:h-[500px] bg-gradient-to-br from-purple-100/30 to-pink-100/30 rounded-full mix-blend-multiply filter blur-3xl animate-float" style={{ animationDelay: '4s' }}></div>
           
-          {/* Enhanced Floating geometric shapes */}
-          <div className="floating-elements">
-            <div className="floating-element top-1/4 left-1/4 w-16 h-16 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-2xl opacity-20" style={{ animationDelay: '1s' }}></div>
-            <div className="floating-element top-3/4 right-1/4 w-12 h-12 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full opacity-20" style={{ animationDelay: '3s' }}></div>
-            <div className="floating-element top-1/2 right-1/3 w-8 h-8 bg-gradient-to-br from-emerald-400 to-teal-500 transform rotate-45 opacity-20" style={{ animationDelay: '5s' }}></div>
-            <div className="floating-element top-1/3 left-2/3 w-14 h-14 bg-gradient-to-br from-orange-400 to-red-500 rounded-xl opacity-15" style={{ animationDelay: '7s' }}></div>
-          </div>
+          {/* Floating geometric shapes */}
+          <div className="absolute top-1/4 left-1/4 w-8 sm:w-12 lg:w-16 h-8 sm:h-12 lg:h-16 bg-gradient-to-br from-blue-200 to-cyan-300 rounded-2xl opacity-30 animate-float" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute top-3/4 right-1/4 w-6 sm:w-8 lg:w-12 h-6 sm:w-8 lg:h-12 bg-gradient-to-br from-purple-200 to-pink-300 rounded-full opacity-30 animate-float" style={{ animationDelay: '3s' }}></div>
+          <div className="absolute top-1/2 right-1/3 w-4 sm:w-6 lg:w-8 h-4 sm:h-6 lg:h-8 bg-gradient-to-br from-emerald-200 to-teal-300 transform rotate-45 opacity-30 animate-float" style={{ animationDelay: '5s' }}></div>
         </div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          {/* Enhanced Header Section */}
-          <div className={`text-center mb-24 transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-            <div className="inline-flex items-center gap-3 px-8 py-4 glass-card rounded-full mb-8">
-              <Sparkles className="w-6 h-6 text-[#00D4FF]" />
-              <span className="text-[#00D4FF] font-bold text-lg">ADVANCED FEATURES</span>
+          {/* Enhanced Header Section - Mobile Optimized */}
+          <div className={`text-center mb-12 sm:mb-16 lg:mb-24 transition-all duration-1000 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
+            <div className="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 lg:px-8 py-2 sm:py-3 lg:py-4 glass-card rounded-full mb-4 sm:mb-6 lg:mb-8">
+              <Sparkles className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6 text-blue-600" />
+              <span className="text-blue-600 font-bold text-sm sm:text-base lg:text-lg">ADVANCED FEATURES</span>
             </div>
-            <h2 className="text-6xl md:text-7xl font-black text-white mb-8 leading-tight">
+            
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-gray-900 mb-4 sm:mb-6 lg:mb-8 leading-tight px-2">
               Features That
-              <span className="block bg-gradient-to-r from-[#0084FF] via-[#00D4FF] to-[#00A3FF] bg-clip-text text-transparent animate-gradient"> Transform</span>
+              <span className="block bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-700 bg-clip-text text-transparent animate-gradient">Transform</span>
               Your Sales Process
             </h2>
-            <p className="text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-12">
+            
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed mb-8 sm:mb-10 lg:mb-12 px-4">
               Discover how our AI-powered platform revolutionizes lead generation, qualification, and nurturing 
-              with <span className="text-[#00D4FF] font-bold">enterprise-grade security</span> and proven results from <span className="text-green-400 font-bold">2,500+ successful companies</span>.
+              with <span className="text-blue-600 font-bold">enterprise-grade security</span> and proven results from <span className="text-green-600 font-bold">2,500+ successful companies</span>.
             </p>
             
-            {/* Enhanced Stats Bar */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto mb-16">
+            {/* Enhanced Stats Bar - Responsive Grid */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 max-w-5xl mx-auto mb-8 sm:mb-12 lg:mb-16">
               {testimonialStats.map((stat, index) => (
                 <div key={index} className="text-center group">
-                  <div className={`flex items-center justify-center w-20 h-20 bg-gradient-to-br ${stat.gradient} rounded-2xl shadow-2xl mx-auto mb-4 group-hover:scale-110 transition-transform duration-500 animate-glow-pulse`}>
-                    <stat.icon className="w-10 h-10 text-white" />
+                  <div className={`flex items-center justify-center w-12 sm:w-16 lg:w-20 h-12 sm:h-16 lg:h-20 bg-gradient-to-br ${stat.gradient} rounded-2xl shadow-lg mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-500 animate-pulse-glow`}>
+                    <stat.icon className="w-6 sm:w-8 lg:w-10 h-6 sm:h-8 lg:h-10 text-white" />
                   </div>
-                  <div className="text-4xl font-black text-white mb-2">{stat.value}</div>
-                  <div className="text-lg text-gray-300 font-medium">{stat.label}</div>
+                  <div className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-1 sm:mb-2">{stat.value}</div>
+                  <div className="text-sm sm:text-base lg:text-lg text-gray-600 font-medium">{stat.label}</div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Enhanced Tab Navigation */}
-          <div className={`flex justify-center mb-20 transition-all duration-800 delay-200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'}`}>
-            <div className="glass-card rounded-3xl p-3 shadow-2xl">
-              {[
-                { id: 'features', label: 'Core Features', icon: Brain },
-                { id: 'integrations', label: 'Integrations', icon: Globe },
-                { id: 'use-cases', label: 'Use Cases', icon: Target }
-              ].map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center gap-3 px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-500 ${
-                    activeTab === tab.id 
-                      ? 'bg-gradient-to-r from-[#0084FF] to-[#00D4FF] text-white shadow-2xl shadow-blue-500/30 scale-105' 
-                      : 'text-gray-300 hover:text-white hover:bg-white/10'
-                  }`}
-                >
-                  <tab.icon className="w-6 h-6" />
-                  {tab.label}
-                </button>
-              ))}
+          {/* Enhanced Tab Navigation - Mobile Responsive */}
+          <div className={`flex justify-center mb-12 sm:mb-16 lg:mb-20 transition-all duration-800 delay-200 ${isVisible ? 'animate-scale-in' : 'opacity-0'}`}>
+            <div className="glass-card rounded-2xl lg:rounded-3xl p-2 lg:p-3 shadow-xl max-w-full overflow-hidden">
+              <div className="flex flex-col sm:flex-row">
+                {[
+                  { id: 'features', label: 'Core Features', icon: Brain },
+                  { id: 'integrations', label: 'Integrations', icon: Globe },
+                  { id: 'use-cases', label: 'Use Cases', icon: Target }
+                ].map((tab) => (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`flex items-center justify-center gap-2 sm:gap-3 px-4 sm:px-6 lg:px-8 py-3 sm:py-4 rounded-xl lg:rounded-2xl font-bold text-sm sm:text-base lg:text-lg transition-all duration-500 mobile-full ${
+                      activeTab === tab.id 
+                        ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-lg shadow-blue-500/25 scale-[1.02]' 
+                        : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100/80'
+                    }`}
+                  >
+                    <tab.icon className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />
+                    <span className="hidden sm:inline">{tab.label}</span>
+                    <span className="sm:hidden">{tab.label.split(' ')[0]}</span>
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
 
-          {/* Enhanced Main Features Tab */}
+          {/* Enhanced Main Features Tab - Fully Responsive */}
           {activeTab === 'features' && (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-24">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 mb-16 sm:mb-20 lg:mb-24">
               {mainFeatures.map((feature, index) => (
                 <div 
                   key={index}
-                  className={`group relative glass-card rounded-3xl p-10 transition-all duration-700 cursor-pointer overflow-hidden ${
+                  className={`group relative glass-card rounded-2xl lg:rounded-3xl p-6 sm:p-8 lg:p-10 transition-all duration-700 cursor-pointer overflow-hidden feature-card-hover ${
                     activeFeature === index 
-                      ? 'shadow-2xl shadow-blue-500/20 scale-[1.02] border-blue-400/50' 
-                      : 'hover:shadow-xl hover:scale-[1.01]'
-                  } ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+                      ? `shadow-xl ${feature.borderColor} border-2 scale-[1.01] lg:scale-[1.02]` 
+                      : 'shadow-lg hover:shadow-xl border border-gray-200'
+                  } ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
                   style={{ transitionDelay: `${index * 150}ms` }}
                   onMouseEnter={() => setActiveFeature(index)}
                 >
                   {/* Enhanced Background Gradient */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${feature.bgGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-700`} />
+                  <div className={`absolute inset-0 bg-gradient-to-br ${feature.bgGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl lg:rounded-3xl`} />
                   
-                  <div className="relative flex items-start gap-8">
-                    {/* Enhanced Icon */}
-                    <div className={`relative w-20 h-20 bg-gradient-to-br ${feature.gradient} rounded-3xl flex items-center justify-center transition-all duration-700 group-hover:scale-110 group-hover:rotate-6 shadow-2xl animate-glow-pulse`}>
-                      <feature.icon className="w-10 h-10 text-white" />
-                      <div className={`absolute inset-0 bg-${feature.glowColor} rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-700`} />
-                    </div>
-                    
-                    {/* Enhanced Content */}
-                    <div className="flex-1">
-                      <h3 className="text-3xl font-black text-white mb-4 group-hover:text-[#00D4FF] transition-colors duration-500">
-                        {feature.title}
-                      </h3>
-                      <p className="text-gray-300 leading-relaxed mb-8 text-xl">{feature.description}</p>
-                      
-                      {/* Enhanced Metrics */}
-                      <div className="flex flex-wrap gap-4 mb-8">
-                        <div className="inline-flex items-center gap-3 bg-green-500/20 text-green-400 px-6 py-3 rounded-2xl text-lg font-bold border border-green-500/30 backdrop-blur-sm">
-                          <CheckCircle className="w-5 h-5" />
-                          {feature.keyMetric}
-                        </div>
-                        <div className="inline-flex items-center gap-3 bg-blue-500/20 text-blue-400 px-6 py-3 rounded-2xl text-lg font-bold border border-blue-500/30 backdrop-blur-sm">
-                          <TrendingUp className="w-5 h-5" />
-                          {feature.improvement}
-                        </div>
+                  <div className="relative">
+                    {/* Mobile-first layout */}
+                    <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6 lg:gap-8">
+                      {/* Enhanced Icon */}
+                      <div className={`w-16 sm:w-18 lg:w-20 h-16 sm:h-18 lg:h-20 bg-gradient-to-br ${feature.gradient} rounded-2xl lg:rounded-3xl flex items-center justify-center transition-all duration-700 group-hover:scale-110 group-hover:rotate-3 shadow-lg flex-shrink-0 mx-auto sm:mx-0`}>
+                        <feature.icon className="w-8 sm:w-9 lg:w-10 h-8 sm:h-9 lg:h-10 text-white" />
                       </div>
                       
-                      {/* Enhanced Benefits */}
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        {feature.benefits.map((benefit, benefitIndex) => (
-                          <div key={benefitIndex} className="flex items-center gap-4 text-lg text-gray-200 glass-card rounded-xl px-4 py-3">
-                            <div className={`w-3 h-3 bg-gradient-to-r ${feature.gradient} rounded-full shadow-lg`} />
-                            {benefit}
+                      {/* Enhanced Content */}
+                      <div className="flex-1 mobile-center sm:text-left">
+                        <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-gray-900 mb-3 sm:mb-4 group-hover:text-blue-600 transition-colors duration-500">
+                          {feature.title}
+                        </h3>
+                        <p className="text-gray-600 leading-relaxed mb-4 sm:mb-6 lg:mb-8 text-base sm:text-lg lg:text-xl">{feature.description}</p>
+                        
+                        {/* Enhanced Metrics - Mobile Stack */}
+                        <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 mb-4 sm:mb-6 lg:mb-8">
+                          <div className="inline-flex items-center gap-2 sm:gap-3 bg-green-100 text-green-700 px-3 sm:px-4 lg:px-6 py-2 sm:py-3 rounded-xl lg:rounded-2xl text-sm sm:text-base lg:text-lg font-bold border border-green-200 backdrop-blur-sm">
+                            <CheckCircle className="w-4 sm:w-5 h-4 sm:h-5" />
+                            {feature.keyMetric}
                           </div>
-                        ))}
+                          <div className="inline-flex items-center gap-2 sm:gap-3 bg-blue-100 text-blue-700 px-3 sm:px-4 lg:px-6 py-2 sm:py-3 rounded-xl lg:rounded-2xl text-sm sm:text-base lg:text-lg font-bold border border-blue-200 backdrop-blur-sm">
+                            <TrendingUp className="w-4 sm:w-5 h-4 sm:h-5" />
+                            {feature.improvement}
+                          </div>
+                        </div>
+                        
+                        {/* Enhanced Benefits - Mobile Optimized */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                          {feature.benefits.map((benefit, benefitIndex) => (
+                            <div key={benefitIndex} className="flex items-center gap-3 sm:gap-4 text-sm sm:text-base lg:text-lg text-gray-700 glass-card rounded-lg lg:rounded-xl px-3 sm:px-4 py-2 sm:py-3">
+                              <div className={`w-2 sm:w-3 h-2 sm:h-3 bg-gradient-to-r ${feature.gradient} rounded-full shadow-sm flex-shrink-0`} />
+                              <span className="leading-tight">{benefit}</span>
+                            </div>
+                          ))}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -347,69 +398,69 @@ const FeaturesSection = () => {
             </div>
           )}
 
-          {/* Enhanced Integrations Tab */}
+          {/* Enhanced Integrations Tab - Mobile Optimized */}
           {activeTab === 'integrations' && (
-            <div className={`mb-24 transition-all duration-800 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'}`}>
-              <div className="text-center mb-16">
-                <h3 className="text-5xl font-black text-white mb-6">Seamless Integrations</h3>
-                <p className="text-gray-300 max-w-3xl mx-auto text-2xl leading-relaxed">
-                  Connect with your existing tools and workflows. Over <span className="text-[#00D4FF] font-bold">500+ integrations</span> available.
+            <div className={`mb-16 sm:mb-20 lg:mb-24 transition-all duration-800 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
+              <div className="text-center mb-10 sm:mb-12 lg:mb-16">
+                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-4 sm:mb-6">Seamless Integrations</h3>
+                <p className="text-gray-600 max-w-3xl mx-auto text-base sm:text-lg lg:text-2xl leading-relaxed px-4">
+                  Connect with your existing tools and workflows. Over <span className="text-blue-600 font-bold">500+ integrations</span> available.
                 </p>
               </div>
               
-              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6 mb-16">
+              <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4 sm:gap-6 mb-10 sm:mb-12 lg:mb-16">
                 {integrations.map((integration, index) => (
                   <div 
                     key={index}
-                    className="glass-card rounded-2xl p-8 text-center hover:shadow-2xl transition-all duration-500 border border-gray-700/50 hover:border-blue-400/50 group cursor-pointer animate-glow-pulse"
+                    className="glass-card rounded-xl lg:rounded-2xl p-4 sm:p-6 lg:p-8 text-center hover:shadow-xl transition-all duration-500 border border-gray-200 hover:border-blue-300 group cursor-pointer"
                     onMouseEnter={() => setHoveredCard(index)}
                     onMouseLeave={() => setHoveredCard(null)}
                   >
-                    <div className="text-4xl mb-4 group-hover:scale-125 transition-transform duration-500">
+                    <div className="text-2xl sm:text-3xl lg:text-4xl mb-2 sm:mb-3 lg:mb-4 group-hover:scale-125 transition-transform duration-500">
                       {integration.logo}
                     </div>
-                    <h4 className="font-bold text-white text-lg mb-2">{integration.name}</h4>
-                    <p className="text-sm text-gray-400">{integration.category}</p>
+                    <h4 className="font-bold text-gray-900 text-sm sm:text-base lg:text-lg mb-1 sm:mb-2">{integration.name}</h4>
+                    <p className="text-xs sm:text-sm text-gray-500">{integration.category}</p>
                   </div>
                 ))}
               </div>
 
               <div className="text-center">
-                <button className="bg-gradient-to-r from-[#0084FF] via-[#00D4FF] to-[#0084FF] text-white px-12 py-6 rounded-2xl font-black text-xl hover:shadow-2xl transition-all duration-500 flex items-center gap-4 mx-auto animate-gradient shimmer-effect">
-                  View All Integrations <ExternalLink className="w-6 h-6" />
+                <button className="bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-600 text-white px-6 sm:px-8 lg:px-12 py-3 sm:py-4 lg:py-6 rounded-xl lg:rounded-2xl font-black text-base sm:text-lg lg:text-xl hover:shadow-xl transition-all duration-500 flex items-center gap-3 sm:gap-4 mx-auto animate-gradient shimmer-effect">
+                  View All Integrations <ExternalLink className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />
                 </button>
               </div>
             </div>
           )}
 
-          {/* Enhanced Use Cases Tab */}
+          {/* Enhanced Use Cases Tab - Mobile Responsive */}
           {activeTab === 'use-cases' && (
-            <div className={`mb-24 transition-all duration-800 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'}`}>
-              <div className="text-center mb-16">
-                <h3 className="text-5xl font-black text-white mb-6">Built for Every Business</h3>
-                <p className="text-gray-300 max-w-3xl mx-auto text-2xl leading-relaxed">
-                  From startups to enterprises, our platform adapts to your unique sales needs with <span className="text-[#00D4FF] font-bold">proven success</span>.
+            <div className={`mb-16 sm:mb-20 lg:mb-24 transition-all duration-800 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
+              <div className="text-center mb-10 sm:mb-12 lg:mb-16">
+                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-4 sm:mb-6">Built for Every Business</h3>
+                <p className="text-gray-600 max-w-3xl mx-auto text-base sm:text-lg lg:text-2xl leading-relaxed px-4">
+                  From startups to enterprises, our platform adapts to your unique sales needs with <span className="text-blue-600 font-bold">proven success</span>.
                 </p>
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
                 {useCases.map((useCase, index) => (
                   <div 
                     key={index}
-                    className="glass-card rounded-3xl p-10 border border-gray-700/50 hover:shadow-2xl transition-all duration-700 group hover:border-blue-400/50"
+                    className={`glass-card rounded-2xl lg:rounded-3xl p-6 sm:p-8 lg:p-10 ${useCase.borderColor} border-2 hover:shadow-xl transition-all duration-700 group`}
                   >
-                    <div className={`w-20 h-20 bg-gradient-to-br ${useCase.gradient} rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500 shadow-2xl animate-glow-pulse`}>
-                      <useCase.icon className="w-10 h-10 text-white" />
+                    <div className={`w-16 sm:w-18 lg:w-20 h-16 sm:h-18 lg:h-20 bg-gradient-to-br ${useCase.gradient} rounded-xl lg:rounded-2xl flex items-center justify-center mb-6 sm:mb-8 group-hover:scale-110 transition-transform duration-500 shadow-lg mx-auto lg:mx-0`}>
+                      <useCase.icon className="w-8 sm:w-9 lg:w-10 h-8 sm:h-9 lg:h-10 text-white" />
                     </div>
-                    <h4 className="text-3xl font-black text-white mb-6 group-hover:text-[#00D4FF] transition-colors duration-500">{useCase.title}</h4>
-                    <p className="text-gray-300 mb-8 leading-relaxed text-xl">{useCase.description}</p>
-                    <ul className="space-y-4">
+                    <h4 className="text-xl sm:text-2xl lg:text-3xl font-black text-gray-900 mb-4 sm:mb-6 group-hover:text-blue-600 transition-colors duration-500 text-center lg:text-left">{useCase.title}</h4>
+                    <p className="text-gray-600 mb-6 sm:mb-8 leading-relaxed text-base sm:text-lg lg:text-xl text-center lg:text-left">{useCase.description}</p>
+                    <ul className="space-y-3 sm:space-y-4">
                       {useCase.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="flex items-center gap-4 text-lg text-gray-200">
-                          <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
-                            <CheckCircle className="w-4 h-4 text-white" />
+                        <li key={featureIndex} className="flex items-center gap-3 sm:gap-4 text-base sm:text-lg text-gray-700">
+                          <div className="w-5 sm:w-6 h-5 sm:h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <CheckCircle className="w-3 sm:w-4 h-3 sm:h-4 text-white" />
                           </div>
-                          {feature}
+                          <span>{feature}</span>
                         </li>
                       ))}
                     </ul>
@@ -419,39 +470,36 @@ const FeaturesSection = () => {
             </div>
           )}
 
-          {/* Enhanced Enterprise Features */}
-          <div className={`mb-24 transition-all duration-1000 delay-600 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-            <div className="text-center mb-20">
-              <div className="inline-flex items-center gap-3 glass-card px-8 py-4 rounded-full mb-8">
-                <Shield className="w-6 h-6 text-purple-400" />
-                <span className="text-purple-400 font-bold text-lg">ENTERPRISE GRADE</span>
+          {/* Enhanced Enterprise Features - Mobile First */}
+          <div className={`mb-16 sm:mb-20 lg:mb-24 transition-all duration-1000 delay-600 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
+            <div className="text-center mb-12 sm:mb-16 lg:mb-20">
+              <div className="inline-flex items-center gap-2 sm:gap-3 glass-card px-4 sm:px-6 lg:px-8 py-2 sm:py-3 lg:py-4 rounded-full mb-4 sm:mb-6 lg:mb-8">
+                <Shield className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6 text-purple-600" />
+                <span className="text-purple-600 font-bold text-sm sm:text-base lg:text-lg">ENTERPRISE GRADE</span>
               </div>
-              <h3 className="text-6xl font-black text-white mb-8">Built for Scale & Security</h3>
-              <p className="text-gray-300 max-w-4xl mx-auto text-2xl leading-relaxed">
-                Enterprise-grade infrastructure with <span className="text-green-400 font-bold">bank-level security</span>, 99.9% uptime guarantee, 
-                and compliance certifications trusted by <span className="text-[#00D4FF] font-bold">Fortune 500 companies</span> worldwide.
+              <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4 sm:mb-6 lg:mb-8 px-4">Built for Scale & Security</h3>
+              <p className="text-gray-600 max-w-4xl mx-auto text-base sm:text-lg lg:text-2xl leading-relaxed px-4">
+                Enterprise-grade infrastructure with <span className="text-green-600 font-bold">bank-level security</span>, 99.9% uptime guarantee, 
+                and compliance certifications trusted by <span className="text-blue-600 font-bold">Fortune 500 companies</span> worldwide.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
               {enterpriseFeatures.map((feature, index) => (
                 <div 
                   key={index} 
-                  className="relative glass-card rounded-3xl p-10 hover:shadow-2xl border border-gray-700/50 hover:border-blue-400/50 transition-all duration-700 group overflow-hidden"
+                  className={`relative glass-card rounded-2xl lg:rounded-3xl p-6 sm:p-8 lg:p-10 hover:shadow-xl border-2 border-gray-200 hover:border-blue-300 transition-all duration-700 group overflow-hidden ${feature.bgColor}`}
                 >
-                  {/* Enhanced Animated Background */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-700`} />
-                  
-                  <div className="relative">
-                    <div className={`w-20 h-20 bg-gradient-to-br ${feature.gradient} rounded-3xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500 shadow-2xl animate-glow-pulse`}>
-                      <feature.icon className="w-10 h-10 text-white" />
+                  <div className="relative text-center lg:text-left">
+                    <div className={`w-16 sm:w-18 lg:w-20 h-16 sm:h-18 lg:h-20 bg-gradient-to-br ${feature.gradient} rounded-2xl lg:rounded-3xl flex items-center justify-center mb-6 sm:mb-8 group-hover:scale-110 transition-transform duration-500 shadow-lg mx-auto lg:mx-0`}>
+                      <feature.icon className="w-8 sm:w-9 lg:w-10 h-8 sm:h-9 lg:h-10 text-white" />
                     </div>
-                    <h4 className="text-2xl font-black text-white mb-4 group-hover:text-[#00D4FF] transition-colors duration-500">
+                    <h4 className="text-xl sm:text-2xl font-black text-gray-900 mb-3 sm:mb-4 group-hover:text-blue-600 transition-colors duration-500">
                       {feature.title}
                     </h4>
-                    <p className="text-gray-300 mb-6 leading-relaxed text-lg">{feature.description}</p>
-                    <div className="inline-flex items-center gap-3 bg-green-500/20 text-green-400 px-4 py-2 rounded-xl text-lg font-bold border border-green-500/30">
-                      <Trophy className="w-5 h-5" />
+                    <p className="text-gray-600 mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base lg:text-lg">{feature.description}</p>
+                    <div className={`inline-flex items-center gap-2 sm:gap-3 bg-green-100 ${feature.textColor} px-3 sm:px-4 py-2 rounded-lg lg:rounded-xl text-sm sm:text-base lg:text-lg font-bold border border-green-200`}>
+                      <Trophy className="w-4 sm:w-5 h-4 sm:h-5" />
                       {feature.metric}
                     </div>
                   </div>
