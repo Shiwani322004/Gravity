@@ -5,21 +5,12 @@ import { ArrowRight, Award, Sparkles, Star, Heart, Shield, Globe } from 'lucide-
 
 const OurValues = () => {
   return (
-    <section className="relative py-24 bg-gradient-to-br from-white to-gray-50/30 overflow-hidden">
-      {/* Enhanced Background */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-[#007BFF]/5 to-transparent"></div>
-        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#082540]/5 to-transparent"></div>
-        
-        {/* Floating Elements */}
-        <div className="absolute top-20 left-20 w-6 h-6 bg-[#007BFF]/20 rounded-full animate-float"></div>
-        <div className="absolute top-40 right-32 w-4 h-4 bg-[#007BFF]/15 rounded-full animate-float delay-1000"></div>
-        <div className="absolute bottom-32 left-32 w-5 h-5 bg-[#082540]/10 rounded-full animate-float delay-2000"></div>
-      </div>
+    <section className="relative py-20 bg-gradient-to-br from-white to-gray-50/30 overflow-hidden">
+      
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Enhanced Header */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#007BFF] to-[#0056b3] text-white px-8 py-4 rounded-xl text-lg font-semibold shadow-2xl shadow-blue-500/30 mb-8 cursor-pointer hover:shadow-blue-500/40 hover:scale-105 transform transition-all duration-300">
             <Award className="w-5 h-5" />
             Our Values
@@ -86,20 +77,8 @@ const OurValues = () => {
           })}
         </div>
 
-        {/* Values Summary */}
-        <div className="mt-20 text-center">
-          <div className="inline-flex items-center gap-6 bg-gradient-to-r from-[#007BFF]/10 to-[#082540]/5 backdrop-blur-sm rounded-2xl p-8 border-2 border-[#007BFF]/10">
-            <div className="text-4xl font-black text-[#007BFF]">{values.length}</div>
-            <div className="text-left">
-              <div className="text-lg font-black text-[#082540]">Core Values</div>
-              <div className="text-gray-600">Driving excellence since day one</div>
-            </div>
-            <Heart className="w-8 h-8 text-[#007BFF]" />
-          </div>
-        </div>
-
-        {/* Bottom CTA */}
-        <div className="text-center mt-16">
+        {/* Bottom CTA - Adjusted spacing */}
+        <div className="text-center mt-12">
           <div className="inline-flex items-center gap-4 bg-gradient-to-r from-[#007BFF] to-[#0056b3] text-white px-8 py-4 rounded-2xl font-semibold shadow-2xl shadow-blue-500/30 hover:shadow-blue-500/50 hover:scale-105 transform transition-all duration-300 cursor-pointer">
             <Shield className="w-5 h-5" />
             Live Our Values
@@ -137,4 +116,3 @@ const OurValues = () => {
 };
 
 export default OurValues;
-
