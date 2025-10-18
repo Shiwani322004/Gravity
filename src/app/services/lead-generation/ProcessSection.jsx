@@ -3,10 +3,12 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Search, Target, MessageSquare, BarChart3, Users, Zap, ArrowRight, CheckCircle } from 'lucide-react';
 import Image from 'next/image';
 
+
 const ProcessSection = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
+
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -18,12 +20,15 @@ const ProcessSection = () => {
       { threshold: 0.1 }
     );
 
+
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
     }
 
+
     return () => observer.disconnect();
   }, []);
+
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -32,11 +37,12 @@ const ProcessSection = () => {
     return () => clearInterval(interval);
   }, []);
 
+
   const processSteps = [
     {
       id: 1,
       icon: Search,
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop&crop=entropy&auto=format&q=80",
+      image: "/images/step1.png",
       title: "Strategic Discovery & Research",
       subtitle: "Deep Market Analysis",
       description: "We conduct comprehensive market research and competitor analysis to understand your industry landscape, identify key opportunities, and develop a customized lead generation strategy tailored to your business goals.",
@@ -52,7 +58,7 @@ const ProcessSection = () => {
     {
       id: 2,
       icon: Target,
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop&crop=entropy&auto=format&q=80",
+      image: "/images/step2.png",
       title: "Precision Targeting & List Building",
       subtitle: "AI-Powered Prospect Identification",
       description: "Using advanced AI algorithms and proprietary databases, we identify and build highly targeted prospect lists of decision-makers who match your ideal customer profile with 92% accuracy.",
@@ -68,7 +74,7 @@ const ProcessSection = () => {
     {
       id: 3,
       icon: MessageSquare,
-      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=300&fit=crop&crop=entropy&auto=format&q=80",
+      image: "/images/step3.png",
       title: "Multi-Channel Outreach Campaigns",
       subtitle: "Personalized Engagement at Scale",
       description: "Execute sophisticated, personalized outreach campaigns across multiple channels including email, LinkedIn, phone, and social media with intelligent sequencing and A/B testing optimization.",
@@ -84,7 +90,7 @@ const ProcessSection = () => {
     {
       id: 4,
       icon: Users,
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop&crop=entropy&auto=format&q=80",
+      image: "/images/step4.png",
       title: "Lead Qualification & Nurturing",
       subtitle: "Converting Interest to Intent", 
       description: "Our intelligent lead qualification system scores and nurtures prospects based on engagement and buying signals, ensuring only sales-ready leads reach your sales team for maximum conversion efficiency.",
@@ -100,7 +106,7 @@ const ProcessSection = () => {
     {
       id: 5,
       icon: BarChart3,
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop&crop=entropy&auto=format&q=80",
+      image: "/images/step5.png",
       title: "Performance Analytics & Optimization",
       subtitle: "Data-Driven Results",
       description: "Continuous monitoring and optimization of campaign performance with detailed analytics, real-time reporting, and strategic adjustments to maximize ROI and lead quality.",
@@ -115,6 +121,7 @@ const ProcessSection = () => {
     }
   ];
 
+
   return (
     <section ref={sectionRef} className="py-24 bg-gradient-to-br from-[#0A1628] to-[#1e3a8a] text-white relative overflow-hidden">
       {/* Background Elements */}
@@ -122,6 +129,7 @@ const ProcessSection = () => {
         <div className="absolute top-10 left-10 w-96 h-96 bg-blue-500/5 rounded-full mix-blend-multiply filter blur-3xl"></div>
         <div className="absolute bottom-10 right-10 w-96 h-96 bg-purple-500/5 rounded-full mix-blend-multiply filter blur-3xl"></div>
       </div>
+
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
@@ -138,6 +146,7 @@ const ProcessSection = () => {
             Here's how we transform your sales pipeline in just 30 days.
           </p>
         </div>
+
 
         {/* Process Steps */}
         <div className="space-y-12">
@@ -161,11 +170,13 @@ const ProcessSection = () => {
                     </div>
                   </div>
 
+
                   <div>
                     <h3 className="text-3xl lg:text-4xl font-black text-white mb-2">{step.title}</h3>
                     <p className="text-xl text-[#00D4FF] font-semibold mb-4">{step.subtitle}</p>
                     <p className="text-lg text-blue-100 leading-relaxed mb-6">{step.description}</p>
                   </div>
+
 
                   {/* Details List */}
                   <div className="space-y-3">
@@ -178,17 +189,24 @@ const ProcessSection = () => {
                   </div>
                 </div>
 
+
                 {/* Visual/Stats - Now with Images */}
                 <div className={`${index % 2 === 1 ? 'lg:col-start-1 lg:row-start-1' : ''}`}>
                   <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-3xl p-8 overflow-hidden">
                     <div className="text-center space-y-6">
                       {/* Process Image */}
-                      <div className="relative w-full h-48 rounded-2xl overflow-hidden mb-6">
+                      <div className="relative w-full rounded-2xl overflow-hidden mb-6">
                         <Image
                           src={step.image}
                           alt={step.title}
-                          fill
-                          className={`object-cover transition-all duration-500 ${
+                          width={400}
+                          height={300}
+                          sizes="(max-width: 1024px) 90vw, 40vw"
+                          style={{
+                            width: '100%',
+                            height: 'auto',
+                          }}
+                          className={`transition-all duration-500 ${
                             activeStep === index ? 'scale-110' : 'scale-100'
                           }`}
                         />
@@ -200,16 +218,7 @@ const ProcessSection = () => {
                         </div>
                       </div>
                       
-                      <div className="space-y-4">
-                        <h4 className="text-2xl font-black text-white">Step {step.id}</h4>
-                        <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-                          <div 
-                            className={`h-full bg-gradient-to-r ${step.color} transition-all duration-1000 ${
-                              activeStep >= index ? 'w-full' : 'w-0'
-                            }`}
-                          ></div>
-                        </div>
-                      </div>
+                      
                     </div>
                   </div>
                 </div>
@@ -217,6 +226,7 @@ const ProcessSection = () => {
             </div>
           ))}
         </div>
+
 
         {/* Process Navigation */}
         <div className={`flex justify-center mt-16 transition-all duration-1000 delay-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
@@ -236,5 +246,6 @@ const ProcessSection = () => {
     </section>
   );
 };
+
 
 export default ProcessSection;
