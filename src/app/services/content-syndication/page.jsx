@@ -4,7 +4,8 @@ import HeroContent from './HeroContent';
 import FeaturesContent from './FeaturesContent';
 import ContentTypes from './ContentTypes';
 import ContentJourney from './ContentJourney';
-import ContentReach from './ContentReach';
+import ContentFormSection from './ContentFormSection';
+import LogoScroll from '../lead-generation/LogoScroll';
 
 const ContentSyndicationPage = () => {
   return (
@@ -13,7 +14,8 @@ const ContentSyndicationPage = () => {
       <FeaturesContent />
       <ContentTypes />
       <ContentJourney />
-      <ContentReach />
+      <LogoScroll />
+      <ContentFormSection />
     </div>
   );
 };
