@@ -45,12 +45,24 @@ const Navbar = () => {
     { name: 'Video Conferencing', href: '/categories/video-conferencing' }
   ];
 
-  // Main navigation items
+  // Main navigation items - Services now points directly to lead generation
   const navItems = [
     { name: 'Home', href: '/', id: 'home' },
     { name: 'About', href: '/about', id: 'about' }, 
-    { name: 'Services', href: '/services', hasDropdown: true, id: 'services', dropdownItems: services },
-    { name: 'Categories', href: '/categories', hasDropdown: true, id: 'categories', dropdownItems: categories },
+    { 
+      name: 'Services', 
+      href: '/services/lead-generation', // Direct link to lead generation
+      hasDropdown: true, 
+      id: 'services', 
+      dropdownItems: services 
+    },
+    { 
+      name: 'Categories', 
+      href: '/categories', 
+      hasDropdown: true, 
+      id: 'categories', 
+      dropdownItems: categories 
+    },
     { name: 'Resources', href: '/resources', id: 'resources' },
     { name: 'Contact', href: '/contact', id: 'contact' }
   ];
@@ -148,7 +160,7 @@ const Navbar = () => {
                         onMouseLeave={handleDropdownLeave}
                       >
                         <a 
-                          href={item.href}
+                          href={item.href} // Now points directly to lead generation
                           onClick={handleLinkClick}
                           className={`flex items-center gap-1.5 px-5 py-2.5 rounded-lg transition-all duration-300 font-semibold text-[15px] group relative ${
                             activeNav === item.id 
@@ -251,17 +263,26 @@ const Navbar = () => {
                       <div className={`rounded-xl overflow-hidden border-2 ${
                         isActive ? 'border-[#007bff] bg-slate-50' : 'border-slate-200 bg-white'
                       } shadow-md`}>
-                        <button
-                          onClick={() => toggleMobileDropdown(item.id)}
+                        <a
+                          href={item.href} // Now points directly to lead generation
+                          onClick={handleLinkClick}
                           className={`flex items-center justify-between w-full px-5 py-4 transition-all duration-300 ${
                             isActive ? 'text-[#007bff] font-bold' : 'text-slate-800 hover:bg-slate-50'
                           }`}
                         >
                           <span className="text-lg font-bold">{item.name}</span>
-                          <ChevronDown className={`w-6 h-6 transition-transform duration-300 ${
-                            mobileDropdowns[item.id] ? 'rotate-180' : ''
-                          } ${isActive ? 'text-[#007bff]' : 'text-slate-500'}`} />
-                        </button>
+                          <button
+                            onClick={(e) => {
+                              e.preventDefault();
+                              toggleMobileDropdown(item.id);
+                            }}
+                            className="p-1 hover:bg-slate-200 rounded-lg transition-colors duration-300"
+                          >
+                            <ChevronDown className={`w-6 h-6 transition-transform duration-300 ${
+                              mobileDropdowns[item.id] ? 'rotate-180' : ''
+                            } ${isActive ? 'text-[#007bff]' : 'text-slate-500'}`} />
+                          </button>
+                        </a>
                         <div className={`transition-all duration-300 ease-in-out overflow-hidden bg-slate-50 ${
                           mobileDropdowns[item.id] ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
                         }`}>
