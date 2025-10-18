@@ -20,7 +20,7 @@ const FeaturesContent = () => {
       icon: Shield,
       title: "Brand Safety",
       description: "Guaranteed placement on reputable, brand-safe platforms only",
-      image: "https://images.unsplash.com/photo-1563013541-7abdf6cc352c?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+      image: "https://images.unsplash.com/photo-1678132218412-0f18fab9b537?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070"
     },
     {
       icon: Filter,
