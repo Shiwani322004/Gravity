@@ -5,13 +5,13 @@ const LeadDeliverySection = () => {
     <div className="bg-[#f7fafd] py-16 px-4">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-          Flexible <span className="text-[#00d8a6] underline underline-offset-8 decoration-[#00d8a6]">Lead Delivery</span> Options
+          Flexible <span className="text-[#007BFF] underline underline-offset-8 decoration-[#007BFF]">Lead Delivery</span> Options
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Real-Time API */}
           <div className="bg-white rounded-2xl p-8 shadow-lg">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center border-b-4 border-[#00d8a6] pb-4">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center border-b-4 border-[#007BFF] pb-4">
               Real-Time API
             </h3>
 
@@ -23,7 +23,7 @@ const LeadDeliverySection = () => {
 
               <ul className="space-y-3">
                 <li className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-[#00d8a6] mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#007BFF] mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <div>
@@ -32,7 +32,7 @@ const LeadDeliverySection = () => {
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-[#00d8a6] mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#007BFF] mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <div>
@@ -41,7 +41,7 @@ const LeadDeliverySection = () => {
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-[#00d8a6] mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#007BFF] mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <div>
@@ -55,7 +55,7 @@ const LeadDeliverySection = () => {
 
           {/* Batch Delivery */}
           <div className="bg-white rounded-2xl p-8 shadow-lg">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center border-b-4 border-[#00d8a6] pb-4">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center border-b-4 border-[#007BFF] pb-4">
               Batch Delivery
             </h3>
             <div className="mb-6">
@@ -66,19 +66,19 @@ const LeadDeliverySection = () => {
             </div>
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
-                <svg className="w-5 h-5 text-[#00d8a6] mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-5 h-5 text-[#007BFF] mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <span>Scheduled delivery intervals</span>
               </li>
               <li className="flex items-start gap-3">
-                <svg className="w-5 h-5 text-[#00d8a6] mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-5 h-5 text-[#007BFF] mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <span>Download via secure CSV or Excel files</span>
               </li>
               <li className="flex items-start gap-3">
-                <svg className="w-5 h-5 text-[#00d8a6] mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-5 h-5 text-[#007BFF] mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <span>Ideal for internal review & reporting</span>
@@ -88,7 +88,7 @@ const LeadDeliverySection = () => {
 
           {/* CRM Integration */}
           <div className="bg-white rounded-2xl p-8 shadow-lg">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center border-b-4 border-[#00d8a6] pb-4">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center border-b-4 border-[#007BFF] pb-4">
               CRM Integration
             </h3>
 
@@ -122,13 +122,13 @@ const LeadDeliverySection = () => {
 
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
-                <svg className="w-5 h-5 text-[#00d8a6] mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-5 h-5 text-[#007BFF] mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <span>Connect with Salesforce, HubSpot, Zoho, etc.</span>
               </li>
               <li className="flex items-start gap-3">
-                <svg className="w-5 h-5 text-[#00d8a6] mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-5 h-5 text-[#007BFF] mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <span>Real-time syncing of lead statuses</span>

@@ -137,7 +137,7 @@ const ProcessSection = () => {
           
           <h2 className="text-5xl lg:text-6xl font-black mb-8 leading-tight">
             5-Step Lead Generation
-            <span className="block bg-gradient-to-r from-[#00D4FF] to-[#0084FF] bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-[#007BFF] to-[#007BFF] bg-clip-text text-transparent">
               Success Framework
             </span>
           </h2>
