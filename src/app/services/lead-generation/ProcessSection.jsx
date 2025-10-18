@@ -1,6 +1,7 @@
 'use client'
 import React, { useState, useRef, useEffect } from 'react';
 import { Search, Target, MessageSquare, BarChart3, Users, Zap, ArrowRight, CheckCircle } from 'lucide-react';
+import Image from 'next/image';
 
 const ProcessSection = () => {
   const [activeStep, setActiveStep] = useState(0);
@@ -35,6 +36,7 @@ const ProcessSection = () => {
     {
       id: 1,
       icon: Search,
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop&crop=entropy&auto=format&q=80",
       title: "Strategic Discovery & Research",
       subtitle: "Deep Market Analysis",
       description: "We conduct comprehensive market research and competitor analysis to understand your industry landscape, identify key opportunities, and develop a customized lead generation strategy tailored to your business goals.",
@@ -50,6 +52,7 @@ const ProcessSection = () => {
     {
       id: 2,
       icon: Target,
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop&crop=entropy&auto=format&q=80",
       title: "Precision Targeting & List Building",
       subtitle: "AI-Powered Prospect Identification",
       description: "Using advanced AI algorithms and proprietary databases, we identify and build highly targeted prospect lists of decision-makers who match your ideal customer profile with 92% accuracy.",
@@ -65,6 +68,7 @@ const ProcessSection = () => {
     {
       id: 3,
       icon: MessageSquare,
+      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=300&fit=crop&crop=entropy&auto=format&q=80",
       title: "Multi-Channel Outreach Campaigns",
       subtitle: "Personalized Engagement at Scale",
       description: "Execute sophisticated, personalized outreach campaigns across multiple channels including email, LinkedIn, phone, and social media with intelligent sequencing and A/B testing optimization.",
@@ -80,6 +84,7 @@ const ProcessSection = () => {
     {
       id: 4,
       icon: Users,
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop&crop=entropy&auto=format&q=80",
       title: "Lead Qualification & Nurturing",
       subtitle: "Converting Interest to Intent", 
       description: "Our intelligent lead qualification system scores and nurtures prospects based on engagement and buying signals, ensuring only sales-ready leads reach your sales team for maximum conversion efficiency.",
@@ -95,6 +100,7 @@ const ProcessSection = () => {
     {
       id: 5,
       icon: BarChart3,
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop&crop=entropy&auto=format&q=80",
       title: "Performance Analytics & Optimization",
       subtitle: "Data-Driven Results",
       description: "Continuous monitoring and optimization of campaign performance with detailed analytics, real-time reporting, and strategic adjustments to maximize ROI and lead quality.",
@@ -120,10 +126,7 @@ const ProcessSection = () => {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className={`text-center mb-20 transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-6 py-3 text-sm font-semibold text-blue-200 mb-6">
-            <Zap className="w-4 h-4" />
-            Our Proven Process
-          </div>
+          
           <h2 className="text-5xl lg:text-6xl font-black mb-8 leading-tight">
             5-Step Lead Generation
             <span className="block bg-gradient-to-r from-[#00D4FF] to-[#0084FF] bg-clip-text text-transparent">
@@ -173,22 +176,28 @@ const ProcessSection = () => {
                       </div>
                     ))}
                   </div>
-
-                  {/* CTA Button */}
-                  <button className="group inline-flex items-center gap-3 bg-gradient-to-r from-[#0084FF] to-[#00D4FF] hover:from-[#00D4FF] hover:to-[#0084FF] text-white px-8 py-4 rounded-2xl font-semibold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 mt-6">
-                    Learn More About Step {step.id}
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </button>
                 </div>
 
-                {/* Visual/Stats */}
+                {/* Visual/Stats - Now with Images */}
                 <div className={`${index % 2 === 1 ? 'lg:col-start-1 lg:row-start-1' : ''}`}>
-                  <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-3xl p-8">
+                  <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-3xl p-8 overflow-hidden">
                     <div className="text-center space-y-6">
-                      <div className={`w-24 h-24 bg-gradient-to-r ${step.color} rounded-3xl flex items-center justify-center mx-auto mb-6 transition-all duration-500 ${
-                        activeStep === index ? 'scale-110 rotate-12' : ''
-                      }`}>
-                        <step.icon className="w-12 h-12 text-white" />
+                      {/* Process Image */}
+                      <div className="relative w-full h-48 rounded-2xl overflow-hidden mb-6">
+                        <Image
+                          src={step.image}
+                          alt={step.title}
+                          fill
+                          className={`object-cover transition-all duration-500 ${
+                            activeStep === index ? 'scale-110' : 'scale-100'
+                          }`}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                        <div className={`absolute bottom-4 left-4 w-12 h-12 bg-gradient-to-r ${step.color} rounded-xl flex items-center justify-center transition-all duration-500 ${
+                          activeStep === index ? 'scale-110 rotate-12' : ''
+                        }`}>
+                          <step.icon className="w-6 h-6 text-white" />
+                        </div>
                       </div>
                       
                       <div className="space-y-4">

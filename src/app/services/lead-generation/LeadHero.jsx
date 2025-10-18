@@ -366,7 +366,7 @@ const LeadHero = () => {
               
               {/* Main Heading - Responsive */}
               <div className="space-y-4 sm:space-y-6 mobile-center">
-                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-tight tracking-tight">
+                <h1 className="text-4xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-6xl font-black leading-tight tracking-tight">
                   <span className="block">LEAD</span>
                   <span className="block bg-gradient-to-r from-[#00D4FF] via-[#007BFF] to-[#00A3FF] bg-clip-text text-transparent animate-pulse">
                     GENERATION

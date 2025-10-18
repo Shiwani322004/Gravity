@@ -4,6 +4,8 @@ import LeadHero from './LeadHero';
 import FeaturesSection from './FeaturesSection';
 import ProcessSection from './ProcessSection';
 import FormSection from './FormSection';
+import LeadDeliverySection from './LeadDeliverySection';
+import LogoScroll from './LogoScroll';
 
 const LeadGenerationPage = () => {
   return (
@@ -11,6 +13,8 @@ const LeadGenerationPage = () => {
       <LeadHero />
       <FeaturesSection />
       <ProcessSection />
+      <LeadDeliverySection />
+      <LogoScroll />
       <FormSection />
     </div>
   );
