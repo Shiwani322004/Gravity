@@ -79,7 +79,7 @@ const HeroContent = () => {
   ];
 
   const stats = [
-    { icon: Globe, value: "500+", label: "Platforms", color: "from-blue-400 to-cyan-500" },
+   
     { icon: TrendingUp, value: "3-5x", label: "Content Reach", color: "from-green-400 to-emerald-500" },
     { icon: Award, value: "98%", label: "Success Rate", color: "from-purple-400 to-violet-500" },
     { icon: Zap, value: "45%", label: "Lead Quality", color: "from-orange-400 to-red-500" }

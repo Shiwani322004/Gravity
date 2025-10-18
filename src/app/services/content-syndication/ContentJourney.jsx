@@ -1,197 +1,225 @@
 'use client'
 import React from 'react';
-import { FileText, Share2, Users, BarChart } from 'lucide-react';
+import { FileText, Share2, Users, BarChart, TrendingUp, Zap, Target, CheckCircle } from 'lucide-react';
 
 const ContentJourney = () => {
+  const steps = [
+    {
+      step: "01",
+      title: "Content Submission & Review",
+      description: "Upload your whitepapers, case studies, or blog posts with confidence. Our expert team conducts a comprehensive review and optimization process to ensure your content meets industry standards and maximizes syndication potential.",
+      tags: ["Expert Review", "24h Turnaround", "Quality Assurance"],
+      icon: <FileText className="w-8 h-8 text-white" />,
+      checkpoints: [
+        "Content format validation",
+        "SEO optimization review",
+        "Brand alignment check",
+        "Compliance verification"
+      ],
+      card: {
+        image: "/images/c1.png",
+        alt: "Content Submission",
+        title: "Streamlined Upload Process",
+        subtitle: "Supporting all major formats",
+        icon: <FileText className="w-5 h-5" />,
+      },
+    },
+    {
+      step: "02",
+      title: "Strategic Distribution Network",
+      description: "Leverage our extensive network of 500+ premium B2B platforms and industry-specific channels. We employ advanced AI targeting algorithms to position your content in front of decision-makers and key stakeholders within your target markets.",
+      tags: ["AI Intelligence", "Brand Safety", "Premium Networks"],
+      icon: <Share2 className="w-8 h-8 text-white" />,
+      checkpoints: [
+        "Platform selection optimization",
+        "Audience segmentation",
+        "Timing and scheduling",
+        "Cross-channel integration"
+      ],
+      card: {
+        image: "/images/c2.png",
+        alt: "Strategic Distribution",
+        title: "Intelligent Platform Distribution",
+        subtitle: "Access to 500+ vetted channels",
+        icon: <Share2 className="w-5 h-5" />,
+      },
+    },
+    {
+      step: "03",
+      title: "Qualified Lead Acquisition",
+      description: "Experience a steady influx of high-intent, qualified leads from decision-makers and industry professionals. Our platform automatically captures detailed prospect intelligence, engagement behavior, and interaction data in real-time for immediate action.",
+      tags: ["Real-time Capture", "Qualified Prospects", "Decision-Makers"],
+      icon: <Users className="w-8 h-8 text-white" />,
+      checkpoints: [
+        "Lead quality scoring",
+        "Prospect verification",
+        "Engagement tracking",
+        "Intent signals analysis"
+      ],
+      card: {
+        image: "/images/c3.png",
+        alt: "Lead Generation",
+        title: "Premium Lead Pipeline",
+        subtitle: "Decision-maker focused delivery",
+        icon: <Users className="w-5 h-5" />,
+      },
+    },
+    {
+      step: "04",
+      title: "Performance Analytics & Optimization",
+      description: "Access an intuitive analytics dashboard with comprehensive performance metrics, ROI tracking, and competitive benchmarking data. Make data-driven decisions with detailed insights that guide strategic optimization and continuous improvement initiatives.",
+      tags: ["ROI Dashboard", "Real-time Reports", "Actionable Insights"],
+      icon: <BarChart className="w-8 h-8 text-white" />,
+      checkpoints: [
+        "Campaign performance tracking",
+        "Conversion rate analysis",
+        "ROI measurement",
+        "Optimization recommendations"
+      ],
+      card: {
+        image: "/images/c4.png",
+        alt: "Analytics & Insights",
+        title: "Advanced Analytics Suite",
+        subtitle: "Comprehensive ROI reporting included",
+        icon: <BarChart className="w-5 h-5" />,
+      },
+    },
+  ];
+
+  const benefits = [
+    {
+      icon: <TrendingUp className="w-8 h-8" />,
+      title: "Exponential Market Expansion",
+      description: "Access untapped market segments and audience demographics that were previously inaccessible. Expand your global footprint and establish presence in new vertical markets through our extensive B2B network."
+    },
+    {
+      icon: <Zap className="w-8 h-8" />,
+      title: "Revenue Pipeline Acceleration",
+      description: "Generate a consistent, predictable flow of high-intent leads to accelerate your sales cycle. Reduce time-to-close and increase conversion rates with pre-qualified prospects actively seeking solutions."
+    },
+    {
+      icon: <Target className="w-8 h-8" />,
+      title: "Industry Authority & Credibility",
+      description: "Establish your organization as a recognized thought leader and industry authority. Build trust and credibility through strategic content visibility across premium industry channels and publications."
+    },
+  ];
+
   return (
-    <section className="py-20 bg-gradient-to-br from-white via-blue-50 to-white relative overflow-hidden">
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-[#007BFF] rounded-full filter blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#00D4FF] rounded-full filter blur-3xl" />
-      </div>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-6">
-            Your Content Journey
-            <span className="block bg-gradient-to-r from-[#007BFF] to-[#00D4FF] bg-clip-text text-transparent">
-              In 4 Simple Steps
-            </span>
-          </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            From submission to results, see how we transform your content into lead-generating assets
-          </p>
-        </div>
+    <div className="bg-gray-50">
+      <section className="py-20 md:py-32 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-96 h-96 rounded-full filter blur-3xl opacity-20" style={{backgroundColor: '#007BFF'}} />
+        <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full filter blur-3xl opacity-20" style={{backgroundColor: '#007BFF'}} />
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Header */}
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight">
+              Your Content Journey, Perfected
+            </h2>
+            <p className="text-2xl md:text-3xl font-semibold mb-6" style={{background: 'linear-gradient(to right, #007BFF, #0056b3)', backgroundClip: 'text', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent'}}>
+              In 4 Strategic Steps
+            </p>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              From initial content submission to measurable business results, discover how we transform your valuable thought leadership into a powerful lead-generating engine that drives sustained growth and market presence.
+            </p>
+          </div>
 
-        <div className="relative">
-          {/* Central Timeline Line */}
-          <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-[#007BFF] via-[#00A3FF] to-[#00D4FF] transform -translate-x-1/2"></div>
+          {/* Timeline Section */}
+          <div className="relative">
+            <div className="hidden lg:block absolute left-1/2 top-4 bottom-4 w-1 transform -translate-x-1/2 rounded-full" style={{backgroundColor: '#007BFF'}}></div>
+            
+            <div className="space-y-16 lg:space-y-24">
+              {steps.map((item, index) => (
+                <div key={index} className={`relative flex flex-col lg:flex-row items-center gap-12 ${index % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}>
+                  <div className={`lg:w-1/2 ${index % 2 === 0 ? 'lg:pr-16' : 'lg:pl-16'}`}>
+                    <div className={`flex items-center gap-4 mb-4 ${index % 2 === 0 ? 'lg:justify-end' : 'lg:justify-start'}`}>
+                      <div className="text-sm font-bold text-white px-3 py-1 rounded-full shadow-md" style={{backgroundColor: '#007BFF'}}>
+                        STEP {item.step}
+                      </div>
+                    </div>
+                    <h3 className={`text-3xl font-bold text-gray-900 mb-3 ${index % 2 === 0 ? 'lg:text-right' : 'lg:text-left'}`}>
+                      {item.title}
+                    </h3>
+                    <p className={`text-gray-600 leading-relaxed text-lg mb-6 ${index % 2 === 0 ? 'lg:text-right' : 'lg:text-left'}`}>
+                      {item.description}
+                    </p>
+
+                    {/* Checkpoints */}
+                    <div className={`mb-6 ${index % 2 === 0 ? 'lg:flex lg:flex-col lg:items-end' : ''}`}>
+                      <p className={`text-sm font-semibold text-gray-800 mb-3 ${index % 2 === 0 ? 'lg:text-right' : ''}`}>
+                        Key Checkpoints:
+                      </p>
+                      <div className="space-y-2">
+                        {item.checkpoints.map((checkpoint, i) => (
+                          <div key={i} className="flex items-center gap-2">
+                            <CheckCircle className="w-4 h-4 flex-shrink-0" style={{color: '#007BFF'}} />
+                            <span className="text-sm text-gray-700">{checkpoint}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className={`flex flex-wrap gap-2 ${index % 2 === 0 ? 'lg:justify-end' : 'lg:justify-start'}`}>
+                      {item.tags.map(tag => (
+                        <span key={tag} className="px-3 py-1 rounded-full text-xs font-semibold border" style={{backgroundColor: '#E7F2FF', color: '#007BFF', borderColor: '#007BFF'}}>
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  <div className="hidden lg:flex absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full items-center justify-center shadow-lg z-10 border-4 border-white" style={{backgroundColor: '#007BFF'}}>
+                    {item.icon}
+                  </div>
+                  
+                  <div className="lg:w-1/2 w-full max-w-lg">
+                    <div className="bg-white rounded-xl p-4 shadow-lg border border-gray-200/80 hover:shadow-xl transition-all duration-300 group">
+                      <div className="aspect-[5/4] rounded-lg overflow-hidden mb-4">
+                        <img 
+                          src={item.card.image}
+                          alt={item.card.alt}
+                          className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-105"
+                        />
+                      </div>
+                      <div className="flex items-center gap-4 p-2">
+                        <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{backgroundColor: '#E7F2FF', color: '#007BFF'}}>
+                          {item.card.icon}
+                        </div>
+                        <div>
+                          <div className="font-bold text-lg text-gray-800">{item.card.title}</div>
+                          <div className="text-sm text-gray-500">{item.card.subtitle}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
           
-          {/* Timeline Items */}
-          <div className="space-y-16">
-            {/* Step 1 */}
-            <div className="relative flex flex-col lg:flex-row items-center gap-8">
-              <div className="lg:w-1/2 lg:text-right lg:pr-16">
-                <div className="inline-block bg-gradient-to-r from-[#007BFF] to-[#00A3FF] text-white px-4 py-2 rounded-full text-sm font-bold mb-4">
-                  STEP 01
-                </div>
-                <h3 className="text-2xl font-black text-gray-900 mb-3">Content Submission</h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Share your whitepapers, case studies, or blog posts with us. Our team reviews and optimizes them for maximum syndication impact.
-                </p>
-                <div className="mt-4 flex flex-wrap gap-2 lg:justify-end">
-                  <span className="px-3 py-1 bg-blue-100 text-[#007BFF] rounded-full text-sm font-semibold">Quick Setup</span>
-                  <span className="px-3 py-1 bg-blue-100 text-[#007BFF] rounded-full text-sm font-semibold">24h Review</span>
-                </div>
-              </div>
-              
-              <div className="hidden lg:flex absolute left-1/2 transform -translate-x-1/2 w-16 h-16 bg-gradient-to-br from-[#007BFF] to-[#00A3FF] rounded-full items-center justify-center shadow-2xl z-10 border-4 border-white">
-                <FileText className="w-8 h-8 text-white" />
-              </div>
-              
-              <div className="lg:w-1/2 lg:pl-16">
-                <div className="bg-white rounded-2xl p-6 shadow-xl border border-gray-200 hover:shadow-2xl transition-all duration-300 hover:scale-105">
-                  <img 
-                    src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                    alt="Content Submission"
-                    className="w-full h-48 object-cover rounded-xl mb-4"
-                  />
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-gradient-to-br from-[#007BFF] to-[#00A3FF] rounded-lg flex items-center justify-center">
-                      <FileText className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <div className="font-bold text-gray-900">Upload Your Content</div>
-                      <div className="text-sm text-gray-600">All formats accepted</div>
-                    </div>
+          {/* Benefits Section */}
+          <div className="mt-24 md:mt-32 text-center">
+            <h3 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 tracking-tight">
+              Unlock Tangible Business Growth
+            </h3>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-16 leading-relaxed">
+              Our content syndication platform is more than just distribution infrastructure; it's a comprehensive strategic growth engine designed to drive measurable business outcomes and sustainable market expansion.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {benefits.map(benefit => (
+                <div key={benefit.title} className="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-gray-200/80 text-left transform hover:-translate-y-1">
+                  <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-5" style={{backgroundColor: '#007BFF', color: '#007BFF'}}>
+                    {benefit.icon}
                   </div>
+                  <h4 className="text-xl font-bold text-gray-900 mb-2">{benefit.title}</h4>
+                  <p className="text-gray-600 leading-relaxed">{benefit.description}</p>
                 </div>
-              </div>
-            </div>
-
-            {/* Step 2 */}
-            <div className="relative flex flex-col lg:flex-row items-center gap-8">
-              <div className="lg:w-1/2 lg:pr-16 order-2 lg:order-1">
-                <div className="bg-white rounded-2xl p-6 shadow-xl border border-gray-200 hover:shadow-2xl transition-all duration-300 hover:scale-105">
-                  <img 
-                    src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                    alt="Strategic Distribution"
-                    className="w-full h-48 object-cover rounded-xl mb-4"
-                  />
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-gradient-to-br from-[#007BFF] to-[#00A3FF] rounded-lg flex items-center justify-center">
-                      <Share2 className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <div className="font-bold text-gray-900">AI-Powered Targeting</div>
-                      <div className="text-sm text-gray-600">500+ premium platforms</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="hidden lg:flex absolute left-1/2 transform -translate-x-1/2 w-16 h-16 bg-gradient-to-br from-[#007BFF] to-[#00A3FF] rounded-full items-center justify-center shadow-2xl z-10 border-4 border-white">
-                <Share2 className="w-8 h-8 text-white" />
-              </div>
-              
-              <div className="lg:w-1/2 lg:pl-16 order-1 lg:order-2 lg:text-left">
-                <div className="inline-block bg-gradient-to-r from-[#007BFF] to-[#00A3FF] text-white px-4 py-2 rounded-full text-sm font-bold mb-4">
-                  STEP 02
-                </div>
-                <h3 className="text-2xl font-black text-gray-900 mb-3">Strategic Distribution</h3>
-                <p className="text-gray-600 leading-relaxed">
-                  We distribute your content across our network of 500+ verified B2B platforms, targeting your ideal audience with precision.
-                </p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  <span className="px-3 py-1 bg-blue-100 text-[#007BFF] rounded-full text-sm font-semibold">AI Targeting</span>
-                  <span className="px-3 py-1 bg-blue-100 text-[#007BFF] rounded-full text-sm font-semibold">Brand Safe</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Step 3 */}
-            <div className="relative flex flex-col lg:flex-row items-center gap-8">
-              <div className="lg:w-1/2 lg:text-right lg:pr-16">
-                <div className="inline-block bg-gradient-to-r from-[#007BFF] to-[#00A3FF] text-white px-4 py-2 rounded-full text-sm font-bold mb-4">
-                  STEP 03
-                </div>
-                <h3 className="text-2xl font-black text-gray-900 mb-3">Lead Generation</h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Watch as qualified leads start flowing in. Our platform captures detailed prospect information and engagement metrics in real-time.
-                </p>
-                <div className="mt-4 flex flex-wrap gap-2 lg:justify-end">
-                  <span className="px-3 py-1 bg-blue-100 text-[#007BFF] rounded-full text-sm font-semibold">Real-time</span>
-                  <span className="px-3 py-1 bg-blue-100 text-[#007BFF] rounded-full text-sm font-semibold">Qualified</span>
-                </div>
-              </div>
-              
-              <div className="hidden lg:flex absolute left-1/2 transform -translate-x-1/2 w-16 h-16 bg-gradient-to-br from-[#007BFF] to-[#00A3FF] rounded-full items-center justify-center shadow-2xl z-10 border-4 border-white">
-                <Users className="w-8 h-8 text-white" />
-              </div>
-              
-              <div className="lg:w-1/2 lg:pl-16">
-                <div className="bg-white rounded-2xl p-6 shadow-xl border border-gray-200 hover:shadow-2xl transition-all duration-300 hover:scale-105">
-                  <img 
-                    src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                    alt="Lead Generation"
-                    className="w-full h-48 object-cover rounded-xl mb-4"
-                  />
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-gradient-to-br from-[#007BFF] to-[#00A3FF] rounded-lg flex items-center justify-center">
-                      <Users className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <div className="font-bold text-gray-900">Quality Leads</div>
-                      <div className="text-sm text-gray-600">Decision-maker focused</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Step 4 */}
-            <div className="relative flex flex-col lg:flex-row items-center gap-8">
-              <div className="lg:w-1/2 lg:pr-16 order-2 lg:order-1">
-                <div className="bg-white rounded-2xl p-6 shadow-xl border border-gray-200 hover:shadow-2xl transition-all duration-300 hover:scale-105">
-                  <img 
-                    src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                    alt="Analytics & Insights"
-                    className="w-full h-48 object-cover rounded-xl mb-4"
-                  />
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-gradient-to-br from-[#007BFF] to-[#00A3FF] rounded-lg flex items-center justify-center">
-                      <BarChart className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <div className="font-bold text-gray-900">Detailed Analytics</div>
-                      <div className="text-sm text-gray-600">ROI tracking included</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="hidden lg:flex absolute left-1/2 transform -translate-x-1/2 w-16 h-16 bg-gradient-to-br from-[#007BFF] to-[#00A3FF] rounded-full items-center justify-center shadow-2xl z-10 border-4 border-white">
-                <BarChart className="w-8 h-8 text-white" />
-              </div>
-              
-              <div className="lg:w-1/2 lg:pl-16 order-1 lg:order-2 lg:text-left">
-                <div className="inline-block bg-gradient-to-r from-[#007BFF] to-[#00A3FF] text-white px-4 py-2 rounded-full text-sm font-bold mb-4">
-                  STEP 04
-                </div>
-                <h3 className="text-2xl font-black text-gray-900 mb-3">Analytics & Insights</h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Access comprehensive analytics dashboards with performance metrics, ROI tracking, and actionable insights to optimize your strategy.
-                </p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  <span className="px-3 py-1 bg-blue-100 text-[#007BFF] rounded-full text-sm font-semibold">Dashboard</span>
-                  <span className="px-3 py-1 bg-blue-100 text-[#007BFF] rounded-full text-sm font-semibold">ROI Reports</span>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 };
 
