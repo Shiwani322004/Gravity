@@ -20,7 +20,7 @@ const LeadHero = () => {
     company: '',
     phone: '',
     industry: '',
-    databaseSize: ''
+    leadGoal: ''
   });
   const sectionRef = useRef(null);
   const intervalRef = useRef(null);
@@ -121,7 +121,7 @@ const LeadHero = () => {
         company: '',
         phone: '',
         industry: '',
-        databaseSize: ''
+        leadGoal: ''
       });
       alert('Thank you! We will contact you soon.');
     }, 2000);
@@ -399,18 +399,21 @@ const LeadHero = () => {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">Database Size</label>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">Monthly Lead Goal *</label>
                     <select
-                      name="databaseSize"
-                      value={formData.databaseSize}
+                      name="leadGoal"
+                      value={formData.leadGoal}
                       onChange={handleInputChange}
                       className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500 cursor-pointer"
+                      required
                     >
-                      <option value="">Select Database Size</option>
-                      <option value="small">Less than 100 GB</option>
-                      <option value="medium">100 GB - 1 TB</option>
-                      <option value="large">1 TB - 10 TB</option>
-                      <option value="enterprise">10 TB+</option>
+                      <option value="">Select Monthly Lead Goal</option>
+                      <option value="50">Less than 50 leads/month</option>
+                      <option value="100">50-100 leads/month</option>
+                      <option value="250">100-250 leads/month</option>
+                      <option value="500">250-500 leads/month</option>
+                      <option value="1000">500-1,000 leads/month</option>
+                      <option value="more">1,000+ leads/month</option>
                     </select>
                   </div>
 
