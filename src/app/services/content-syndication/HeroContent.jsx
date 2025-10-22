@@ -1,13 +1,12 @@
 'use client'
 import React, { useState, useRef, useEffect } from 'react';
 import { 
-  ArrowRight, ChevronLeft, ChevronRight, Play, Star, 
-  TrendingUp, Users, Award, Zap, CheckCircle2, Sparkles,
-  ArrowUpRight, PlayCircle, BarChart3, X, Target, Calendar,
-  Shield, Clock, Mail, Phone
+  ArrowRight, ChevronLeft, ChevronRight, Play, 
+  CheckCircle2, Shield, Globe, TrendingUp, Award, Zap,
+  X
 } from 'lucide-react';
 
-const LeadHero = () => {
+const HeroContent = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
@@ -63,26 +62,26 @@ const LeadHero = () => {
 
   const heroImages = [
     {
-      url: "https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      url: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      title: "Content Distribution",
+      description: "Reach millions across platforms"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
       title: "Analytics Dashboard",
-      description: "Real-time data insights"
+      description: "Real-time performance tracking"
     },
     {
-      url: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      title: "Team Collaboration",
-      description: "Seamless workflow"
-    },
-    {
-      url: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      title: "Growth Metrics",
-      description: "Track your success"
+      url: "https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      title: "Global Reach",
+      description: "Worldwide content amplification"
     }
   ];
 
   const stats = [
-    { icon: TrendingUp, value: "300%", label: "Lead Increase", color: "from-green-400 to-emerald-500" },
+    { icon: TrendingUp, value: "3-5x", label: "Content Reach", color: "from-green-400 to-emerald-500" },
     { icon: Award, value: "98%", label: "Success Rate", color: "from-purple-400 to-violet-500" },
-    { icon: Zap, value: "24/7", label: "AI Support", color: "from-orange-400 to-red-500" }
+    { icon: Zap, value: "45%", label: "Lead Quality", color: "from-orange-400 to-red-500" }
   ];
 
   const nextImage = () => {
@@ -179,20 +178,20 @@ const LeadHero = () => {
               
               <div className="space-y-4 sm:space-y-6">
                 <h1 className="text-4xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-6xl font-black leading-tight tracking-tight">
-                  <span className="block">LEAD</span>
+                  <span className="block">CONTENT</span>
                   <span className="block bg-gradient-to-r from-[#00D4FF] via-[#007BFF] to-[#00A3FF] bg-clip-text text-transparent animate-pulse">
-                    GENERATION
+                    SYNDICATION
                   </span>
                   <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mt-2 sm:mt-4 text-gray-300">
-                    REDEFINED
+                    AMPLIFIED
                   </span>
                 </h1>
                 
                 <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-blue-100 leading-relaxed max-w-2xl font-light">
-                  Transform your sales pipeline with our revolutionary AI-driven lead generation platform. 
-                  <span className="text-cyan-300 font-semibold"> Target smarter</span>, 
-                  <span className="text-cyan-300 font-semibold"> engage better</span>, and 
-                  <span className="text-cyan-300 font-semibold"> convert faster</span> than ever before.
+                  Maximize your content's potential with strategic distribution across premium platforms. 
+                  <span className="text-cyan-300 font-semibold"> Reach wider audiences</span>, 
+                  <span className="text-cyan-300 font-semibold"> generate quality leads</span>, and 
+                  <span className="text-cyan-300 font-semibold"> establish authority</span> in your industry.
                 </p>
               </div>
               
@@ -217,7 +216,7 @@ const LeadHero = () => {
                   onClick={() => setShowForm(true)}
                   className="group relative overflow-hidden bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-bold py-4 px-8 rounded-xl text-lg shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 flex items-center gap-3"
                 >
-                  <span>Start Generating Leads</span>
+                  <span>Start Syndicating Now</span>
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                 </button>
@@ -489,4 +488,4 @@ const LeadHero = () => {
   );
 };
 
-export default LeadHero;
+export default HeroContent;
