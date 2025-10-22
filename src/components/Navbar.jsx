@@ -32,7 +32,7 @@ const Navbar = () => {
     { name: 'Content Syndication', href: '/services/content-syndication' },
     { name: 'Email Marketing', href: '/services/email-marketing' },
     { name: 'Database Management', href: '/services/database-management' },
-    { name: 'ABM', href: '/services/abm' }
+    { name: 'Account-Based Marketing', href: '/services/account-based-marketing' }
   ];
 
   // Categories dropdown data

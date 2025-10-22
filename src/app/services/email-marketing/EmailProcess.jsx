@@ -218,6 +218,7 @@ const EmailMarketingProcess = () => {
        
       </div>
     </section>
+    
   );
 };
 
