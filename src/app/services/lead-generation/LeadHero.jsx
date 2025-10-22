@@ -23,8 +23,6 @@ const LeadHero = () => {
     databaseSize: ''
   });
   const sectionRef = useRef(null);
-  const formRef = useRef(null);
-  const formContentRef = useRef(null);
   const intervalRef = useRef(null);
 
   useEffect(() => {
@@ -60,27 +58,6 @@ const LeadHero = () => {
       return () => section.removeEventListener('mousemove', handleMouseMove);
     }
   }, []);
-
-  // Close form when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (formRef.current && !formRef.current.contains(event.target)) {
-        setShowForm(false);
-      }
-    };
-
-    if (showForm) {
-      document.addEventListener('mousedown', handleClickOutside);
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.body.style.overflow = 'unset';
-    };
-  }, [showForm]);
 
   const heroImages = [
     {
@@ -168,43 +145,6 @@ const LeadHero = () => {
         
         .animate-scale-in {
           animation: scale-in 0.3s ease-out forwards;
-        }
-
-        /* Ultra-thin and discreet scrollbar */
-        .form-scrollbar::-webkit-scrollbar {
-          width: 3px;
-        }
-
-        .form-scrollbar::-webkit-scrollbar-track {
-          background: transparent;
-          border-radius: 3px;
-          margin: 4px 0;
-        }
-
-        .form-scrollbar::-webkit-scrollbar-thumb {
-          background: #e2e8f0;
-          border-radius: 3px;
-          border: none;
-          transition: all 0.2s ease;
-        }
-
-        .form-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: #cbd5e1;
-        }
-
-        .form-scrollbar::-webkit-scrollbar-thumb:active {
-          background: #94a3b8;
-        }
-
-        /* Firefox scrollbar */
-        .form-scrollbar {
-          scrollbar-width: thin;
-          scrollbar-color: #e2e8f0 transparent;
-        }
-
-        /* Smooth scrolling */
-        .smooth-scroll {
-          scroll-behavior: smooth;
         }
       `}</style>
 
@@ -373,246 +313,136 @@ const LeadHero = () => {
           </div>
         </div>
 
-       {/* Popup Form Modal */}
-{showForm && (
-  <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in">
-    <div className="bg-white rounded-2xl max-w-md w-full max-h-[85vh] animate-scale-in overflow-hidden flex flex-col shadow-2xl">
-      
-      {/* Header - Fixed */}
-      <div className="flex-shrink-0 p-6 border-b border-gray-100 bg-white">
-        <div className="flex justify-between items-start">
-          <div className="flex-1">
-            <h3 className="text-2xl font-bold text-gray-900">
-              Start Your Free Trial
-            </h3>
-            <p className="text-gray-600 text-sm mt-2">
-              Fill out the form below and we'll contact you within 24 hours
-            </p>
-          </div>
-          <button
-            onClick={() => setShowForm(false)}
-            className="p-2 hover:bg-gray-100 rounded-full transition-colors duration-200 ml-4 flex-shrink-0"
-          >
-            <X className="w-5 h-5 text-gray-500" />
-          </button>
-        </div>
-      </div>
-
-      {/* Form Content - Scrollable */}
-      <div className="flex-1 overflow-hidden">
-        <div className="h-full overflow-y-auto">
-          <div className="p-6">
-            <form onSubmit={handleSubmit} className="space-y-4">
-              
-              {/* Personal Information */}
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Full Name *
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="John Doe"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                    required
-                  />
+        {/* Popup Form Modal */}
+        {showForm && (
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in">
+            <div className="bg-white rounded-3xl max-w-md w-full animate-scale-in overflow-hidden">
+              <div className="p-6 sm:p-8">
+                {/* Header */}
+                <div className="flex justify-between items-center mb-6">
+                  <h3 className="text-2xl font-black text-gray-900">
+                    Start Your
+                    <span className="block text-blue-600">Free Trial</span>
+                  </h3>
+                  <button
+                    onClick={() => setShowForm(false)}
+                    className="p-2 hover:bg-gray-100 rounded-full transition-colors duration-200"
+                  >
+                    <X className="w-5 h-5 text-gray-500" />
+                  </button>
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="john@company.com"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                    required
-                  />
-                </div>
+                {/* Form */}
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">Full Name *</label>
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder="John Doe"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-500"
+                      required
+                    />
+                  </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Company Name *
-                  </label>
-                  <input
-                    type="text"
-                    name="company"
-                    placeholder="Your Company"
-                    value={formData.company}
-                    onChange={handleInputChange}
-                    className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                    required
-                  />
-                </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">Email Address *</label>
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="john@company.com"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-500"
+                      required
+                    />
+                  </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Phone Number *
-                  </label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    placeholder="+1 (555) 123-4567"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                    required
-                  />
-                </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">Company Name *</label>
+                    <input
+                      type="text"
+                      name="company"
+                      placeholder="Your Company"
+                      value={formData.company}
+                      onChange={handleInputChange}
+                      className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-500"
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">Phone Number *</label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      placeholder="+1 (555) 123-4567"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-500"
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">Industry *</label>
+                    <select
+                      name="industry"
+                      value={formData.industry}
+                      onChange={handleInputChange}
+                      className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500 cursor-pointer"
+                      required
+                    >
+                      <option value="">Select Your Industry</option>
+                      <option value="technology">Technology & Software</option>
+                      <option value="healthcare">Healthcare & Medical</option>
+                      <option value="finance">Finance & Banking</option>
+                      <option value="manufacturing">Manufacturing</option>
+                      <option value="consulting">Professional Services</option>
+                      <option value="ecommerce">E-commerce & Retail</option>
+                      <option value="real-estate">Real Estate</option>
+                      <option value="education">Education</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">Database Size</label>
+                    <select
+                      name="databaseSize"
+                      value={formData.databaseSize}
+                      onChange={handleInputChange}
+                      className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500 cursor-pointer"
+                    >
+                      <option value="">Select Database Size</option>
+                      <option value="small">Less than 100 GB</option>
+                      <option value="medium">100 GB - 1 TB</option>
+                      <option value="large">1 TB - 10 TB</option>
+                      <option value="enterprise">10 TB+</option>
+                    </select>
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 mt-4"
+                  >
+                    {isSubmitting ? (
+                      <div className="flex items-center justify-center gap-3">
+                        <div className="w-5 h-5 border-3 border-white border-t-transparent rounded-full animate-spin"></div>
+                        <span>Processing...</span>
+                      </div>
+                    ) : (
+                      <span>Start Free Trial</span>
+                    )}
+                  </button>
+                </form>
               </div>
-
-              {/* Business Information */}
-              <div className="space-y-4 pt-2">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Industry *
-                  </label>
-                  <select
-                    name="industry"
-                    value={formData.industry}
-                    onChange={handleInputChange}
-                    className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent cursor-pointer transition-all duration-200"
-                    required
-                  >
-                    <option value="">Select Your Industry</option>
-                    <option value="technology">Technology & Software</option>
-                    <option value="healthcare">Healthcare & Medical</option>
-                    <option value="finance">Finance & Banking</option>
-                    <option value="manufacturing">Manufacturing</option>
-                    <option value="consulting">Professional Services</option>
-                    <option value="ecommerce">E-commerce & Retail</option>
-                    <option value="real-estate">Real Estate</option>
-                    <option value="education">Education</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Monthly Lead Goal *
-                  </label>
-                  <select
-                    name="leadGoal"
-                    value={formData.leadGoal}
-                    onChange={handleInputChange}
-                    className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent cursor-pointer transition-all duration-200"
-                    required
-                  >
-                    <option value="">Select Lead Goal</option>
-                    <option value="50-100">50-100 leads</option>
-                    <option value="100-250">100-250 leads</option>
-                    <option value="250-500">250-500 leads</option>
-                    <option value="500-1000">500-1,000 leads</option>
-                    <option value="1000-5000">1,000-5,000 leads</option>
-                    <option value="5000+">5,000+ leads</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Monthly Budget *
-                  </label>
-                  <select
-                    name="budget"
-                    value={formData.budget}
-                    onChange={handleInputChange}
-                    className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent cursor-pointer transition-all duration-200"
-                    required
-                  >
-                    <option value="">Select Budget</option>
-                    <option value="5k-10k">$5K - $10K</option>
-                    <option value="10k-25k">$10K - $25K</option>
-                    <option value="25k-50k">$25K - $50K</option>
-                    <option value="50k-100k">$50K - $100K</option>
-                    <option value="100k-250k">$100K - $250K</option>
-                    <option value="250k+">$250K+</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Team Size
-                  </label>
-                  <select
-                    name="teamSize"
-                    className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent cursor-pointer transition-all duration-200"
-                  >
-                    <option value="">Select Team Size</option>
-                    <option value="1-10">1-10 people</option>
-                    <option value="11-50">11-50 people</option>
-                    <option value="51-200">51-200 people</option>
-                    <option value="201+">201+ people</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    How did you hear about us?
-                  </label>
-                  <select
-                    name="source"
-                    className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent cursor-pointer transition-all duration-200"
-                  >
-                    <option value="">Select Source</option>
-                    <option value="search">Search Engine</option>
-                    <option value="social">Social Media</option>
-                    <option value="referral">Referral</option>
-                    <option value="ad">Advertisement</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-              </div>
-
-              {/* Additional Notes */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Additional Notes (Optional)
-                </label>
-                <textarea
-                  name="notes"
-                  rows="3"
-                  placeholder="Tell us about your specific needs or requirements..."
-                  className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none"
-                />
-              </div>
-
-              {/* Spacer for better scroll experience */}
-              <div className="h-4"></div>
-            </form>
-          </div>
-        </div>
-      </div>
-
-      {/* Submit Button - Fixed at bottom */}
-      <div className="flex-shrink-0 p-6 border-t border-gray-100 bg-white">
-        <button
-          type="submit"
-          onClick={handleSubmit}
-          disabled={isSubmitting}
-          className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 py-3.5 rounded-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
-        >
-          {isSubmitting ? (
-            <div className="flex items-center justify-center gap-2">
-              <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-              <span>Processing...</span>
             </div>
-          ) : (
-            <span>Start Free Trial</span>
-          )}
-        </button>
-        <p className="text-xs text-gray-500 text-center mt-3">
-          By submitting, you agree to our Terms and Privacy Policy
-        </p>
-      </div>
-    </div>
-  </div>
-)}
+          </div>
+        )}
       </section>
     </>
   );
