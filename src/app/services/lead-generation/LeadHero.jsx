@@ -12,27 +12,22 @@ const LeadHero = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [showPopup, setShowPopup] = useState(false);
+  const [showForm, setShowForm] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     company: '',
     phone: '',
     industry: '',
-    leadGoal: '',
-    budget: ''
+    databaseSize: ''
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [focusedField, setFocusedField] = useState(null);
-  const [formErrors, setFormErrors] = useState({});
   const sectionRef = useRef(null);
   const intervalRef = useRef(null);
-  const popupRef = useRef(null);
 
   useEffect(() => {
     setIsVisible(true);
     
-    // Auto-play carousel
     if (isAutoPlaying) {
       intervalRef.current = setInterval(() => {
         setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
@@ -46,7 +41,6 @@ const LeadHero = () => {
     };
   }, [isAutoPlaying]);
 
-  // Mouse move effect for parallax
   useEffect(() => {
     const handleMouseMove = (e) => {
       if (sectionRef.current) {
@@ -64,37 +58,6 @@ const LeadHero = () => {
       return () => section.removeEventListener('mousemove', handleMouseMove);
     }
   }, []);
-
-  // Enhanced popup close handling
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      // Check if popup is open and click is outside
-      if (showPopup && popupRef.current && !popupRef.current.contains(event.target)) {
-        setShowPopup(false);
-      }
-    };
-
-    const handleEscapeKey = (event) => {
-      if (event.key === 'Escape' && showPopup) {
-        setShowPopup(false);
-      }
-    };
-
-    if (showPopup) {
-      // Add event listeners with capture phase to prevent bubbling issues
-      document.addEventListener('mousedown', handleClickOutside, true);
-      document.addEventListener('keydown', handleEscapeKey, true);
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside, true);
-      document.removeEventListener('keydown', handleEscapeKey, true);
-      document.body.style.overflow = 'unset';
-    };
-  }, [showPopup]);
 
   const heroImages = [
     {
@@ -138,185 +101,50 @@ const LeadHero = () => {
     setTimeout(() => setIsAutoPlaying(true), 10000);
   };
 
-  // Enhanced close popup function
-  const closePopup = (e) => {
-    if (e) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
-    setShowPopup(false);
-    setFormErrors({});
-    setFocusedField(null);
-  };
-
-  // Form validation
-  const validateForm = () => {
-    const errors = {};
-    
-    if (!formData.name.trim()) errors.name = 'Name is required';
-    if (!formData.email.trim()) errors.email = 'Email is required';
-    else if (!/\S+@\S+\.\S+/.test(formData.email)) errors.email = 'Email is invalid';
-    if (!formData.company.trim()) errors.company = 'Company is required';
-    if (!formData.phone.trim()) errors.phone = 'Phone is required';
-    if (!formData.industry) errors.industry = 'Industry is required';
-    if (!formData.leadGoal) errors.leadGoal = 'Lead goal is required';
-    if (!formData.budget) errors.budget = 'Budget is required';
-
-    return errors;
-  };
-
-  // Form handlers
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-    
-    // Clear error when user starts typing
-    if (formErrors[name]) {
-      setFormErrors(prev => ({
-        ...prev,
-        [name]: ''
-      }));
-    }
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    e.stopPropagation();
-    
-    const errors = validateForm();
-    if (Object.keys(errors).length > 0) {
-      setFormErrors(errors);
-      return;
-    }
-
     setIsSubmitting(true);
     
-    // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false);
-      setShowPopup(false);
-      
-      // Success notification
-      const notification = document.createElement('div');
-      notification.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-4 rounded-2xl shadow-2xl z-[9999] flex items-center gap-3 animate-slide-in';
-      notification.innerHTML = `
-        <svg class="w-6 h-6 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-        </svg>
-        <span>Success! We'll contact you within 24 hours.</span>
-      `;
-      document.body.appendChild(notification);
-      
-      setTimeout(() => {
-        if (notification.parentNode) {
-          notification.remove();
-        }
-      }, 5000);
-      
-      // Reset form
+      setShowForm(false);
       setFormData({
         name: '',
         email: '',
         company: '',
         phone: '',
         industry: '',
-        leadGoal: '',
-        budget: ''
+        databaseSize: ''
       });
-      setFormErrors({});
     }, 2000);
   };
 
   return (
     <>
-      {/* Enhanced Custom Styles */}
       <style jsx>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-20px); }
-        }
-        @keyframes pulse-glow {
-          0%, 100% { box-shadow: 0 0 20px rgba(0, 132, 255, 0.3); }
-          50% { box-shadow: 0 0 40px rgba(0, 132, 255, 0.6); }
-        }
-        @keyframes gradient-shift {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-        @keyframes slide-in {
-          0% { transform: translateX(100%); opacity: 0; }
-          100% { transform: translateX(0); opacity: 1; }
-        }
-        @keyframes shimmer {
-          0% { transform: translateX(-100%); }
-          100% { transform: translateX(100%); }
-        }
         @keyframes fade-in {
           0% { opacity: 0; }
           100% { opacity: 1; }
         }
+        
         @keyframes scale-in {
           0% { transform: scale(0.9); opacity: 0; }
           100% { transform: scale(1); opacity: 1; }
         }
         
-        .animate-float { animation: float 6s ease-in-out infinite; }
-        .animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
-        .animate-gradient { 
-          background-size: 200% 200%;
-          animation: gradient-shift 4s ease infinite;
-        }
-        .animate-slide-in { animation: slide-in 0.5s ease-out; }
-        .animate-fade-in { animation: fade-in 0.3s ease-out; }
-        .animate-scale-in { animation: scale-in 0.3s ease-out; }
-        
-        .shimmer-effect {
-          position: relative;
-          overflow: hidden;
-        }
-        .shimmer-effect::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-          animation: shimmer 2s infinite;
+        .animate-fade-in {
+          animation: fade-in 0.3s ease-out forwards;
         }
         
-        /* Responsive improvements */
-        @media (max-width: 640px) {
-          .responsive-grid {
-            grid-template-columns: 1fr;
-            gap: 1rem;
-          }
-          
-          .responsive-text {
-            font-size: 0.875rem;
-          }
-          
-          .responsive-padding {
-            padding: 1rem;
-          }
-          
-          .responsive-spacing {
-            gap: 0.75rem;
-          }
-        }
-        
-        @media (max-width: 768px) {
-          .tablet-hide {
-            display: none;
-          }
-          
-          .mobile-center {
-            text-align: center;
-          }
+        .animate-scale-in {
+          animation: scale-in 0.3s ease-out forwards;
         }
       `}</style>
 
@@ -324,7 +152,7 @@ const LeadHero = () => {
         ref={sectionRef}
         className="relative min-h-screen py-12 sm:py-20 lg:py-32 bg-gradient-to-br from-[#082540] via-[#0A2B4F] to-[#1e40af] text-white overflow-hidden"
       >
-        {/* Enhanced Background Effects */}
+        {/* Background Effects */}
         <div className="absolute inset-0">
           <div 
             className="absolute inset-0 opacity-20 transition-transform duration-1000 ease-out"
@@ -343,11 +171,11 @@ const LeadHero = () => {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center min-h-[80vh]">
             
-            {/* Enhanced Content - Mobile First */}
+            {/* Content */}
             <div className={`space-y-6 sm:space-y-10 transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
               
-              {/* Main Heading - Responsive */}
-              <div className="space-y-4 sm:space-y-6 mobile-center">
+              {/* Main Heading */}
+              <div className="space-y-4 sm:space-y-6">
                 <h1 className="text-4xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-6xl font-black leading-tight tracking-tight">
                   <span className="block">LEAD</span>
                   <span className="block bg-gradient-to-r from-[#00D4FF] via-[#007BFF] to-[#00A3FF] bg-clip-text text-transparent animate-pulse">
@@ -366,7 +194,7 @@ const LeadHero = () => {
                 </p>
               </div>
               
-              {/* Responsive Stats Grid */}
+              {/* Stats Grid */}
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 my-6 sm:my-8">
                 {stats.map((stat, index) => (
                   <div 
@@ -383,22 +211,20 @@ const LeadHero = () => {
                 ))}
               </div>
 
-              {/* Responsive Action Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 pt-4 sm:pt-6">
-                <button 
-                  onClick={() => setShowPopup(true)}
-                  className="group relative inline-flex items-center justify-center gap-2 sm:gap-3 bg-gradient-to-r from-[#007BFF] to-[#00A3FF] hover:from-[#00A3FF] hover:to-[#0066CC] text-white px-6 sm:px-10 py-4 sm:py-5 rounded-xl sm:rounded-2xl font-bold text-base sm:text-lg shadow-2xl shadow-blue-500/30 hover:shadow-blue-500/50 transform hover:scale-105 transition-all duration-300 overflow-hidden w-full sm:w-auto"
+              {/* CTA Button */}
+              <div className={`flex flex-col sm:flex-row items-start sm:items-center gap-4 transition-all duration-1000 delay-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
+                <button
+                  onClick={() => setShowForm(true)}
+                  className="group relative overflow-hidden bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-bold py-4 px-8 rounded-xl text-lg shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 flex items-center gap-3"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                  <span className="relative">Start Generating Leads</span>
-                  <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-1 transition-transform duration-300" />
+                  <span>Start Generating Leads</span>
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                 </button>
               </div>
-
-              
             </div>
 
-            {/* Enhanced Responsive Image Carousel */}
+            {/* Image Carousel */}
             <div className={`relative transition-all duration-1000 delay-300 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'} order-first lg:order-last`}>
               
               <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl shadow-blue-500/20 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20">
@@ -431,11 +257,10 @@ const LeadHero = () => {
                   ))}
                 </div>
 
-                {/* Responsive Navigation Controls */}
+                {/* Navigation Controls */}
                 <button 
                   onClick={prevImage}
                   className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-white/20 backdrop-blur-md hover:bg-white/30 text-white rounded-full transition-all duration-300 hover:scale-110 border border-white/30 hover:border-white/50 group"
-                  aria-label="Previous image"
                 >
                   <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 mx-auto group-hover:-translate-x-0.5 transition-transform duration-300" />
                 </button>
@@ -443,12 +268,11 @@ const LeadHero = () => {
                 <button 
                   onClick={nextImage}
                   className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-white/20 backdrop-blur-md hover:bg-white/30 text-white rounded-full transition-all duration-300 hover:scale-110 border border-white/30 hover:border-white/50 group"
-                  aria-label="Next image"
                 >
                   <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 mx-auto group-hover:translate-x-0.5 transition-transform duration-300" />
                 </button>
 
-                {/* Enhanced Progress Indicators */}
+                {/* Progress Indicators */}
                 <div className="absolute bottom-2 sm:bottom-4 left-1/2 transform -translate-x-1/2 flex items-center gap-2 sm:gap-3 bg-black/30 backdrop-blur-sm rounded-full px-3 sm:px-4 py-1 sm:py-2">
                   {heroImages.map((_, index) => (
                     <button
@@ -459,7 +283,6 @@ const LeadHero = () => {
                           ? 'w-6 sm:w-8 h-2 sm:h-3' 
                           : 'w-2 sm:w-3 h-2 sm:h-3 hover:w-3 sm:hover:w-4'
                       }`}
-                      aria-label={`Go to image ${index + 1}`}
                     >
                       <div className={`absolute inset-0 rounded-full transition-all duration-300 ${
                         index === currentImageIndex 
@@ -490,19 +313,19 @@ const LeadHero = () => {
           </div>
         </div>
 
-        {/* Enhanced Popup Form Modal */}
-        {showPopup && (
+        {/* Popup Form Modal */}
+        {showForm && (
           <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in">
-            <div className="bg-white rounded-3xl max-w-md w-full max-h-[90vh] overflow-y-auto animate-scale-in">
+            <div className="bg-white rounded-3xl max-w-md w-full animate-scale-in overflow-hidden">
               <div className="p-6 sm:p-8">
                 {/* Header */}
                 <div className="flex justify-between items-center mb-6">
                   <h3 className="text-2xl font-black text-gray-900">
-                    Start Generating
-                    <span className="block text-blue-600">Quality Leads</span>
+                    Start Your
+                    <span className="block text-blue-600">Free Trial</span>
                   </h3>
                   <button
-                    onClick={() => setShowPopup(false)}
+                    onClick={() => setShowForm(false)}
                     className="p-2 hover:bg-gray-100 rounded-full transition-colors duration-200"
                   >
                     <X className="w-5 h-5 text-gray-500" />
@@ -586,40 +409,18 @@ const LeadHero = () => {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">Monthly Lead Goal *</label>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">Database Size</label>
                     <select
-                      name="leadGoal"
-                      value={formData.leadGoal}
+                      name="databaseSize"
+                      value={formData.databaseSize}
                       onChange={handleInputChange}
                       className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500 cursor-pointer"
-                      required
                     >
-                      <option value="">Select Lead Goal</option>
-                      <option value="50-100">50-100 leads</option>
-                      <option value="100-250">100-250 leads</option>
-                      <option value="250-500">250-500 leads</option>
-                      <option value="500-1000">500-1,000 leads</option>
-                      <option value="1000-5000">1,000-5,000 leads</option>
-                      <option value="5000+">5,000+ leads</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">Monthly Budget *</label>
-                    <select
-                      name="budget"
-                      value={formData.budget}
-                      onChange={handleInputChange}
-                      className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500 cursor-pointer"
-                      required
-                    >
-                      <option value="">Select Budget</option>
-                      <option value="5k-10k">$5K - $10K</option>
-                      <option value="10k-25k">$10K - $25K</option>
-                      <option value="25k-50k">$25K - $50K</option>
-                      <option value="50k-100k">$50K - $100K</option>
-                      <option value="100k-250k">$100K - $250K</option>
-                      <option value="250k+">$250K+</option>
+                      <option value="">Select Database Size</option>
+                      <option value="small">Less than 100 GB</option>
+                      <option value="medium">100 GB - 1 TB</option>
+                      <option value="large">1 TB - 10 TB</option>
+                      <option value="enterprise">10 TB+</option>
                     </select>
                   </div>
 
@@ -634,7 +435,7 @@ const LeadHero = () => {
                         <span>Processing...</span>
                       </div>
                     ) : (
-                      <span>Get Free Strategy Session</span>
+                      <span>Start Free Trial</span>
                     )}
                   </button>
                 </form>

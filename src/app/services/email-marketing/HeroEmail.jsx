@@ -292,154 +292,136 @@ const HeroEmail = () => {
         </div>
       </section>
 
-      {/* Popup Form Modal */}
-      {showForm && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in">
-          <div className="bg-white rounded-3xl max-w-md w-full max-h-[90vh] overflow-y-auto animate-scale-in">
-            <div className="p-6 sm:p-8">
-              {/* Header */}
-              <div className="flex justify-between items-center mb-6">
-                <h3 className="text-2xl font-black text-gray-900">
-                  Start Your
-                  <span className="block text-blue-600">Free Trial</span>
-                </h3>
-                <button
-                  onClick={() => setShowForm(false)}
-                  className="p-2 hover:bg-gray-100 rounded-full transition-colors duration-200"
-                >
-                  <X className="w-5 h-5 text-gray-500" />
-                </button>
-              </div>
-
-              {/* Form */}
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Full Name *</label>
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="John Doe"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-500"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Email Address *</label>
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="john@company.com"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-500"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Company Name *</label>
-                  <input
-                    type="text"
-                    name="company"
-                    placeholder="Your Company"
-                    value={formData.company}
-                    onChange={handleInputChange}
-                    className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-500"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Phone Number *</label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    placeholder="+1 (555) 123-4567"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-500"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Industry *</label>
-                  <select
-                    name="industry"
-                    value={formData.industry}
-                    onChange={handleInputChange}
-                    className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500 cursor-pointer"
-                    required
-                  >
-                    <option value="">Select Your Industry</option>
-                    <option value="technology">Technology & Software</option>
-                    <option value="healthcare">Healthcare & Medical</option>
-                    <option value="finance">Finance & Banking</option>
-                    <option value="manufacturing">Manufacturing</option>
-                    <option value="consulting">Professional Services</option>
-                    <option value="ecommerce">E-commerce & Retail</option>
-                    <option value="real-estate">Real Estate</option>
-                    <option value="education">Education</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Audience Size</label>
-                  <select
-                    name="audienceSize"
-                    value={formData.audienceSize}
-                    onChange={handleInputChange}
-                    className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500 cursor-pointer"
-                  >
-                    <option value="">Select Audience Size</option>
-                    <option value="1-1000">1 - 1,000 subscribers</option>
-                    <option value="1001-10000">1,001 - 10,000 subscribers</option>
-                    <option value="10001-50000">10,001 - 50,000 subscribers</option>
-                    <option value="50001-100000">50,001 - 100,000 subscribers</option>
-                    <option value="100000+">100,000+ subscribers</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Primary Marketing Goal</label>
-                  <select
-                    name="marketingGoal"
-                    value={formData.marketingGoal}
-                    onChange={handleInputChange}
-                    className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500 cursor-pointer"
-                  >
-                    <option value="">Select Primary Goal</option>
-                    <option value="lead-generation">Lead Generation</option>
-                    <option value="sales">Sales & Revenue</option>
-                    <option value="engagement">Customer Engagement</option>
-                    <option value="retention">Customer Retention</option>
-                    <option value="brand-awareness">Brand Awareness</option>
-                  </select>
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 mt-4"
-                >
-                  {isSubmitting ? (
-                    <div className="flex items-center justify-center gap-3">
-                      <div className="w-5 h-5 border-3 border-white border-t-transparent rounded-full animate-spin"></div>
-                      <span>Processing...</span>
-                    </div>
-                  ) : (
-                    <span>Start Free Trial</span>
-                  )}
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      )}
+     {/* Popup Form Modal */}
+           {showForm && (
+             <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in">
+               <div className="bg-white rounded-3xl max-w-md w-full animate-scale-in overflow-hidden">
+                 <div className="p-6 sm:p-8">
+                   {/* Header */}
+                   <div className="flex justify-between items-center mb-6">
+                     <h3 className="text-2xl font-black text-gray-900">
+                       Start Your
+                       <span className="block text-blue-600">Free Trial</span>
+                     </h3>
+                     <button
+                       onClick={() => setShowForm(false)}
+                       className="p-2 hover:bg-gray-100 rounded-full transition-colors duration-200"
+                     >
+                       <X className="w-5 h-5 text-gray-500" />
+                     </button>
+                   </div>
+     
+                   {/* Form */}
+                   <form onSubmit={handleSubmit} className="space-y-4">
+                     <div>
+                       <label className="block text-sm font-semibold text-gray-700 mb-2">Full Name *</label>
+                       <input
+                         type="text"
+                         name="name"
+                         placeholder="John Doe"
+                         value={formData.name}
+                         onChange={handleInputChange}
+                         className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-500"
+                         required
+                       />
+                     </div>
+     
+                     <div>
+                       <label className="block text-sm font-semibold text-gray-700 mb-2">Email Address *</label>
+                       <input
+                         type="email"
+                         name="email"
+                         placeholder="john@company.com"
+                         value={formData.email}
+                         onChange={handleInputChange}
+                         className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-500"
+                         required
+                       />
+                     </div>
+     
+                     <div>
+                       <label className="block text-sm font-semibold text-gray-700 mb-2">Company Name *</label>
+                       <input
+                         type="text"
+                         name="company"
+                         placeholder="Your Company"
+                         value={formData.company}
+                         onChange={handleInputChange}
+                         className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-500"
+                         required
+                       />
+                     </div>
+     
+                     <div>
+                       <label className="block text-sm font-semibold text-gray-700 mb-2">Phone Number *</label>
+                       <input
+                         type="tel"
+                         name="phone"
+                         placeholder="+1 (555) 123-4567"
+                         value={formData.phone}
+                         onChange={handleInputChange}
+                         className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-500"
+                         required
+                       />
+                     </div>
+     
+                     <div>
+                       <label className="block text-sm font-semibold text-gray-700 mb-2">Industry *</label>
+                       <select
+                         name="industry"
+                         value={formData.industry}
+                         onChange={handleInputChange}
+                         className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500 cursor-pointer"
+                         required
+                       >
+                         <option value="">Select Your Industry</option>
+                         <option value="technology">Technology & Software</option>
+                         <option value="healthcare">Healthcare & Medical</option>
+                         <option value="finance">Finance & Banking</option>
+                         <option value="manufacturing">Manufacturing</option>
+                         <option value="consulting">Professional Services</option>
+                         <option value="ecommerce">E-commerce & Retail</option>
+                         <option value="real-estate">Real Estate</option>
+                         <option value="education">Education</option>
+                         <option value="other">Other</option>
+                       </select>
+                     </div>
+     
+                     <div>
+                       <label className="block text-sm font-semibold text-gray-700 mb-2">Database Size</label>
+                       <select
+                         name="databaseSize"
+                         value={formData.databaseSize}
+                         onChange={handleInputChange}
+                         className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500 cursor-pointer"
+                       >
+                         <option value="">Select Database Size</option>
+                         <option value="small">Less than 100 GB</option>
+                         <option value="medium">100 GB - 1 TB</option>
+                         <option value="large">1 TB - 10 TB</option>
+                         <option value="enterprise">10 TB+</option>
+                       </select>
+                     </div>
+     
+                     <button
+                       type="submit"
+                       disabled={isSubmitting}
+                       className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 mt-4"
+                     >
+                       {isSubmitting ? (
+                         <div className="flex items-center justify-center gap-3">
+                           <div className="w-5 h-5 border-3 border-white border-t-transparent rounded-full animate-spin"></div>
+                           <span>Processing...</span>
+                         </div>
+                       ) : (
+                         <span>Start Free Trial</span>
+                       )}
+                     </button>
+                   </form>
+                 </div>
+               </div>
+             </div>
+           )}
 
       <style jsx>{`
         @keyframes fade-in {
