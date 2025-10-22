@@ -23,6 +23,8 @@ const LeadHero = () => {
     databaseSize: ''
   });
   const sectionRef = useRef(null);
+  const formRef = useRef(null);
+  const formContentRef = useRef(null);
   const intervalRef = useRef(null);
 
   useEffect(() => {
@@ -58,6 +60,27 @@ const LeadHero = () => {
       return () => section.removeEventListener('mousemove', handleMouseMove);
     }
   }, []);
+
+  // Close form when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (formRef.current && !formRef.current.contains(event.target)) {
+        setShowForm(false);
+      }
+    };
+
+    if (showForm) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.body.style.overflow = 'unset';
+    };
+  }, [showForm]);
 
   const heroImages = [
     {
@@ -145,6 +168,43 @@ const LeadHero = () => {
         
         .animate-scale-in {
           animation: scale-in 0.3s ease-out forwards;
+        }
+
+        /* Ultra-thin and discreet scrollbar */
+        .form-scrollbar::-webkit-scrollbar {
+          width: 3px;
+        }
+
+        .form-scrollbar::-webkit-scrollbar-track {
+          background: transparent;
+          border-radius: 3px;
+          margin: 4px 0;
+        }
+
+        .form-scrollbar::-webkit-scrollbar-thumb {
+          background: #e2e8f0;
+          border-radius: 3px;
+          border: none;
+          transition: all 0.2s ease;
+        }
+
+        .form-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: #cbd5e1;
+        }
+
+        .form-scrollbar::-webkit-scrollbar-thumb:active {
+          background: #94a3b8;
+        }
+
+        /* Firefox scrollbar */
+        .form-scrollbar {
+          scrollbar-width: thin;
+          scrollbar-color: #e2e8f0 transparent;
+        }
+
+        /* Smooth scrolling */
+        .smooth-scroll {
+          scroll-behavior: smooth;
         }
       `}</style>
 
@@ -316,10 +376,13 @@ const LeadHero = () => {
         {/* Popup Form Modal */}
         {showForm && (
           <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in">
-            <div className="bg-white rounded-3xl max-w-md w-full animate-scale-in overflow-hidden">
-              <div className="p-6 sm:p-8">
-                {/* Header */}
-                <div className="flex justify-between items-center mb-6">
+            <div 
+              ref={formRef}
+              className="bg-white rounded-3xl max-w-md w-full max-h-[80vh] animate-scale-in overflow-hidden flex flex-col shadow-2xl"
+            >
+              {/* Header - Fixed */}
+              <div className="flex-shrink-0 p-6 sm:p-8 border-b border-gray-100 bg-white">
+                <div className="flex justify-between items-center">
                   <h3 className="text-2xl font-black text-gray-900">
                     Start Your
                     <span className="block text-blue-600">Free Trial</span>
@@ -331,114 +394,174 @@ const LeadHero = () => {
                     <X className="w-5 h-5 text-gray-500" />
                   </button>
                 </div>
+              </div>
 
-                {/* Form */}
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">Full Name *</label>
-                    <input
-                      type="text"
-                      name="name"
-                      placeholder="John Doe"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-500"
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">Email Address *</label>
-                    <input
-                      type="email"
-                      name="email"
-                      placeholder="john@company.com"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-500"
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">Company Name *</label>
-                    <input
-                      type="text"
-                      name="company"
-                      placeholder="Your Company"
-                      value={formData.company}
-                      onChange={handleInputChange}
-                      className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-500"
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">Phone Number *</label>
-                    <input
-                      type="tel"
-                      name="phone"
-                      placeholder="+1 (555) 123-4567"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-500"
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">Industry *</label>
-                    <select
-                      name="industry"
-                      value={formData.industry}
-                      onChange={handleInputChange}
-                      className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500 cursor-pointer"
-                      required
-                    >
-                      <option value="">Select Your Industry</option>
-                      <option value="technology">Technology & Software</option>
-                      <option value="healthcare">Healthcare & Medical</option>
-                      <option value="finance">Finance & Banking</option>
-                      <option value="manufacturing">Manufacturing</option>
-                      <option value="consulting">Professional Services</option>
-                      <option value="ecommerce">E-commerce & Retail</option>
-                      <option value="real-estate">Real Estate</option>
-                      <option value="education">Education</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">Database Size</label>
-                    <select
-                      name="databaseSize"
-                      value={formData.databaseSize}
-                      onChange={handleInputChange}
-                      className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500 cursor-pointer"
-                    >
-                      <option value="">Select Database Size</option>
-                      <option value="small">Less than 100 GB</option>
-                      <option value="medium">100 GB - 1 TB</option>
-                      <option value="large">1 TB - 10 TB</option>
-                      <option value="enterprise">10 TB+</option>
-                    </select>
-                  </div>
-
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 mt-4"
-                  >
-                    {isSubmitting ? (
-                      <div className="flex items-center justify-center gap-3">
-                        <div className="w-5 h-5 border-3 border-white border-t-transparent rounded-full animate-spin"></div>
-                        <span>Processing...</span>
+              {/* Form Content - Scrollable with fixed height */}
+              <div className="flex-1 min-h-0 overflow-hidden">
+                <div 
+                  ref={formContentRef}
+                  className="h-full form-scrollbar overflow-y-auto smooth-scroll"
+                >
+                  <div className="p-6 sm:p-8">
+                    <form onSubmit={handleSubmit} className="space-y-4">
+                      <div>
+                        <label className="block text-sm font-semibold text-gray-700 mb-2">Full Name *</label>
+                        <input
+                          type="text"
+                          name="name"
+                          placeholder="John Doe"
+                          value={formData.name}
+                          onChange={handleInputChange}
+                          className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors duration-200"
+                          required
+                        />
                       </div>
-                    ) : (
-                      <span>Start Free Trial</span>
-                    )}
-                  </button>
-                </form>
+
+                      <div>
+                        <label className="block text-sm font-semibold text-gray-700 mb-2">Email Address *</label>
+                        <input
+                          type="email"
+                          name="email"
+                          placeholder="john@company.com"
+                          value={formData.email}
+                          onChange={handleInputChange}
+                          className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors duration-200"
+                          required
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-semibold text-gray-700 mb-2">Company Name *</label>
+                        <input
+                          type="text"
+                          name="company"
+                          placeholder="Your Company"
+                          value={formData.company}
+                          onChange={handleInputChange}
+                          className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors duration-200"
+                          required
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-semibold text-gray-700 mb-2">Phone Number *</label>
+                        <input
+                          type="tel"
+                          name="phone"
+                          placeholder="+1 (555) 123-4567"
+                          value={formData.phone}
+                          onChange={handleInputChange}
+                          className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors duration-200"
+                          required
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-semibold text-gray-700 mb-2">Industry *</label>
+                        <select
+                          name="industry"
+                          value={formData.industry}
+                          onChange={handleInputChange}
+                          className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500 cursor-pointer transition-colors duration-200"
+                          required
+                        >
+                          <option value="">Select Your Industry</option>
+                          <option value="technology">Technology & Software</option>
+                          <option value="healthcare">Healthcare & Medical</option>
+                          <option value="finance">Finance & Banking</option>
+                          <option value="manufacturing">Manufacturing</option>
+                          <option value="consulting">Professional Services</option>
+                          <option value="ecommerce">E-commerce & Retail</option>
+                          <option value="real-estate">Real Estate</option>
+                          <option value="education">Education</option>
+                          <option value="other">Other</option>
+                        </select>
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-semibold text-gray-700 mb-2">Database Size</label>
+                        <select
+                          name="databaseSize"
+                          value={formData.databaseSize}
+                          onChange={handleInputChange}
+                          className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500 cursor-pointer transition-colors duration-200"
+                        >
+                          <option value="">Select Database Size</option>
+                          <option value="small">Less than 100 GB</option>
+                          <option value="medium">100 GB - 1 TB</option>
+                          <option value="large">1 TB - 10 TB</option>
+                          <option value="enterprise">10 TB+</option>
+                        </select>
+                      </div>
+
+                      {/* Additional fields to ensure scrolling works */}
+                      <div>
+                        <label className="block text-sm font-semibold text-gray-700 mb-2">Monthly Budget</label>
+                        <select
+                          name="budget"
+                          className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500 cursor-pointer transition-colors duration-200"
+                        >
+                          <option value="">Select Monthly Budget</option>
+                          <option value="small">$1,000 - $5,000</option>
+                          <option value="medium">$5,000 - $20,000</option>
+                          <option value="large">$20,000 - $50,000</option>
+                          <option value="enterprise">$50,000+</option>
+                        </select>
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-semibold text-gray-700 mb-2">Team Size</label>
+                        <select
+                          name="teamSize"
+                          className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500 cursor-pointer transition-colors duration-200"
+                        >
+                          <option value="">Select Team Size</option>
+                          <option value="1-10">1-10 people</option>
+                          <option value="11-50">11-50 people</option>
+                          <option value="51-200">51-200 people</option>
+                          <option value="201+">201+ people</option>
+                        </select>
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-semibold text-gray-700 mb-2">How did you hear about us?</label>
+                        <select
+                          name="source"
+                          className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500 cursor-pointer transition-colors duration-200"
+                        >
+                          <option value="">Select Source</option>
+                          <option value="search">Search Engine</option>
+                          <option value="social">Social Media</option>
+                          <option value="referral">Referral</option>
+                          <option value="ad">Advertisement</option>
+                          <option value="other">Other</option>
+                        </select>
+                      </div>
+
+                      {/* Extra spacing for better scroll experience */}
+                      <div className="h-8"></div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+              {/* Submit Button - Fixed at bottom */}
+              <div className="flex-shrink-0 p-6 sm:p-8 border-t border-gray-100 bg-white">
+                <button
+                  type="submit"
+                  onClick={handleSubmit}
+                  disabled={isSubmitting}
+                  className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                >
+                  {isSubmitting ? (
+                    <div className="flex items-center justify-center gap-3">
+                      <div className="w-5 h-5 border-3 border-white border-t-transparent rounded-full animate-spin"></div>
+                      <span>Processing...</span>
+                    </div>
+                  ) : (
+                    <span>Start Free Trial</span>
+                  )}
+                </button>
               </div>
             </div>
           </div>
