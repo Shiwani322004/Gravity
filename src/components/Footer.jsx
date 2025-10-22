@@ -114,22 +114,22 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a 
+                {/* <a 
                   href="/services" 
                   className="group flex items-center gap-2 text-white/80 hover:text-[#007bff] transition-all duration-300"
                 >
                   <ArrowRight className="text-[#007bff] opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 shrink-0" size={12} />
                   <span className="group-hover:translate-x-2 transition-transform duration-300 font-semibold">Our Services</span>
-                </a>
+                </a> */}
               </li>
               <li>
-                <a 
+                {/* <a 
                   href="/categories" 
                   className="group flex items-center gap-2 text-white/80 hover:text-[#007bff] transition-all duration-300"
                 >
                   <ArrowRight className="text-[#007bff] opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 shrink-0" size={12} />
                   <span className="group-hover:translate-x-2 transition-transform duration-300 font-semibold">Our Categories</span>
-                </a>
+                </a> */}
               </li>
               <li>
                 <a 
