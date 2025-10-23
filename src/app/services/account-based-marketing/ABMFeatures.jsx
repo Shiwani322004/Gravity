@@ -8,19 +8,19 @@ const ABMFeatures = () => {
       icon: Target,
       title: "Precision Account Targeting",
       description: "Identify and engage high-value accounts with laser-focused targeting using intent data and firmographic insights.",
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+      image: "/images/p1.png"
     },
     {
       icon: Users,
       title: "Multi-Stakeholder Engagement",
       description: "Reach entire buying committees with personalized messaging across multiple channels and touchpoints simultaneously.",
-      image: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+      image: "/images/p2.png"
     },
     {
       icon: BarChart3,
       title: "Revenue Intelligence Platform",
       description: "Track account engagement, measure pipeline impact, and optimize campaigns with real-time analytics and AI-driven insights.",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+      image: "/images/p3.png"
     }
   ];
 
