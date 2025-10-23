@@ -10,7 +10,7 @@ const abmProcess = [
     title: "Account Identification & Prioritization",
     description: "Identify high-value target accounts using intent data, firmographic insights, and predictive scoring to focus on the most promising opportunities.",
     features: ["Intent Data Analysis", "Account Scoring", "Ideal Customer Profile Matching", "Market Segmentation"],
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+    image: "/images/abm1.png",
     color: "from-blue-500 to-cyan-500"
   },
   {
@@ -19,7 +19,7 @@ const abmProcess = [
     title: "Buying Committee Mapping",
     description: "Map entire buying committees within target accounts, identifying key decision-makers, influencers, and stakeholders across departments.",
     features: ["Stakeholder Identification", "Org Chart Mapping", "Influence Scoring", "Relationship Tracking"],
-    image: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+    image: "/images/abm2.png",
     color: "from-purple-500 to-pink-500"
   },
   {
@@ -28,7 +28,7 @@ const abmProcess = [
     title: "Multi-Channel Engagement Strategy",
     description: "Execute coordinated, personalized outreach across email, social, web, and advertising channels with consistent messaging tailored to each stakeholder.",
     features: ["Personalized Campaigns", "Channel Orchestration", "Message Sequencing", "Engagement Tracking"],
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+    image: "/images/abm3.png",
     color: "from-green-500 to-emerald-500"
   },
   {
@@ -37,7 +37,7 @@ const abmProcess = [
     title: "Pipeline Acceleration & Measurement",
     description: "Track engagement metrics, measure pipeline impact, and accelerate deal velocity with real-time insights and performance optimization.",
     features: ["Revenue Attribution", "Pipeline Analytics", "ROI Measurement", "Performance Optimization"],
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+    image: "/images/abm4.png",
     color: "from-orange-500 to-red-500"
   }
 ];
