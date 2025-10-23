@@ -366,12 +366,17 @@ const EmailMarketingForm = () => {
 
                 {/* Additional CTA */}
                 <div className="mt-10 p-8 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl border-2 border-blue-200">
-                  <h4 className="text-2xl font-bold text-gray-900 mb-3">Need Content Syndication?</h4>
-                  <p className="text-gray-700 mb-6">Amplify your content reach across premium publishing networks</p>
-                  <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 flex items-center gap-3 group">
-                    <span>Database Management</span>
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
-                  </button>
+                  <h4 className="text-2xl font-bold text-gray-900 mb-3">Explore Next Service</h4>
+                  <p className="text-gray-700 mb-6">Discover how our Account Based Marketing can elevate your strategy.</p>
+                  <a 
+                    href="/services/account-based-marketing" 
+                    className="inline-block" 
+                  >
+                    <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 flex items-center gap-3 group">
+                      <span>Account Based Marketing</span>
+                      <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+                    </button>
+                  </a>
                 </div>
               </div>
             </div>

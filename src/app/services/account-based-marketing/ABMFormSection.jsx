@@ -371,10 +371,10 @@ const ABMFormSection = () => {
 
                 {/* Additional CTA */}
                 <div className="mt-10 p-8 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl border-2 border-blue-200">
-                  <h4 className="text-2xl font-bold text-gray-900 mb-3">Need Enterprise ABM?</h4>
-                  <p className="text-gray-700 mb-6">Get tailored ABM strategies and dedicated support for your enterprise accounts</p>
+                  <h4 className="text-2xl font-bold text-gray-900 mb-3">Ready to Elevate Your ABM Strategy?</h4>
+                  <p className="text-gray-700 mb-6">Get enterprise-grade ABM solutions with AI-powered targeting and multi-channel engagement strategies.</p>
                   <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 flex items-center gap-3 group">
-                    <span>Schedule Enterprise Demo</span>
+                    <span>Connect with us now</span>
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
                   </button>
                 </div>
