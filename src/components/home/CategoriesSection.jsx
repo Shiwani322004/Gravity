@@ -44,11 +44,7 @@ const CategoriesSection = () => {
 
       <div className="relative max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <div className="inline-block mb-6">
-            <span className="bg-gradient-to-r from-[#007BFF]/10 to-[#007BFF]/10 text-[#007BFF] px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wider border border-[#007BFF]/20">
-              Our Categories
-            </span>
-          </div>
+         
           <h2 className="text-4xl md:text-5xl font-black mb-6">
             <span className="text-gray-900">Technology Solutions</span>{' '}
             <span className="text-[#007BFF]">
@@ -104,13 +100,7 @@ const CategoriesSection = () => {
         </div>
 
         <div className="text-center mt-12">
-          <button
-            onClick={handleExploreNow}
-            className="inline-flex items-center gap-3 bg-[#007BFF] hover:bg-[#0056b3] text-white px-8 py-4 rounded-full font-bold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-[#007BFF]/50 border-2 border-transparent hover:border-white/50"
-          >
-            Explore All Categories
-            <ArrowRight className="w-5 h-5" />
-          </button>
+          
         </div>
       </div>
     </section>

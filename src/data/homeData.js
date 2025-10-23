@@ -58,13 +58,7 @@ export const services = [
     link: "/services/email-marketing",
     image: "https://images.unsplash.com/photo-1498049794561-7780e7231661?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
   },
-  {
-    icon: Database,
-    title: "Database Management",
-    description: "Clean, verified data that powers your marketing and sales success",
-    link: "/services/database-management",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-  },
+  
   {
     icon: Target,
     title: "Account-Based Marketing",
