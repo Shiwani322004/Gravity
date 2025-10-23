@@ -1,60 +1,60 @@
 'use client'
 import React from 'react';
-import { CheckCircle, Cloud, Server, BarChart3, Workflow } from 'lucide-react';
+import { CheckCircle, Target, Users, BarChart3, Zap } from 'lucide-react';
 
 // Data is moved outside the component to prevent re-creation on every render.
-const managementProcess = [
+const abmProcess = [
   {
     step: 1,
-    icon: Cloud,
-    title: "Data Migration & Setup",
-    description: "Seamlessly migrate your existing databases with zero downtime. Our automated migration tools ensure data integrity and minimal disruption.",
-    features: ["Automated Schema Migration", "Zero Downtime Transfer", "Data Validation", "Performance Testing"],
-    image: "/images/d1.png",
+    icon: Target,
+    title: "Account Identification & Prioritization",
+    description: "Identify high-value target accounts using intent data, firmographic insights, and predictive scoring to focus on the most promising opportunities.",
+    features: ["Intent Data Analysis", "Account Scoring", "Ideal Customer Profile Matching", "Market Segmentation"],
+    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
     color: "from-blue-500 to-cyan-500"
   },
   {
     step: 2,
-    icon: Server,
-    title: "Configuration & Optimization",
-    description: "AI-powered configuration tuning automatically optimizes your database settings for maximum performance and efficiency.",
-    features: ["AI-Powered Tuning", "Performance Optimization", "Resource Allocation", "Auto-scaling Setup"],
-    image: "/images/d2.png",
+    icon: Users,
+    title: "Buying Committee Mapping",
+    description: "Map entire buying committees within target accounts, identifying key decision-makers, influencers, and stakeholders across departments.",
+    features: ["Stakeholder Identification", "Org Chart Mapping", "Influence Scoring", "Relationship Tracking"],
+    image: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
     color: "from-purple-500 to-pink-500"
   },
   {
     step: 3,
     icon: BarChart3,
-    title: "Monitoring & Analytics",
-    description: "Real-time monitoring and advanced analytics provide deep insights into your database performance and usage patterns.",
-    features: ["Real-time Dashboards", "Performance Metrics", "Query Analysis", "Trend Forecasting"],
-    image: "/images/d3.png",
+    title: "Multi-Channel Engagement Strategy",
+    description: "Execute coordinated, personalized outreach across email, social, web, and advertising channels with consistent messaging tailored to each stakeholder.",
+    features: ["Personalized Campaigns", "Channel Orchestration", "Message Sequencing", "Engagement Tracking"],
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
     color: "from-green-500 to-emerald-500"
   },
   {
     step: 4,
-    icon: Workflow,
-    title: "Automated Maintenance",
-    description: "Smart automation handles routine maintenance tasks, backups, and updates while ensuring continuous availability.",
-    features: ["Automated Backups", "Security Updates", "Performance Tuning", "Health Checks"],
-    image: "/images/d4.png",
+    icon: Zap,
+    title: "Pipeline Acceleration & Measurement",
+    description: "Track engagement metrics, measure pipeline impact, and accelerate deal velocity with real-time insights and performance optimization.",
+    features: ["Revenue Attribution", "Pipeline Analytics", "ROI Measurement", "Performance Optimization"],
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
     color: "from-orange-500 to-red-500"
   }
 ];
 
-const DatabaseProcess = () => {
+const ABMProcess = () => {
   return (
     <section className="py-20 bg-gradient-to-br from-slate-50 to-blue-50/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
-            Streamlined Database
+            Proven ABM
             <span className="block bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
-              Management Process
+              Execution Process
             </span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Our comprehensive 4-step process ensures your databases are optimized, secure, and performing at their best from day one.
+            Our comprehensive 4-step ABM framework ensures targeted engagement, accelerated pipelines, and measurable revenue growth for enterprise accounts.
           </p>
         </div>
 
@@ -63,7 +63,7 @@ const DatabaseProcess = () => {
           <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-200 to-cyan-200 transform -translate-x-1/2"></div>
           
           <div className="space-y-12 lg:space-y-24">
-            {managementProcess.map(({ step, icon: Icon, title, description, features, image, color }, index) => {
+            {abmProcess.map(({ step, icon: Icon, title, description, features, image, color }, index) => {
               const isEven = index % 2 === 0;
               const flexDirectionClass = isEven ? 'lg:flex-row' : 'lg:flex-row-reverse';
               const contentPaddingClass = isEven ? 'lg:pr-12' : 'lg:pl-12';
@@ -129,4 +129,4 @@ const DatabaseProcess = () => {
   );
 };
 
-export default DatabaseProcess;
+export default ABMProcess;

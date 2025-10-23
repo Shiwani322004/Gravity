@@ -1,17 +1,17 @@
 'use client'
 import React, { useState, useRef, useEffect } from 'react';
-import { ArrowRight, CheckCircle, Database, Shield, Cpu, Zap, Server, BarChart3, Cloud, Lock } from 'lucide-react';
+import { ArrowRight, CheckCircle, Target, Users, BarChart3, Zap, TrendingUp, Shield } from 'lucide-react';
 
-const DatabaseFormSection = () => {
+const ABMFormSection = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     company: '',
     phone: '',
     industry: '',
-    databaseType: '',
-    databaseSize: '',
-    currentChallenges: ''
+    accountSize: '',
+    primaryGoal: '',
+    budget: ''
   });
   const [isVisible, setIsVisible] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -76,7 +76,7 @@ const DatabaseFormSection = () => {
         {successMessage && (
           <div className="fixed top-8 right-8 bg-green-500 text-white px-6 py-4 rounded-2xl shadow-2xl z-50 flex items-center gap-3 animate-slide-in">
             <CheckCircle className="w-6 h-6" />
-            <span>Success! Our database experts will contact you within 24 hours.</span>
+            <span>Success! Our ABM specialists will contact you within 24 hours.</span>
           </div>
         )}
 
@@ -89,12 +89,12 @@ const DatabaseFormSection = () => {
                 
                 <div className="mb-8">
                   <h3 className="text-2xl sm:text-2xl font-black mb-4 text-gray-900">
-                    Transform Your Database
+                    Transform Your ABM
                     <span className="block text-blue-600">
-                      Management Strategy
+                      Strategy
                     </span>
                   </h3>
-                  <p className="text-gray-600">Get expert database management solutions tailored to your business needs.</p>
+                  <p className="text-gray-600">Get expert account-based marketing solutions tailored to your business needs.</p>
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -178,82 +178,78 @@ const DatabaseFormSection = () => {
                       required
                     >
                       <option value="">Select Your Industry</option>
-                      <option value="technology">Technology & Software</option>
-                      <option value="healthcare">Healthcare & Medical</option>
+                      <option value="technology">Technology & SaaS</option>
+                      <option value="enterprise-software">Enterprise Software</option>
                       <option value="finance">Finance & Banking</option>
+                      <option value="healthcare">Healthcare & Medical</option>
                       <option value="manufacturing">Manufacturing</option>
-                      <option value="consulting">Professional Services</option>
-                      <option value="ecommerce">E-commerce & Retail</option>
-                      <option value="real-estate">Real Estate</option>
-                      <option value="education">Education</option>
-                      <option value="other">Other</option>
+                      <option value="professional-services">Professional Services</option>
+                      <option value="other">Other B2B</option>
                     </select>
                   </div>
 
-                  {/* Row 4: Database Type and Size */}
+                  {/* Row 4: Account Size and Primary Goal */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div className="relative group">
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">Database Type *</label>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">Target Account Size *</label>
                       <select
-                        name="databaseType"
-                        value={formData.databaseType}
+                        name="accountSize"
+                        value={formData.accountSize}
                         onChange={handleInputChange}
-                        onFocus={() => setFocusedField('databaseType')}
+                        onFocus={() => setFocusedField('accountSize')}
                         onBlur={() => setFocusedField(null)}
                         className="w-full border-2 border-gray-200 rounded-xl px-5 py-3 text-gray-900 focus:outline-none focus:border-blue-500 cursor-pointer font-medium"
                         required
                       >
-                        <option value="">Select Database Type</option>
-                        <option value="mysql">MySQL</option>
-                        <option value="postgresql">PostgreSQL</option>
-                        <option value="mongodb">MongoDB</option>
-                        <option value="sqlserver">SQL Server</option>
-                        <option value="oracle">Oracle</option>
-                        <option value="redis">Redis</option>
-                        <option value="elasticsearch">Elasticsearch</option>
-                        <option value="multiple">Multiple Databases</option>
+                        <option value="">Select Account Size</option>
+                        <option value="1-50">1 - 50 target accounts</option>
+                        <option value="51-200">51 - 200 target accounts</option>
+                        <option value="201-500">201 - 500 target accounts</option>
+                        <option value="501-1000">501 - 1,000 target accounts</option>
+                        <option value="1000-plus">1,000+ target accounts</option>
                       </select>
                     </div>
 
                     <div className="relative group">
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">Database Size *</label>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">Primary ABM Goal *</label>
                       <select
-                        name="databaseSize"
-                        value={formData.databaseSize}
+                        name="primaryGoal"
+                        value={formData.primaryGoal}
                         onChange={handleInputChange}
-                        onFocus={() => setFocusedField('databaseSize')}
+                        onFocus={() => setFocusedField('primaryGoal')}
                         onBlur={() => setFocusedField(null)}
                         className="w-full border-2 border-gray-200 rounded-xl px-5 py-3 text-gray-900 focus:outline-none focus:border-blue-500 cursor-pointer font-medium"
                         required
                       >
-                        <option value="">Select Database Size</option>
-                        <option value="small">Less than 100 GB</option>
-                        <option value="medium">100 GB - 1 TB</option>
-                        <option value="large">1 TB - 10 TB</option>
-                        <option value="enterprise">10 TB+</option>
+                        <option value="">Select Primary Goal</option>
+                        <option value="demand-generation">Demand Generation</option>
+                        <option value="pipeline-acceleration">Pipeline Acceleration</option>
+                        <option value="key-account-growth">Key Account Growth</option>
+                        <option value="competitive-displacement">Competitive Displacement</option>
+                        <option value="market-entry">New Market Entry</option>
+                        <option value="multiple-goals">Multiple Goals</option>
                       </select>
                     </div>
                   </div>
 
-                  {/* Row 5: Current Challenges */}
+                  {/* Row 5: Budget */}
                   <div className="relative group">
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">Current Challenges</label>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">ABM Budget *</label>
                     <select
-                      name="currentChallenges"
-                      value={formData.currentChallenges}
+                      name="budget"
+                      value={formData.budget}
                       onChange={handleInputChange}
-                      onFocus={() => setFocusedField('currentChallenges')}
+                      onFocus={() => setFocusedField('budget')}
                       onBlur={() => setFocusedField(null)}
                       className="w-full border-2 border-gray-200 rounded-xl px-5 py-3 text-gray-900 focus:outline-none focus:border-blue-500 cursor-pointer font-medium"
+                      required
                     >
-                      <option value="">Select Primary Challenge</option>
-                      <option value="performance">Performance Issues</option>
-                      <option value="scaling">Scaling Problems</option>
-                      <option value="security">Security Concerns</option>
-                      <option value="backup">Backup & Recovery</option>
-                      <option value="monitoring">Lack of Monitoring</option>
-                      <option value="cost">High Costs</option>
-                      <option value="multiple">Multiple Challenges</option>
+                      <option value="">Select Budget Range</option>
+                      <option value="25k-50k">$25K - $50K</option>
+                      <option value="50k-100k">$50K - $100K</option>
+                      <option value="100k-250k">$100K - $250K</option>
+                      <option value="250k-500k">$250K - $500K</option>
+                      <option value="500k-plus">$500K+</option>
                     </select>
                   </div>
 
@@ -271,7 +267,7 @@ const DatabaseFormSection = () => {
                         </>
                       ) : (
                         <>
-                          <span>Get Database Management Plan</span>
+                          <span>Get ABM Strategy Plan</span>
                           <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
                         </>
                       )}
@@ -279,7 +275,7 @@ const DatabaseFormSection = () => {
                   </button>
 
                   <p className="text-center text-gray-500 text-sm mt-4">
-                    By submitting, you agree to our privacy policy and consent to contact about our database management services.
+                    By submitting, you agree to our privacy policy and consent to contact about our ABM services.
                   </p>
                 </form>
               </div>
@@ -290,10 +286,10 @@ const DatabaseFormSection = () => {
               <div className="space-y-8">
                 <div>
                   <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-4">
-                    Optimize Your Database
-                    <span className="block text-blue-600">Performance & Security</span>
+                    Accelerate Your Revenue
+                    <span className="block text-blue-600">With Targeted ABM</span>
                   </h2>
-                  <p className="text-gray-600 text-lg mt-6">Get enterprise-grade database management with AI-powered optimization and military-grade security.</p>
+                  <p className="text-gray-600 text-lg mt-6">Get enterprise-grade ABM solutions with AI-powered targeting and multi-channel engagement strategies.</p>
                 </div>
 
                 {/* Benefits List */}
@@ -303,7 +299,7 @@ const DatabaseFormSection = () => {
                       <CheckCircle className="w-6 h-6 text-green-500" />
                     </div>
                     <div>
-                      <p className="text-gray-800 font-semibold text-lg">99.9% Uptime Guarantee with Real-time Monitoring</p>
+                      <p className="text-gray-800 font-semibold text-lg">67% Higher Win Rates with Precision Account Targeting</p>
                     </div>
                   </div>
 
@@ -312,7 +308,7 @@ const DatabaseFormSection = () => {
                       <CheckCircle className="w-6 h-6 text-green-500" />
                     </div>
                     <div>
-                      <p className="text-gray-800 font-semibold text-lg">AI-Powered Performance Optimization & Tuning</p>
+                      <p className="text-gray-800 font-semibold text-lg">3.2x Larger Deal Sizes Through Multi-Stakeholder Engagement</p>
                     </div>
                   </div>
 
@@ -321,7 +317,7 @@ const DatabaseFormSection = () => {
                       <CheckCircle className="w-6 h-6 text-green-500" />
                     </div>
                     <div>
-                      <p className="text-gray-800 font-semibold text-lg">Military-Grade 256-bit Encryption & Security</p>
+                      <p className="text-gray-800 font-semibold text-lg">45% Shorter Sales Cycles with Personalized Outreach</p>
                     </div>
                   </div>
 
@@ -330,7 +326,7 @@ const DatabaseFormSection = () => {
                       <CheckCircle className="w-6 h-6 text-green-500" />
                     </div>
                     <div>
-                      <p className="text-gray-800 font-semibold text-lg">Automated Backups & Point-in-Time Recovery</p>
+                      <p className="text-gray-800 font-semibold text-lg">AI-Powered Intent Data & Account Scoring</p>
                     </div>
                   </div>
 
@@ -339,7 +335,7 @@ const DatabaseFormSection = () => {
                       <CheckCircle className="w-6 h-6 text-green-500" />
                     </div>
                     <div>
-                      <p className="text-gray-800 font-semibold text-lg">24/7 Expert Database Administration & Support</p>
+                      <p className="text-gray-800 font-semibold text-lg">Multi-Channel Campaign Orchestration & Automation</p>
                     </div>
                   </div>
 
@@ -348,7 +344,7 @@ const DatabaseFormSection = () => {
                       <CheckCircle className="w-6 h-6 text-green-500" />
                     </div>
                     <div>
-                      <p className="text-gray-800 font-semibold text-lg">Comprehensive Performance Analytics & Reporting</p>
+                      <p className="text-gray-800 font-semibold text-lg">Real-time Revenue Intelligence & Pipeline Analytics</p>
                     </div>
                   </div>
                 </div>
@@ -356,31 +352,29 @@ const DatabaseFormSection = () => {
                 {/* Stats Section */}
                 <div className="grid grid-cols-2 gap-6 mt-10">
                   <div className="text-center p-6 bg-blue-50 rounded-2xl">
-                    <div className="text-3xl font-bold text-blue-600">99.9%</div>
-                    <div className="text-gray-700 font-medium">Uptime SLA</div>
+                    <div className="text-3xl font-bold text-blue-600">67%</div>
+                    <div className="text-gray-700 font-medium">Higher Win Rates</div>
                   </div>
                   <div className="text-center p-6 bg-blue-50 rounded-2xl">
-                    <div className="text-3xl font-bold text-blue-600">47ms</div>
-                    <div className="text-gray-700 font-medium">Avg Response Time</div>
+                    <div className="text-3xl font-bold text-blue-600">3.2x</div>
+                    <div className="text-gray-700 font-medium">Larger Deals</div>
                   </div>
                   <div className="text-center p-6 bg-blue-50 rounded-2xl">
-                    <div className="text-3xl font-bold text-blue-600">256-bit</div>
-                    <div className="text-gray-700 font-medium">Encryption</div>
+                    <div className="text-3xl font-bold text-blue-600">45%</div>
+                    <div className="text-gray-700 font-medium">Faster Sales</div>
                   </div>
                   <div className="text-center p-6 bg-blue-50 rounded-2xl">
-                    <div className="text-3xl font-bold text-blue-600">24/7</div>
-                    <div className="text-gray-700 font-medium">Support</div>
+                    <div className="text-3xl font-bold text-blue-600">500+</div>
+                    <div className="text-gray-700 font-medium">Clients</div>
                   </div>
                 </div>
 
-                
-
                 {/* Additional CTA */}
                 <div className="mt-10 p-8 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl border-2 border-blue-200">
-                  <h4 className="text-2xl font-bold text-gray-900 mb-3">Need Custom Solutions?</h4>
-                  <p className="text-gray-700 mb-6">Get tailored database architecture and migration services for your specific needs</p>
+                  <h4 className="text-2xl font-bold text-gray-900 mb-3">Need Enterprise ABM?</h4>
+                  <p className="text-gray-700 mb-6">Get tailored ABM strategies and dedicated support for your enterprise accounts</p>
                   <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 flex items-center gap-3 group">
-                    <span>AccountBased Marketing</span>
+                    <span>Schedule Enterprise Demo</span>
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
                   </button>
                 </div>
@@ -393,4 +387,4 @@ const DatabaseFormSection = () => {
   );
 };
 
-export default DatabaseFormSection;
+export default ABMFormSection;

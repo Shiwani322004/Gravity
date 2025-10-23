@@ -31,7 +31,6 @@ const Navbar = () => {
     { name: 'Lead Generation', href: '/services/lead-generation' },
     { name: 'Content Syndication', href: '/services/content-syndication' },
     { name: 'Email Marketing', href: '/services/email-marketing' },
-    { name: 'Database Management', href: '/services/database-management' },
     { name: 'Account-Based Marketing', href: '/services/account-based-marketing' }
   ];
 
