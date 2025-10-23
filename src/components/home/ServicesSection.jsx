@@ -23,8 +23,6 @@ const ServicesSection = () => {
       <div className="relative max-w-7xl mx-auto px-6">
         {/* Enhanced Header */}
         <div className="text-center mb-20">
-         
-          
           <h2 className="text-5xl md:text-6xl font-black mb-6 bg-gradient-to-r from-gray-900 to-blue-900 bg-clip-text text-transparent">
             Solutions That{' '}
             <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
@@ -49,7 +47,7 @@ const ServicesSection = () => {
           {services.map((service, idx) => (
             <div
               key={idx}
-              className="group relative bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 border border-gray-100 overflow-hidden"
+              className="group relative bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 border border-gray-100 overflow-hidden flex flex-col h-full"
             >
               {/* Background Effects */}
               <div className="absolute inset-0 bg-gradient-to-br from-white to-gray-50 opacity-90"></div>
@@ -57,7 +55,7 @@ const ServicesSection = () => {
               <div className="absolute bottom-0 left-0 w-24 h-24 bg-blue-600/5 rounded-full translate-y-12 -translate-x-12 group-hover:scale-150 transition-transform duration-700"></div>
               
               {/* Content */}
-              <div className="relative z-10">
+              <div className="relative z-10 flex flex-col flex-grow">
                 {/* Icon with Enhanced Design */}
                 <div className="relative mb-6">
                   <div className="absolute -inset-4 bg-blue-500/10 rounded-2xl transform group-hover:scale-110 transition-transform duration-300"></div>
@@ -67,7 +65,7 @@ const ServicesSection = () => {
                 </div>
 
                 {/* Image Container */}
-                <div className="relative h-44 mb-6 rounded-2xl overflow-hidden group">
+                <div className="relative h-44 mb-6 rounded-2xl overflow-hidden group flex-shrink-0">
                   <img 
                     src={service.image} 
                     alt={service.title}
@@ -77,22 +75,26 @@ const ServicesSection = () => {
                   <div className="absolute inset-0 bg-blue-500/10 group-hover:bg-transparent transition-colors duration-300"></div>
                 </div>
                 
-                {/* Content */}
-                <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-blue-700 transition-colors duration-300 leading-tight">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 mb-6 leading-relaxed text-[15px]">
-                  {service.description}
-                </p>
-                
-                {/* Enhanced Button */}
-                <button
-                  onClick={() => handleExploreService(service.link)}
-                  className="group/btn inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-3 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-blue-500/25 border border-blue-500/20 w-full justify-center"
-                >
-                  <span>Explore More</span>
-                  <ArrowRight className="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform duration-200" />
-                </button>
+                {/* Content Section - This will grow and push button to bottom */}
+                <div className="flex flex-col flex-grow">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-blue-700 transition-colors duration-300 leading-tight">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-600 mb-6 leading-relaxed text-[15px] flex-grow">
+                    {service.description}
+                  </p>
+                  
+                  {/* Enhanced Button - Always at bottom */}
+                  <div className="mt-auto pt-4">
+                    <button
+                      onClick={() => handleExploreService(service.link)}
+                      className="group/btn inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-3 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-blue-500/25 border border-blue-500/20 w-full justify-center"
+                    >
+                      <span>Explore More</span>
+                      <ArrowRight className="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform duration-200" />
+                    </button>
+                  </div>
+                </div>
               </div>
 
               {/* Hover Border Effect */}
@@ -100,8 +102,6 @@ const ServicesSection = () => {
             </div>
           ))}
         </div>
-
-        
       </div>
     </section>
   );

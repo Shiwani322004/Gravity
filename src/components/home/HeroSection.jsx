@@ -215,9 +215,7 @@ const HeroSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-[#007BFF] to-[#0056b3] opacity-0 group-hover:opacity-100 transition-opacity"></div>
               </button>
 
-              <button className="bg-transparent border-2 border-[#FFFFFF]/30 text-[#FFFFFF] px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg transition-all duration-300 hover:bg-[#FFFFFF]/10 hover:border-[#FFFFFF]/60 hover:scale-105">
-                Explore Services
-              </button>
+             
             </div>
 
             
