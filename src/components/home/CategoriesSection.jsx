@@ -44,7 +44,6 @@ const CategoriesSection = () => {
 
       <div className="relative max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-         
           <h2 className="text-4xl md:text-5xl font-black mb-6">
             <span className="text-gray-900">Technology Solutions</span>{' '}
             <span className="text-[#007BFF]">
@@ -61,40 +60,45 @@ const CategoriesSection = () => {
           {allCategories.map((category, idx) => (
             <div
               key={idx}
-              className="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-transparent hover:border-[#007BFF]/20 overflow-hidden"
+              className="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-transparent hover:border-[#007BFF]/20 overflow-hidden flex flex-col h-full"
             >
-              <div className="relative h-48 mb-6 rounded-2xl overflow-hidden">
-                <img 
-                  src={category.image} 
-                  alt={category.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/50 to-transparent"></div>
-              </div>
-              
-              <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-[#007BFF] transition-colors">
-                {category.title}
-              </h3>
-              <p className="text-gray-600 mb-6 leading-relaxed">
-                {category.description}
-              </p>
-              
-              <div className="space-y-3 mb-6">
-                {category.subcategories.map((sub, subIdx) => (
-                  <div key={subIdx} className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-[#007BFF]" />
-                    <span className="text-gray-700 font-medium">{sub}</span>
-                  </div>
-                ))}
-              </div>
+              <div className="flex flex-col flex-grow">
+                <div className="relative h-48 mb-6 rounded-2xl overflow-hidden flex-shrink-0">
+                  <img 
+                    src={category.image} 
+                    alt={category.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/50 to-transparent"></div>
+                </div>
+                
+                <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-[#007BFF] transition-colors">
+                  {category.title}
+                </h3>
+                <p className="text-gray-600 mb-6 leading-relaxed flex-grow">
+                  {category.description}
+                </p>
+                
+                <div className="space-y-3 mb-6">
+                  {category.subcategories.map((sub, subIdx) => (
+                    <div key={subIdx} className="flex items-center gap-3">
+                      <CheckCircle className="w-5 h-5 text-[#007BFF]" />
+                      <span className="text-gray-700 font-medium">{sub}</span>
+                    </div>
+                  ))}
+                </div>
 
-              <button
-                onClick={() => handleExploreCategory(category.link)}
-                className="inline-flex items-center gap-2 text-[#007BFF] font-bold group-hover:gap-3 transition-all bg-[#007BFF]/10 hover:bg-[#007BFF] hover:text-white px-4 py-2 rounded-full"
-              >
-                Explore More
-                <ArrowRight className="w-4 h-4" />
-              </button>
+                {/* Button container with margin-top auto to push to bottom */}
+                <div className="mt-auto pt-4">
+                  <button
+                    onClick={() => handleExploreCategory(category.link)}
+                    className="inline-flex items-center gap-2 text-[#007BFF] font-bold group-hover:gap-3 transition-all bg-[#007BFF]/10 hover:bg-[#007BFF] hover:text-white px-4 py-2 rounded-full w-full justify-center"
+                  >
+                    Explore More
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
             </div>
           ))}
         </div>
