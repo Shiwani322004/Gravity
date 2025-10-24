@@ -124,9 +124,7 @@ export default function Categories() {
                   </span>
                 </h1>
                 
-                <p className={`text-xl text-gray-600 leading-relaxed transition-all duration-700 delay-900 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                  Get free quotes from top vendors and compare pricing, features, and reviews to find the best VoIP and UCaaS solution for your business needs.
-                </p>
+                
               </div>
 
               {/* Key Benefits */}
