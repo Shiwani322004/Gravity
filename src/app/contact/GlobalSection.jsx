@@ -66,24 +66,14 @@ export default function GlobalSection() {
       image: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
     },
     {
-      city: "San Francisco",
-      country: "United States",
-      address: "456 Tech Street, Floor 8, San Francisco, CA 94105",
-      phone: "+1 (415) 555-5678",
-      email: "sf@b2bgravity.com",
-      hours: "Mon-Fri: 9AM-6PM PST",
-      timezone: "PST",
-      image: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-    },
-    {
-      city: "London",
-      country: "United Kingdom",
-      address: "789 Global Lane, London, UK EC2A 4NE",
-      phone: "+44 20 7946 0958",
-      email: "london@b2bgravity.com",
-      hours: "Mon-Fri: 9AM-6PM GMT",
-      timezone: "GMT",
-      image: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+      city: "India",
+      country: "India",
+      address: "456 Tech Park, Sector 62, Noida, Uttar Pradesh 201309",
+      phone: "+91 11 4050 6789",
+      email: "india@b2bgravity.com",
+      hours: "Mon-Fri: 9AM-6PM IST",
+      timezone: "IST",
+      image: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80"
     }
   ];
 
