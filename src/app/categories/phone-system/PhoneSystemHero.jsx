@@ -13,6 +13,7 @@ import {
   Zap
 } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 
 export const dynamic = 'force-dynamic'
 
@@ -40,7 +41,8 @@ export default function Categories() {
     {
       badge: "Best for Ease of Use",
       provider: "Ooma Office",
-      vendor: "Ooma",
+      //vendor: "Ooma",
+      vendorLogo: "/images/ooma.png",
       price: "Starts at $19.95 per user/month",
       features: ["No Contract", "50+ Standard Features", "Virtual receptionist"],
       buttonText: "Compare Quotes",
@@ -50,7 +52,8 @@ export default function Categories() {
     {
       badge: "Best for Enterprises",
       provider: "RingEX",
-      vendor: "RingCentral",
+      //vendor: "RingCentral",
+      vendorLogo: "/images/ringcentral.png",
       price: "Starts at $20/user/month paid monthly",
       features: ["100 participant video meetings", "24/7 customer support", "Advanced analytics"],
       buttonText: "Compare Quotes",
@@ -60,7 +63,8 @@ export default function Categories() {
     {
       badge: "Video Conferencing",
       provider: "Zoom Phone",
-      vendor: "Zoom",
+      //vendor: "Zoom",
+      vendorLogo: "/images/zoom.png",
       price: "Starts at $10 monthly per user/month",
       features: ["International Calling", "24/7 customer support", "Team Chat"],
       buttonText: "Compare Quotes",
@@ -70,7 +74,8 @@ export default function Categories() {
     {
       badge: "Best for Support",
       provider: "Dialpad",
-      vendor: "dialpad",
+      //vendor: "dialpad",
+      vendorLogo: "/images/dialpad.png",
       price: "Standard at $15 per user/month",
       features: ["HD calls and meetings", "Live transcripts", "Instant call summaries"],
       buttonText: "Compare Quotes",
@@ -78,14 +83,14 @@ export default function Categories() {
       accentColor: "hover:border-green-400/50"
     },
     {
-      badge: "Most Reliable",
-      provider: "Nextiva",
-      vendor: "NEXTIVA",
-      price: "Starts at $18.95 per user/month",
-      features: ["99.999% uptime", "Unlimited voice & video", "CRM integrations"],
+      badge: "Best for Support",
+      provider: "Vonage",
+      vendorLogo: "/images/vonage.png",
+      price: "Starts at $13.99 per user/month",
+      features: ["Unlimited domestic calling", "Supports desktop and mobile apps", "Team messaging"],
       buttonText: "Compare Quotes",
-      icon: <Shield className="text-indigo-500" size={20} />,
-      accentColor: "hover:border-indigo-400/50"
+      icon: <MessageCircle className="text-red-500" size={20} />,
+      accentColor: "hover:border-red-400/50"
     }
   ];
 
@@ -162,10 +167,25 @@ export default function Categories() {
                       <Star size={14} className="text-yellow-500 fill-yellow-500" />
                     </div>
 
-                    {/* Provider & Vendor */}
+                    {/* Provider & Vendor with Larger Logo */}
                     <div className="relative mb-4">
                       <h3 className="text-lg font-bold text-gray-900 truncate">{card.provider}</h3>
-                      <p className="text-gray-500 text-sm font-medium">{card.vendor}</p>
+                      <div className="flex items-center gap-3 mt-2">
+                        <div className="relative w-55 h-20 rounded-lg overflow-hidden bg-gray-50 border border-gray-200/60 flex items-center justify-center p-1">
+                          <Image 
+                            src={card.vendorLogo}
+                            alt={`${card.vendor} logo`}
+                            width={40}
+                            height={40}
+                            className="object-contain w-full h-full"
+                            onError={(e) => {
+                              // Fallback if image fails to load
+                              e.target.style.display = 'none';
+                            }}
+                          />
+                        </div>
+                        <p className="text-gray-500 text-sm font-semibold">{card.vendor}</p>
+                      </div>
                     </div>
 
                     {/* Price */}
