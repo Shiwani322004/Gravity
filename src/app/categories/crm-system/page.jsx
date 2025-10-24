@@ -101,27 +101,7 @@ export default function CRMPage() {
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
 
-      {/* Navigation */}
-      <nav className="relative z-10 px-6 py-6 max-w-7xl mx-auto">
-        <div className="flex justify-between items-center">
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg"></div>
-            <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
-              B2B Gravity CRM
-            </span>
-          </div>
-          <div className="hidden md:flex space-x-8">
-            {['Features', 'Solutions', 'Pricing', 'Resources'].map((item) => (
-              <button key={item} className="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">
-                {item}
-              </button>
-            ))}
-          </div>
-          <button className="px-6 py-2 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-medium rounded-lg hover:from-blue-500 hover:to-cyan-500 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-blue-500/25">
-            Sign In
-          </button>
-        </div>
-      </nav>
+      
 
       {/* Enhanced Hero Section */}
       <section 
