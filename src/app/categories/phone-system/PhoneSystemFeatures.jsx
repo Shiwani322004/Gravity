@@ -334,20 +334,7 @@ export default function PhoneSystemComparison() {
             </div>
           </div>
 
-          {/* CTA Section */}
-          <div className="bg-white rounded-2xl p-8 border border-gray-200">
-            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-              <div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
-                  Ready to get started with {currentSystem.name}?
-                </h3>
-                <p className="text-gray-600">
-                  Get personalized pricing and see how {currentSystem.name} can transform your business communication.
-                </p>
-              </div>
-              
-            </div>
-          </div>
+          
         </div>
 
         {/* Bottom Navigation */}
