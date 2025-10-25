@@ -10,7 +10,8 @@ import {
   CheckCircle,
   Star,
   Shield,
-  Zap
+  Zap,
+  X
 } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
@@ -20,6 +21,10 @@ export const dynamic = 'force-dynamic'
 export default function Categories() {
   const sectionRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [showQuestionnaire, setShowQuestionnaire] = useState(false);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [answers, setAnswers] = useState([]);
+  const [isCompleted, setIsCompleted] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -37,11 +42,68 @@ export default function Categories() {
     return () => observer.disconnect();
   }, []);
 
+  const questions = [
+    {
+      question: "What type of phone system are you currently using?",
+      options: ["Traditional Landline", "VoIP System", "No System - Starting Fresh", "Hybrid System"]
+    },
+    {
+      question: "How many employees need phone extensions?",
+      options: ["1-10", "11-25", "26-50", "50+"]
+    },
+    {
+      question: "What's your primary need for a business phone system?",
+      options: ["Customer Support", "Sales Team", "Remote Workforce", "All of the above"]
+    },
+    {
+      question: "What's your implementation timeline?",
+      options: ["Immediately", "Within 1 month", "1-3 months", "Just researching options"]
+    }
+  ];
+
+  const handleAnswer = (answer) => {
+    const newAnswers = [...answers];
+    newAnswers[currentQuestion] = answer;
+    setAnswers(newAnswers);
+
+    if (currentQuestion < questions.length - 1) {
+      setCurrentQuestion(currentQuestion + 1);
+    } else {
+      setIsCompleted(true);
+      // Here you can handle the form submission
+      setTimeout(() => {
+        setShowQuestionnaire(false);
+        resetQuestionnaire();
+      }, 3000);
+    }
+  };
+
+  const resetQuestionnaire = () => {
+    setCurrentQuestion(0);
+    setAnswers([]);
+    setIsCompleted(false);
+  };
+
+  const handleOpenQuestionnaire = () => {
+    resetQuestionnaire();
+    setShowQuestionnaire(true);
+  };
+
+  const handleCloseQuestionnaire = () => {
+    setShowQuestionnaire(false);
+    resetQuestionnaire();
+  };
+
+  const handleBack = () => {
+    if (currentQuestion > 0) {
+      setCurrentQuestion(currentQuestion - 1);
+    }
+  };
+
   const providerCards = [
     {
       badge: "Best for Ease of Use",
       provider: "Ooma Office",
-      //vendor: "Ooma",
       vendorLogo: "/images/ooma.png",
       price: "Starts at $19.95 per user/month",
       features: ["No Contract", "50+ Standard Features", "Virtual receptionist"],
@@ -52,7 +114,6 @@ export default function Categories() {
     {
       badge: "Best for Enterprises",
       provider: "RingEX",
-      //vendor: "RingCentral",
       vendorLogo: "/images/ringcentral.png",
       price: "Starts at $20/user/month paid monthly",
       features: ["100 participant video meetings", "24/7 customer support", "Advanced analytics"],
@@ -63,7 +124,6 @@ export default function Categories() {
     {
       badge: "Video Conferencing",
       provider: "Zoom Phone",
-      //vendor: "Zoom",
       vendorLogo: "/images/zoom.png",
       price: "Starts at $10 monthly per user/month",
       features: ["International Calling", "24/7 customer support", "Team Chat"],
@@ -74,7 +134,6 @@ export default function Categories() {
     {
       badge: "Best for Support",
       provider: "Dialpad",
-      //vendor: "dialpad",
       vendorLogo: "/images/dialpad.png",
       price: "Standard at $15 per user/month",
       features: ["HD calls and meetings", "Live transcripts", "Instant call summaries"],
@@ -123,8 +182,6 @@ export default function Categories() {
                     Business Phone System
                   </span>
                 </h1>
-                
-                
               </div>
 
               {/* Key Benefits */}
@@ -204,7 +261,10 @@ export default function Categories() {
 
                   {/* CTA Button - Strictly at bottom with consistent alignment */}
                   <div className="mt-8 pt-4 border-t border-gray-200/60">
-                    <button className="w-full py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-center gap-2 group/btn overflow-hidden">
+                    <button 
+                      onClick={handleOpenQuestionnaire}
+                      className="w-full py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-center gap-2 group/btn overflow-hidden"
+                    >
                       <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-cyan-700 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
                       <span className="relative text-sm">{card.buttonText}</span>
                       <ArrowRight size={14} className="relative group-hover/btn:translate-x-1 transition-transform duration-300" />
@@ -226,7 +286,10 @@ export default function Categories() {
                 <p className="text-gray-600 mb-6">
                   Our experts will help you compare features and pricing from top vendors to find the perfect phone system for your business.
                 </p>
-                <button className="px-8 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-0.5 flex items-center gap-2 group/cta mx-auto">
+                <button 
+                  onClick={handleOpenQuestionnaire}
+                  className="px-8 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-0.5 flex items-center gap-2 group/cta mx-auto"
+                >
                   Get Free Quotes
                   <ArrowRight size={18} className="group-hover/cta:translate-x-1 transition-transform duration-300" />
                 </button>
@@ -235,6 +298,91 @@ export default function Categories() {
           </div>
         </div>
       </section>
+
+      {/* Questionnaire Popup - Modified to match CRM version (no Next button, only Back) */}
+      {showQuestionnaire && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full mx-auto transform transition-all duration-300 scale-100">
+            {/* Header */}
+            <div className="flex items-center justify-between p-6 border-b border-gray-200">
+              <h3 className="text-xl font-bold text-gray-900">
+                {isCompleted ? "Thank You!" : "Help Us Find Your Perfect Phone System"}
+              </h3>
+              <button
+                onClick={handleCloseQuestionnaire}
+                className="p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200"
+              >
+                <X size={20} className="text-gray-500" />
+              </button>
+            </div>
+
+            {/* Progress Bar */}
+            {!isCompleted && (
+              <div className="px-6 pt-4">
+                <div className="w-full bg-gray-200 rounded-full h-2">
+                  <div 
+                    className="bg-gradient-to-r from-blue-600 to-cyan-600 h-2 rounded-full transition-all duration-500"
+                    style={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}
+                  ></div>
+                </div>
+                <p className="text-sm text-gray-500 mt-2 text-right">
+                  Question {currentQuestion + 1} of {questions.length}
+                </p>
+              </div>
+            )}
+
+            {/* Content */}
+            <div className="p-6">
+              {isCompleted ? (
+                <div className="text-center py-8">
+                  <CheckCircle size={48} className="text-green-500 mx-auto mb-4" />
+                  <h4 className="text-lg font-semibold text-gray-900 mb-2">Perfect Match Found!</h4>
+                  <p className="text-gray-600 mb-6">
+                    Based on your answers, we're finding the best phone system solutions for your business. You'll receive personalized quotes shortly.
+                  </p>
+                  <button
+                    onClick={handleCloseQuestionnaire}
+                    className="w-full py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300"
+                  >
+                    Close
+                  </button>
+                </div>
+              ) : (
+                <>
+                  <h4 className="text-lg font-semibold text-gray-900 mb-6 text-center">
+                    {questions[currentQuestion].question}
+                  </h4>
+                  
+                  <div className="space-y-3">
+                    {questions[currentQuestion].options.map((option, index) => (
+                      <button
+                        key={index}
+                        onClick={() => handleAnswer(option)}
+                        className="w-full p-4 text-left border border-gray-200 rounded-xl hover:border-blue-500 hover:bg-blue-50/50 transition-all duration-200 hover:shadow-md"
+                      >
+                        <div className="flex items-center justify-between">
+                          <span className="font-medium text-gray-900">{option}</span>
+                          <ArrowRight size={16} className="text-blue-500 opacity-0 group-hover:opacity-100" />
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* Back Button Only (no Next button) */}
+                  {currentQuestion > 0 && (
+                    <button
+                      onClick={handleBack}
+                      className="w-full mt-4 py-3 text-gray-600 font-medium rounded-xl hover:bg-gray-100 transition-all duration-200 border border-gray-200"
+                    >
+                      Back
+                    </button>
+                  )}
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
