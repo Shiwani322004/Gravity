@@ -75,78 +75,111 @@ Gravity is a modern B2B services platform built with Next.js, offering comprehen
 ```
 root/
 ├── eslint.config.mjs          # ESLint configuration
-├── jsconfig.json             # JavaScript configuration
-├── next.config.mjs          # Next.js configuration
-├── package.json            # Project dependencies
-├── postcss.config.mjs     # PostCSS configuration
-├── vercel.json           # Vercel deployment configuration
-├── public/              # Static files
-│   └── images/        # Image assets
+├── jsconfig.json              # JavaScript configuration
+├── next.config.mjs            # Next.js configuration
+├── package.json               # Project dependencies
+├── postcss.config.mjs         # PostCSS configuration
+├── vercel.json                # Vercel deployment configuration
+├── public/                    # Static files
+│   └── images/                # Image assets
 └── src/
-    ├── app/                # Next.js 13+ App Router
-    │   ├── globals.css    # Global styles
-    │   ├── layout.jsx    # Root layout
-    │   ├── page.jsx     # Home page
-    │   ├── about/      # About section
-    │   │   ├── AboutHeroSection.jsx
-    │   │   ├── Achievements.jsx
-    │   │   ├── GetStarted.jsx
-    │   │   ├── OurMission.jsx
-    │   │   ├── OurValues.jsx
-    │   │   ├── page.jsx
-    │   │   ├── StatsSection.jsx
-    │   │   └── WhatWeDo.jsx
-    │   ├── categories/   # Categories section
-    │   │   └── page.jsx
-    │   ├── contact/     # Contact section
-    │   │   └── page.jsx
-    │   ├── lib/        # Utility functions
-    │   │   └── getCriticalPosts.js
-    │   ├── posts/     # Blog posts
-    │   │   └── [id]/
-    │   │       └── page.jsx
-    │   └── services/  # Services section
-    │       ├── GetReady.jsx
-    │       ├── HeroServices.jsx
-    │       ├── page.jsx
-    │       ├── ProvenResults.jsx
-    │       ├── content-syndication/
-    │       │   ├── ContentFormSection.jsx
-    │       │   ├── ContentJourney.jsx
-    │       │   ├── ContentTypes.jsx
-    │       │   ├── FeaturesContent.jsx
-    │       │   ├── HeroContent.jsx
-    │       │   └── page.jsx
-    │       ├── email-marketing/
-    │       │   ├── EmailAnalytics.jsx
-    │       │   ├── EmailFeatures.jsx
-    │       │   ├── EmailFormSection.jsx
-    │       │   ├── EmailProcess.jsx
-    │       │   ├── EmailTemplates.jsx
-    │       │   ├── HeroEmail.jsx
-    │       │   └── page.jsx
-    │       └── lead-generation/
-    │           ├── FeaturesSection.jsx
-    │           ├── FormSection.jsx
-    │           ├── LeadDeliverySection.jsx
-    │           ├── LeadHero.jsx
-    │           ├── LogoScroll.jsx
-    │           ├── page.jsx
-    │           └── ProcessSection.jsx
-    ├── assets/         # Additional assets
-    ├── components/    # Reusable components
-    │   ├── ArrowNavigation.jsx
-    │   ├── Footer.jsx
-    │   ├── Navbar.jsx
-    │   └── home/
-    │       ├── AboutSection.jsx
-    │       ├── CategoriesSection.jsx
-    │       ├── ContactSection.jsx
-    │       ├── HeroSection.jsx
-    │       └── ServicesSection.jsx
-    └── data/        # Static data files
-        ├── aboutData.js
-        └── homeData.js
+  ├── app/                   # Next.js 13+ App Router
+  │   ├── globals.css        # Global styles
+  │   ├── layout.jsx         # Root layout
+  │   ├── page.jsx           # Home page
+  │   ├── about/             # About section
+  │   │   ├── AboutHeroSection.jsx
+  │   │   ├── Achievements.jsx
+  │   │   ├── GetStarted.jsx
+  │   │   ├── OurMission.jsx
+  │   │   ├── OurValues.jsx
+  │   │   ├── page.jsx
+  │   │   ├── StatsSection.jsx
+  │   │   └── WhatWeDo.jsx
+  │   ├── categories/        # Categories section
+  │   │   ├── page.jsx
+  │   │   ├── business-intelligence/
+  │   │   │   └── page.jsx
+  │   │   ├── contact-center/
+  │   │   ├── crm-system/
+  │   │   │   ├── CRMAnalysisSection.jsx
+  │   │   │   ├── CRMAutomationSection.jsx
+  │   │   │   ├── CRMFeaturesSection.jsx
+  │   │   │   ├── CRMHeroSection.jsx
+  │   │   │   ├── CRMIntegrationsSection.jsx
+  │   │   │   ├── CRMPricingSection.jsx
+  │   │   │   ├── CRMTrustedSection.jsx
+  │   │   │   └── page.jsx
+  │   │   └── phone-system/
+  │   │       ├── page.jsx
+  │   │       ├── PhoneSystemAction.jsx
+  │   │       ├── PhoneSystemFeatures.jsx
+  │   │       ├── PhoneSystemHero.jsx
+  │   │       ├── PhoneSystemStats.jsx
+  │   │       └── PlatformFeatures.jsx
+  │   ├── contact/           # Contact section
+  │   │   ├── ConnectSection.jsx
+  │   │   ├── ContactForm.jsx
+  │   │   ├── ContactHero.jsx
+  │   │   ├── GlobalSection.jsx
+  │   │   └── page.jsx
+  │   ├── lib/               # Utility functions
+  │   │   └── getCriticalPosts.js
+  │   ├── posts/             # Blog posts
+  │   │   └── [id]/
+  │   │       └── page.jsx
+  │   └── services/          # Services section
+  │       ├── GetReady.jsx
+  │       ├── HeroServices.jsx
+  │       ├── page.jsx
+  │       ├── ProvenResults.jsx
+  │       ├── account-based-marketing/
+  │       │   ├── ABMDashboard.jsx
+  │       │   ├── ABMFeatures.jsx
+  │       │   ├── ABMFormSection.jsx
+  │       │   ├── ABMProcess.jsx
+  │       │   ├── ABMSecurityFeatures.jsx
+  │       │   ├── HeroABM.jsx
+  │       │   └── page.jsx
+  │       ├── contact-center/
+  │       ├── content-syndication/
+  │       │   ├── ContentFormSection.jsx
+  │       │   ├── ContentJourney.jsx
+  │       │   ├── ContentTypes.jsx
+  │       │   ├── FeaturesContent.jsx
+  │       │   ├── HeroContent.jsx
+  │       │   └── page.jsx
+  │       ├── email-marketing/
+  │       │   ├── EmailAnalytics.jsx
+  │       │   ├── EmailFeatures.jsx
+  │       │   ├── EmailFormSection.jsx
+  │       │   ├── EmailProcess.jsx
+  │       │   ├── EmailTemplates.jsx
+  │       │   ├── HeroEmail.jsx
+  │       │   └── page.jsx
+  │       ├── erp-solutions/
+  │       └── lead-generation/
+  │           ├── FeaturesSection.jsx
+  │           ├── FormSection.jsx
+  │           ├── LeadDeliverySection.jsx
+  │           ├── LeadHero.jsx
+  │           ├── LogoScroll.jsx
+  │           ├── page.jsx
+  │           └── ProcessSection.jsx
+  ├── assets/                # Additional assets
+  ├── components/            # Reusable components
+  │   ├── ArrowNavigation.jsx
+  │   ├── Footer.jsx
+  │   ├── Navbar.jsx
+  │   └── home/
+  │       ├── AboutSection.jsx
+  │       ├── CategoriesSection.jsx
+  │       ├── ContactSection.jsx
+  │       ├── HeroSection.jsx
+  │       └── ServicesSection.jsx
+  └── data/                  # Static data files
+    ├── aboutData.js
+    └── homeData.js
 ```
 
 ## 🌟 Key Features
@@ -361,3 +394,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 <div align="center">
 Made with ❤️ by the Gravity Team
 </div>
+
+
+ 

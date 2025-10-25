@@ -40,145 +40,145 @@ export default function PhoneSystemComparison() {
       id: 0,
       name: "Ooma Office",
       vendor: "Ooma",
-      description: "Perfect for small to medium businesses looking for easy setup and no long-term contracts",
+      description: "A cloud-based VoIP solution designed for small to medium-sized businesses, offering enterprise-level features without complex infrastructure requirements or binding contracts. Includes built-in scalability and seamless integration capabilities.",
       icon: <Zap className="text-yellow-500" size={24} />,
       rating: 4.5,
       price: "$19.95/user/month",
       features: [
-        "Virtual receptionist with custom greetings",
-        "50+ standard business features included",
-        "Mobile app for iOS and Android",
-        "HD voice quality",
-        "No contract required"
+        "Multi-level automated attendant with custom call routing and business hour scheduling",
+        "Ring groups, call forwarding, and extension dialing across 50+ enterprise features",
+        "Cross-platform mobile application with full desktop feature parity (iOS/Android)",
+        "HD voice technology with QoS optimization for crystal-clear audio transmission",
+        "Month-to-month billing with no activation fees or long-term contract obligations"
       ],
       pros: [
-        "Easy setup and user-friendly interface",
-        "No long-term contracts",
-        "Excellent call quality",
-        "Affordable pricing"
+        "Plug-and-play deployment with minimal IT intervention - average setup time under 15 minutes per user",
+        "Flexible subscription model with transparent pricing and no hidden fees or penalties for cancellation",
+        "Superior voice clarity utilizing wideband audio codecs (G.722) and adaptive jitter buffers",
+        "Cost-effective pricing structure ideal for businesses with 5-50 employees seeking essential unified communications"
       ],
       cons: [
-        "Limited advanced features",
-        "Basic analytics only",
-        "International rates higher than competitors"
+        "Advanced analytics dashboard limited to basic call metrics without real-time monitoring or predictive insights",
+        "Reporting capabilities lack granular data export options and customizable KPI dashboards",
+        "International calling rates 15-30% higher than competitive enterprise solutions, impacting global operations"
       ],
-      bestFor: ["Small businesses", "Startups", "Remote teams"],
+      bestFor: ["Small businesses (5-50 employees)", "Budget-conscious startups", "Distributed remote teams"],
       accentColor: "from-yellow-400 to-orange-500"
     },
     {
       id: 1,
       name: "RingEX",
       vendor: "RingCentral",
-      description: "Enterprise-grade solution with comprehensive features for large organizations",
+      description: "Enterprise-grade unified communications platform combining voice, video, team messaging, and contact center capabilities. Built for organizations requiring robust security, compliance certifications, and advanced collaboration tools with 99.999% uptime SLA.",
       icon: <Users className="text-purple-500" size={24} />,
       rating: 4.7,
       price: "$20/user/month",
       features: [
-        "100 participant video meetings",
-        "Advanced analytics and reporting",
-        "24/7 premium customer support",
-        "Unlimited business SMS",
-        "Team messaging and collaboration"
+        "HD video conferencing supporting up to 200 participants with screen sharing, whiteboarding, and recording",
+        "Comprehensive analytics suite with real-time dashboards, historical reporting, and AI-powered call insights",
+        "24/7/365 premium support with dedicated technical account management and priority escalation",
+        "Unlimited SMS/MMS messaging with automated workflows and team collaboration channels",
+        "Advanced team messaging with file sharing, task management, and integrated collaboration workspace"
       ],
       pros: [
-        "Excellent video conferencing capabilities",
-        "Robust security features",
-        "Seamless third-party integrations",
-        "Reliable uptime"
+        "Industry-leading video conferencing infrastructure with minimal latency and adaptive bitrate streaming",
+        "Enterprise-grade security architecture including SOC 2 Type II, HIPAA, and ISO 27001 compliance certifications",
+        "Extensive third-party ecosystem with 300+ pre-built integrations including Salesforce, Microsoft 365, and Zendesk",
+        "Carrier-grade reliability with geographically distributed data centers ensuring 99.999% uptime guarantee"
       ],
       cons: [
-        "Higher cost for advanced features",
-        "Steeper learning curve",
-        "Can be overwhelming for small teams"
+        "Premium tier pricing escalates significantly for advanced features like contact center and analytics add-ons",
+        "Initial onboarding complexity requires dedicated training and change management for optimal user adoption",
+        "Feature-rich interface can overwhelm smaller teams without dedicated IT resources for administration"
       ],
-      bestFor: ["Enterprises", "Large teams", "Global companies"],
+      bestFor: ["Enterprise organizations (100+ employees)", "Multi-location distributed teams", "Global corporations with international presence"],
       accentColor: "from-purple-500 to-pink-500"
     },
     {
       id: 2,
       name: "Zoom Phone",
       vendor: "Zoom",
-      description: "Integrated phone system leveraging Zoom's renowned video platform",
+      description: "Cloud phone system natively integrated with Zoom's video collaboration platform, enabling seamless transition between voice calls and video meetings. Optimized for organizations already invested in the Zoom ecosystem with competitive international calling plans.",
       icon: <Video className="text-blue-500" size={24} />,
       rating: 4.6,
       price: "$10/user/month",
       features: [
-        "Direct integration with Zoom meetings",
-        "International calling to 40+ countries",
-        "Team chat and file sharing",
-        "Call recording and transcription",
-        "24/7 customer support"
+        "One-click escalation from phone calls to Zoom video meetings with screen sharing and collaboration",
+        "Global calling plans with unlimited calling to 40+ countries and competitive per-minute rates",
+        "Integrated team chat with persistent channels, direct messaging, and file sharing capabilities",
+        "AI-powered call recording with automatic transcription, searchable archives, and sentiment analysis",
+        "Round-the-clock technical support with multi-channel assistance (phone, chat, email)"
       ],
       pros: [
-        "Familiar Zoom interface",
-        "Excellent video integration",
-        "Competitive international rates",
-        "Easy to scale"
+        "Unified user experience leveraging familiar Zoom interface reduces training requirements and adoption friction",
+        "Exceptional video-to-phone integration enabling fluid communication transitions during client interactions",
+        "Highly competitive international calling rates with bundled minute packages for global business operations",
+        "Rapid scalability supporting growth from 10 to 10,000 users without infrastructure redesign"
       ],
       cons: [
-        "Limited standalone phone features",
-        "Dependent on Zoom ecosystem",
-        "Some features require higher tiers"
+        "Standalone phone feature set somewhat limited compared to dedicated VoIP providers' specialized offerings",
+        "Optimal performance heavily dependent on existing Zoom subscription tier and platform ecosystem commitment",
+        "Advanced call center features, analytics, and automation require higher-tier plans with significant cost increases"
       ],
-      bestFor: ["Zoom users", "Sales teams", "International businesses"],
+      bestFor: ["Existing Zoom customers seeking unified communications", "Sales and customer success teams requiring video flexibility", "International businesses with extensive cross-border calling needs"],
       accentColor: "from-blue-500 to-cyan-500"
     },
     {
       id: 3,
       name: "Dialpad",
-      vendor: "dialpad",
-      description: "AI-powered business phone system with advanced features",
+      vendor: "Dialpad",
+      description: "AI-first business communications platform leveraging proprietary Voice Intelligence technology for real-time transcription, sentiment analysis, and automated call summaries. Designed for data-driven organizations prioritizing conversation insights and CRM integration.",
       icon: <MessageCircle className="text-green-500" size={24} />,
       rating: 4.4,
       price: "$15/user/month",
       features: [
-        "AI-powered live call transcripts",
-        "Instant call summaries",
-        "HD voice and video calls",
-        "Real-time analytics",
-        "CRM integrations"
+        "Real-time AI-powered call transcription with speaker identification, keyword detection, and action item extraction",
+        "Automated post-call summaries with key moments, sentiment scoring, and suggested follow-up actions",
+        "HD voice and video calling infrastructure with adaptive codec selection and bandwidth optimization",
+        "Live analytics dashboard with real-time performance metrics, agent scoring, and queue monitoring",
+        "Native CRM integrations with Salesforce, HubSpot, and Zoho including automatic activity logging"
       ],
       pros: [
-        "Advanced AI features",
-        "Excellent call quality",
-        "User-friendly interface",
-        "Good value for money"
+        "Cutting-edge AI capabilities provide actionable conversation intelligence and coaching opportunities for teams",
+        "Consistently high voice quality through proprietary audio optimization algorithms and global edge network",
+        "Intuitive, modern interface with minimal learning curve accelerates team adoption and productivity",
+        "Competitive value proposition balancing advanced features with mid-market pricing accessibility"
       ],
       cons: [
-        "AI features can be inconsistent",
-        "Limited customization options",
-        "Mobile app needs improvement"
+        "AI transcription accuracy varies with audio quality, accents, and technical terminology requiring human review",
+        "Limited customization options for call flows, IVR scripting, and user interface personalization",
+        "Mobile application functionality gaps compared to desktop experience, particularly for administrative tasks"
       ],
-      bestFor: ["Tech companies", "Customer support", "AI enthusiasts"],
+      bestFor: ["Technology-forward organizations", "Customer support and success teams", "Sales organizations requiring conversation analytics"],
       accentColor: "from-green-500 to-teal-500"
     },
     {
       id: 4,
       name: "Nextiva",
-      vendor: "NEXTIVA",
-      description: "Reliable business communication with exceptional uptime",
+      vendor: "Nextiva",
+      description: "Comprehensive business communication platform emphasizing reliability and customer service excellence. Combines voice, video, team collaboration, and built-in CRM capabilities with industry-leading 99.999% uptime guarantee and white-glove onboarding support.",
       icon: <Shield className="text-indigo-500" size={24} />,
       rating: 4.8,
       price: "$18.95/user/month",
       features: [
-        "99.999% uptime guarantee",
-        "Unlimited voice and video calling",
-        "Advanced CRM integrations",
-        "Team collaboration tools",
-        "Professional onboarding"
+        "Carrier-grade infrastructure with redundant data centers ensuring 99.999% uptime SLA and disaster recovery",
+        "Unlimited voice calling and video conferencing with no per-minute charges or hidden usage fees",
+        "Built-in CRM with contact management, sales pipeline tracking, and automated communication logging",
+        "Enterprise collaboration suite including team chat, file sharing, and project management workflows",
+        "Dedicated onboarding specialist and professional training program ensuring successful implementation"
       ],
       pros: [
-        "Industry-leading reliability",
-        "Excellent customer support",
-        "Comprehensive feature set",
-        "Easy to use"
+        "Industry-best reliability metrics with proactive network monitoring and automatic failover protection",
+        "Award-winning customer support with consistently high CSAT scores and rapid response times",
+        "All-in-one platform consolidating voice, video, CRM, and collaboration reducing tool fragmentation",
+        "User-friendly administrative portal simplifying system management for non-technical administrators"
       ],
       cons: [
-        "Higher starting price",
-        "Limited international features",
-        "Some advanced features cost extra"
+        "Base pricing higher than entry-level competitors, potentially challenging for budget-constrained organizations",
+        "International calling features and coverage less comprehensive than global-focused competitors",
+        "Advanced functionality like call center, workforce management, and analytics require costly add-on packages"
       ],
-      bestFor: ["Reliability-focused businesses", "Customer service", "Growing companies"],
+      bestFor: ["Reliability-critical business operations", "Customer service and support organizations", "Growing mid-market companies (50-500 employees)"],
       accentColor: "from-indigo-500 to-purple-500"
     }
   ];
@@ -202,10 +202,10 @@ export default function PhoneSystemComparison() {
         <div className="text-center mb-16">
           <div className={`space-y-6 transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
             <h1 className="text-4xl lg:text-5xl font-bold text-gray-900">
-              Detailed System Comparison
+              Enterprise Phone System Analysis
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              In-depth analysis of each business phone system to help you make the right choice for your organization
+              Comprehensive evaluation of leading business communication platforms with detailed feature comparisons, pricing analysis, and deployment considerations
             </p>
           </div>
         </div>
@@ -260,7 +260,7 @@ export default function PhoneSystemComparison() {
                 </div>
               </div>
             </div>
-            <p className="text-white/90 mt-4 text-lg">
+            <p className="text-white/90 mt-4 text-lg leading-relaxed">
               {currentSystem.description}
             </p>
           </div>
@@ -269,13 +269,13 @@ export default function PhoneSystemComparison() {
           <div className="mb-12">
             <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
               <Settings size={24} className="text-blue-500" />
-              Key Features
+              Core Capabilities
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {currentSystem.features.map((feature, index) => (
-                <div key={index} className="flex items-center gap-3 p-4 bg-white rounded-xl border border-gray-200">
-                  <CheckCircle size={18} className="text-green-500 flex-shrink-0" />
-                  <span className="text-gray-700">{feature}</span>
+                <div key={index} className="flex items-start gap-3 p-4 bg-white rounded-xl border border-gray-200 hover:border-blue-300 transition-colors">
+                  <CheckCircle size={20} className="text-green-500 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700 leading-relaxed">{feature}</span>
                 </div>
               ))}
             </div>
@@ -287,13 +287,13 @@ export default function PhoneSystemComparison() {
             <div>
               <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
                 <CheckCircle size={20} className="text-green-500" />
-                Advantages
+                Strategic Advantages
               </h3>
               <div className="space-y-3">
                 {currentSystem.pros.map((pro, index) => (
                   <div key={index} className="flex items-start gap-3 p-4 bg-green-50 rounded-xl border border-green-100">
                     <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
-                    <span className="text-gray-700">{pro}</span>
+                    <span className="text-gray-700 leading-relaxed">{pro}</span>
                   </div>
                 ))}
               </div>
@@ -303,13 +303,13 @@ export default function PhoneSystemComparison() {
             <div>
               <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
                 <XCircle size={20} className="text-red-500" />
-                Limitations
+                Considerations & Limitations
               </h3>
               <div className="space-y-3">
                 {currentSystem.cons.map((con, index) => (
                   <div key={index} className="flex items-start gap-3 p-4 bg-red-50 rounded-xl border border-red-100">
                     <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
-                    <span className="text-gray-700">{con}</span>
+                    <span className="text-gray-700 leading-relaxed">{con}</span>
                   </div>
                 ))}
               </div>
@@ -320,13 +320,13 @@ export default function PhoneSystemComparison() {
           <div className="mb-12">
             <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
               <Users size={24} className="text-blue-500" />
-              Ideal For
+              Ideal Use Cases
             </h2>
             <div className="flex flex-wrap gap-3">
               {currentSystem.bestFor.map((type, index) => (
                 <span 
                   key={index}
-                  className="px-4 py-2 bg-white rounded-lg text-gray-700 font-medium border border-blue-200"
+                  className="px-5 py-2.5 bg-white rounded-lg text-gray-700 font-medium border-2 border-blue-200 hover:border-blue-400 hover:shadow-md transition-all"
                 >
                   {type}
                 </span>
@@ -341,10 +341,10 @@ export default function PhoneSystemComparison() {
         <div className={`flex justify-between items-center mt-12 transition-all duration-700 delay-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
           <button
             onClick={() => setActiveSystem(prev => prev > 0 ? prev - 1 : comparisonData.length - 1)}
-            className="px-6 py-3 bg-white border border-gray-300 rounded-xl hover:border-blue-500 hover:shadow-lg transition-all duration-300 flex items-center gap-2 font-semibold text-gray-700"
+            className="px-6 py-3 bg-white border-2 border-gray-300 rounded-xl hover:border-blue-500 hover:shadow-lg transition-all duration-300 flex items-center gap-2 font-semibold text-gray-700"
           >
             <ArrowRight className="rotate-180" size={18} />
-            Previous
+            Previous System
           </button>
           
           <div className="flex items-center gap-2">
@@ -361,9 +361,9 @@ export default function PhoneSystemComparison() {
 
           <button
             onClick={() => setActiveSystem(prev => prev < comparisonData.length - 1 ? prev + 1 : 0)}
-            className="px-6 py-3 bg-white border border-gray-300 rounded-xl hover:border-blue-500 hover:shadow-lg transition-all duration-300 flex items-center gap-2 font-semibold text-gray-700"
+            className="px-6 py-3 bg-white border-2 border-gray-300 rounded-xl hover:border-blue-500 hover:shadow-lg transition-all duration-300 flex items-center gap-2 font-semibold text-gray-700"
           >
-            Next
+            Next System
             <ArrowRight size={18} />
           </button>
         </div>
