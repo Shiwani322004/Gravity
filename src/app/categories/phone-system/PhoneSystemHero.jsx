@@ -41,6 +41,9 @@ export default function Categories() {
   const [captchaInput, setCaptchaInput] = useState('');
   const [captchaValid, setCaptchaValid] = useState(false);
 
+  // Auto-popup timer state
+  const [hasAutoPopupShown, setHasAutoPopupShown] = useState(false);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -56,6 +59,22 @@ export default function Categories() {
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
+
+  // Auto-popup timer effect
+  useEffect(() => {
+    // Only set timer if:
+    // 1. Auto popup hasn't shown yet
+    // 2. Questionnaire is not already open
+    // 3. User hasn't manually closed it recently
+    if (!hasAutoPopupShown && !showQuestionnaire) {
+      const timer = setTimeout(() => {
+        handleOpenQuestionnaire();
+        setHasAutoPopupShown(true);
+      }, 5000); // 5 seconds
+
+      return () => clearTimeout(timer);
+    }
+  }, [hasAutoPopupShown, showQuestionnaire]);
 
   // Generate new CAPTCHA question
   const generateCaptcha = () => {
@@ -219,6 +238,8 @@ export default function Categories() {
   const handleCloseQuestionnaire = () => {
     setShowQuestionnaire(false);
     resetQuestionnaire();
+    // Mark that user has interacted with the popup
+    setHasAutoPopupShown(true);
   };
 
   const handleBack = () => {
