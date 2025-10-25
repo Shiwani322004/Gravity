@@ -345,10 +345,7 @@ export default function PhoneSystemComparison() {
                   Get personalized pricing and see how {currentSystem.name} can transform your business communication.
                 </p>
               </div>
-              <button className="px-8 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-0.5 flex items-center gap-2 whitespace-nowrap">
-                Get Custom Quote
-                <ArrowRight size={18} />
-              </button>
+              
             </div>
           </div>
         </div>

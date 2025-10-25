@@ -345,9 +345,7 @@ const CRMAnalysisSection = () => {
                 <span className="text-gray-600">
                   {currentCardIndex + 1} of {cardDetails.length}
                 </span>
-                <button className="px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-0.5">
-                  Get Free Quote
-                </button>
+               
               </div>
               
               <button
