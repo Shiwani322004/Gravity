@@ -430,7 +430,7 @@ export default function Categories() {
         </div>
       </section>
 
-      {/* Questionnaire Popup with Manual CAPTCHA */}
+      {/* Questionnaire Popup with 7 Steps */}
       {showQuestionnaire && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
           <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full mx-auto transform transition-all duration-300 scale-100 max-h-[90vh] overflow-y-auto">
@@ -448,16 +448,16 @@ export default function Categories() {
             </div>
 
             {/* Progress Bar */}
-            {!isCompleted && currentQuestion <= questions.length && (
+            {!isCompleted && (
               <div className="px-6 pt-4">
                 <div className="w-full bg-gray-200 rounded-full h-2">
                   <div 
                     className="bg-gradient-to-r from-blue-600 to-cyan-600 h-2 rounded-full transition-all duration-500"
-                    style={{ width: `${((currentQuestion + 1) / (questions.length + 1)) * 100}%` }}
+                    style={{ width: `${((currentQuestion + 1) / 7) * 100}%` }}
                   ></div>
                 </div>
                 <p className="text-sm text-gray-500 mt-2 text-right">
-                  Step {currentQuestion + 1} of {questions.length + 1}
+                  Step {currentQuestion + 1} of 7
                 </p>
               </div>
             )}
@@ -479,6 +479,7 @@ export default function Categories() {
                   </button>
                 </div>
               ) : currentQuestion < questions.length ? (
+                // Steps 1-4: Questions
                 <>
                   <h4 className="text-lg font-semibold text-gray-900 mb-6 text-center">
                     {questions[currentQuestion].question}
@@ -509,10 +510,11 @@ export default function Categories() {
                     </button>
                   )}
                 </>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
+              ) : currentQuestion === 4 ? (
+                // Step 5: Name, Email, Phone
+                <form onSubmit={(e) => { e.preventDefault(); setCurrentQuestion(5); }} className="space-y-4">
                   <h4 className="text-lg font-semibold text-gray-900 mb-4 text-center">
-                    Final Step: Your Contact Information
+                    Your Contact Information
                   </h4>
 
                   <div>
@@ -559,6 +561,32 @@ export default function Categories() {
                       placeholder="+1 (555) 123-4567"
                     />
                   </div>
+
+                  {/* Buttons */}
+                  <div className="flex gap-3 pt-4">
+                    <button
+                      type="button"
+                      onClick={handleBack}
+                      className="flex-1 py-3 text-gray-600 font-medium rounded-xl hover:bg-gray-100 transition-all duration-200 border border-gray-200"
+                    >
+                      Back
+                    </button>
+                    <button
+                      type="submit"
+                      disabled={!formData.name || !formData.email || !formData.phone}
+                      className="flex-1 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    >
+                      Next
+                      <ArrowRight size={16} />
+                    </button>
+                  </div>
+                </form>
+              ) : currentQuestion === 5 ? (
+                // Step 6: Company, Country, ZIP Code
+                <form onSubmit={(e) => { e.preventDefault(); setCurrentQuestion(6); }} className="space-y-4">
+                  <h4 className="text-lg font-semibold text-gray-900 mb-4 text-center">
+                    Business Information
+                  </h4>
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -611,6 +639,32 @@ export default function Categories() {
                         : 'Enter 6 digit PIN code (e.g., 411001)'}
                     </p>
                   </div>
+
+                  {/* Buttons */}
+                  <div className="flex gap-3 pt-4">
+                    <button
+                      type="button"
+                      onClick={handleBack}
+                      className="flex-1 py-3 text-gray-600 font-medium rounded-xl hover:bg-gray-100 transition-all duration-200 border border-gray-200"
+                    >
+                      Back
+                    </button>
+                    <button
+                      type="submit"
+                      disabled={!formData.company || !formData.zipCode}
+                      className="flex-1 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    >
+                      Next
+                      <ArrowRight size={16} />
+                    </button>
+                  </div>
+                </form>
+              ) : currentQuestion === 6 ? (
+                // Step 7: Security Verification
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <h4 className="text-lg font-semibold text-gray-900 mb-4 text-center">
+                    Security Verification
+                  </h4>
 
                   {/* Manual CAPTCHA */}
                   <div>
@@ -673,7 +727,7 @@ export default function Categories() {
                     </button>
                     <button
                       type="submit"
-                      disabled={isSubmitting || !captchaValid || !formData.name || !formData.email || !formData.phone || !formData.company || !formData.zipCode}
+                      disabled={isSubmitting || !captchaValid}
                       className="flex-1 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                     >
                       {isSubmitting ? (
@@ -690,7 +744,7 @@ export default function Categories() {
                     </button>
                   </div>
                 </form>
-              )}
+              ) : null}
             </div>
           </div>
         </div>
