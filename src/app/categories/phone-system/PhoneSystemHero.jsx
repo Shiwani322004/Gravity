@@ -15,16 +15,26 @@ import {
 } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 export const dynamic = 'force-dynamic'
 
 export default function Categories() {
   const sectionRef = useRef(null);
+  const recaptchaRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
   const [showQuestionnaire, setShowQuestionnaire] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [answers, setAnswers] = useState([]);
+  const [answers, setAnswers] = useState({});
   const [isCompleted, setIsCompleted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [recaptchaToken, setRecaptchaToken] = useState('');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    company: ''
+  });
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -45,43 +55,123 @@ export default function Categories() {
   const questions = [
     {
       question: "What type of phone system are you currently using?",
-      options: ["Traditional Landline", "VoIP System", "No System - Starting Fresh", "Hybrid System"]
+      options: ["Traditional Landline", "VoIP System", "No System - Starting Fresh", "Hybrid System"],
+      key: "currentSystem"
     },
     {
       question: "How many employees need phone extensions?",
-      options: ["1-10", "11-25", "26-50", "50+"]
+      options: ["1-10", "11-25", "26-50", "50+"],
+      key: "employeeCount"
     },
     {
       question: "What's your primary need for a business phone system?",
-      options: ["Customer Support", "Sales Team", "Remote Workforce", "All of the above"]
+      options: ["Customer Support", "Sales Team", "Remote Workforce", "All of the above"],
+      key: "primaryNeed"
     },
     {
       question: "What's your implementation timeline?",
-      options: ["Immediately", "Within 1 month", "1-3 months", "Just researching options"]
+      options: ["Immediately", "Within 1 month", "1-3 months", "Just researching options"],
+      key: "timeline"
     }
   ];
 
   const handleAnswer = (answer) => {
-    const newAnswers = [...answers];
-    newAnswers[currentQuestion] = answer;
+    const newAnswers = {
+      ...answers,
+      [questions[currentQuestion].key]: answer
+    };
     setAnswers(newAnswers);
 
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
-      setIsCompleted(true);
-      // Here you can handle the form submission
-      setTimeout(() => {
-        setShowQuestionnaire(false);
-        resetQuestionnaire();
-      }, 3000);
+      setCurrentQuestion(currentQuestion + 1);
+    }
+  };
+
+  const onRecaptchaChange = (token) => {
+    setRecaptchaToken(token);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    // Validate required fields
+    if (!formData.name || !formData.email || !formData.phone || !formData.company) {
+      alert('Please fill in all required fields');
+      return;
+    }
+
+    if (!recaptchaToken) {
+      alert('Please complete the reCAPTCHA verification');
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const submissionData = {
+        access_key: '9584fb6d-ef88-4143-b3c3-90a272f9e1d5',
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        company: formData.company,
+        current_system: answers.currentSystem || 'Not specified',
+        employee_count: answers.employeeCount || 'Not specified',
+        primary_need: answers.primaryNeed || 'Not specified',
+        timeline: answers.timeline || 'Not specified',
+        'g-recaptcha-response': recaptchaToken,
+        subject: `New Phone System Inquiry from ${formData.name}`,
+        from_name: 'Phone System Finder'
+      };
+
+      console.log('Submitting form data:', submissionData);
+
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(submissionData)
+      });
+
+      const result = await response.json();
+
+      console.log('Web3Forms response:', result);
+
+      if (result.success) {
+        setIsCompleted(true);
+        setTimeout(() => {
+          setShowQuestionnaire(false);
+          resetQuestionnaire();
+        }, 3000);
+      } else {
+        console.error('Web3Forms error:', result.message);
+        alert(`Submission failed: ${result.message || 'Please try again.'}`);
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('Network error occurred. Please check your connection and try again.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   const resetQuestionnaire = () => {
     setCurrentQuestion(0);
-    setAnswers([]);
+    setAnswers({});
     setIsCompleted(false);
+    setRecaptchaToken('');
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      company: ''
+    });
+    if (recaptchaRef.current) {
+      recaptchaRef.current.reset();
+    }
   };
 
   const handleOpenQuestionnaire = () => {
@@ -98,6 +188,19 @@ export default function Categories() {
     if (currentQuestion > 0) {
       setCurrentQuestion(currentQuestion - 1);
     }
+  };
+
+  const handleInputChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  // Add reCAPTCHA error handling
+  const onRecaptchaError = () => {
+    console.error('reCAPTCHA failed to load');
+    setRecaptchaToken('');
   };
 
   const providerCards = [
@@ -168,10 +271,9 @@ export default function Categories() {
         </div>
 
         <div className="max-w-7xl mx-auto px-6 relative z-10">
-          {/* Header Section - Removed top badge */}
+          {/* Header Section */}
           <div className="text-center mb-16">
             <div className={`space-y-8 transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-
               {/* Main Heading */}
               <div className="space-y-6 max-w-4xl mx-auto">
                 <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
@@ -211,7 +313,7 @@ export default function Categories() {
                   {/* Glow Effect on Hover */}
                   <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 to-cyan-500/0 group-hover:from-blue-500/5 group-hover:to-cyan-500/5 transition-all duration-500 opacity-0 group-hover:opacity-100"></div>
                   
-                  {/* Content Section - Takes available space */}
+                  {/* Content Section */}
                   <div className="flex-1">
                     {/* Badge with Icon */}
                     <div className="relative flex items-center justify-between mb-4">
@@ -229,17 +331,15 @@ export default function Categories() {
                         <div className="relative w-55 h-20 rounded-lg overflow-hidden bg-gray-50 border border-gray-200/60 flex items-center justify-center p-1">
                           <Image 
                             src={card.vendorLogo}
-                            alt={`${card.vendor} logo`}
+                            alt={`${card.provider} logo`}
                             width={40}
                             height={40}
                             className="object-contain w-full h-full"
                             onError={(e) => {
-                              // Fallback if image fails to load
                               e.target.style.display = 'none';
                             }}
                           />
                         </div>
-                        <p className="text-gray-500 text-sm font-semibold">{card.vendor}</p>
                       </div>
                     </div>
 
@@ -259,7 +359,7 @@ export default function Categories() {
                     </div>
                   </div>
 
-                  {/* CTA Button - Strictly at bottom with consistent alignment */}
+                  {/* CTA Button */}
                   <div className="mt-8 pt-4 border-t border-gray-200/60">
                     <button 
                       onClick={handleOpenQuestionnaire}
@@ -275,7 +375,7 @@ export default function Categories() {
             </div>
           </div>
 
-          {/* Bottom CTA - Removed Watch Demo button */}
+          {/* Bottom CTA */}
           <div className={`text-center mt-16 transition-all duration-700 delay-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-200/60 shadow-lg max-w-2xl mx-auto relative overflow-hidden">
               {/* Background Accent */}
@@ -299,12 +399,12 @@ export default function Categories() {
         </div>
       </section>
 
-      {/* Questionnaire Popup - Modified to match CRM version (no Next button, only Back) */}
+      {/* Questionnaire Popup with Web3Forms Integration */}
       {showQuestionnaire && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full mx-auto transform transition-all duration-300 scale-100">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full mx-auto transform transition-all duration-300 scale-100 max-h-[90vh] overflow-y-auto">
             {/* Header */}
-            <div className="flex items-center justify-between p-6 border-b border-gray-200">
+            <div className="flex items-center justify-between p-6 border-b border-gray-200 sticky top-0 bg-white z-10">
               <h3 className="text-xl font-bold text-gray-900">
                 {isCompleted ? "Thank You!" : "Help Us Find Your Perfect Phone System"}
               </h3>
@@ -317,16 +417,16 @@ export default function Categories() {
             </div>
 
             {/* Progress Bar */}
-            {!isCompleted && (
+            {!isCompleted && currentQuestion <= questions.length && (
               <div className="px-6 pt-4">
                 <div className="w-full bg-gray-200 rounded-full h-2">
                   <div 
                     className="bg-gradient-to-r from-blue-600 to-cyan-600 h-2 rounded-full transition-all duration-500"
-                    style={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}
+                    style={{ width: `${((currentQuestion + 1) / (questions.length + 1)) * 100}%` }}
                   ></div>
                 </div>
                 <p className="text-sm text-gray-500 mt-2 text-right">
-                  Question {currentQuestion + 1} of {questions.length}
+                  Step {currentQuestion + 1} of {questions.length + 1}
                 </p>
               </div>
             )}
@@ -347,7 +447,7 @@ export default function Categories() {
                     Close
                   </button>
                 </div>
-              ) : (
+              ) : currentQuestion < questions.length ? (
                 <>
                   <h4 className="text-lg font-semibold text-gray-900 mb-6 text-center">
                     {questions[currentQuestion].question}
@@ -358,17 +458,17 @@ export default function Categories() {
                       <button
                         key={index}
                         onClick={() => handleAnswer(option)}
-                        className="w-full p-4 text-left border border-gray-200 rounded-xl hover:border-blue-500 hover:bg-blue-50/50 transition-all duration-200 hover:shadow-md"
+                        className="w-full p-4 text-left border border-gray-200 rounded-xl hover:border-blue-500 hover:bg-blue-50/50 transition-all duration-200 hover:shadow-md group"
                       >
                         <div className="flex items-center justify-between">
                           <span className="font-medium text-gray-900">{option}</span>
-                          <ArrowRight size={16} className="text-blue-500 opacity-0 group-hover:opacity-100" />
+                          <ArrowRight size={16} className="text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                         </div>
                       </button>
                     ))}
                   </div>
 
-                  {/* Back Button Only (no Next button) */}
+                  {/* Back Button */}
                   {currentQuestion > 0 && (
                     <button
                       onClick={handleBack}
@@ -378,6 +478,115 @@ export default function Categories() {
                     </button>
                   )}
                 </>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <h4 className="text-lg font-semibold text-gray-900 mb-4 text-center">
+                    Final Step: Your Contact Information
+                  </h4>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Full Name *
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                      placeholder="John Doe"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Email Address *
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                      placeholder="john@company.com"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Phone Number *
+                    </label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                      placeholder="+1 (555) 123-4567"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Company Name *
+                    </label>
+                    <input
+                      type="text"
+                      name="company"
+                      value={formData.company}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                      placeholder="Your Company Inc."
+                    />
+                  </div>
+
+                  {/* reCAPTCHA Component */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Security Verification *
+                    </label>
+                    <div className="flex justify-center">
+                      <ReCAPTCHA
+                        ref={recaptchaRef}
+                        sitekey="6LfMoeArAAAAAKqt8RPmhs-f8uq0TY51EqN4K7Gw"
+                        onChange={onRecaptchaChange}
+                        onErrored={onRecaptchaError}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Buttons */}
+                  <div className="flex gap-3 pt-4">
+                    <button
+                      type="button"
+                      onClick={handleBack}
+                      className="flex-1 py-3 text-gray-600 font-medium rounded-xl hover:bg-gray-100 transition-all duration-200 border border-gray-200"
+                    >
+                      Back
+                    </button>
+                    <button
+                      type="submit"
+                      disabled={isSubmitting || !recaptchaToken || !formData.name || !formData.email || !formData.phone || !formData.company}
+                      className="flex-1 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                          Submitting...
+                        </>
+                      ) : (
+                        <>
+                          Submit
+                          <ArrowRight size={16} />
+                        </>
+                      )}
+                    </button>
+                  </div>
+                </form>
               )}
             </div>
           </div>
