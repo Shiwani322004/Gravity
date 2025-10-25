@@ -11,30 +11,35 @@ import {
   Star,
   Shield,
   Zap,
-  X
+  X,
+  RefreshCw
 } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
-import ReCAPTCHA from 'react-google-recaptcha';
 
 export const dynamic = 'force-dynamic'
 
 export default function Categories() {
   const sectionRef = useRef(null);
-  const recaptchaRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
   const [showQuestionnaire, setShowQuestionnaire] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState({});
   const [isCompleted, setIsCompleted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [recaptchaToken, setRecaptchaToken] = useState('');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    company: ''
+    company: '',
+    zipCode: '',
+    country: 'US'
   });
+  
+  // Manual CAPTCHA State
+  const [captchaQuestion, setCaptchaQuestion] = useState({ num1: 0, num2: 0, answer: 0 });
+  const [captchaInput, setCaptchaInput] = useState('');
+  const [captchaValid, setCaptchaValid] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -51,6 +56,28 @@ export default function Categories() {
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
+
+  // Generate new CAPTCHA question
+  const generateCaptcha = () => {
+    const num1 = Math.floor(Math.random() * 10) + 1;
+    const num2 = Math.floor(Math.random() * 10) + 1;
+    const answer = num1 + num2;
+    setCaptchaQuestion({ num1, num2, answer });
+    setCaptchaInput('');
+    setCaptchaValid(false);
+  };
+
+  useEffect(() => {
+    if (showQuestionnaire) {
+      generateCaptcha();
+    }
+  }, [showQuestionnaire]);
+
+  // Verify CAPTCHA
+  const verifyCaptcha = (value) => {
+    setCaptchaInput(value);
+    setCaptchaValid(parseInt(value) === captchaQuestion.answer);
+  };
 
   const questions = [
     {
@@ -89,21 +116,29 @@ export default function Categories() {
     }
   };
 
-  const onRecaptchaChange = (token) => {
-    setRecaptchaToken(token);
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     
     // Validate required fields
-    if (!formData.name || !formData.email || !formData.phone || !formData.company) {
+    if (!formData.name || !formData.email || !formData.phone || !formData.company || !formData.zipCode) {
       alert('Please fill in all required fields');
       return;
     }
 
-    if (!recaptchaToken) {
-      alert('Please complete the reCAPTCHA verification');
+    // Validate ZIP code format based on country
+    const zipRegex = formData.country === 'US' 
+      ? /^\d{5}(-\d{4})?$/ // US: 12345 or 12345-6789
+      : /^\d{6}$/; // India: 123456
+
+    if (!zipRegex.test(formData.zipCode)) {
+      alert(formData.country === 'US' 
+        ? 'Please enter a valid US ZIP code (e.g., 12345 or 12345-6789)' 
+        : 'Please enter a valid Indian PIN code (6 digits)');
+      return;
+    }
+
+    if (!captchaValid) {
+      alert('Please complete the security verification correctly');
       return;
     }
 
@@ -116,11 +151,12 @@ export default function Categories() {
         email: formData.email,
         phone: formData.phone,
         company: formData.company,
+        zip_code: formData.zipCode,
+        country: formData.country,
         current_system: answers.currentSystem || 'Not specified',
         employee_count: answers.employeeCount || 'Not specified',
         primary_need: answers.primaryNeed || 'Not specified',
         timeline: answers.timeline || 'Not specified',
-        'g-recaptcha-response': recaptchaToken,
         subject: `New Phone System Inquiry from ${formData.name}`,
         from_name: 'Phone System Finder'
       };
@@ -162,21 +198,22 @@ export default function Categories() {
     setCurrentQuestion(0);
     setAnswers({});
     setIsCompleted(false);
-    setRecaptchaToken('');
+    setCaptchaInput('');
+    setCaptchaValid(false);
     setFormData({
       name: '',
       email: '',
       phone: '',
-      company: ''
+      company: '',
+      zipCode: '',
+      country: 'US'
     });
-    if (recaptchaRef.current) {
-      recaptchaRef.current.reset();
-    }
   };
 
   const handleOpenQuestionnaire = () => {
     resetQuestionnaire();
     setShowQuestionnaire(true);
+    generateCaptcha();
   };
 
   const handleCloseQuestionnaire = () => {
@@ -195,12 +232,6 @@ export default function Categories() {
       ...formData,
       [e.target.name]: e.target.value
     });
-  };
-
-  // Add reCAPTCHA error handling
-  const onRecaptchaError = () => {
-    console.error('reCAPTCHA failed to load');
-    setRecaptchaToken('');
   };
 
   const providerCards = [
@@ -399,7 +430,7 @@ export default function Categories() {
         </div>
       </section>
 
-      {/* Questionnaire Popup with Web3Forms Integration */}
+      {/* Questionnaire Popup with Manual CAPTCHA */}
       {showQuestionnaire && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
           <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full mx-auto transform transition-all duration-300 scale-100 max-h-[90vh] overflow-y-auto">
@@ -544,18 +575,90 @@ export default function Categories() {
                     />
                   </div>
 
-                  {/* reCAPTCHA Component */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Country *
+                    </label>
+                    <select
+                      name="country"
+                      value={formData.country}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white"
+                    >
+                      <option value="US">United States</option>
+                      <option value="IN">India</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      {formData.country === 'US' ? 'ZIP Code' : 'PIN Code'} *
+                    </label>
+                    <input
+                      type="text"
+                      name="zipCode"
+                      value={formData.zipCode}
+                      onChange={handleInputChange}
+                      required
+                      maxLength={formData.country === 'US' ? 10 : 6}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                      placeholder={formData.country === 'US' ? '12345 or 12345-6789' : '123456'}
+                    />
+                    <p className="text-xs text-gray-500 mt-1">
+                      {formData.country === 'US' 
+                        ? 'Enter 5 or 9 digit ZIP code (e.g., 12345 or 12345-6789)' 
+                        : 'Enter 6 digit PIN code (e.g., 411001)'}
+                    </p>
+                  </div>
+
+                  {/* Manual CAPTCHA */}
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Security Verification *
                     </label>
-                    <div className="flex justify-center">
-                      <ReCAPTCHA
-                        ref={recaptchaRef}
-                        sitekey="6LfMoeArAAAAAKqt8RPmhs-f8uq0TY51EqN4K7Gw"
-                        onChange={onRecaptchaChange}
-                        onErrored={onRecaptchaError}
+                    <div className="bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-200 rounded-xl p-4">
+                      <div className="flex items-center justify-between mb-3">
+                        <div className="flex items-center gap-3">
+                          <Shield className="text-blue-600" size={24} />
+                          <span className="text-lg font-bold text-gray-900">
+                            {captchaQuestion.num1} + {captchaQuestion.num2} = ?
+                          </span>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={generateCaptcha}
+                          className="p-2 hover:bg-white/50 rounded-lg transition-colors duration-200"
+                          title="Generate new question"
+                        >
+                          <RefreshCw size={18} className="text-blue-600" />
+                        </button>
+                      </div>
+                      <input
+                        type="number"
+                        value={captchaInput}
+                        onChange={(e) => verifyCaptcha(e.target.value)}
+                        required
+                        className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 transition-all duration-200 ${
+                          captchaInput && (captchaValid ? 'border-green-500 bg-green-50' : 'border-red-500 bg-red-50')
+                        }`}
+                        placeholder="Enter your answer"
                       />
+                      {captchaInput && (
+                        <div className={`mt-2 text-sm flex items-center gap-2 ${captchaValid ? 'text-green-600' : 'text-red-600'}`}>
+                          {captchaValid ? (
+                            <>
+                              <CheckCircle size={16} />
+                              <span>Correct!</span>
+                            </>
+                          ) : (
+                            <>
+                              <X size={16} />
+                              <span>Incorrect, please try again</span>
+                            </>
+                          )}
+                        </div>
+                      )}
                     </div>
                   </div>
 
@@ -570,7 +673,7 @@ export default function Categories() {
                     </button>
                     <button
                       type="submit"
-                      disabled={isSubmitting || !recaptchaToken || !formData.name || !formData.email || !formData.phone || !formData.company}
+                      disabled={isSubmitting || !captchaValid || !formData.name || !formData.email || !formData.phone || !formData.company || !formData.zipCode}
                       className="flex-1 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                     >
                       {isSubmitting ? (
