@@ -28,14 +28,42 @@ const LogoScroll = () => {
   }, []);
 
   const logos = [
-    { name: 'QuickBooks', imageUrl: '/images/quick.jpg' }, // Adjusted order to match the image
-    { name: 'OnPay', imageUrl: '/images/onpay.jpg' },
-    { name: 'BambooHR', imageUrl: '/images/bamboo.jpg' },
-    { name: 'Samsara', imageUrl: '/images/samsara.jpg' },
-    { name: 'Teletrac', imageUrl: '/images/teletrac.jpg' }, // Adjusted order to match the image
-    { name: 'Azuga', imageUrl: '/images/azuga.jpg' },
-    // You can add more logos here if needed for the seamless scroll effect,
-    // ensuring they are duplicated below to create the continuous loop.
+    { name: 'Ooma', imageUrl: '/images/ooma.png' },
+    { name: 'Ringcentral', imageUrl: '/images/ringcentral.png' },
+    { name: 'Zoom', imageUrl: '/images/zoom.png' },
+    { name: 'Dialpad', imageUrl: '/images/dialpad.png' },
+    { name: 'Vonage', imageUrl: '/images/vonage.png' },
+    { name: 'Zoho', imageUrl: '/images/zoho.png' },
+    { name: 'Creatio', imageUrl: '/images/creatio.png' },
+    { name: 'HubSpot', imageUrl: '/images/hubspot.png' },
+    { name: 'Honeybook', imageUrl: '/images/honeybook.png' },
+    { name: 'Pipedrive', imageUrl: '/images/pipedrive.png' },
+    { name: 'Tableau', imageUrl: '/images/tableau.png' },
+    { name: 'Sisense', imageUrl: '/images/sisense.png' },
+    { name: 'Qlik', imageUrl: '/images/qlikicon.png' },
+    { name: 'Zoho Analytics', imageUrl: '/images/zoho copy.png' },
+    { name: 'ActivTrak', imageUrl: '/images/activtrak.png' },
+    { name: 'GoTo', imageUrl: '/images/goto.png' },
+    { name: 'RingCentral', imageUrl: '/images/ringcentral.png' },
+    { name: 'GoAnswer', imageUrl: '/images/goan.png' },
+    { name: 'Twilio', imageUrl: '/images/twilio.png' },
+    { name: 'SalesCloud', imageUrl: '/images/cloud.png' },
+    { name: 'ADP', imageUrl: '/images/adp.png' },
+    { name: 'Zohopayroll', imageUrl: '/images/zopayroll.png' },
+    { name: 'Bamboo', imageUrl: '/images/bam.png' },
+    { name: 'Onpay', imageUrl: '/images/onpay.png' },
+    { name: 'Quickbooks', imageUrl: '/images/quickbooks.png' },
+    // { name: 'Meta', imageUrl: '/images/meta.png' },
+    // { name: 'Twitter', imageUrl: '/images/twitter.png' },
+    // { name: 'LinkedIn', imageUrl: '/images/linkedin.png' },
+    // { name: 'Instagram', imageUrl: '/images/instagram.png' },
+    // { name: 'YouTube', imageUrl: '/images/youtube.png' },
+    // { name: 'GitHub', imageUrl: '/images/github.png' },
+    // { name: 'Stripe', imageUrl: '/images/stripe.png' },
+    // { name: 'PayPal', imageUrl: '/images/paypal.png' },
+    // { name: 'Square', imageUrl: '/images/square.png' },
+    // { name: 'Airbnb', imageUrl: '/images/airbnb.png' },
+    // Add more logos as needed
   ];
 
   // Duplicate logos to create the continuous scroll effect
@@ -50,19 +78,18 @@ const LogoScroll = () => {
           <p className="text-lg sm:text-xl text-black">We cater to some renowned brands</p>
         </div>
 
-        <div className="relative w-full overflow-hidden bg-white"> {/* Changed background to white for the scroll area */}
+        <div className="relative w-full overflow-hidden bg-white">
           <div
             ref={scrollRef}
-            className="flex items-center whitespace-nowrap" // Removed bg-darkGreen here
+            className="flex items-center whitespace-nowrap"
             style={{ width: 'fit-content' }}
           >
             {allLogos.map((logo, index) => (
               <div
                 key={`${logo.name}-${index}`}
-                className="mx-4 sm:mx-6 md:mx-12 lg:mx-10 inline-flex flex-col items-center justify-center"
+                className="mx-4 sm:mx-6 md:mx-8 lg:mx-10 inline-flex flex-col items-center justify-center"
               >
-                {/* Changed background to white for the logo container */}
-                <div className="flex items-center justify-center h-20 min-w-[150px] md:min-w-[180px] rounded-full p-3 sm:p-4 bg-white">
+                <div className="flex items-center justify-center h-20 min-w-[120px] sm:min-w-[140px] md:min-w-[150px] lg:min-w-[160px] rounded-full p-3 sm:p-4 bg-white">
                   <Image
                     src={logo.imageUrl}
                     alt={logo.name}
