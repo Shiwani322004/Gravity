@@ -64,42 +64,7 @@ export default function Clients({ onOpenQuestionnaire }) {
         </div>
       </section>
 
-      {/* Final CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-cyan-600">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-white mb-6">
-            Ready to Transform Your Business with BI?
-          </h2>
-          <p className="text-xl text-blue-100 mb-10 max-w-3xl mx-auto">
-            Join thousands of successful companies that have optimized their operations, increased ROI, and made data-driven decisions with the right BI platform.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button
-              onClick={onOpenQuestionnaire}
-              className="px-8 py-4 bg-white text-blue-600 font-semibold rounded-2xl hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 group"
-            >
-              <span className="text-lg">Get Started Now</span>
-              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
-            </button>
-            <button className="px-8 py-4 border-2 border-white text-white font-semibold rounded-2xl hover:bg-white hover:text-blue-600 transition-all duration-300">
-              Schedule Demo
-            </button>
-          </div>
-          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-2xl mx-auto">
-            {[
-              { icon: <CheckCircle size={24} />, text: "No Credit Card Required" },
-              { icon: <Shield size={24} />, text: "100% Secure" },
-              { icon: <Zap size={24} />, text: "Instant Matching" },
-              { icon: <Users size={24} />, text: "Expert Support" }
-            ].map((feature, index) => (
-              <div key={index} className="flex items-center gap-3 text-white">
-                {feature.icon}
-                <span className="text-sm">{feature.text}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
     </>
   );
 }
