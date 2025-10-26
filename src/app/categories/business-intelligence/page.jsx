@@ -38,6 +38,9 @@ export default function BusinessIntelligence() {
   // Auto-popup timer state
   const [hasAutoPopupShown, setHasAutoPopupShown] = useState(false);
 
+  // Read More state
+  const [showMore, setShowMore] = useState(false);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -131,14 +134,14 @@ export default function BusinessIntelligence() {
       buttonText: "Compare Quotes",
     },
     {
-      provider: "ActivTrak",
+      provider: "IBM Cognos Analytics",
       vendorLogo: "/images/Activtrak.png",
       price: "Custom pricing available",
       features: [
-        "Workforce analytics",
-        "Predictive insights",
-        "Productivity monitoring",
-        "Hybrid workplace support"
+        "Advanced reporting capabilities",
+        "AI-powered insights",
+        "Enterprise-grade security",
+        "Comprehensive data integration"
       ],
       buttonText: "Compare Quotes",
     }
@@ -318,35 +321,83 @@ export default function BusinessIntelligence() {
           <div className="text-center mb-16">
             <div className={`space-y-8 transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
               
-              {/* Main Heading */}
-              <div className="space-y-6 max-w-4xl mx-auto">
-                <h1 className="text-5xl lg:text-7xl font-bold text-gray-900 leading-tight">
-                  <span className={`block transition-all duration-700 delay-300 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                    Find Your Perfect
-                  </span>
-                  <span className={`block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-600 transition-all duration-700 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                    BI Platform
-                  </span>
-                </h1>
-                <p className={`text-xl lg:text-2xl text-gray-600 max-w-3xl mx-auto transition-all duration-700 delay-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                  Compare the best business intelligence software of 2025. Get matched with perfect solutions for your data analytics, visualization, and reporting needs.
-                </p>
-              </div>
+             
+             
+            </div>
+          </div>
 
-              
-              {/* CTA Buttons */}
-              <div className={`flex flex-col sm:flex-row gap-4 justify-center pt-8 transition-all duration-700 delay-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                <button
-                  onClick={handleOpenQuestionnaire}
-                  className="px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-2xl hover:shadow-2xl hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-3 group"
-                >
-                  <span className="text-lg">Get Free Quotes</span>
-                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
-                </button>
-                <button className="px-8 py-4 border-2 border-gray-300 text-gray-700 font-semibold rounded-2xl hover:border-blue-500 hover:text-blue-600 transition-all duration-300 transform hover:-translate-y-1">
-                  View All Features
-                </button>
-              </div>
+          {/* Professional Content Section - Plain Page Style */}
+          <div className={`max-w-4xl mx-auto mb-16 transition-all duration-1000 delay-600 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+            <h2 className="text-4xl font-bold text-gray-900 mb-8 text-center">
+              What is Business Intelligence?
+            </h2>
+            
+            <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
+              <p>
+                <strong>Business intelligence (BI) software</strong> is any application that collects and processes large amounts of unstructured data from internal and external systems and prepares data for analysis. The software is generally used for querying and reporting complex business data. The ultimate goal of BI software is to drive better business decisions, increase revenue, improve operational efficiency, and gain competitive advantages.
+              </p>
+
+              <p>
+                Business intelligence tools gather data from various sources, such as databases, spreadsheets, and other business applications, and transform it into an understandable format for analysis. The software performs tasks such as data mining, forecasting, and reporting, as well as visualizing data through charts and graphs, allowing users to identify data trends and patterns. BI software also comes with reporting capabilities so users can create custom reports and presentations shareable with stakeholders.
+              </p>
+
+              {!showMore ? (
+                <div className="text-center pt-6">
+                  <button
+                    onClick={() => setShowMore(true)}
+                    className="px-8 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5"
+                  >
+                    Read More About BI Software
+                  </button>
+                </div>
+              ) : (
+                <div className="space-y-6 pt-4">
+                  <h3 className="text-2xl font-bold text-gray-900 mt-8 mb-6">
+                    My Top Picks for Business Intelligence Software
+                  </h3>
+                  
+                  <div className="space-y-4">
+                    <div className="flex items-start gap-3">
+                      <div className="w-2 h-2 bg-blue-500 rounded-full mt-3 flex-shrink-0"></div>
+                      <div>
+                        <strong className="text-gray-900">Tableau:</strong> Best for data visualization - Known for quick, attractive data visualization and drag-and-drop interface good for beginners.
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start gap-3">
+                      <div className="w-2 h-2 bg-blue-500 rounded-full mt-3 flex-shrink-0"></div>
+                      <div>
+                        <strong className="text-gray-900">Sisense:</strong> Best for embedded analytics - Excellent for embedded analytics with AI-powered Ask Data feature and In-Chip technology.
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start gap-3">
+                      <div className="w-2 h-2 bg-blue-500 rounded-full mt-3 flex-shrink-0"></div>
+                      <div>
+                        <strong className="text-gray-900">Qlik Sense:</strong> Best mobile BI software - Offers powerful visualization tools and associative data model with quality mobile BI capabilities.
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start gap-3">
+                      <div className="w-2 h-2 bg-blue-500 rounded-full mt-3 flex-shrink-0"></div>
+                      <div>
+                        <strong className="text-gray-900">Zoho Analytics:</strong> Best self-service BI software - Features Generative AI-Infused BI with top-notch collaboration tools and competitive pricing.
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start gap-3">
+                      <div className="w-2 h-2 bg-blue-500 rounded-full mt-3 flex-shrink-0"></div>
+                      <div>
+                        <strong className="text-gray-900">IBM Cognos Analytics:</strong> Best for reporting - Provides advanced reporting capabilities with AI-powered insights and enterprise-grade security.
+                      </div>
+                    </div>
+                  </div>
+
+                  <p className="text-lg font-semibold text-gray-900 mt-8 pt-6 border-t border-gray-200">
+                    Check out my picks for the top business intelligence software below. Compare features, pricing, and get personalized recommendations for your business needs.
+                  </p>
+                </div>
+              )}
             </div>
           </div>
 
@@ -362,9 +413,23 @@ export default function BusinessIntelligence() {
                   <div className="flex-1">
                     {/* Provider Logo */}
                     <div className="flex justify-center mb-6">
-                      <div className="relative w-50 h-25 rounded-2xl bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-100 flex items-center justify-center p-3 group-hover:scale-110 transition-transform duration-300">
-                        <div className="text-2xl font-bold text-blue-600">
-                          {card.provider.charAt(0)}
+                      <div className="relative w-full h-20 rounded-xl bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-100 flex items-center justify-center p-4 group-hover:scale-105 transition-transform duration-300">
+                        <div className="relative w-full h-full flex items-center justify-center">
+                          <Image 
+                            src={card.vendorLogo}
+                            alt={`${card.provider} logo`}
+                            width={80}
+                            height={40}
+                            className="object-contain w-full h-full"
+                            onError={(e) => {
+                              e.target.style.display = 'none';
+                              e.target.nextSibling.style.display = 'block';
+                            }}
+                          />
+                          {/* Fallback text - hidden by default */}
+                          <div className="hidden text-2xl font-bold text-blue-600">
+                            {card.provider}
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -385,7 +450,7 @@ export default function BusinessIntelligence() {
                     <div className="space-y-3 mb-6">
                       {card.features.map((feature, featureIndex) => (
                         <div key={featureIndex} className="flex items-center gap-3 text-gray-700 group/feature">
-                          <div className="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0 group-hover/feature:scale-150 transition-transform duration-300"></div>
+                          <CheckCircle size={14} className="text-green-500 flex-shrink-0 group-hover/feature:scale-110 transition-transform duration-300" />
                           <span className="text-sm leading-tight">{feature}</span>
                         </div>
                       ))}
