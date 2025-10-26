@@ -4,7 +4,7 @@ import CRMHeroSection from './CRMHeroSection';
 import CRMAnalysisSection from './CRMAnalysisSection';
 import CRMFeaturesSection from './CRMFeaturesSection';
 import CRMAutomationSection from './CRMAutomationSection';
-import CRMIntegrationsSection from './CRMIntegrationsSection';
+import LogoScroll from '@/app/services/lead-generation/LogoScroll';
 import CRMPricingSection from './CRMPricingSection';
 import CRMTrustedSection from './CRMTrustedSection';
 
@@ -22,7 +22,7 @@ export default function CRMPage() {
       <CRMAnalysisSection />
       <CRMFeaturesSection />
       <CRMAutomationSection />
-      <CRMIntegrationsSection />
+      <LogoScroll />
       <CRMPricingSection />
       <CRMTrustedSection />
     </div>
