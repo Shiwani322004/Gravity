@@ -6,7 +6,20 @@ import {
   CheckCircle,
   X,
   RefreshCw,
-  Shield
+  Shield,
+  ChevronLeft,
+  ChevronRight,
+  TrendingUp,
+  Users,
+  Zap,
+  BarChart,
+  PieChart,
+  LineChart,
+  Target,
+  Database,
+  Cpu,
+  Cloud,
+  Activity
 } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
@@ -40,6 +53,50 @@ export default function BusinessIntelligence() {
 
   // Read More state
   const [showMore, setShowMore] = useState(false);
+
+  // Card swiper state
+  const [currentCardIndex, setCurrentCardIndex] = useState(0);
+
+  // Graph animation state
+  const [graphData, setGraphData] = useState([30, 50, 70, 90, 60]);
+  const [graphLabels] = useState(['Q1', 'Q2', 'Q3', 'Q4', 'Q5']);
+  const [graphAnimation, setGraphAnimation] = useState(false);
+
+  // Stats counter state
+  const [stats, setStats] = useState({
+    companies: 0,
+    efficiency: 0,
+    roi: 0
+  });
+
+  // Vertical bar graph data
+  const [verticalGraphData, setVerticalGraphData] = useState([
+    { label: 'Data Processing', value: 0, color: 'from-blue-500 to-cyan-500' },
+    { label: 'Real-time Analytics', value: 0, color: 'from-green-500 to-emerald-500' },
+    { label: 'AI Insights', value: 0, color: 'from-purple-500 to-pink-500' },
+    { label: 'Report Generation', value: 0, color: 'from-orange-500 to-red-500' },
+    { label: 'Data Integration', value: 0, color: 'from-indigo-500 to-blue-500' }
+  ]);
+
+  // Moving analytics data
+  const [movingData, setMovingData] = useState([
+    { id: 1, label: 'Sales Data', value: 75, speed: 15 },
+    { id: 2, label: 'Customer Insights', value: 60, speed: 20 },
+    { id: 3, label: 'Operational Metrics', value: 85, speed: 12 },
+    { id: 4, label: 'Financial Reports', value: 45, speed: 25 },
+    { id: 5, label: 'Market Trends', value: 70, speed: 18 },
+    { id: 6, label: 'Performance KPIs', value: 90, speed: 10 }
+  ]);
+
+  // Sine wave data
+  const [sineWavePoints, setSineWavePoints] = useState([]);
+  const [animationPhase, setAnimationPhase] = useState(0);
+  const [sineData, setSineData] = useState([
+    { label: 'Seasonal Trends', value: 0, frequency: 2 },
+    { label: 'Market Cycles', value: 0, frequency: 1.5 },
+    { label: 'User Activity', value: 0, frequency: 3 },
+    { label: 'Revenue Patterns', value: 0, frequency: 1 }
+  ]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -84,6 +141,88 @@ export default function BusinessIntelligence() {
     setCaptchaValid(parseInt(value) === captchaQuestion.answer);
   };
 
+  // Animate stats counter
+  useEffect(() => {
+    if (isVisible) {
+      const timer = setTimeout(() => {
+        setStats({
+          companies: 5000,
+          efficiency: 45,
+          roi: 127
+        });
+      }, 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [isVisible]);
+
+  // Animate graph
+  useEffect(() => {
+    if (isVisible) {
+      const timer = setTimeout(() => {
+        setGraphAnimation(true);
+      }, 1500);
+      return () => clearTimeout(timer);
+    }
+  }, [isVisible]);
+
+  // Animate vertical bar graph
+  useEffect(() => {
+    if (isVisible) {
+      const timer = setTimeout(() => {
+        setVerticalGraphData([
+          { label: 'Data Processing', value: 85, color: 'from-blue-500 to-cyan-500' },
+          { label: 'Real-time Analytics', value: 72, color: 'from-green-500 to-emerald-500' },
+          { label: 'AI Insights', value: 68, color: 'from-purple-500 to-pink-500' },
+          { label: 'Report Generation', value: 91, color: 'from-orange-500 to-red-500' },
+          { label: 'Data Integration', value: 78, color: 'from-indigo-500 to-blue-500' }
+        ]);
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [isVisible]);
+
+  // Moving analytics animation
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setMovingData(prev => 
+        prev.map(item => ({
+          ...item,
+          value: Math.min(100, Math.max(10, item.value + (Math.random() * 10 - 5)))
+        }))
+      );
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // Sine wave animation
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setAnimationPhase(prev => (prev + 0.05) % (2 * Math.PI));
+      
+      // Generate sine wave points
+      const points = [];
+      const width = 600;
+      const height = 200;
+      const amplitude = 80;
+      const frequency = 0.02;
+      
+      for (let x = 0; x < width; x += 10) {
+        const y = height / 2 + amplitude * Math.sin(frequency * x + animationPhase);
+        points.push({ x, y });
+      }
+      setSineWavePoints(points);
+
+      // Update sine data values
+      setSineData(prev => prev.map(item => ({
+        ...item,
+        value: Math.floor(50 + 40 * Math.sin(animationPhase * item.frequency))
+      })));
+    }, 50);
+
+    return () => clearInterval(interval);
+  }, [animationPhase]);
+
   const providerCards = [
     {
       provider: "Tableau",
@@ -96,6 +235,18 @@ export default function BusinessIntelligence() {
         "Tableau Pulse AI insights"
       ],
       buttonText: "Compare Quotes",
+      pros: [
+        "Excellent visualization capabilities",
+        "User-friendly interface",
+        "Strong community support",
+        "Mobile app available"
+      ],
+      cons: [
+        "Higher pricing tier",
+        "Steeper learning curve for advanced features",
+        "Limited customization options"
+      ],
+      description: "Tableau is a powerful data visualization tool that helps businesses see and understand their data through interactive dashboards."
     },
     {
       provider: "Sisense",
@@ -108,6 +259,18 @@ export default function BusinessIntelligence() {
         "Handles large datasets well"
       ],
       buttonText: "Compare Quotes",
+      pros: [
+        "Excellent for embedded analytics",
+        "AI-powered insights",
+        "Handles large datasets efficiently",
+        "Good customer support"
+      ],
+      cons: [
+        "Custom pricing can be expensive",
+        "Complex setup process",
+        "Limited out-of-the-box templates"
+      ],
+      description: "Sisense is an analytics platform that simplifies complex data and transforms it into actionable insights for businesses."
     },
     {
       provider: "Qlik Sense",
@@ -120,6 +283,18 @@ export default function BusinessIntelligence() {
         "Quality Mobile BI"
       ],
       buttonText: "Compare Quotes",
+      pros: [
+        "Affordable pricing",
+        "Associative data model",
+        "Good mobile experience",
+        "Self-service capabilities"
+      ],
+      cons: [
+        "Limited advanced analytics",
+        "UI can be confusing for beginners",
+        "Slower performance with large datasets"
+      ],
+      description: "Qlik Sense offers associative analytics that allows users to explore data freely without predefined queries or paths."
     },
     {
       provider: "Zoho Analytics",
@@ -132,6 +307,18 @@ export default function BusinessIntelligence() {
         "Competitive pricing"
       ],
       buttonText: "Compare Quotes",
+      pros: [
+        "Most affordable option",
+        "AI-powered insights",
+        "Excellent collaboration features",
+        "Easy integration with Zoho ecosystem"
+      ],
+      cons: [
+        "Limited advanced visualization",
+        "Less enterprise-focused",
+        "Smaller community and resources"
+      ],
+      description: "Zoho Analytics is a self-service BI and analytics platform that helps users create insightful dashboards and reports."
     },
     {
       provider: "IBM Cognos Analytics",
@@ -144,6 +331,18 @@ export default function BusinessIntelligence() {
         "Comprehensive data integration"
       ],
       buttonText: "Compare Quotes",
+      pros: [
+        "Enterprise-grade security",
+        "Advanced reporting capabilities",
+        "AI-powered insights",
+        "Comprehensive data integration"
+      ],
+      cons: [
+        "Complex implementation",
+        "Higher cost for smaller businesses",
+        "Steep learning curve"
+      ],
+      description: "IBM Cognos Analytics is an AI-fueled business intelligence platform that supports the entire analytics cycle."
     }
   ];
 
@@ -300,6 +499,19 @@ export default function BusinessIntelligence() {
       ...formData,
       [e.target.name]: e.target.value
     });
+  };
+
+  // Card swiper navigation
+  const nextCard = () => {
+    setCurrentCardIndex((prevIndex) => 
+      prevIndex === providerCards.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const prevCard = () => {
+    setCurrentCardIndex((prevIndex) => 
+      prevIndex === 0 ? providerCards.length - 1 : prevIndex - 1
+    );
   };
 
   return (
@@ -481,34 +693,666 @@ export default function BusinessIntelligence() {
             </div>
           </div>
 
-          {/* Bottom CTA Section */}
-          <div className={`text-center transition-all duration-700 delay-1200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-            <div className="bg-gradient-to-r from-blue-600 to-cyan-600 rounded-3xl p-12 text-white relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-32 translate-x-32"></div>
-              <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/10 rounded-full translate-y-32 -translate-x-32"></div>
-              
-              <div className="relative z-10">
-                <h3 className="text-3xl font-bold mb-4">Ready to Transform Your Data Analytics?</h3>
-                <p className="text-blue-100 text-lg mb-8 max-w-2xl mx-auto">
-                  Join thousands of businesses that have found their perfect BI platform match. Get personalized quotes from top providers in minutes.
+         
+        </div>
+      </section>
+
+      {/* Section 2: Detailed Card Swiper */}
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Compare <span className="text-[#007bff]">Top BI Platforms</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Detailed comparison of features, pros, and cons to help you make the right choice for your business
+            </p>
+          </div>
+
+          <div className="relative max-w-4xl mx-auto">
+            {/* Card Container */}
+            <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
+              <div className="p-8">
+                {/* Card Header */}
+                <div className="flex items-center justify-between mb-8">
+                  <div className="flex items-center gap-4">
+                    <div className="w-16 h-16 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl flex items-center justify-center border border-blue-100">
+                      <div className="text-2xl font-bold text-blue-600">
+                        {providerCards[currentCardIndex].provider.charAt(0)}
+                      </div>
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold text-gray-900">
+                        {providerCards[currentCardIndex].provider}
+                      </h3>
+                      <p className="text-lg text-blue-600 font-semibold">
+                        {providerCards[currentCardIndex].price}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={prevCard}
+                      className="p-3 rounded-xl bg-gray-100 hover:bg-blue-100 text-gray-600 hover:text-blue-600 transition-all duration-300"
+                    >
+                      <ChevronLeft size={20} />
+                    </button>
+                    <button
+                      onClick={nextCard}
+                      className="p-3 rounded-xl bg-gray-100 hover:bg-blue-100 text-gray-600 hover:text-blue-600 transition-all duration-300"
+                    >
+                      <ChevronRight size={20} />
+                    </button>
+                  </div>
+                </div>
+
+                {/* Description */}
+                <p className="text-gray-600 mb-8 text-lg">
+                  {providerCards[currentCardIndex].description}
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <button
+
+                {/* Content Grid */}
+                <div className="grid md:grid-cols-2 gap-8">
+                  {/* Pros */}
+                  <div>
+                    <h4 className="text-lg font-semibold text-green-600 mb-4 flex items-center gap-2">
+                      <CheckCircle size={20} />
+                      Pros
+                    </h4>
+                    <ul className="space-y-3">
+                      {providerCards[currentCardIndex].pros.map((pro, index) => (
+                        <li key={index} className="flex items-start gap-3 text-gray-700">
+                          <div className="w-2 h-2 bg-green-500 rounded-full mt=2 flex-shrink-0"></div>
+                          <span>{pro}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Cons */}
+                  <div>
+                    <h4 className="text-lg font-semibold text-red-600 mb-4 flex items-center gap-2">
+                      <X size={20} />
+                      Cons
+                    </h4>
+                    <ul className="space-y-3">
+                      {providerCards[currentCardIndex].cons.map((con, index) => (
+                        <li key={index} className="flex items-start gap-3 text-gray-700">
+                          <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
+                          <span>{con}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Features */}
+                <div className="mt-8 pt-8 border-t border-gray-200">
+                  <h4 className="text-lg font-semibold text-blue-600 mb-4 flex items-center gap-2">
+                    <Zap size={20} />
+                    Key Features
+                  </h4>
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    {providerCards[currentCardIndex].features.map((feature, index) => (
+                      <div key={index} className="flex items-center gap-3 p-3 bg-blue-50 rounded-lg">
+                        <CheckCircle size={16} className="text-green-500 flex-shrink-0" />
+                        <span className="text-gray-700">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* CTA Button */}
+                <div className="mt-8 pt-6 border-t border-gray-200">
+                  <button 
                     onClick={handleOpenQuestionnaire}
-                    className="px-8 py-4 bg-white text-blue-600 font-semibold rounded-2xl hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 group"
+                    className="w-full py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-2 group"
                   >
-                    <span className="text-lg">Start Free Comparison</span>
+                    <span className="text-lg">Get Personalized Quote for {providerCards[currentCardIndex].provider}</span>
                     <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
                   </button>
-                  <button className="px-8 py-4 border-2 border-white text-white font-semibold rounded-2xl hover:bg-white hover:text-blue-600 transition-all duration-300">
-                    Talk to Expert
+                </div>
+              </div>
+            </div>
+
+            {/* Navigation Dots */}
+            <div className="flex justify-center mt-8 gap-2">
+              {providerCards.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentCardIndex(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === currentCardIndex ? 'bg-blue-600 scale-125' : 'bg-gray-300 hover:bg-gray-400'
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 3: Interactive Graph */}
+      <section className="py-20 bg-gradient-to-br from-blue-50 to-cyan-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Business Intelligence <span className="text-[#007bff]">Impact</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              See how BI implementation drives measurable improvements across key business metrics
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Graph Visualization */}
+            <div className="bg-white rounded-3xl shadow-2xl p-8 border border-gray-100">
+              <div className="flex items-center justify-between mb-8">
+                <h3 className="text-2xl font-bold text-gray-900">Performance Metrics</h3>
+                <div className="flex gap-2">
+                  <button className="px-4 py-2 bg-blue-100 text-blue-600 rounded-lg text-sm font-medium">
+                    Quarterly
                   </button>
+                  <button className="px-4 py-2 bg-gray-100 text-gray-600 rounded-lg text-sm font-medium">
+                    Yearly
+                  </button>
+                </div>
+              </div>
+
+              {/* Bar Graph */}
+              <div className="space-y-6">
+                {graphLabels.map((label, index) => (
+                  <div key={label} className="flex items-center gap-4">
+                    <span className="w-20 text-sm font-medium text-gray-600">{label}</span>
+                    <div className="flex-1 bg-gray-200 rounded-full h-8 overflow-hidden">
+                      <div
+                        className="h-full bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full transition-all duration-1000 ease-out"
+                        style={{
+                          width: graphAnimation ? `${graphData[index]}%` : '0%'
+                        }}
+                      ></div>
+                    </div>
+                    <span className="w-12 text-right font-semibold text-gray-900">
+                      {graphAnimation ? graphData[index] : 0}%
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-8 pt-6 border-t border-gray-200">
+                <div className="flex justify-between text-sm text-gray-600">
+                  <span>Before BI Implementation</span>
+                  <span>After BI Implementation</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Stats Section */}
+            <div className="space-y-8">
+              <div className="grid sm:grid-cols-3 gap-6">
+                <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 text-center">
+                  <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <TrendingUp className="text-blue-600" size={24} />
+                  </div>
+                  <div className="text-3xl font-bold text-gray-900 mb-2">
+                    +{stats.roi}%
+                  </div>
+                  <div className="text-gray-600">Average ROI</div>
+                </div>
+
+                <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 text-center">
+                  <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <Users className="text-green-600" size={24} />
+                  </div>
+                  <div className="text-3xl font-bold text-gray-900 mb-2">
+                    {stats.companies.toLocaleString()}+
+                  </div>
+                  <div className="text-gray-600">Businesses Served</div>
+                </div>
+
+                <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 text-center">
+                  <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <Zap className="text-purple-600" size={24} />
+                  </div>
+                  <div className="text-3xl font-bold text-gray-900 mb-2">
+                    +{stats.efficiency}%
+                  </div>
+                  <div className="text-gray-600">Operational Efficiency</div>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                  Why Businesses Choose BI
+                </h3>
+                <div className="space-y-4">
+                  <div className="flex items-start gap-4">
+                    <BarChart className="text-blue-600 mt-1 flex-shrink-0" size={20} />
+                    <div>
+                      <h4 className="font-semibold text-gray-900">Data-Driven Decisions</h4>
+                      <p className="text-gray-600">Make informed decisions based on real-time data insights</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <LineChart className="text-green-600 mt-1 flex-shrink-0" size={20} />
+                    <div>
+                      <h4 className="font-semibold text-gray-900">Predictive Analytics</h4>
+                      <p className="text-gray-600">Forecast trends and identify opportunities before competitors</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <Target className="text-purple-600 mt-1 flex-shrink-0" size={20} />
+                    <div>
+                      <h4 className="font-semibold text-gray-900">Performance Optimization</h4>
+                      <p className="text-gray-600">Streamline operations and maximize resource utilization</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Section 4: Sine Wave Graph */}
+      <section className="py-20 bg-gradient-to-br from-gray-900 to-blue-900 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4">
+              Predictive Analytics <span className="text-cyan-400">Wave Patterns</span>
+            </h2>
+            <p className="text-xl text-blue-200 max-w-3xl mx-auto">
+              Visualize cyclical business patterns and seasonal trends with real-time sine wave analytics
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Sine Wave Visualization */}
+            <div className="bg-gray-800/50 backdrop-blur-sm rounded-3xl p-8 border border-gray-700/50 shadow-2xl">
+              <div className="flex items-center justify-between mb-8">
+                <h3 className="text-2xl font-bold text-white">Real-time Pattern Analysis</h3>
+                <div className="flex items-center gap-2 text-cyan-400">
+                  <Activity size={20} />
+                  <span className="text-sm font-medium">LIVE</span>
+                </div>
+              </div>
+
+              {/* Sine Wave Container */}
+              <div className="relative h-64 bg-gray-900/50 rounded-xl border border-gray-700/50 p-4">
+                <div className="absolute inset-4">
+                  {/* Grid Lines */}
+                  <div className="absolute inset-0 opacity-20">
+                    {[...Array(5)].map((_, i) => (
+                      <div key={i} className="absolute w-full h-px bg-gray-500" style={{ top: `${i * 25}%` }}></div>
+                    ))}
+                    {[...Array(8)].map((_, i) => (
+                      <div key={i} className="absolute h-full w-px bg-gray-500" style={{ left: `${i * 12.5}%` }}></div>
+                    ))}
+                  </div>
+                  
+                  {/* Sine Wave */}
+                  <svg width="100%" height="100%" className="overflow-visible">
+                    <defs>
+                      <linearGradient id="sineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="#3b82f6" />
+                        <stop offset="50%" stopColor="#06b6d4" />
+                        <stop offset="100%" stopColor="#3b82f6" />
+                      </linearGradient>
+                    </defs>
+                    {sineWavePoints.length > 0 && (
+                      <path
+                        d={`M ${sineWavePoints.map(p => `${p.x},${p.y}`).join(' L ')}`}
+                        stroke="url(#sineGradient)"
+                        strokeWidth="3"
+                        fill="none"
+                        strokeLinecap="round"
+                      />
+                    )}
+                    
+                    {/* Animated dots along the sine wave */}
+                    {sineWavePoints.filter((_, i) => i % 6 === 0).map((point, i) => (
+                      <circle
+                        key={i}
+                        cx={point.x}
+                        cy={point.y}
+                        r="2"
+                        fill="#06b6d4"
+                        className="animate-pulse"
+                        style={{ animationDelay: `${i * 0.1}s` }}
+                      />
+                    ))}
+                  </svg>
+                  
+                  {/* Labels */}
+                  <div className="absolute bottom-0 left-0 right-0 flex justify-between text-xs text-gray-400">
+                    <span>Past</span>
+                    <span>Present</span>
+                    <span>Future</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Legend */}
+              <div className="mt-6 flex justify-center gap-6 text-sm">
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                  <span className="text-gray-300">Seasonal Trends</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 bg-cyan-500 rounded-full animate-pulse"></div>
+                  <span className="text-gray-300">Real-time Data</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Sine Data Metrics */}
+            <div className="space-y-6">
+              <h3 className="text-2xl font-bold text-white mb-6">Pattern Analysis Metrics</h3>
+              
+              {sineData.map((item, index) => (
+                <div key={index} className="bg-gray-800/30 rounded-2xl p-6 border border-gray-700/30 hover:border-cyan-500/50 transition-all duration-300 group">
+                  <div className="flex items-center justify-between mb-3">
+                    <h4 className="font-semibold text-white group-hover:text-cyan-400 transition-colors duration-300">
+                      {item.label}
+                    </h4>
+                    <span className="text-2xl font-bold text-cyan-400">
+                      {item.value}%
+                    </span>
+                  </div>
+                  <div className="w-full bg-gray-700 rounded-full h-2">
+                    <div
+                      className="h-full bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full transition-all duration-500"
+                      style={{ width: `${item.value}%` }}
+                    ></div>
+                  </div>
+                  <p className="text-sm text-gray-400 mt-2">
+                    {index === 0 && "Cyclical patterns in consumer behavior"}
+                    {index === 1 && "Market fluctuation and economic cycles"}
+                    {index === 2 && "Peak usage hours and engagement patterns"}
+                    {index === 3 && "Revenue forecasting and growth projections"}
+                  </p>
+                </div>
+              ))}
+
+              {/* Insights */}
+              <div className="bg-cyan-900/20 rounded-2xl p-6 border border-cyan-500/30">
+                <h4 className="font-semibold text-cyan-400 mb-3 flex items-center gap-2">
+                  <TrendingUp size={18} />
+                  Key Insight
+                </h4>
+                <p className="text-cyan-100 text-sm">
+                  Sine wave analysis helps identify recurring patterns in business data, enabling better forecasting and strategic planning based on historical cycles.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Additional Info Cards */}
+          <div className="grid md:grid-cols-3 gap-6 mt-12">
+            <div className="bg-gray-800/30 rounded-2xl p-6 text-center border border-gray-700/30 hover:border-blue-500/50 transition-all duration-300">
+              <div className="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <LineChart className="text-blue-400" size={24} />
+              </div>
+              <h4 className="font-semibold text-white mb-2">Pattern Recognition</h4>
+              <p className="text-gray-400 text-sm">Identify recurring business cycles and seasonal trends</p>
+            </div>
+            <div className="bg-gray-800/30 rounded-2xl p-6 text-center border border-gray-700/30 hover:border-green-500/50 transition-all duration-300">
+              <div className="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <Target className="text-green-400" size={24} />
+              </div>
+              <h4 className="font-semibold text-white mb-2">Accurate Forecasting</h4>
+              <p className="text-gray-400 text-sm">Predict future trends based on historical wave patterns</p>
+            </div>
+            <div className="bg-gray-800/30 rounded-2xl p-6 text-center border border-gray-700/30 hover:border-purple-500/50 transition-all duration-300">
+              <div className="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <Zap className="text-purple-400" size={24} />
+              </div>
+              <h4 className="font-semibold text-white mb-2">Real-time Analysis</h4>
+              <p className="text-gray-400 text-sm">Live data streaming with instant pattern detection</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 5: Vertical Bar Graphs */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              BI Platform <span className="text-[#007bff]">Capabilities</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Comprehensive analysis of key BI platform features and their performance metrics
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            {/* Vertical Bar Graph */}
+            <div className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 border border-gray-100 shadow-xl">
+              <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">
+                Feature Performance Analysis
+              </h3>
+              
+              <div className="flex items-end justify-between h-64 gap-4 px-4">
+                {verticalGraphData.map((item, index) => (
+                  <div key={index} className="flex flex-col items-center flex-1 group">
+                    <div className="relative w-full flex justify-center mb-4">
+                      <div 
+                        className={`w-12 bg-gradient-to-b ${item.color} rounded-t-lg transition-all duration-1000 ease-out group-hover:shadow-lg group-hover:scale-105`}
+                        style={{ height: `${item.value * 2}px` }}
+                      >
+                        <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs font-semibold px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                          {item.value}%
+                        </div>
+                      </div>
+                    </div>
+                    <span className="text-sm font-medium text-gray-700 text-center group-hover:text-blue-600 transition-colors duration-300">
+                      {item.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-8 grid grid-cols-2 gap-4">
+                <div className="text-center p-4 bg-blue-50 rounded-xl">
+                  <div className="text-2xl font-bold text-blue-600">92%</div>
+                  <div className="text-sm text-gray-600">User Satisfaction</div>
+                </div>
+                <div className="text-center p-4 bg-green-50 rounded-xl">
+                  <div className="text-2xl font-bold text-green-600">88%</div>
+                  <div className="text-sm text-gray-600">Implementation Success</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Feature Details */}
+            <div className="space-y-6">
+              <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <Database className="text-blue-600" size={24} />
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-semibold text-gray-900 mb-2">Advanced Data Processing</h4>
+                    <p className="text-gray-600">
+                      Handle large datasets with efficient processing algorithms and real-time data streaming capabilities.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <Cpu className="text-green-600" size={24} />
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-semibold text-gray-900 mb-2">AI-Powered Analytics</h4>
+                    <p className="text-gray-600">
+                      Leverage machine learning algorithms for predictive analytics and automated insights generation.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <Cloud className="text-purple-600" size={24} />
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-semibold text-gray-900 mb-2">Cloud Integration</h4>
+                    <p className="text-gray-600">
+                      Seamless integration with cloud platforms and scalable infrastructure for growing businesses.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 6: Moving Analytics Graph */}
+      <section className="py-20 bg-gradient-to-br from-blue-50 to-cyan-50 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Live Analytics <span className="text-[#007bff]">Dashboard</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Real-time data visualization showing dynamic business metrics and performance indicators
+            </p>
+          </div>
+
+          <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-white/20 shadow-2xl">
+            {/* Moving Analytics Bars */}
+            <div className="space-y-6 mb-8">
+              {movingData.map((item) => (
+                <div key={item.id} className="flex items-center gap-4 group">
+                  <span className="w-48 text-sm font-medium text-gray-700 group-hover:text-blue-600 transition-colors duration-300">
+                    {item.label}
+                  </span>
+                  <div className="flex-1 bg-gray-200 rounded-full h-6 overflow-hidden relative">
+                    <div
+                      className="h-full bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full transition-all duration-2000 ease-out relative"
+                      style={{ width: `${item.value}%` }}
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-pulse"></div>
+                    </div>
+                  </div>
+                  <span className="w-12 text-right font-semibold text-gray-900 group-hover:scale-110 transition-transform duration-300">
+                    {Math.round(item.value)}%
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* Stats Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 border-t border-gray-200">
+              <div className="text-center p-4 bg-blue-50 rounded-xl hover:shadow-lg transition-all duration-300">
+                <div className="text-2xl font-bold text-blue-600 mb-1">1.2M+</div>
+                <div className="text-sm text-gray-600">Data Points</div>
+              </div>
+              <div className="text-center p-4 bg-green-50 rounded-xl hover:shadow-lg transition-all duration-300">
+                <div className="text-2xl font-bold text-green-600 mb-1">99.8%</div>
+                <div className="text-sm text-gray-600">Uptime</div>
+              </div>
+              <div className="text-center p-4 bg-purple-50 rounded-xl hover:shadow-lg transition-all duration-300">
+                <div className="text-2xl font-bold text-purple-600 mb-1">2.4s</div>
+                <div className="text-sm text-gray-600">Avg. Response</div>
+              </div>
+              <div className="text-center p-4 bg-orange-50 rounded-xl hover:shadow-lg transition-all duration-300">
+                <div className="text-2xl font-bold text-orange-600 mb-1">24/7</div>
+                <div className="text-sm text-gray-600">Monitoring</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Additional Info */}
+          <div className="grid md:grid-cols-3 gap-8 mt-12">
+            <div className="text-center p-6 bg-white rounded-2xl shadow-lg border border-gray-100">
+              <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <TrendingUp className="text-blue-600" size={32} />
+              </div>
+              <h4 className="text-lg font-semibold text-gray-900 mb-2">Real-time Updates</h4>
+              <p className="text-gray-600">Live data streaming with instant visualization updates</p>
+            </div>
+            <div className="text-center p-6 bg-white rounded-2xl shadow-lg border border-gray-100">
+              <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Zap className="text-green-600" size={32} />
+              </div>
+              <h4 className="text-lg font-semibold text-gray-900 mb-2">Fast Processing</h4>
+              <p className="text-gray-600">High-speed data processing with minimal latency</p>
+            </div>
+            <div className="text-center p-6 bg-white rounded-2xl shadow-lg border border-gray-100">
+              <div className="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <BarChart3 className="text-purple-600" size={32} />
+              </div>
+              <h4 className="text-lg font-semibold text-gray-900 mb-2">Smart Analytics</h4>
+              <p className="text-gray-600">AI-powered insights and predictive analytics</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 7: Testimonials */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              What Our <span className="text-[#007bff]">Clients Say</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Discover how businesses transformed their operations with the right BI platform
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                name: "Sarah Johnson",
+                role: "CTO, TechGrowth Inc.",
+                content: "The BI platform recommendation saved us 40+ hours monthly in reporting. Our team can now focus on strategic analysis instead of data compilation.",
+                avatar: "SJ"
+              },
+              {
+                name: "Michael Chen",
+                role: "Operations Director, GlobalRetail",
+                content: "Implementation led to a 27% increase in operational efficiency. The insights helped us optimize inventory and reduce waste significantly.",
+                avatar: "MC"
+              },
+              {
+                name: "Emily Rodriguez",
+                role: "CEO, DataDriven Solutions",
+                content: "The personalized matching process connected us with the perfect BI tool. Our decision-making process is now data-backed and incredibly efficient.",
+                avatar: "ER"
+              }
+            ].map((testimonial, index) => (
+              <div key={index} className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-3xl p-8 border border-blue-100 group hover:shadow-2xl transition-all duration-500">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-semibold">
+                    {testimonial.avatar}
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-900">{testimonial.name}</h4>
+                    <p className="text-blue-600 text-sm">{testimonial.role}</p>
+                  </div>
+                </div>
+                <p className="text-gray-700 leading-relaxed">{testimonial.content}</p>
+                <div className="flex gap-1 mt-4">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <div key={star} className="text-yellow-400">
+                      ★
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      
 
       {/* Questionnaire Popup */}
       {showQuestionnaire && (
