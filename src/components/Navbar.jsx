@@ -39,7 +39,7 @@ const Navbar = () => {
     { name: 'CRM System', href: '/categories/crm-system' },
     { name: 'Business Intelligence', href: '/categories/business-intelligence' },
     { name: 'Contact Center', href: '/categories/contact-center' },
-    { name: 'ERP', href: '/categories/erp' },
+    { name: 'ERP Solutions', href: '/categories/erp-solutions' },
     { name: 'Video Conferencing', href: '/categories/video-conferencing' }
   ];
 
