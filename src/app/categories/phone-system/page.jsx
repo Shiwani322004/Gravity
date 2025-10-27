@@ -3,6 +3,7 @@ import React from 'react';
 import PhoneSystemHero from './PhoneSystemHero';
 import PhoneSystemFeatures from './PhoneSystemFeatures';
 import PlatformFeatures from './PlatformFeatures';
+import LogoScroll from '@/app/services/lead-generation/LogoScroll';
 import PhoneSystemAction from './PhoneSystemAction';
 import PhoneSystemStats from './PhoneSystemStats';
 
@@ -12,6 +13,7 @@ export default function PhoneSystemPage() {
       <PhoneSystemHero />
       <PhoneSystemFeatures />
       <PlatformFeatures />
+      <LogoScroll />
       <PhoneSystemAction />
       <PhoneSystemStats />
       
