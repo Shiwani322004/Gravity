@@ -142,11 +142,16 @@ const Navbar = () => {
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-r from-[#0a2540] via-[#007bff] to-[#0056b3] rounded-lg blur-sm opacity-20 group-hover:opacity-40 transition-all duration-700 ease-out"></div>
                   <div className="relative">
-                    {/* Replace the text logo with your image logo */}
+                    {/* Increased logo size */}
                     <img 
-                      src="/logo.png" 
+                      src="/images/4.png" 
                       alt="B2B Gravity Logo" 
-                      className="h-10 w-auto transition-all duration-300 hover:scale-105"
+                      className="h-15 w-auto object-contain max-w-[220px] transition-all duration-300 hover:scale-105"
+                      onError={(e) => {
+                        // Fallback if image doesn't load
+                        console.error('Logo failed to load');
+                        e.target.style.display = 'none';
+                      }}
                     />
                   </div>
                 </div>
@@ -257,11 +262,15 @@ const Navbar = () => {
                 onClick={handleLinkClick}
                 className="flex items-center transition-transform duration-300 hover:scale-105"
               >
-                {/* Mobile logo image */}
+                {/* Mobile logo image with larger size */}
                 <img 
                   src="/images/4.png" 
                   alt="B2B Gravity Logo" 
-                  className="h-8 w-auto"
+                  className="h-13 w-auto object-contain max-w-[180px]"
+                  onError={(e) => {
+                    console.error('Mobile logo failed to load');
+                    e.target.style.display = 'none';
+                  }}
                 />
               </a>
               <button
