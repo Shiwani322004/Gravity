@@ -88,7 +88,7 @@ export default function CallCenterManagement() {
 
   const providerCards = [
     {
-      provider: "GoTo",
+      //provider: "GoTo",
       vendorLogo: "/images/goto.png",
       price: "Starts at $19.95 per user/month",
       features: [
@@ -99,7 +99,7 @@ export default function CallCenterManagement() {
       buttonText: "Compare Quotes",
     },
     {
-      provider: "RingCentral",
+      //provider: "RingCentral",
       vendorLogo: "/images/ringcentral.png",
       price: "Starts at $20 per user/month",
       features: [
@@ -110,7 +110,7 @@ export default function CallCenterManagement() {
       buttonText: "Compare Quotes",
     },
     {
-      provider: "Goanswer",
+      //provider: "Goanswer",
       vendorLogo: "/images/goan.png",
       price: "Starts at $175/mo for 100 minutes/user",
       features: [
@@ -121,7 +121,7 @@ export default function CallCenterManagement() {
       buttonText: "Compare Quotes",
     },
     {
-      provider: "Twilio",
+      //provider: "Twilio",
       vendorLogo: "/images/twilio.png",
       price: "Starts at $15 per user/month",
       features: [
@@ -132,7 +132,7 @@ export default function CallCenterManagement() {
       buttonText: "Compare Quotes",
     },
     {
-      provider: "Salesforce",
+     //provider: "Salesforce",
       vendorLogo: "/images/cloud.png",
       price: "Starts at $25 per user/month",
       features: [
