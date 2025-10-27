@@ -109,7 +109,7 @@ export default function ERPSolutions() {
     },
     {
      // provider: "BambooHR",
-      vendorLogo: "/images/bamb.png",
+      vendorLogo: "/images/bam.png",
       price: "Custom pricing",
       features: [
         "Best for HR Integration",
