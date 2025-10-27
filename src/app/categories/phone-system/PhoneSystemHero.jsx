@@ -1,4 +1,3 @@
-
 'use client';
 
 import {
@@ -90,52 +89,37 @@ export default function Categories() {
     setCaptchaInput(value);
     setCaptchaValid(parseInt(value) === captchaQuestion.answer);
   };
+
   const providerCards = [
     {
-     
-  
       vendorLogo: "/images/ooma.png",
       price: "Starts at $19.95 per user/month",
       features: ["No Contract", "50+ Standard Features", "Virtual receptionist"],
       buttonText: "Compare Quotes",
-     
-     
     },
     {
-    
-    
       vendorLogo: "/images/ringcentral.png",
       price: "Starts at $20/user/month paid monthly",
       features: ["100 participant video meetings", "24/7 customer support", "Advanced analytics"],
       buttonText: "Compare Quotes",
-     
     },
     {
-  
-     
       vendorLogo: "/images/zoom.png",
       price: "Starts at $10 monthly per user/month",
       features: ["International Calling", "24/7 customer support", "Team Chat"],
       buttonText: "Compare Quotes",
-      
     },
     {
-     
-
       vendorLogo: "/images/dialpad.png",
       price: "Standard at $15 per user/month",
       features: ["HD calls and meetings", "Live transcripts", "Instant call summaries"],
       buttonText: "Compare Quotes",
-     
     },
     {
-
-
       vendorLogo: "/images/vonage.png",
       price: "Starts at $13.99 per user/month",
       features: ["Unlimited domestic calling", "Supports desktop and mobile apps", "Team messaging"],
       buttonText: "Compare Quotes",
-    
     }
   ];
 
@@ -294,160 +278,159 @@ export default function Categories() {
     });
   };
 
-
-
   return (
     <div>
-    {/* Phone System Hero Section */}
-<section
-  ref={sectionRef}
-  className="relative bg-gradient-to-br from-gray-50 via-white to-blue-50/30 py-16 lg:py-20 overflow-hidden"
->
-  {/* Soft Background Orbs */}
-  <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-0">
-    <div className="absolute top-20 -left-20 w-80 h-80 bg-blue-600/5 rounded-full blur-3xl"></div>
-    <div className="absolute bottom-20 -right-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
-    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-blue-400/5 rounded-full blur-3xl"></div>
-  </div>
+      {/* Phone System Hero Section */}
+      <section
+        ref={sectionRef}
+        className="relative bg-gradient-to-br from-blue-50 via-white to-cyan-50 py-16 lg:py-24 overflow-hidden"
+      >
+        {/* Background Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-cyan-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-indigo-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+        </div>
 
-  <div className="max-w-7xl mx-auto px-6 relative z-10">
-  {/* Header Section */}
-  <div className="text-left mb-16">
-    <div className={`space-y-8 transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-      {/* Main Heading */}
-      <div className="space-y-6 max-w-4xl mx-auto">
-        <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-          <span className={`block transition-all duration-700 delay-300 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-            The Best <span className="text-[#007bff]">Phone System</span> of 2025
-          </span>
-        </h1>
-      </div>
-      {/* Intro Paragraph & Read More */}
-      <div className="mt-6 text-base text-gray-700 max-w-2xl mx-auto text-left space-y-3">
-        <p>
-          At <span className="font-semibold text-[#007bff]">B2B Gravity</span>, finding the right phone solution is the key to transforming the way your team connects and collaborates. We handpick the <span className="font-semibold text-[#007bff]">best phone systems</span> for reliability, advanced VoIP capabilities, cost savings, and easy integrations to boost productivity.
-        </p>
-        <h2 className="mt-6 text-xl font-bold text-gray-900">Why Upgrade Your Phone System?</h2>
-        <p>
-          Modern phone systems go beyond just calling. Get virtual receptionists, powerful analytics, CRM integrations, and seamless mobile access—features that help your team stay agile and reachable everywhere.
-        </p>
-        <p>
-          From startups to scaling enterprises, the ideal phone system adapts to you. Enjoy dynamic call routing, automated greetings, and real-time insights to serve clients better and make informed decisions.
-        </p>
-        {!showMore && (
-          <button
-            className="mt-5 px-5 py-2 bg-gradient-to-r from-[#007bff] to-blue-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all duration-200"
-            onClick={() => setShowMore(true)}
-          >
-            MORE +
-          </button>
-        )}
-        {showMore && (
-          <>
-            <h2 className="mt-6 text-xl font-bold text-gray-900">Tailored Solutions for Your Business</h2>
-            <p className="mt-4">
-              Whether you want a robust system for a large contact center or something flexible for remote teams, <span className="font-semibold text-[#007bff]">B2B Gravity</span> guides you to solutions with clear pricing, transparent support, and flexible feature sets.
-            </p>
-            <p>
-              Discover unified communication tools, scalable integrations, and secure connectivity—all designed to simplify your workflow and reduce communication silos. Explore packages with HD voice, smart voicemail, call forwarding, video conferencing, and more.
-            </p>
-          </>
-        )}
-      </div>
-    </div>
-  </div>
-  
-  {/* Enhanced Provider Cards Grid - 5 Cards Horizontal */}
-  <div className={`transition-all duration-1000 delay-500 ${isVisible ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-10 opacity-0 scale-95'}`}>
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-      {providerCards.map((card, index) => (
-        <div
-          key={card.provider}
-          className={`group relative bg-white rounded-2xl border-2 border-gray-200/60 shadow-lg hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 transform hover:-translate-y-2 p-6 ${card.accentColor} hover:bg-blue-50/30 flex flex-col h-full`}
-       
-        >
-        
-          
-          {/* Content Section */}
-          <div className="flex-1">
-            {/* Badge with Icon */}
-           
-            {/* Provider & Vendor with Larger Logo */}
-            <div className="relative mb-4">
-              <h3 className="text-lg font-bold text-gray-900 truncate">{card.provider}</h3>
-              <div className="flex items-center gap-3 mt-2">
-                <div className="relative w-55 h-20 rounded-lg overflow-hidden bg-gray-50 border border-gray-200/60 flex items-center justify-center p-1">
-                  <Image 
-                    src={card.vendorLogo}
-                    alt={`${card.provider} logo`}
-                    width={40}
-                    height={40}
-                    className="object-contain w-full h-full"
-                    onError={(e) => {
-                      e.target.style.display = 'none';
-                    }}
-                  />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Professional Content Section */}
+          <div className={`max-w-4xl mx-auto mb-16 transition-all duration-1000 delay-600 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+            <h2 className="text-5xl font-bold mb-8 text-left">
+              <span className="text-black">The Best </span>
+              <span className="text-[#007bff]">Phone System</span>
+              <span className="text-black"> of 2025</span>
+            </h2>
+            
+            <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
+              <p>
+                At <strong className="text-[#007bff]">B2B Gravity</strong>, finding the right phone solution is the key to transforming the way your team connects and collaborates. We handpick the <strong className="text-[#007bff]">best phone systems</strong> for reliability, advanced VoIP capabilities, cost savings, and easy integrations to boost productivity.
+              </p>
+
+              <h3 className="text-2xl font-bold text-gray-900 mt-8">Why Upgrade Your Phone System?</h3>
+              <p>
+                Modern phone systems go beyond just calling. Get virtual receptionists, powerful analytics, CRM integrations, and seamless mobile access—features that help your team stay agile and reachable everywhere.
+              </p>
+              <p>
+                From startups to scaling enterprises, the ideal phone system adapts to you. Enjoy dynamic call routing, automated greetings, and real-time insights to serve clients better and make informed decisions.
+              </p>
+
+              {!showMore ? (
+                <div className="pt-4">
+                  <button
+                    onClick={() => setShowMore(true)}
+                    className="px-6 py-2 bg-gradient-to-r from-[#007bff] to-blue-600 text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300"
+                  >
+                    MORE +
+                  </button>
                 </div>
-              </div>
+              ) : (
+                <>
+                  <h3 className="text-2xl font-bold text-gray-900 mt-8">Tailored Solutions for Your Business</h3>
+                  <p>
+                    Whether you want a robust system for a large contact center or something flexible for remote teams, <strong className="text-[#007bff]">B2B Gravity</strong> guides you to solutions with clear pricing, transparent support, and flexible feature sets.
+                  </p>
+                  <p>
+                    Discover unified communication tools, scalable integrations, and secure connectivity—all designed to simplify your workflow and reduce communication silos. Explore packages with HD voice, smart voicemail, call forwarding, video conferencing, and more.
+                  </p>
+                </>
+              )}
             </div>
-            {/* Price */}
-            <div className="relative mb-4">
-              <p className="text-md font-semibold text-gray-900">{card.price}</p>
-            </div>
-            {/* Features */}
-            <div className="relative space-y-2">
-              {card.features.map((feature, featureIndex) => (
-                <div key={featureIndex} className="flex items-center gap-2 text-gray-600 group/feature">
-                  <CheckCircle size={14} className="text-green-500 flex-shrink-0 group-hover/feature:scale-110 transition-transform duration-300" />
-                  <span className="text-xs leading-tight">{feature}</span>
+          </div>
+
+          {/* Provider Cards Grid */}
+          <div className={`transition-all duration-1000 delay-1100 ${isVisible ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-10 opacity-0 scale-95'}`}>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-16">
+              {providerCards.map((card, index) => (
+                <div
+                  key={index}
+                  className="group relative bg-white rounded-3xl border-2 border-gray-100 shadow-xl hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-500 transform hover:-translate-y-3 p-6 flex flex-col h-full hover:border-blue-200"
+                >
+                  {/* Content Section */}
+                  <div className="flex-1">
+                    {/* Provider Logo */}
+                    <div className="flex justify-center mb-6">
+                      <div className="relative w-full h-20 rounded-xl bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-100 flex items-center justify-center p-4 group-hover:scale-105 transition-transform duration-300">
+                        <div className="relative w-full h-full flex items-center justify-center">
+                          <Image 
+                            src={card.vendorLogo}
+                            alt={`${card.provider} logo`}
+                            width={80}
+                            height={40}
+                            className="object-contain w-full h-full"
+                            onError={(e) => {
+                              e.target.style.display = 'none';
+                              e.target.nextSibling.style.display = 'block';
+                            }}
+                          />
+                          {/* Fallback text */}
+                          <div className="hidden text-2xl font-bold text-blue-600">
+                            {card.provider}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Price */}
+                    <div className="text-center mb-6">
+                      <p className="text-lg font-semibold text-gray-900 bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                        {card.price}
+                      </p>
+                    </div>
+
+                    {/* Features */}
+                    <div className="space-y-3 mb-6">
+                      {card.features.map((feature, featureIndex) => (
+                        <div key={featureIndex} className="flex items-center gap-3 text-gray-700 group/feature">
+                          <CheckCircle size={14} className="text-green-500 flex-shrink-0 group-hover/feature:scale-110 transition-transform duration-300" />
+                          <span className="text-sm leading-tight">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* CTA Button */}
+                  <div className="mt-auto pt-6 border-t border-gray-100">
+                    <button 
+                      onClick={handleOpenQuestionnaire}
+                      className="w-full py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-2 group/btn overflow-hidden relative"
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-cyan-700 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+                      <span className="relative text-sm font-medium">{card.buttonText}</span>
+                      <ArrowRight size={16} className="relative group-hover/btn:translate-x-1 transition-transform duration-300" />
+                    </button>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
-          {/* CTA Button */}
-          <div className="mt-8 pt-4 border-t border-gray-200/60">
-            <button 
-              onClick={handleOpenQuestionnaire}
-              className="w-full py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-center gap-2 group/btn overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-cyan-700 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
-              <span className="relative text-sm">{card.buttonText}</span>
-              <ArrowRight size={14} className="relative group-hover/btn:translate-x-1 transition-transform duration-300" />
-            </button>
+
+          {/* Bottom CTA */}
+          <div className={`text-center mt-16 transition-all duration-700 delay-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-200/60 shadow-lg max-w-2xl mx-auto relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-600/5 rounded-full -translate-y-16 translate-x-16"></div>
+              <div className="relative z-10">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">Need Help Choosing?</h3>
+                <p className="text-gray-600 mb-6">
+                  Our phone system experts help you compare features and pricing from top providers with recommendations tailored for your business size and needs.
+                </p>
+                <h4 className="text-lg font-semibold text-blue-700 mb-2">Get Expert Advice & Instant Quotes</h4>
+                <p className="text-gray-700 mb-6">
+                  Unsure what to pick? Fill out our quick form for direct quotes and side-by-side comparisons, so you can invest with confidence and maximize value.
+                </p>
+                <button
+                  onClick={handleOpenQuestionnaire}
+                  className="px-8 py-3 bg-gradient-to-r from-blue-600 to-[#007bff] text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-0.5 flex items-center gap-2 group/cta mx-auto"
+                >
+                  Get Your Free Phone System Quotes
+                  <ArrowRight size={18} className="group-hover/cta:translate-x-1 transition-transform duration-300" />
+                </button>
+              </div>
+            </div>
           </div>
         </div>
-      ))}
-    </div>
-  </div>
+      </section>
 
-  {/* Bottom CTA */}
-  <div className={`text-left mt-16 transition-all duration-700 delay-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-    <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-200/60 shadow-lg max-w-2xl mx-auto relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-32 h-32 bg-blue-600/5 rounded-full -translate-y-16 translate-x-16"></div>
-      <div className="relative z-10">
-        <h3 className="text-2xl font-bold text-gray-900 mb-4">Need Help Choosing?</h3>
-        <p className="text-gray-600 mb-6">
-          Our phone system experts help you compare features and pricing from top providers with recommendations tailored for your business size and needs.
-        </p>
-        <h4 className="text-lg font-semibold text-blue-700 mb-2">Get Expert Advice & Instant Quotes</h4>
-        <p className="text-gray-700 mb-6">
-          Unsure what to pick? Fill out our quick form for direct quotes and side-by-side comparisons, so you can invest with confidence and maximize value.
-        </p>
-        <button
-          onClick={handleOpenQuestionnaire}
-          className="px-8 py-3 bg-gradient-to-r from-blue-600 to-[#007bff] text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-0.5 flex items-center gap-2 group/cta mx-auto"
-        >
-          Get Your Free Phone System Quotes
-          <ArrowRight size={18} className="group-hover/cta:translate-x-1 transition-transform duration-300" />
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-
-</section>
-
-      {/* Questionnaire Popup */}
+      {/* Questionnaire Popup - Keep existing functionality intact */}
       {showQuestionnaire && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
           <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full mx-auto transform transition-all duration-300 scale-100 max-h-[90vh] overflow-y-auto">
@@ -484,7 +467,7 @@ export default function Categories() {
                   <CheckCircle size={48} className="text-green-500 mx-auto mb-4" />
                   <h4 className="text-lg font-semibold text-gray-900 mb-2">Perfect CRM Match Found!</h4>
                   <p className="text-gray-600 mb-6">
-                    Based on your responses, you’ll receive personalized CRM system recommendations and quotes in your inbox soon.
+                    Based on your responses, you'll receive personalized CRM system recommendations and quotes in your inbox soon.
                   </p>
                   <button
                     onClick={handleCloseQuestionnaire}
