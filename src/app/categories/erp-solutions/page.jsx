@@ -314,7 +314,7 @@ export default function ERPSolutions() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Professional Content Section */}
           <div className={`max-w-4xl mx-auto mb-16 transition-all duration-1000 delay-600 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            <h2 className="text-5xl font-bold mb-8 text-center">
+            <h2 className="text-5xl font-bold mb-8 text-left">
               <span className="text-black">The Best </span>
               <span className="text-[#007bff]">ERP Solutions</span>
               <span className="text-black"> of 2025</span>

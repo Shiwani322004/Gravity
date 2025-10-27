@@ -11,7 +11,9 @@ import {
   Zap,
   X,
   Shield,
-  RefreshCw
+  RefreshCw,
+  ChevronDown,
+  ChevronUp
 } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
@@ -26,6 +28,7 @@ export default function CRMHeroSection() {
   const [answers, setAnswers] = useState({});
   const [isCompleted, setIsCompleted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -254,6 +257,10 @@ export default function CRMHeroSection() {
     });
   };
 
+  const toggleExpand = () => {
+    setIsExpanded(!isExpanded);
+  };
+
   const crmCards = [
     {
       badge: "Best for Growing Businesses",
@@ -307,6 +314,16 @@ export default function CRMHeroSection() {
     }
   ];
 
+  const descriptionContent = `
+    Finding the right CRM software is crucial for streamlining your sales process, improving customer relationships, and driving business growth. Our platform compares the top CRM solutions in the market to help you make an informed decision. Whether you're a small business looking for basic contact management or an enterprise needing advanced automation and analytics, we've got you covered. 
+
+    The modern CRM landscape offers solutions for every business need - from sales force automation and marketing campaign management to customer service and analytics. With features like AI-powered insights, workflow automation, and seamless third-party integrations, the right CRM can transform how you engage with customers and manage your sales pipeline.
+
+    Our comparison tool evaluates key factors including pricing, features, scalability, integration capabilities, and customer support. We analyze user reviews, industry reports, and feature sets to provide you with unbiased recommendations tailored to your specific business requirements and budget constraints.
+  `;
+
+  const truncatedContent = descriptionContent.split('\n\n')[0] + ' ' + descriptionContent.split('\n\n')[1].split('. ')[0] + '.';
+
   return (
     <div>
       {/* Enhanced CRM Hero Section */}
@@ -322,12 +339,12 @@ export default function CRMHeroSection() {
         </div>
 
         <div className="max-w-7xl mx-auto px-6 relative z-10">
-          {/* Header Section */}
-          <div className="text-center mb-16">
-            <div className={`space-y-8 transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          {/* Header Section - Shifted right with ml-40 */}
+          <div className="mb-16 ml-40">
+            <div className={`transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
               {/* Main Heading */}
-              <div className="space-y-6 max-w-4xl mx-auto">
-                <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+              <div className="mb-8">
+                <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight text-left">
                   <span className={`block transition-all duration-700 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
                     Find the Perfect
                   </span>
@@ -337,8 +354,35 @@ export default function CRMHeroSection() {
                 </h1>
               </div>
 
+              {/* Description Paragraph */}
+              <div className={`mb-8 transition-all duration-700 delay-900 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                <p className="text-lg text-gray-600 leading-relaxed text-left max-w-4xl">
+                  {isExpanded ? descriptionContent : truncatedContent}
+                </p>
+                
+                {/* Read More/Less Button */}
+                <div className="mt-4">
+                  <button
+                    onClick={toggleExpand}
+                    className="inline-flex items-center gap-1 text-blue-600 hover:text-blue-700 font-medium transition-colors duration-200 group"
+                  >
+                    {isExpanded ? (
+                      <>
+                        Show Less
+                        <ChevronUp size={18} className="group-hover:-translate-y-0.5 transition-transform duration-200" />
+                      </>
+                    ) : (
+                      <>
+                        Read More
+                        <ChevronDown size={18} className="group-hover:translate-y-0.5 transition-transform duration-200" />
+                      </>
+                    )}
+                  </button>
+                </div>
+              </div>
+
               {/* Key Benefits */}
-              <div className={`flex flex-wrap justify-center gap-6 pt-6 transition-all duration-700 delay-1100 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+              <div className={`flex flex-wrap gap-6 pt-4 transition-all duration-700 delay-1100 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
                 {["AI-Powered Insights", "Smart Automation", "Real-Time Analytics", "Seamless Integration", "24/7 Support"].map((feature, index) => (
                   <div key={feature} className="flex items-center gap-2 text-gray-700 bg-white/50 backdrop-blur-sm px-4 py-2 rounded-lg border border-gray-200/60">
                     <CheckCircle size={18} className="text-green-500" />
@@ -426,24 +470,26 @@ export default function CRMHeroSection() {
             </div>
           </div>
 
-          {/* Bottom CTA */}
-          <div className={`text-center mt-16 transition-all duration-700 delay-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-200/60 shadow-lg max-w-2xl mx-auto relative overflow-hidden">
+          {/* Bottom CTA - Also shifted right */}
+          <div className={`mt-16 ml-20 transition-all duration-700 delay-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-200/60 shadow-lg max-w-2xl relative overflow-hidden">
               {/* Background Accent */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full -translate-y-16 translate-x-16"></div>
               
               <div className="relative z-10">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Need Help Choosing the Right CRM?</h3>
-                <p className="text-gray-600 mb-6">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4 text-left">Need Help Choosing the Right CRM?</h3>
+                <p className="text-gray-600 mb-6 text-left">
                   Our experts will help you compare features and pricing from top CRM vendors to find the perfect solution for your business growth.
                 </p>
-                <button 
-                  onClick={handleOpenQuestionnaire}
-                  className="px-8 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-0.5 flex items-center gap-2 group/cta mx-auto"
-                >
-                  Get Free Quotes
-                  <ArrowRight size={18} className="group-hover/cta:translate-x-1 transition-transform duration-300" />
-                </button>
+                <div className="text-left">
+                  <button 
+                    onClick={handleOpenQuestionnaire}
+                    className="px-8 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-0.5 flex items-center gap-2 group/cta"
+                  >
+                    Get Free Quotes
+                    <ArrowRight size={18} className="group-hover/cta:translate-x-1 transition-transform duration-300" />
+                  </button>
+                </div>
               </div>
             </div>
           </div>
