@@ -133,28 +133,22 @@ const Navbar = () => {
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            {/* Logo */}
+            {/* Logo - Simplified without background effects */}
             <div className="flex-shrink-0">
               <a 
-                href="/images/4.png" 
+                href="/" 
                 className="flex items-center group"
               >
-                <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#0a2540] via-[#007bff] to-[#0056b3] rounded-lg blur-sm opacity-20 group-hover:opacity-40 transition-all duration-700 ease-out"></div>
-                  <div className="relative">
-                    {/* Increased logo size */}
-                    <img 
-                      src="/images/4.png" 
-                      alt="B2B Gravity Logo" 
-                      className="h-15 w-auto object-contain max-w-[220px] transition-all duration-300 hover:scale-105"
-                      onError={(e) => {
-                        // Fallback if image doesn't load
-                        console.error('Logo failed to load');
-                        e.target.style.display = 'none';
-                      }}
-                    />
-                  </div>
-                </div>
+                {/* Removed the gradient background container */}
+                <img 
+                  src="/images/4.png" 
+                  alt="B2B Gravity Logo" 
+                  className="h-16 w-auto object-contain transition-all duration-300 hover:scale-105"
+                  onError={(e) => {
+                    console.error('Logo failed to load');
+                    e.target.style.display = 'none';
+                  }}
+                />
               </a>
             </div>
 
@@ -258,15 +252,15 @@ const Navbar = () => {
           <div className="bg-gradient-to-r from-[#0a2540] via-[#007bff] to-[#0056b3] p-4 shadow-xl sticky top-0 z-10">
             <div className="flex items-center justify-between">
               <a 
-                href="/images/4.png" 
+                href="/" 
                 onClick={handleLinkClick}
                 className="flex items-center transition-transform duration-300 hover:scale-105"
               >
-                {/* Mobile logo image with larger size */}
+                {/* Mobile logo - also simplified */}
                 <img 
                   src="/images/4.png" 
                   alt="B2B Gravity Logo" 
-                  className="h-13 w-auto object-contain max-w-[180px]"
+                  className="h-14 w-auto object-contain"
                   onError={(e) => {
                     console.error('Mobile logo failed to load');
                     e.target.style.display = 'none';
