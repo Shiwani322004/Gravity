@@ -136,16 +136,18 @@ const Navbar = () => {
             {/* Logo */}
             <div className="flex-shrink-0">
               <a 
-                href="/" 
+                href="/images/4.png" 
                 className="flex items-center group"
               >
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-r from-[#0a2540] via-[#007bff] to-[#0056b3] rounded-lg blur-sm opacity-20 group-hover:opacity-40 transition-all duration-700 ease-out"></div>
                   <div className="relative">
-                    <div className="text-3xl font-black tracking-tight">
-                      <span className="text-[#0a2540] drop-shadow-sm transition-all duration-300">B2B</span>
-                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#007bff] to-[#0056b3] ml-1 transition-all duration-300">Gravity</span>
-                    </div>
+                    {/* Replace the text logo with your image logo */}
+                    <img 
+                      src="/logo.png" 
+                      alt="B2B Gravity Logo" 
+                      className="h-10 w-auto transition-all duration-300 hover:scale-105"
+                    />
                   </div>
                 </div>
               </a>
@@ -251,14 +253,16 @@ const Navbar = () => {
           <div className="bg-gradient-to-r from-[#0a2540] via-[#007bff] to-[#0056b3] p-4 shadow-xl sticky top-0 z-10">
             <div className="flex items-center justify-between">
               <a 
-                href="/" 
+                href="/images/4.png" 
                 onClick={handleLinkClick}
                 className="flex items-center transition-transform duration-300 hover:scale-105"
               >
-                <div className="text-3xl font-black tracking-tight">
-                  <span className="text-white drop-shadow-lg">B2B</span>
-                  <span className="text-slate-100 ml-1">Gravity</span>
-                </div>
+                {/* Mobile logo image */}
+                <img 
+                  src="/images/4.png" 
+                  alt="B2B Gravity Logo" 
+                  className="h-8 w-auto"
+                />
               </a>
               <button
                 onClick={toggleMobileMenu}
