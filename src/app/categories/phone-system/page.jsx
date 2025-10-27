@@ -5,7 +5,6 @@ import PhoneSystemFeatures from './PhoneSystemFeatures';
 import PlatformFeatures from './PlatformFeatures';
 import LogoScroll from '@/app/services/lead-generation/LogoScroll';
 import PhoneSystemAction from './PhoneSystemAction';
-import PhoneSystemStats from './PhoneSystemStats';
 
 export default function PhoneSystemPage() {
   return (
@@ -15,7 +14,7 @@ export default function PhoneSystemPage() {
       <PlatformFeatures />
       <LogoScroll />
       <PhoneSystemAction />
-      <PhoneSystemStats />
+  
       
       <style jsx>{`
         @keyframes fade-in {
