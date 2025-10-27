@@ -263,8 +263,8 @@ export default function CRMHeroSection() {
 
   const crmCards = [
     {
-      badge: "Best for Growing Businesses",
-      provider: "Zoho CRM",
+     // badge: "Best for Growing Businesses",
+      //provider: "Zoho CRM",
       vendorLogo: "/images/zoho.png",
       price: "Starts at $14 per user per month",
       features: ["Office 365 integration", "Zoho Marketplace", "24/7 customer support"],
@@ -273,8 +273,8 @@ export default function CRMHeroSection() {
       accentColor: "hover:border-blue-400/50"
     },
     {
-      badge: "Best for Customer Lifecycle",
-      provider: "Creatio",
+      //badge: "Best for Customer Lifecycle",
+      //provider: "Creatio",
       vendorLogo: "/images/creatio.png",
       price: "Starts at $25 per user per month",
       features: ["14-day free trial", "No-code automation", "24/7 customer support"],
@@ -283,8 +283,8 @@ export default function CRMHeroSection() {
       accentColor: "hover:border-cyan-400/50"
     },
     {
-      badge: "Best for Sales & Marketing",
-      provider: "HubSpot CRM",
+     //badge: "Best for Sales & Marketing",
+     // provider: "HubSpot CRM",
       vendorLogo: "/images/hubspot.png",
       price: "Starts at $9 per month per user",
       features: ["1,000 marketing contacts", "Email chat support", "Marketing automation"],
@@ -293,8 +293,8 @@ export default function CRMHeroSection() {
       accentColor: "hover:border-blue-500/50"
     },
     {
-      badge: "Best All-In-One Option",
-      provider: "HoneyBook",
+      //badge: "Best All-In-One Option",
+      //provider: "HoneyBook",
       vendorLogo: "/images/honeybook.png",
       price: "Starts at $29 per user per month",
       features: ["7-day free trial", "Project management", "24/7 phone and email support"],
@@ -303,8 +303,8 @@ export default function CRMHeroSection() {
       accentColor: "hover:border-blue-400/50"
     },
     {
-      badge: "Best for Automation",
-      provider: "Pipedrive",
+      //badge: "Best for Automation",
+      //provider: "Pipedrive",
       vendorLogo: "/images/pipedrive.png",
       price: "Starts at $14 per user per month",
       features: ["Free 14-day trial", "Sales automation", "24/7 online chat support"],
@@ -340,59 +340,38 @@ export default function CRMHeroSection() {
 
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           {/* Header Section - Shifted right with ml-40 */}
-          <div className="mb-16 ml-40">
-            <div className={`transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-              {/* Main Heading */}
-              <div className="mb-8">
-                <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight text-left">
-                  <span className={`block transition-all duration-700 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                    Find the Perfect
-                  </span>
-                  <span className={`block bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent transition-all duration-700 delay-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                    CRM Software
-                  </span>
-                </h1>
-              </div>
+<div className="mb-16 ml-40">
+  <div className={`transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+    {/* Main Heading */}
+    <div className="mb-8">
+      <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight text-left">
+        <span className={`inline transition-all duration-700 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+          Find the Perfect{" "}
+        </span>
+        <span className={`inline bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent transition-all duration-700 delay-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+          CRM Software
+        </span>
+      </h1>
+    </div>
 
-              {/* Description Paragraph */}
-              <div className={`mb-8 transition-all duration-700 delay-900 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                <p className="text-lg text-gray-600 leading-relaxed text-left max-w-4xl">
-                  {isExpanded ? descriptionContent : truncatedContent}
-                </p>
-                
-                {/* Read More/Less Button */}
-                <div className="mt-4">
-                  <button
-                    onClick={toggleExpand}
-                    className="inline-flex items-center gap-1 text-blue-600 hover:text-blue-700 font-medium transition-colors duration-200 group"
-                  >
-                    {isExpanded ? (
-                      <>
-                        Show Less
-                        <ChevronUp size={18} className="group-hover:-translate-y-0.5 transition-transform duration-200" />
-                      </>
-                    ) : (
-                      <>
-                        Read More
-                        <ChevronDown size={18} className="group-hover:translate-y-0.5 transition-transform duration-200" />
-                      </>
-                    )}
-                  </button>
-                </div>
-              </div>
-
-              {/* Key Benefits */}
-              <div className={`flex flex-wrap gap-6 pt-4 transition-all duration-700 delay-1100 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                {["AI-Powered Insights", "Smart Automation", "Real-Time Analytics", "Seamless Integration", "24/7 Support"].map((feature, index) => (
-                  <div key={feature} className="flex items-center gap-2 text-gray-700 bg-white/50 backdrop-blur-sm px-4 py-2 rounded-lg border border-gray-200/60">
-                    <CheckCircle size={18} className="text-green-500" />
-                    <span className="font-medium">{feature}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
+    {/* Description Paragraph */}
+    <div className={`mb-8 transition-all duration-700 delay-900 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+      <p className="text-lg text-gray-600 leading-relaxed text-left max-w-4xl">
+        {isExpanded ? descriptionContent : truncatedContent}
+      </p>
+      
+      {/* MORE + Button with blue UI */}
+      <div className="pt-4">
+        <button
+          onClick={toggleExpand}
+          className="px-6 py-2 bg-gradient-to-r from-[#007bff] to-blue-600 text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300"
+        >
+          {isExpanded ? "LESS -" : "MORE +"}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
           {/* Enhanced CRM Provider Cards Grid - 5 Cards Horizontal */}
           <div className={`transition-all duration-1000 delay-500 ${isVisible ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-10 opacity-0 scale-95'}`}>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
@@ -410,14 +389,7 @@ export default function CRMHeroSection() {
                   
                   {/* Content Section */}
                   <div className="flex-1">
-                    {/* Badge with Icon */}
-                    <div className="relative flex items-center justify-between mb-4">
-                      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-50 border border-gray-200 text-gray-700 text-xs font-medium">
-                        {card.icon}
-                        <span className="max-w-[100px] truncate">{card.badge}</span>
-                      </div>
-                      <Star size={14} className="text-yellow-500 fill-yellow-500" />
-                    </div>
+                    
 
                     {/* Provider & Vendor with Larger Logo */}
                     <div className="relative mb-4">
@@ -470,26 +442,24 @@ export default function CRMHeroSection() {
             </div>
           </div>
 
-          {/* Bottom CTA - Also shifted right */}
-          <div className={`mt-16 ml-20 transition-all duration-700 delay-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-200/60 shadow-lg max-w-2xl relative overflow-hidden">
+          {/* Bottom CTA - Centered on the page */}
+          <div className={`text-center mt-16 transition-all duration-700 delay-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-200/60 shadow-lg max-w-2xl mx-auto relative overflow-hidden">
               {/* Background Accent */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full -translate-y-16 translate-x-16"></div>
               
               <div className="relative z-10">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4 text-left">Need Help Choosing the Right CRM?</h3>
-                <p className="text-gray-600 mb-6 text-left">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">Need Help Choosing the Right CRM?</h3>
+                <p className="text-gray-600 mb-6">
                   Our experts will help you compare features and pricing from top CRM vendors to find the perfect solution for your business growth.
                 </p>
-                <div className="text-left">
-                  <button 
-                    onClick={handleOpenQuestionnaire}
-                    className="px-8 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-0.5 flex items-center gap-2 group/cta"
-                  >
-                    Get Free Quotes
-                    <ArrowRight size={18} className="group-hover/cta:translate-x-1 transition-transform duration-300" />
-                  </button>
-                </div>
+                <button 
+                  onClick={handleOpenQuestionnaire}
+                  className="px-8 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-0.5 flex items-center gap-2 group/cta mx-auto"
+                >
+                  Get Free Quotes
+                  <ArrowRight size={18} className="group-hover/cta:translate-x-1 transition-transform duration-300" />
+                </button>
               </div>
             </div>
           </div>
