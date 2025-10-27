@@ -86,7 +86,7 @@ export default function ERPSolutions() {
 
   const providerCards = [
     {
-      provider: "ADP",
+     // provider: "ADP",
       vendorLogo: "/images/adp.png",
       price: "$10/user/month + $50 base",
       features: [
@@ -97,7 +97,7 @@ export default function ERPSolutions() {
       buttonText: "Compare Quotes",
     },
     {
-      provider: "Zoho",
+     // provider: "Zoho",
       vendorLogo: "/images/zopayroll.png",
       price: "$25/user/month",
       features: [
@@ -108,7 +108,7 @@ export default function ERPSolutions() {
       buttonText: "Compare Quotes",
     },
     {
-      provider: "BambooHR",
+     // provider: "BambooHR",
       vendorLogo: "/images/bamb.png",
       price: "Custom pricing",
       features: [
@@ -119,7 +119,7 @@ export default function ERPSolutions() {
       buttonText: "Compare Quotes",
     },
     {
-      provider: "Onpay",
+     // provider: "Onpay",
       vendorLogo: "/images/onpay.png",
       price: "$36 + $4/user/month",
       features: [
@@ -130,7 +130,7 @@ export default function ERPSolutions() {
       buttonText: "Compare Quotes",
     },
     {
-      provider: "QuickBooks",
+     // provider: "QuickBooks",
       vendorLogo: "/images/quickbooks.png",
       price: "$45/month + $5/user",
       features: [
