@@ -1,21 +1,11 @@
 'use client';
 
 import {
-  BarChart3,
   ArrowRight,
   CheckCircle,
   X,
   RefreshCw,
-  Shield,
-  MapPin,
-  Route,
-  Users,
-  Wrench,
-  Clock,
-  Zap,
-  TrendingUp,
-  Car,
-  Smartphone
+  Shield
 } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
@@ -86,7 +76,7 @@ export default function GPSHero() {
 
   const providerCards = [
     {
-     //provider: "Azuga",
+     
       vendorLogo: "/images/azuga.png",
       price: "Starts at $25 per month/vehicle",
       features: [
@@ -97,7 +87,7 @@ export default function GPSHero() {
       buttonText: "Compare Quotes",
     },
     {
-      //provider: "Motive",
+ 
       vendorLogo: "/images/motive.png",
       price: "Contact for price",
       features: [
@@ -108,7 +98,7 @@ export default function GPSHero() {
       buttonText: "Compare Quotes",
     },
     {
-      //provider: "Teletracnavman",
+      
       vendorLogo: "/images/tele.png",
       price: "Custom pricing",
       features: [
@@ -119,7 +109,7 @@ export default function GPSHero() {
       buttonText: "Compare Quotes",
     },
     {
-     // provider: "Verizon Connect",
+      
       vendorLogo: "/images/verizon.png",
       price: "Starts at $20 per vehicle/month",
       features: [
@@ -130,7 +120,7 @@ export default function GPSHero() {
       buttonText: "Compare Quotes",
     },
     {
-     //provider: "Samsara",
+      
       vendorLogo: "/images/samsara.png",
       price: "From $44 per vehicle per month",
       features: [
@@ -315,7 +305,7 @@ export default function GPSHero() {
               <span className="text-[#007bff]">GPS Fleet Management Systems</span>
               <span className="text-black"> of 2025</span>
             </h2>
-            
+
             <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
               <p>
                 At <strong className="text-[#007bff]">B2B Gravity</strong>, we understand the importance of efficient logistics for your business. That's why we recommend the best GPS fleet management systems that provide real-time visibility and control over your vehicles. The best fleet management solutions offer AI-driven route optimization, advanced telematics, and real-time tracking to help you manage your fleet more effectively. Whether you're running a small delivery service or a large transportation company, the right GPS tracking system can transform how you monitor, maintain, and optimize your fleet operations.
@@ -348,7 +338,7 @@ export default function GPSHero() {
                     <h3 className="text-2xl font-bold text-gray-900 mt-8 mb-6">
                       Key Features to Look For in GPS Fleet Management
                     </h3>
-                    
+
                     <div className="space-y-4">
                       <div className="flex items-start gap-3">
                         <div className="w-2 h-2 bg-[#007bff] rounded-full mt-3 flex-shrink-0"></div>
@@ -356,28 +346,28 @@ export default function GPSHero() {
                           <strong className="text-[#007bff]">Real-Time Vehicle Tracking:</strong> Monitor your entire fleet with live GPS updates and see vehicle locations, speed, and status in real-time.
                         </div>
                       </div>
-                      
+
                       <div className="flex items-start gap-3">
                         <div className="w-2 h-2 bg-[#007bff] rounded-full mt-3 flex-shrink-0"></div>
                         <div>
                           <strong className="text-[#007bff]">AI-Powered Route Optimization:</strong> Automatically plan the most efficient routes considering traffic, weather, and delivery constraints.
                         </div>
                       </div>
-                      
+
                       <div className="flex items-start gap-3">
                         <div className="w-2 h-2 bg-[#007bff] rounded-full mt-3 flex-shrink-0"></div>
                         <div>
                           <strong className="text-[#007bff]">Driver Safety Monitoring:</strong> Track driving behavior including speeding, harsh braking, and rapid acceleration to improve safety.
                         </div>
                       </div>
-                      
+
                       <div className="flex items-start gap-3">
                         <div className="w-2 h-2 bg-[#007bff] rounded-full mt-3 flex-shrink-0"></div>
                         <div>
                           <strong className="text-[#007bff]">Maintenance Alerts:</strong> Receive automated notifications for scheduled maintenance and potential vehicle issues before they become problems.
                         </div>
                       </div>
-                      
+
                       <div className="flex items-start gap-3">
                         <div className="w-2 h-2 bg-[#007bff] rounded-full mt-3 flex-shrink-0"></div>
                         <div>
@@ -397,7 +387,7 @@ export default function GPSHero() {
 
           <div className={`transition-all duration-1000 delay-1100 ${isVisible ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-10 opacity-0 scale-95'}`}>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-16">
-              {providerCards.map((card, index) => (
+              {providerCards.map((card) => (
                 <div
                   key={card.provider}
                   className="group relative bg-white rounded-3xl border-2 border-gray-100 shadow-xl hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-500 transform hover:-translate-y-3 p-6 flex flex-col h-full hover:border-blue-200"
@@ -405,11 +395,14 @@ export default function GPSHero() {
                   <div className="flex-1">
                     <div className="flex justify-center mb-6">
                       <div className="relative w-full h-20 rounded-xl bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-100 flex items-center justify-center p-4 group-hover:scale-105 transition-transform duration-300">
-                        <div className="relative w-full h-full flex items-center justify-center">
-                          <div className="text-2xl font-bold text-blue-600">
-                            {card.provider}
-                          </div>
-                        </div>
+                        <Image
+                          src={card.vendorLogo}
+                          alt={`${card.provider} Logo`}
+                          width={150}
+                          height={80}
+                          className="object-contain"
+                          priority
+                        />
                       </div>
                     </div>
 
