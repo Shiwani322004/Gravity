@@ -14,21 +14,14 @@ const CategoriesSection = () => {
   // Additional categories to make total 6
   const additionalCategories = [
     {
-      title: "ERP Systems",
-      description: "Enterprise resource planning solutions",
-      icon: "ERP",
-      link: "/categories/erp-system",
-      subcategories: ["Financial Management", "Supply Chain", "Human Resources"],
+      title: "Payroll Software",
+      description: "Payroll management solutions",
+      icon: "Payroll",
+      link: "/categories/payroll-software",
+      subcategories: ["Employee Management", "Tax Compliance", "Time Tracking"],
       image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
     },
-    {
-      title: "Video Conferencing",
-      description: "Virtual meeting and collaboration tools",
-      icon: "Video",
-      link: "/categories/video-conferencing",
-      subcategories: ["Team Collaboration", "Webinars", "Screen Sharing"],
-      image: "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-    }
+    
   ];
 
   const allCategories = [...categories, ...additionalCategories];
