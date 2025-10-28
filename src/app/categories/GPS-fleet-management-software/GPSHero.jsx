@@ -86,7 +86,7 @@ export default function GPSHero() {
 
   const providerCards = [
     {
-      provider: "Azuga",
+     //provider: "Azuga",
       vendorLogo: "/images/azuga.png",
       price: "Starts at $25 per month/vehicle",
       features: [
@@ -97,7 +97,7 @@ export default function GPSHero() {
       buttonText: "Compare Quotes",
     },
     {
-      provider: "Motive",
+      //provider: "Motive",
       vendorLogo: "/images/motive.png",
       price: "Contact for price",
       features: [
@@ -108,8 +108,8 @@ export default function GPSHero() {
       buttonText: "Compare Quotes",
     },
     {
-      provider: "Teletracnavman",
-      vendorLogo: "/images/teletracnavman.png",
+      //provider: "Teletracnavman",
+      vendorLogo: "/images/tele.png",
       price: "Custom pricing",
       features: [
         "Best for Maintenance and Safety",
@@ -119,8 +119,8 @@ export default function GPSHero() {
       buttonText: "Compare Quotes",
     },
     {
-      provider: "Verizon Connect",
-      vendorLogo: "/images/verizon-connect.png",
+     // provider: "Verizon Connect",
+      vendorLogo: "/images/verizon.png",
       price: "Starts at $20 per vehicle/month",
       features: [
         "Best for Midsize Fleets Services",
@@ -130,7 +130,7 @@ export default function GPSHero() {
       buttonText: "Compare Quotes",
     },
     {
-      provider: "Samsara",
+     //provider: "Samsara",
       vendorLogo: "/images/samsara.png",
       price: "From $44 per vehicle per month",
       features: [
