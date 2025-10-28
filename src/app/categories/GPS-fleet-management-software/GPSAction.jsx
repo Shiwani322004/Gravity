@@ -1,27 +1,27 @@
 'use client'
 import React, { useState } from 'react';
 
-export default function VideoConferencingAction() {
+export default function GPSAction() {
   const [activeFeature, setActiveFeature] = useState(0);
 
   const demoFeatures = [
     {
-      title: "HD Video Meetings",
-      description: "Crystal-clear video quality with advanced features like virtual backgrounds, auto-framing, and noise cancellation for professional meetings",
-      steps: ["Join meeting", "Enable video", "Apply settings", "Start collaboration"],
-      demoImage: "https://images.unsplash.com/photo-1587560699334-cc4ff634909a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+      title: "Real-Time Fleet Tracking",
+      description: "Monitor your entire fleet with live GPS updates, vehicle status, and driver behavior in real-time from any device",
+      steps: ["Vehicle location", "Status updates", "Driver monitoring", "Live alerts"],
+      demoImage: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
     },
     {
-      title: "Screen Sharing & Collaboration",
-      description: "Advanced screen sharing with annotation tools, remote control, and collaborative whiteboarding for effective presentations",
-      steps: ["Share screen", "Enable annotations", "Collaborate live", "Save content"],
+      title: "Route Optimization",
+      description: "AI-powered route planning that considers traffic, delivery windows, and vehicle constraints for maximum efficiency",
+      steps: ["Route analysis", "Traffic optimization", "Schedule planning", "Efficiency tracking"],
       demoImage: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
     },
     {
-      title: "Meeting Recording & Analytics",
-      description: "Automatic meeting recording with transcription, searchable content, and detailed analytics for improved meeting effectiveness",
-      steps: ["Start recording", "Auto transcription", "Generate insights", "Share recordings"],
-      demoImage: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+      title: "Fleet Analytics Dashboard",
+      description: "Comprehensive performance analytics with customizable dashboards, reporting, and actionable insights",
+      steps: ["Data collection", "Performance analysis", "Report generation", "Insight delivery"],
+      demoImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
     }
   ];
 
@@ -30,10 +30,10 @@ export default function VideoConferencingAction() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-            See Video Conferencing In Action
+            See GPS Fleet Management In Action
           </h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Interactive demonstration of our key video conferencing features and collaboration tools
+            Interactive demonstration of our key fleet management features and operational workflows
           </p>
         </div>
 

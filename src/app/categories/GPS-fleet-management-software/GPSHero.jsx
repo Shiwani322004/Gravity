@@ -1,21 +1,26 @@
 'use client';
 
 import {
-  Phone,
-  Users,
   BarChart3,
   ArrowRight,
   CheckCircle,
   X,
   RefreshCw,
-  Shield
+  Shield,
+  MapPin,
+  Route,
+  Users,
+  Wrench,
+  Clock,
+  Zap,
+  TrendingUp,
+  Car,
+  Smartphone
 } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 
-export const dynamic = 'force-dynamic';
-
-export default function CallCenterManagement() {
+export default function GPSHero() {
   const sectionRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
   const [showQuestionnaire, setShowQuestionnaire] = useState(false);
@@ -32,15 +37,10 @@ export default function CallCenterManagement() {
     country: 'US'
   });
 
-  // Manual CAPTCHA
   const [captchaQuestion, setCaptchaQuestion] = useState({ num1: 0, num2: 0, answer: 0 });
   const [captchaInput, setCaptchaInput] = useState('');
   const [captchaValid, setCaptchaValid] = useState(false);
-
-  // Auto-popup timer state
   const [hasAutoPopupShown, setHasAutoPopupShown] = useState(false);
-
-  // Read More state
   const [showMore, setShowMore] = useState(false);
 
   useEffect(() => {
@@ -66,7 +66,6 @@ export default function CallCenterManagement() {
     }
   }, [hasAutoPopupShown, showQuestionnaire]);
 
-  // Generate new CAPTCHA question
   const generateCaptcha = () => {
     const num1 = Math.floor(Math.random() * 10) + 1;
     const num2 = Math.floor(Math.random() * 10) + 1;
@@ -80,7 +79,6 @@ export default function CallCenterManagement() {
     if (showQuestionnaire) generateCaptcha();
   }, [showQuestionnaire]);
 
-  // Verify CAPTCHA
   const verifyCaptcha = (value) => {
     setCaptchaInput(value);
     setCaptchaValid(parseInt(value) === captchaQuestion.answer);
@@ -88,57 +86,57 @@ export default function CallCenterManagement() {
 
   const providerCards = [
     {
-      //provider: "GoTo",
-      vendorLogo: "/images/goto.png",
-      price: "Starts at $19.95 per user/month",
+      provider: "Azuga",
+      vendorLogo: "/images/azuga.png",
+      price: "Starts at $25 per month/vehicle",
       features: [
-        "Best for Small Businesses Management",
-        "Agent dashboard and softphone",
+        "Best for Midsize Fleets and Larger Fleets",
+        "30-second refresh rate (15 sec option)",
+        "24/7 support (email, phone, ticket)"
+      ],
+      buttonText: "Compare Quotes",
+    },
+    {
+      provider: "Motive",
+      vendorLogo: "/images/motive.png",
+      price: "Contact for price",
+      features: [
+        "Best for Accountability and Automation",
+        "1-3 second refresh rate",
+        "24/7 email/phone support"
+      ],
+      buttonText: "Compare Quotes",
+    },
+    {
+      provider: "Teletracnavman",
+      vendorLogo: "/images/teletracnavman.png",
+      price: "Custom pricing",
+      features: [
+        "Best for Maintenance and Safety",
+        "1-second data refresh rate",
+        "Video capacity: 1000"
+      ],
+      buttonText: "Compare Quotes",
+    },
+    {
+      provider: "Verizon Connect",
+      vendorLogo: "/images/verizon-connect.png",
+      price: "Starts at $20 per vehicle/month",
+      features: [
+        "Best for Midsize Fleets Services",
+        "30-second data refresh rate",
         "24/7 customer support"
       ],
       buttonText: "Compare Quotes",
     },
     {
-      //provider: "RingCentral",
-      vendorLogo: "/images/ringcentral.png",
-      price: "Starts at $20 per user/month",
+      provider: "Samsara",
+      vendorLogo: "/images/samsara.png",
+      price: "From $44 per vehicle per month",
       features: [
-        "Best for Inbound Customer Services",
-        "Google, Microsoft integrations",
+        "Best for Sustainability and Safety",
+        "1-second data refresh rate",
         "24/7 customer support"
-      ],
-      buttonText: "Compare Quotes",
-    },
-    {
-      //provider: "Goanswer",
-      vendorLogo: "/images/goan.png",
-      price: "Starts at $175/mo for 100 minutes/user",
-      features: [
-        "Best Outsourced Call Center Service",
-        "Scalable, bilingual, portal access",
-        "24/7 bilingual live agents"
-      ],
-      buttonText: "Compare Quotes",
-    },
-    {
-      //provider: "Twilio",
-      vendorLogo: "/images/twilio.png",
-      price: "Starts at $15 per user/month",
-      features: [
-        "Best for Complex Communication",
-        "MMS support & message tracking",
-        "24/7 customer support"
-      ],
-      buttonText: "Compare Quotes",
-    },
-    {
-     //provider: "Salesforce",
-      vendorLogo: "/images/cloud.png",
-      price: "Starts at $25 per user/month",
-      features: [
-        "Best for Improving Customer Service",
-        "Video capacity: 250",
-        "Dynamic Email Marketing and Analytics"
       ],
       buttonText: "Compare Quotes",
     }
@@ -146,37 +144,37 @@ export default function CallCenterManagement() {
 
   const questions = [
     {
-      question: "What type of call center are you running?",
+      question: "What type of fleet do you manage?",
       options: [
-        "Inbound Customer Service",
-        "Outbound Sales",
-        "Blended Operations",
-        "Omnichannel Support"
+        "Delivery & Logistics",
+        "Service & Maintenance",
+        "Construction & Equipment",
+        "Transportation & Passenger"
       ],
-      key: "centerType"
+      key: "fleetType"
     },
     {
-      question: "How many agents will be using the system?",
+      question: "How many vehicles are in your fleet?",
       options: ["1-10", "11-25", "26-50", "51+"],
-      key: "agentCount"
+      key: "vehicleCount"
     },
     {
-      question: "What's your primary goal with call center software?",
+      question: "What's your primary goal with GPS tracking?",
       options: [
-        "Improve Customer Satisfaction",
-        "Increase Agent Productivity",
-        "Reduce Operational Costs",
-        "Scale Operations"
+        "Reduce Fuel Costs",
+        "Improve Driver Safety",
+        "Optimize Routes",
+        "Enhance Customer Service"
       ],
       key: "primaryGoal"
     },
     {
       question: "Which features are most important to you?",
       options: [
-        "IVR & Call Routing",
-        "Real-time Analytics",
-        "CRM Integrations",
-        "Omnichannel Support"
+        "Real-time Tracking",
+        "Route Optimization",
+        "Maintenance Alerts",
+        "Driver Behavior Monitoring"
       ],
       key: "importantFeatures"
     }
@@ -191,7 +189,6 @@ export default function CallCenterManagement() {
     setCurrentQuestion(currentQuestion + 1);
   };
 
-  // Submission logic
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.phone || !formData.company || !formData.zipCode) {
@@ -199,8 +196,8 @@ export default function CallCenterManagement() {
       return;
     }
     const zipRegex = formData.country === 'US'
-      ? /^\d{5}(-\d{4})?$/ // US ZIP formats
-      : /^\d{6}$/; // India PIN
+      ? /^\d{5}(-\d{4})?$/
+      : /^\d{6}$/;
 
     if (!zipRegex.test(formData.zipCode)) {
       alert(formData.country === 'US'
@@ -225,12 +222,12 @@ export default function CallCenterManagement() {
         company: formData.company,
         zip_code: formData.zipCode,
         country: formData.country,
-        center_type: answers.centerType || 'Not specified',
-        agent_count: answers.agentCount || 'Not specified',
+        fleet_type: answers.fleetType || 'Not specified',
+        vehicle_count: answers.vehicleCount || 'Not specified',
         primary_goal: answers.primaryGoal || 'Not specified',
         important_features: answers.importantFeatures || 'Not specified',
-        subject: `Call Center Software Inquiry from ${formData.name}`,
-        from_name: 'Call Center Software Finder'
+        subject: `GPS Fleet Management Inquiry from ${formData.name}`,
+        from_name: 'GPS Fleet Management Finder'
       };
 
       const response = await fetch('https://api.web3forms.com/submit', {
@@ -300,13 +297,11 @@ export default function CallCenterManagement() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Call Center Management Hero Section */}
+    <div>
       <section
         ref={sectionRef}
         className="relative bg-gradient-to-br from-blue-50 via-white to-cyan-50 py-16 lg:py-24 overflow-hidden"
       >
-        {/* Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
           <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-cyan-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
@@ -314,23 +309,22 @@ export default function CallCenterManagement() {
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Professional Content Section */}
           <div className={`max-w-4xl mx-auto mb-16 transition-all duration-1000 delay-600 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
             <h2 className="text-5xl font-bold mb-8 text-left">
               <span className="text-black">The Best </span>
-              <span className="text-[#007bff]">Call Center Management Software</span>
+              <span className="text-[#007bff]">GPS Fleet Management Systems</span>
               <span className="text-black"> of 2025</span>
             </h2>
             
             <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
               <p>
-                At <strong className="text-[#007bff]">B2B Gravity</strong>, we understand the importance of exceptional customer service for your business. That's why we recommend the best call center software that provides comprehensive contact center solutions with advanced features for modern enterprises. The top CCaaS platforms offer intelligent call routing, omnichannel support, real-time monitoring, and seamless CRM integrations to help you manage customer interactions more effectively. Whether you're running a small support team or a large contact center, the right software can transform your customer experience and operational efficiency.
+                At <strong className="text-[#007bff]">B2B Gravity</strong>, we understand the importance of efficient logistics for your business. That's why we recommend the best GPS fleet management systems that provide real-time visibility and control over your vehicles. The best fleet management solutions offer AI-driven route optimization, advanced telematics, and real-time tracking to help you manage your fleet more effectively. Whether you're running a small delivery service or a large transportation company, the right GPS tracking system can transform how you monitor, maintain, and optimize your fleet operations.
               </p>
 
               {!showMore ? (
                 <>
                   <p>
-                    As your customer service operations grow, having the right call center tools becomes critical. Small teams might manage with basic solutions, but as your contact volume increases, it's essential that your software scales accordingly. Implementing the best call center management system can significantly enhance your ability to improve customer satisfaction, reduce handle times, and boost agent productivity...
+                    As your fleet grows, ensuring you have the right tracking tools is critical. Small operations can often manage with basic vehicle tracking, but as your business expands, it's essential that your management tools scale accordingly. Implementing the best GPS fleet management system can significantly enhance your ability to reduce costs, improve driver safety, and increase operational efficiency...
                   </p>
                   <div className="pt-4">
                     <button
@@ -344,56 +338,56 @@ export default function CallCenterManagement() {
               ) : (
                 <>
                   <p>
-                    As your customer service operations grow, having the right call center tools becomes critical. Small teams might manage with basic solutions, but as your contact volume increases, it's essential that your software scales accordingly. Implementing the best call center management system can significantly enhance your ability to improve customer satisfaction, reduce handle times, and boost agent productivity.
+                    As your fleet grows, ensuring you have the right tracking tools is critical. Small operations can often manage with basic vehicle tracking, but as your business expands, it's essential that your management tools scale accordingly. Implementing the best GPS fleet management system can significantly enhance your ability to reduce costs, improve driver safety, and increase operational efficiency.
                   </p>
                   <p>
-                    At <strong className="text-[#007bff]">B2B Gravity</strong>, we help you find the perfect solution that aligns with your business needs, offering features like IVR, automatic call distribution, workforce management, and detailed reporting. Our experts analyze your specific requirements to match you with platforms that provide the right balance of functionality, scalability, and cost-effectiveness.
+                    At <strong className="text-[#007bff]">B2B Gravity</strong>, we help you find the perfect fleet solution that aligns with your business needs, offering features like real-time GPS tracking, maintenance alerts, and comprehensive reporting. Our experts analyze your specific requirements to match you with platforms that provide the right balance of functionality, scalability, and cost-effectiveness.
                   </p>
 
                   <div className="space-y-6 pt-4">
                     <h3 className="text-2xl font-bold text-gray-900 mt-8 mb-6">
-                      Key Features to Look For in Call Center Software
+                      Key Features to Look For in GPS Fleet Management
                     </h3>
                     
                     <div className="space-y-4">
                       <div className="flex items-start gap-3">
                         <div className="w-2 h-2 bg-[#007bff] rounded-full mt-3 flex-shrink-0"></div>
                         <div>
-                          <strong className="text-[#007bff]">Intelligent Call Routing:</strong> Automatically directs calls to the most appropriate agent based on skills, availability, and customer history.
+                          <strong className="text-[#007bff]">Real-Time Vehicle Tracking:</strong> Monitor your entire fleet with live GPS updates and see vehicle locations, speed, and status in real-time.
                         </div>
                       </div>
                       
                       <div className="flex items-start gap-3">
                         <div className="w-2 h-2 bg-[#007bff] rounded-full mt-3 flex-shrink-0"></div>
                         <div>
-                          <strong className="text-[#007bff]">Omnichannel Support:</strong> Manage voice, email, chat, social media, and SMS from a single platform.
+                          <strong className="text-[#007bff]">AI-Powered Route Optimization:</strong> Automatically plan the most efficient routes considering traffic, weather, and delivery constraints.
                         </div>
                       </div>
                       
                       <div className="flex items-start gap-3">
                         <div className="w-2 h-2 bg-[#007bff] rounded-full mt-3 flex-shrink-0"></div>
                         <div>
-                          <strong className="text-[#007bff]">Real-time Analytics:</strong> Monitor key performance indicators and agent productivity in real-time.
+                          <strong className="text-[#007bff]">Driver Safety Monitoring:</strong> Track driving behavior including speeding, harsh braking, and rapid acceleration to improve safety.
                         </div>
                       </div>
                       
                       <div className="flex items-start gap-3">
                         <div className="w-2 h-2 bg-[#007bff] rounded-full mt-3 flex-shrink-0"></div>
                         <div>
-                          <strong className="text-[#007bff]">CRM Integrations:</strong> Seamlessly connect with popular CRM platforms for complete customer context.
+                          <strong className="text-[#007bff]">Maintenance Alerts:</strong> Receive automated notifications for scheduled maintenance and potential vehicle issues before they become problems.
                         </div>
                       </div>
                       
                       <div className="flex items-start gap-3">
                         <div className="w-2 h-2 bg-[#007bff] rounded-full mt-3 flex-shrink-0"></div>
                         <div>
-                          <strong className="text-[#007bff]">Workforce Management:</strong> Optimize staffing levels and schedule agents efficiently.
+                          <strong className="text-[#007bff]">Geofencing:</strong> Set virtual boundaries and receive instant alerts when vehicles enter or leave designated areas.
                         </div>
                       </div>
                     </div>
 
                     <p className="text-lg font-semibold text-gray-900 mt-8 pt-6 border-t border-gray-200">
-                      Explore our top picks for call center management software below. Compare features, pricing, and get personalized recommendations tailored to your specific business requirements.
+                      Explore our top picks for GPS fleet management systems below. Compare features, pricing, and get personalized recommendations tailored to your specific business requirements.
                     </p>
                   </div>
                 </>
@@ -401,7 +395,6 @@ export default function CallCenterManagement() {
             </div>
           </div>
 
-          {/* Provider Cards Grid */}
           <div className={`transition-all duration-1000 delay-1100 ${isVisible ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-10 opacity-0 scale-95'}`}>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-16">
               {providerCards.map((card, index) => (
@@ -409,44 +402,27 @@ export default function CallCenterManagement() {
                   key={card.provider}
                   className="group relative bg-white rounded-3xl border-2 border-gray-100 shadow-xl hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-500 transform hover:-translate-y-3 p-6 flex flex-col h-full hover:border-blue-200"
                 >
-                  {/* Content Section */}
                   <div className="flex-1">
-                    {/* Provider Logo */}
                     <div className="flex justify-center mb-6">
                       <div className="relative w-full h-20 rounded-xl bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-100 flex items-center justify-center p-4 group-hover:scale-105 transition-transform duration-300">
                         <div className="relative w-full h-full flex items-center justify-center">
-                          <Image 
-                            src={card.vendorLogo}
-                            alt={`${card.provider} logo`}
-                            width={80}
-                            height={40}
-                            className="object-contain w-full h-full"
-                            onError={(e) => {
-                              e.target.style.display = 'none';
-                              e.target.nextSibling.style.display = 'block';
-                            }}
-                          />
-                          {/* Fallback text - hidden by default */}
-                          <div className="hidden text-2xl font-bold text-blue-600">
+                          <div className="text-2xl font-bold text-blue-600">
                             {card.provider}
                           </div>
                         </div>
                       </div>
                     </div>
 
-                    {/* Provider Name */}
                     <h3 className="text-xl font-bold text-gray-900 text-center mb-4 group-hover:text-blue-600 transition-colors duration-300">
                       {card.provider}
                     </h3>
 
-                    {/* Price */}
                     <div className="text-center mb-6">
                       <p className="text-lg font-semibold text-gray-900 bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
                         {card.price}
                       </p>
                     </div>
 
-                    {/* Features */}
                     <div className="space-y-3 mb-6">
                       {card.features.map((feature, featureIndex) => (
                         <div key={featureIndex} className="flex items-center gap-3 text-gray-700 group/feature">
@@ -457,7 +433,6 @@ export default function CallCenterManagement() {
                     </div>
                   </div>
 
-                  {/* CTA Button */}
                   <div className="mt-auto pt-6 border-t border-gray-100">
                     <button 
                       onClick={handleOpenQuestionnaire}
@@ -472,8 +447,6 @@ export default function CallCenterManagement() {
               ))}
             </div>
           </div>
-
-         
         </div>
       </section>
 
@@ -481,10 +454,9 @@ export default function CallCenterManagement() {
       {showQuestionnaire && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
           <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full mx-auto transform transition-all duration-300 scale-100 max-h-[90vh] overflow-y-auto">
-            {/* Header */}
             <div className="flex items-center justify-between p-6 border-b border-gray-200 sticky top-0 bg-white z-10">
               <h3 className="text-xl font-bold text-gray-900">
-                {isCompleted ? "Thank You!" : "Find Your Perfect Call Center Software"}
+                {isCompleted ? "Thank You!" : "Find Your Perfect GPS Fleet Solution"}
               </h3>
               <button
                 onClick={handleCloseQuestionnaire}
@@ -493,7 +465,6 @@ export default function CallCenterManagement() {
                 <X size={20} className="text-gray-500" />
               </button>
             </div>
-            {/* Progress Bar */}
             {!isCompleted && (
               <div className="px-6 pt-4">
                 <div className="w-full bg-gray-200 rounded-full h-2">
@@ -507,14 +478,13 @@ export default function CallCenterManagement() {
                 </p>
               </div>
             )}
-            {/* Content */}
             <div className="p-6">
               {isCompleted ? (
                 <div className="text-center py-8">
                   <CheckCircle size={48} className="text-green-500 mx-auto mb-4" />
-                  <h4 className="text-lg font-semibold text-gray-900 mb-2">Perfect Call Center Software Found!</h4>
+                  <h4 className="text-lg font-semibold text-gray-900 mb-2">Perfect Fleet Solution Found!</h4>
                   <p className="text-gray-600 mb-6">
-                    Based on your responses, you'll receive personalized call center software recommendations and quotes in your inbox soon.
+                    Based on your responses, you'll receive personalized GPS fleet management recommendations and quotes in your inbox soon.
                   </p>
                   <button
                     onClick={handleCloseQuestionnaire}
@@ -524,7 +494,6 @@ export default function CallCenterManagement() {
                   </button>
                 </div>
               ) : currentQuestion < questions.length ? (
-                // Core Q&A steps
                 <>
                   <h4 className="text-lg font-semibold text-gray-900 mb-6 text-center">
                     {questions[currentQuestion].question}

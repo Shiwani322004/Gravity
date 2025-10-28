@@ -1,19 +1,19 @@
 // 'use client'
 // import React from 'react';
-// import ContactCenterHero from './ContactCenterHero';
-// import ContactCenterFeatures from './ContactCenterFeatures';
-// import ContactCenterPlatform from './ContactCenterPlatform';
+// import GPSHero from './GPSHero';
+// import GPSBenefits from './GPSBenefits';
+// import GPSFeatures from './GPSFeatures';
 // import LogoScroll from '@/app/services/lead-generation/LogoScroll';
-// import ContactCenterAction from './ContactCenterAction';
+// import GPSAction from './GPSAction';
 
-// export default function ContactCenterPage() {
+// export default function GPSFleetManagementPage() {
 //   return (
 //     <div className="min-h-screen bg-white">
-//       <ContactCenterHero />
-//       <ContactCenterFeatures />
-//       <ContactCenterPlatform />
+//       <GPSHero />
+//       <GPSBenefits />
+//       <GPSFeatures />
 //       <LogoScroll />
-//       <ContactCenterAction />
+//       <GPSAction />
       
 //       <style jsx>{`
 //         @keyframes fade-in {

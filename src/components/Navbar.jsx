@@ -38,9 +38,9 @@ const Navbar = () => {
     { name: 'Phone System', href: '/categories/phone-system' },
     { name: 'CRM System', href: '/categories/crm-system' },
     { name: 'Business Intelligence', href: '/categories/business-intelligence' },
-    { name: 'Contact Center', href: '/categories/contact-center' },
-    { name: 'ERP Solutions', href: '/categories/erp-solutions' },
-    { name: 'Video Conferencing', href: '/categories/video-conferencing' }
+    { name: 'GPS Fleet Management Software', href: '/categories/GPS-fleet-management-software' },
+    { name: 'Payroll Software', href: '/categories/payroll-software' },
+    //{ name: 'Video Conferencing', href: '/categories/video-conferencing' }
   ];
 
   const navItems = [
