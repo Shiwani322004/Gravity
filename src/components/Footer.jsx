@@ -4,12 +4,12 @@ import {
   Phone, 
   Mail, 
   ArrowRight, 
-  Rocket,
   Linkedin,
   Twitter,
   Facebook,
   Instagram
 } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -33,8 +33,14 @@ export default function Footer() {
           <div className="flex flex-col space-y-6">
             <div>
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 bg-gradient-to-br from-[#007bff] to-[#0a2540] rounded-lg flex items-center justify-center shrink-0">
-                  <Rocket className="text-white" size={20} />
+                <div className="w-10 h-10 bg-gradient-to-br from-[#007bff] to-[#0a2540] rounded-lg flex items-center justify-center shrink-0 overflow-hidden">
+                  <Image 
+                    src="/images/5.png" // Update this path to your logo
+                    alt="B2B Gravity Logo"
+                    width={40}
+                    height={40}
+                    className="w-full h-full object-contain"
+                  />
                 </div>
                 <h3 className="font-bold text-2xl bg-gradient-to-r from-[#007bff] to-white bg-clip-text text-transparent whitespace-nowrap">
                   B2B Gravity
@@ -112,24 +118,6 @@ export default function Footer() {
                   <ArrowRight className="text-[#007bff] opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 shrink-0" size={12} />
                   <span className="group-hover:translate-x-2 transition-transform duration-300 font-semibold">About</span>
                 </a>
-              </li>
-              <li>
-                {/* <a 
-                  href="/services" 
-                  className="group flex items-center gap-2 text-white/80 hover:text-[#007bff] transition-all duration-300"
-                >
-                  <ArrowRight className="text-[#007bff] opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 shrink-0" size={12} />
-                  <span className="group-hover:translate-x-2 transition-transform duration-300 font-semibold">Our Services</span>
-                </a> */}
-              </li>
-              <li>
-                {/* <a 
-                  href="/categories" 
-                  className="group flex items-center gap-2 text-white/80 hover:text-[#007bff] transition-all duration-300"
-                >
-                  <ArrowRight className="text-[#007bff] opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 shrink-0" size={12} />
-                  <span className="group-hover:translate-x-2 transition-transform duration-300 font-semibold">Our Categories</span>
-                </a> */}
               </li>
               <li>
                 <a 
