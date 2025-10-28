@@ -1,19 +1,19 @@
 'use client'
 import React from 'react';
-import ContactCenterHero from './ContactCenterHero';
-import ContactCenterFeatures from './ContactCenterFeatures';
-import ContactCenterPlatform from './ContactCenterPlatform';
+import VideoConferencingHero from './VideoConferencingHero';
+import VideoConferencingFeatures from './VideoConferencingFeatures';
+import VideoConferencingPlatform from './VideoConferencingPlatform';
 import LogoScroll from '@/app/services/lead-generation/LogoScroll';
-import ContactCenterAction from './ContactCenterAction';
+import VideoConferencingAction from './VideoConferencingAction';
 
-export default function ContactCenterPage() {
+export default function VideoConferencingPage() {
   return (
     <div className="min-h-screen bg-white">
-      <ContactCenterHero />
-      <ContactCenterFeatures />
-      <ContactCenterPlatform />
+      <VideoConferencingHero />
+      <VideoConferencingFeatures />
+      <VideoConferencingPlatform />
       <LogoScroll />
-      <ContactCenterAction />
+      <VideoConferencingAction />
       
       <style jsx>{`
         @keyframes fade-in {

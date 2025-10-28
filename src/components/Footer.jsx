@@ -229,11 +229,11 @@ export default function Footer() {
               </li>
               <li>
                 <a 
-                  href="/categories/erp" 
+                  href="/categories/erp-solutions" 
                   className="group flex items-center gap-2 text-white/80 hover:text-[#007bff] transition-all duration-300"
                 >
                   <div className="w-1.5 h-1.5 rounded-full bg-[#007bff] opacity-60 group-hover:opacity-100 group-hover:scale-150 transition-all duration-300 shrink-0"></div>
-                  <span className="group-hover:translate-x-1 transition-transform duration-300 font-semibold">ERP</span>
+                  <span className="group-hover:translate-x-1 transition-transform duration-300 font-semibold">ERP Solutions</span>
                 </a>
               </li>
               <li>
