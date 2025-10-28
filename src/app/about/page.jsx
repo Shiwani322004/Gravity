@@ -5,7 +5,7 @@ import OurMission from './OurMission'
 import OurValues from './OurValues'
 import WhatWeDo from './WhatWeDo'
 import Achievements from './Achievements'
-import StatsSection from './StatsSection'
+import LogoScroll from '../services/lead-generation/LogoScroll'
 import GetStarted from './GetStarted'
 
 export default function About() {
@@ -16,7 +16,8 @@ export default function About() {
       <WhatWeDo />
       <OurValues />
       <Achievements />
-      <StatsSection />
+      <LogoScroll />
+      {/* <StatsSection /> */}
       <GetStarted />
     </div>
   )

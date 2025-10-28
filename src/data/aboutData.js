@@ -12,7 +12,6 @@ import {
   Zap,
   Star,
   Award,
-  Shield,
   Heart
 } from 'lucide-react';
 
@@ -81,9 +80,9 @@ export const achievements = [
     description: "Featured among the fastest growing technology firms"
   },
   {
-    icon: Shield,
-    title: "ISO 27001 Certified",
-    description: "Highest standards in data security and privacy"
+    icon: CheckCircle,
+    title: "95% Client Retention",
+    description: "Consistently maintaining long-term client relationships"
   },
   {
     icon: Heart,
