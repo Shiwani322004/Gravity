@@ -42,7 +42,7 @@ const LogoScroll = () => {
     { name: 'Sisense', imageUrl: '/images/sisense.png' },
     { name: 'Qlik', imageUrl: '/images/qlikicon.png' },
     { name: 'Zoho Analytics', imageUrl: '/images/zoho copy.png' },
-    { name: 'ActivTrak', imageUrl: '/images/activtrak.png' },
+    { name: 'ActivTrak', imageUrl: '/images/Activ.png' },
     { name: 'GoTo', imageUrl: '/images/goto.png' },
     { name: 'RingCentral', imageUrl: '/images/ringcentral.png' },
     { name: 'GoAnswer', imageUrl: '/images/goan.png' },
