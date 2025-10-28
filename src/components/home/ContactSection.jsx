@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight, Megaphone } from 'lucide-react';
+import LogoScroll from '@/app/services/lead-generation/LogoScroll'; // Adjust the import path as needed
 
 const ContactSection = () => {
   const handleExploreNow = () => {
@@ -15,8 +16,14 @@ const ContactSection = () => {
         }}></div>
       </div>
 
+      {/* Imported LogoScroll Component */}
+      <div className="mb-16">
+  <LogoScroll />
+</div>
+    
+
       <div className="relative max-w-5xl mx-auto px-6 text-center">
-        
+
         <h2 className="text-4xl md:text-6xl font-black mb-6">
           <span className="text-[#082540]">Let's Drive Your</span><br />
           <span className="text-[#007BFF]">
