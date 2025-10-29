@@ -1,8 +1,11 @@
 'use client';
 
-import { User, TrendingUp, Crown, Sparkles, CheckCircle } from 'lucide-react';
+import { User, TrendingUp, Crown, Sparkles, CheckCircle, BarChart3, ArrowRight } from 'lucide-react';
+import { useState } from 'react';
 
 const CRMPricingSection = () => {
+  const [isHovered, setIsHovered] = useState(false);
+  
   const plans = [
     {
       name: "Starter",
@@ -117,6 +120,35 @@ const CRMPricingSection = () => {
             </div>
           </div>
         ))}
+      </div>
+
+      {/* CTA Section - Navigation to Business Intelligence */}
+      <div className="mt-12 md:mt-16 relative">
+        <div className="bg-gradient-to-r from-blue-600 to-cyan-600 rounded-2xl md:rounded-3xl p-8 md:p-12 shadow-2xl">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
+            <div className="text-center md:text-left flex-1">
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 md:mb-4">
+                Ready to Unlock Data-Driven Insights?
+              </h3>
+              <p className="text-base md:text-lg text-purple-50 max-w-2xl">
+                Transform raw data into actionable intelligence with our advanced BI platform. Get real-time analytics, predictive insights, and interactive dashboards for smarter decision-making.
+              </p>
+            </div>
+
+            <a
+              href="/categories/business-intelligence"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+              className="group bg-white from-blue-600 to-cyan-600 px-6 md:px-8 py-4 md:py-5 rounded-xl font-semibold text-base md:text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center gap-3 whitespace-nowrap no-underline"
+            >
+              <BarChart3 className="w-5 h-5 md:w-6 md:h-6" />
+              <span>Explore BI Analytics</span>
+              <ArrowRight 
+                className={`w-5 h-5 md:w-6 md:h-6 transition-transform duration-300 ${isHovered ? 'translate-x-2' : ''}`} 
+              />
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -1,8 +1,11 @@
 'use client'
 import React, { useState } from 'react';
+import { MapPin, ArrowRight, Users } from 'lucide-react'; // Added Users import
 
 export default function PhoneSystemAction() {
   const [activeFeature, setActiveFeature] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const CRM_SYSTEM_URL = "/crm-system"; // Update this with your actual CRM URL
 
   const demoFeatures = [
     {
@@ -100,6 +103,35 @@ export default function PhoneSystemAction() {
                   </div>
                 ))}
               </div>
+            </div>
+          </div>
+        </div>
+
+        {/* CTA Section - Navigation to CRM System */}
+        <div className="mt-12 md:mt-16 relative">
+          <div className="bg-gradient-to-r from-[#007bff] to-cyan-600 rounded-2xl md:rounded-3xl p-8 md:p-12 shadow-2xl">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
+              <div className="text-center md:text-left flex-1">
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 md:mb-4">
+                  Ready to Transform Your Customer Relationships?
+                </h3>
+                <p className="text-base md:text-lg text-blue-50 max-w-2xl">
+                  Discover our comprehensive CRM System for seamless customer management, sales automation, and data-driven insights to grow your business
+                </p>
+              </div>
+
+              <a
+                href={CRM_SYSTEM_URL}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+                className="group bg-white text-[#007bff] px-6 md:px-8 py-4 md:py-5 rounded-xl font-semibold text-base md:text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center gap-3 whitespace-nowrap no-underline"
+              >
+                <Users className="w-5 h-5 md:w-6 md:h-6" />
+                <span>Explore CRM System</span>
+                <ArrowRight 
+                  className={`w-5 h-5 md:w-6 md:h-6 transition-transform duration-300 ${isHovered ? 'translate-x-2' : ''}`} 
+                />
+              </a>
             </div>
           </div>
         </div>

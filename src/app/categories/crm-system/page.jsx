@@ -6,7 +6,7 @@ import CRMFeaturesSection from './CRMFeaturesSection';
 import CRMAutomationSection from './CRMAutomationSection';
 import LogoScroll from '@/app/services/lead-generation/LogoScroll';
 import CRMPricingSection from './CRMPricingSection';
-import CRMTrustedSection from './CRMTrustedSection';
+
 
 export const dynamic = 'force-dynamic'
 
@@ -24,7 +24,7 @@ export default function CRMPage() {
       <CRMAutomationSection />
       <LogoScroll />
       <CRMPricingSection />
-      <CRMTrustedSection />
+    
     </div>
   );
 }
