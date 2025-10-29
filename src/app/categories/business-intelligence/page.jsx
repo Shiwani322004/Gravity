@@ -6,8 +6,9 @@ import PlatformComparison from './platform-comparison';
 import BusinessImpact from './business-impact';
 import BusinessAnalysis from './business-analysis';
 import BusinessCapabilities from './business-capabilities';
+import LogoScroll from '@/app/services/lead-generation/LogoScroll';
 import LiveDashboard from './live-dashboard';
-import Clients from './clients';
+
 
 export default function BusinessIntelligencePage() {
   const [showQuestionnaire, setShowQuestionnaire] = useState(false);
@@ -278,9 +279,10 @@ export default function BusinessIntelligencePage() {
       <BusinessImpact />
       <BusinessAnalysis />
       <BusinessCapabilities />
+      <LogoScroll />
       <LiveDashboard />
-      <Clients onOpenQuestionnaire={handleOpenQuestionnaire} />
       
+
       {/* Questionnaire Popup */}
       {showQuestionnaire && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
