@@ -94,12 +94,8 @@ export default function BusinessImpact() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Hero Section with Animation */}
         <div className={`text-center mb-20 transition-all duration-1000 ${visibleElements.hero ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}>
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-100 to-cyan-100 text-[#007bff] px-5 py-2.5 rounded-full text-sm font-semibold mb-6 shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer group">
-            <Sparkles size={16} className="group-hover:rotate-12 transition-transform duration-300" />
-            Measurable Results & Proven Impact
-            <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
-          </div>
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+          
+          <h2 className="text-4xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
             Business Intelligence <span className="text-[#007bff]">Impact</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
