@@ -6,22 +6,22 @@ import Link from 'next/link'; // If using Next.js
 const slides = [
   {
     text: "Transform your digital presence with cutting-edge marketing strategies that drive real results. Our expert team crafts personalized campaigns that resonate with your audience and deliver measurable outcomes.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=1000&fit=crop",
+    image: "/images/hero1.png",
     accent: "#007BFF"
   },
   {
     text: "Elevate your brand with innovative solutions designed to capture attention and engage your audience. We leverage the latest technologies and marketing trends to create compelling experiences that convert.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=1000&fit=crop",
+    image: "/images/hero2.png",
     accent: "#0099FF"
   },
   {
     text: "Drive growth and maximize your ROI with data-driven strategies tailored to your business goals. Our analytics-focused approach ensures every marketing dollar is optimized for maximum impact.",
-    image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=1000&fit=crop",
+    image: "/images/herodemo3.png",
     accent: "#0088EE"
   },
   {
     text: "Unlock new opportunities and reach your target market with our comprehensive digital marketing services. We specialize in identifying untapped potential and creating pathways to connect with your ideal customers.",
-    image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&h=1000&fit=crop",
+    image: "/images/hero4.png",
     accent: "#0077DD"
   }
 ];
@@ -282,29 +282,7 @@ const HeroSection = () => {
                 <div className="absolute inset-0 shimmer-effect"></div>
               </Link>
 
-              {/* Option 2: Using regular anchor tag (if not using Next.js) */}
-              {/* <a 
-                href="/contact" 
-                className="group relative bg-[#007BFF] text-white px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 hover:shadow-2xl hover:shadow-[#007BFF]/50 hover:-translate-y-1 overflow-hidden block"
-              >
-                <span className="relative z-10 flex items-center gap-2">
-                  Get Started
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </span>
-                <div className="absolute inset-0 shimmer-effect"></div>
-              </a> */}
-
-              {/* Option 3: Using React Router Link (if using React Router) */}
-              {/* <Link 
-                to="/contact" 
-                className="group relative bg-[#007BFF] text-white px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 hover:shadow-2xl hover:shadow-[#007BFF]/50 hover:-translate-y-1 overflow-hidden block"
-              >
-                <span className="relative z-10 flex items-center gap-2">
-                  Get Started
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </span>
-                <div className="absolute inset-0 shimmer-effect"></div>
-              </Link> */}
+              
             </div>
           </div>
 
