@@ -40,7 +40,6 @@ const Navbar = () => {
     { name: 'Business Intelligence', href: '/categories/business-intelligence' },
     { name: 'GPS Fleet Management Software', href: '/categories/GPS-fleet-management-software' },
     { name: 'Payroll Software', href: '/categories/payroll-software' },
-    //{ name: 'Video Conferencing', href: '/categories/video-conferencing' }
   ];
 
   const navItems = [
@@ -133,13 +132,12 @@ const Navbar = () => {
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            {/* Logo - Simplified without background effects */}
+            {/* Logo */}
             <div className="flex-shrink-0">
               <a 
                 href="/" 
                 className="flex items-center group"
               >
-                {/* Removed the gradient background container */}
                 <img 
                   src="/images/4.png" 
                   alt="B2B Gravity Logo" 
@@ -152,11 +150,11 @@ const Navbar = () => {
               </a>
             </div>
 
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-1">
+            {/* Desktop Navigation - Enhanced spacing and animations */}
+            <div className="hidden lg:flex items-center space-x-3">
               {navItems.map((item, index) => {
                 return (
-                  <div key={index}>
+                  <div key={index} className="relative">
                     {item.hasDropdown ? (
                       <div 
                         className="relative"
@@ -164,23 +162,29 @@ const Navbar = () => {
                         onMouseLeave={handleDropdownLeave}
                       >
                         <button
-                          className={`flex items-center gap-1.5 px-5 py-2.5 rounded-lg transition-all duration-300 ease-out font-semibold text-[15px] group relative ${
+                          className={`flex items-center gap-1.5 px-6 py-3 rounded-xl transition-all duration-400 ease-out font-semibold text-[15px] group relative mx-1 ${
                             activeNav === item.id 
-                              ? 'text-white bg-gradient-to-r from-[#0a2540] to-[#007bff] shadow-lg shadow-blue-500/20' 
-                              : 'text-slate-700 hover:text-[#007bff] hover:bg-slate-50'
+                              ? 'text-white bg-gradient-to-r from-[#0a2540] to-[#007bff] shadow-lg shadow-blue-500/30' 
+                              : 'text-slate-700 hover:text-[#007bff] hover:bg-slate-50 shadow-sm hover:shadow-md'
                           }`}
                         >
-                          <span className="relative z-10 transition-all duration-300">{item.name}</span>
+                          <span className="relative z-10 transition-all duration-400">{item.name}</span>
                           <ChevronDown className={`w-4 h-4 relative z-10 transition-all duration-500 ease-out ${activeDropdown === item.id ? 'rotate-180' : 'rotate-0'}`} />
+                          
+                          {/* Enhanced hover background effect */}
+                          {activeNav !== item.id && (
+                            <div className="absolute inset-0 bg-gradient-to-r from-[#0a2540]/5 to-[#007bff]/5 rounded-xl scale-0 group-hover:scale-100 transition-transform duration-500 ease-out"></div>
+                          )}
                         </button>
                         
-                        <div className={`absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-2xl py-2 text-slate-800 border border-slate-100 overflow-hidden transition-all duration-500 ease-out origin-top ${
+                        {/* Enhanced dropdown with cascading animation */}
+                        <div className={`absolute top-full left-0 mt-3 w-72 bg-white rounded-2xl shadow-2xl py-3 text-slate-800 border border-slate-100 overflow-hidden transition-all duration-500 ease-out origin-top ${
                           activeDropdown === item.id 
                             ? 'opacity-100 translate-y-0 scale-y-100 pointer-events-auto' 
-                            : 'opacity-0 -translate-y-2 scale-y-95 pointer-events-none'
+                            : 'opacity-0 -translate-y-3 scale-y-95 pointer-events-none'
                         }`}>
                           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#0a2540] via-[#007bff] to-[#0056b3] transition-all duration-500"></div>
-                          <div className="space-y-0.5 mt-1 px-2">
+                          <div className="space-y-1.5 mt-2 px-3">
                             {item.dropdownItems.map((subpage, idx) => {
                               const isSubpageActive = pathname === subpage.href;
                               return (
@@ -188,19 +192,19 @@ const Navbar = () => {
                                   key={idx}
                                   href={subpage.href}
                                   onClick={handleLinkClick}
-                                  className={`block px-4 py-3 rounded-lg transition-all duration-300 ease-out group relative overflow-hidden transform hover:scale-[1.02] ${
+                                  className={`block px-4 py-3.5 rounded-xl transition-all duration-500 ease-out group relative overflow-hidden transform hover:scale-[1.02] border border-transparent ${
                                     isSubpageActive
                                       ? 'text-white bg-gradient-to-r from-[#0a2540] to-[#007bff] shadow-md'
-                                      : 'text-slate-700 hover:text-[#007bff] hover:bg-slate-50 hover:shadow-sm'
+                                      : 'text-slate-700 hover:text-[#007bff] hover:bg-slate-50 hover:shadow-sm hover:border-slate-200'
                                   }`}
                                   style={{ 
-                                    transitionDelay: `${idx * 30}ms`,
-                                    animation: activeDropdown === item.id ? `slideIn 0.4s ease-out ${idx * 0.03}s both` : 'none'
+                                    transitionDelay: `${idx * 80}ms`,
+                                    animation: activeDropdown === item.id ? `dropdownSlideIn 0.5s ease-out ${idx * 0.08}s both` : 'none'
                                   }}
                                 >
-                                  <div className="relative z-10 font-medium text-[14px] transition-all duration-300">{subpage.name}</div>
+                                  <div className="relative z-10 font-medium text-[14px] transition-all duration-400">{subpage.name}</div>
                                   {!isSubpageActive && (
-                                    <div className="absolute inset-0 bg-gradient-to-r from-[#007bff]/5 to-[#0056b3]/5 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500 ease-out"></div>
+                                    <div className="absolute inset-0 bg-gradient-to-r from-[#007bff]/5 to-[#0056b3]/5 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500 ease-out rounded-xl"></div>
                                   )}
                                 </a>
                               );
@@ -212,15 +216,15 @@ const Navbar = () => {
                       <a 
                         href={item.href}
                         onClick={handleLinkClick}
-                        className={`flex items-center px-5 py-2.5 rounded-lg transition-all duration-300 ease-out font-semibold text-[15px] group relative transform hover:scale-105 ${
+                        className={`flex items-center px-6 py-3 rounded-xl transition-all duration-400 ease-out font-semibold text-[15px] group relative transform hover:scale-105 mx-1 shadow-sm hover:shadow-md ${
                           activeNav === item.id 
-                            ? 'text-white bg-gradient-to-r from-[#0a2540] to-[#007bff] shadow-lg shadow-blue-500/20' 
-                            : 'text-slate-700 hover:text-[#007bff] hover:bg-slate-50 hover:shadow-md'
+                            ? 'text-white bg-gradient-to-r from-[#0a2540] to-[#007bff] shadow-lg shadow-blue-500/30' 
+                            : 'text-slate-700 hover:text-[#007bff] hover:bg-slate-50'
                         }`}
                       >
-                        <span className="relative z-10 transition-all duration-300">{item.name}</span>
+                        <span className="relative z-10 transition-all duration-400">{item.name}</span>
                         {activeNav !== item.id && (
-                          <div className="absolute inset-0 bg-gradient-to-r from-[#0a2540]/5 to-[#007bff]/5 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-500 ease-out"></div>
+                          <div className="absolute inset-0 bg-gradient-to-r from-[#0a2540]/5 to-[#007bff]/5 rounded-xl scale-0 group-hover:scale-100 transition-transform duration-500 ease-out"></div>
                         )}
                       </a>
                     )}
@@ -233,9 +237,9 @@ const Navbar = () => {
             <div className="lg:hidden">
               <button
                 onClick={toggleMobileMenu}
-                className="text-slate-700 hover:text-[#007bff] focus:outline-none p-2 rounded-lg hover:bg-slate-50 transition-all duration-300 ease-out transform hover:scale-110 active:scale-95"
+                className="text-slate-700 hover:text-[#007bff] focus:outline-none p-2 rounded-xl hover:bg-slate-50 transition-all duration-400 ease-out transform hover:scale-110 active:scale-95 shadow-sm"
               >
-                {isMenuOpen ? <X className="w-7 h-7 transition-transform duration-300 rotate-90" /> : <Menu className="w-7 h-7 transition-transform duration-300" />}
+                {isMenuOpen ? <X className="w-7 h-7 transition-transform duration-400 rotate-90" /> : <Menu className="w-7 h-7 transition-transform duration-400" />}
               </button>
             </div>
           </div>
@@ -254,9 +258,8 @@ const Navbar = () => {
               <a 
                 href="/" 
                 onClick={handleLinkClick}
-                className="flex items-center transition-transform duration-300 hover:scale-105"
+                className="flex items-center transition-transform duration-400 hover:scale-105"
               >
-                {/* Mobile logo - also simplified */}
                 <img 
                   src="/images/4.png" 
                   alt="B2B Gravity Logo" 
@@ -269,35 +272,35 @@ const Navbar = () => {
               </a>
               <button
                 onClick={toggleMobileMenu}
-                className="text-white hover:text-slate-200 transition-all duration-300 ease-out p-2 rounded-lg hover:bg-white/10 transform hover:rotate-90 active:scale-95"
+                className="text-white hover:text-slate-200 transition-all duration-400 ease-out p-2 rounded-xl hover:bg-white/10 transform hover:rotate-90 active:scale-95"
               >
                 <X className="w-7 h-7" />
               </button>
             </div>
           </div>
 
-          <div className="p-4">
-            <div className="space-y-3">
+          <div className="p-5">
+            <div className="space-y-4">
               {navItems.map((item, index) => {
                 const isActive = activeNav === item.id;
                 return (
                   <div 
                     key={index}
                     style={{
-                      animation: isMenuOpen ? `fadeInUp 0.5s ease-out ${index * 0.1}s both` : 'none'
+                      animation: isMenuOpen ? `fadeInUp 0.6s ease-out ${index * 0.1}s both` : 'none'
                     }}
                   >
                     {item.hasDropdown ? (
-                      <div className={`rounded-xl overflow-hidden border-2 transition-all duration-500 ease-out transform hover:scale-[1.02] ${
-                        isActive ? 'border-[#007bff] bg-slate-50 shadow-lg' : 'border-slate-200 bg-white shadow-md hover:shadow-xl'
+                      <div className={`rounded-2xl overflow-hidden border-2 transition-all duration-500 ease-out transform hover:scale-[1.02] shadow-md ${
+                        isActive ? 'border-[#007bff] bg-slate-50 shadow-lg' : 'border-slate-200 bg-white hover:shadow-xl'
                       }`}>
                         <button
                           onClick={() => toggleMobileDropdown(item.id)}
-                          className={`flex items-center justify-between w-full px-5 py-4 transition-all duration-300 ease-out ${
+                          className={`flex items-center justify-between w-full px-6 py-5 transition-all duration-400 ease-out ${
                             isActive ? 'text-[#007bff] font-bold' : 'text-slate-800 hover:bg-slate-50'
                           }`}
                         >
-                          <span className="text-lg font-bold transition-all duration-300">{item.name}</span>
+                          <span className="text-lg font-bold transition-all duration-400">{item.name}</span>
                           <ChevronDown className={`w-6 h-6 transition-all duration-500 ease-out ${
                             mobileDropdowns[item.id] ? 'rotate-180' : 'rotate-0'
                           } ${isActive ? 'text-[#007bff]' : 'text-slate-500'}`} />
@@ -310,7 +313,7 @@ const Navbar = () => {
                             opacity: mobileDropdowns[item.id] ? 1 : 0
                           }}
                         >
-                          <div className="px-3 pb-3 space-y-1.5">
+                          <div className="px-4 pb-4 space-y-2">
                             {item.dropdownItems.map((subpage, idx) => {
                               const isSubpageActive = pathname === subpage.href;
                               return (
@@ -318,16 +321,17 @@ const Navbar = () => {
                                   key={idx}
                                   href={subpage.href}
                                   onClick={handleLinkClick}
-                                  className={`block py-3 px-4 rounded-lg transition-all duration-500 ease-out border transform hover:scale-[1.02] ${
+                                  className={`block py-3.5 px-5 rounded-xl transition-all duration-500 ease-out border transform hover:scale-[1.02] ${
                                     isSubpageActive
                                       ? 'text-white bg-gradient-to-r from-[#0a2540] to-[#007bff] border-transparent shadow-md'
                                       : 'text-slate-700 hover:text-[#007bff] hover:bg-white border-slate-200 hover:border-[#007bff] hover:shadow-md'
                                   }`}
                                   style={{
-                                    transitionDelay: mobileDropdowns[item.id] ? `${idx * 50}ms` : '0ms'
+                                    transitionDelay: mobileDropdowns[item.id] ? `${idx * 60}ms` : '0ms',
+                                    animation: mobileDropdowns[item.id] ? `mobileDropdownSlideIn 0.4s ease-out ${idx * 0.06}s both` : 'none'
                                   }}
                                 >
-                                  <span className="font-semibold text-[15px] transition-all duration-300">{subpage.name}</span>
+                                  <span className="font-semibold text-[15px] transition-all duration-400">{subpage.name}</span>
                                 </a>
                               );
                             })}
@@ -338,13 +342,13 @@ const Navbar = () => {
                       <a
                         href={item.href}
                         onClick={handleLinkClick}
-                        className={`flex items-center justify-center px-5 py-4 rounded-xl border-2 transition-all duration-500 ease-out shadow-md transform hover:scale-[1.02] ${
+                        className={`flex items-center justify-center px-6 py-5 rounded-2xl border-2 transition-all duration-500 ease-out shadow-md transform hover:scale-[1.02] ${
                           isActive
                             ? 'text-white bg-gradient-to-r from-[#0a2540] to-[#007bff] border-transparent shadow-lg'
                             : 'border-slate-200 bg-white text-slate-800 hover:from-[#0a2540] hover:to-[#007bff] hover:text-white hover:border-transparent hover:bg-gradient-to-r hover:shadow-xl'
                         }`}
                       >
-                        <span className="text-lg font-bold transition-all duration-300">{item.name}</span>
+                        <span className="text-lg font-bold transition-all duration-400">{item.name}</span>
                       </a>
                     )}
                   </div>
@@ -356,21 +360,32 @@ const Navbar = () => {
       </div>
 
       <style jsx>{`
-        @keyframes slideIn {
+        @keyframes dropdownSlideIn {
           from {
             opacity: 0;
-            transform: translateY(-10px);
+            transform: translateY(-12px) scale(0.95);
           }
           to {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
+          }
+        }
+
+        @keyframes mobileDropdownSlideIn {
+          from {
+            opacity: 0;
+            transform: translateX(-10px) scale(0.98);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0) scale(1);
           }
         }
 
         @keyframes fadeInUp {
           from {
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(25px);
           }
           to {
             opacity: 1;
