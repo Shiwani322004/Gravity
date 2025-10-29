@@ -50,7 +50,7 @@ const CRMPricingSection = () => {
   ];
 
   return (
-    <section className="px-6 py-20 max-w-7xl mx-auto relative z-10">
+    <section className="px-4 sm:px-6 py-12 sm:py-20 max-w-7xl mx-auto relative z-10">
       <div className="text-center mb-16">
         <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
           Transparent{' '}
@@ -63,11 +63,11 @@ const CRMPricingSection = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
         {plans.map((plan, index) => (
           <div
             key={index}
-            className={`relative bg-white rounded-2xl border-2 p-8 shadow-lg transition-all duration-500 transform hover:-translate-y-3 flex flex-col h-full ${
+            className={`relative bg-white rounded-2xl border-2 p-6 sm:p-8 shadow-lg transition-all duration-500 transform hover:-translate-y-3 flex flex-col h-full ${
               plan.popular 
                 ? 'border-blue-500 shadow-2xl shadow-blue-500/20 ring-2 ring-blue-500/20' 
                 : 'border-gray-200/60 hover:shadow-xl hover:border-blue-300/60'
@@ -81,9 +81,9 @@ const CRMPricingSection = () => {
               </div>
             )}
             
-            <div className="text-center mb-8">
-              <div className="flex justify-center mb-4">
-                <div className={`w-14 h-14 rounded-xl bg-gradient-to-r flex items-center justify-center shadow-lg ${
+            <div className="text-center mb-6 sm:mb-8">
+              <div className="flex justify-center mb-3 sm:mb-4">
+                <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-r flex items-center justify-center shadow-lg ${
                   plan.popular 
                     ? 'from-blue-600 to-cyan-600 shadow-blue-500/30' 
                     : 'from-blue-500 to-cyan-500 shadow-blue-400/20'
@@ -91,26 +91,26 @@ const CRMPricingSection = () => {
                   {plan.icon}
                 </div>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">{plan.name}</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">{plan.name}</h3>
               <div className="flex items-baseline justify-center mb-2">
-                <span className="text-4xl font-bold text-gray-900">{plan.price}</span>
-                <span className="text-gray-600 ml-2">{plan.period}</span>
+                <span className="text-3xl sm:text-4xl font-bold text-gray-900">{plan.price}</span>
+                <span className="text-gray-600 ml-2 text-sm sm:text-base">{plan.period}</span>
               </div>
-              <p className="text-gray-600">{plan.description}</p>
+              <p className="text-gray-600 text-sm sm:text-base">{plan.description}</p>
             </div>
 
-            <div className="space-y-4 mb-8 flex-grow">
+            <div className="space-y-3 sm:space-y-4 mb-6 sm:mb-8 flex-grow">
               {plan.features.map((feature, featureIndex) => (
                 <div key={featureIndex} className="flex items-center space-x-3">
-                  <CheckCircle size={18} className="text-green-500 flex-shrink-0" />
-                  <span className="text-gray-700">{feature}</span>
+                  <CheckCircle size={16} className="text-green-500 flex-shrink-0 sm:w-[18px] sm:h-[18px]" />
+                  <span className="text-gray-700 text-sm sm:text-base">{feature}</span>
                 </div>
               ))}
             </div>
 
             {/* Fixed button container with consistent height */}
             <div className="mt-auto pt-4">
-              <button className={`w-full py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
+              <button className={`w-full py-3 sm:py-4 rounded-lg sm:rounded-xl text-sm sm:text-base font-semibold transition-all duration-300 transform hover:scale-105 ${
                 plan.popular
                   ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white hover:shadow-2xl hover:shadow-blue-500/40'
                   : 'bg-gradient-to-r from-gray-100 to-gray-50 text-gray-900 border border-gray-200 hover:border-blue-300 hover:from-blue-50 hover:to-cyan-50 hover:text-blue-700'

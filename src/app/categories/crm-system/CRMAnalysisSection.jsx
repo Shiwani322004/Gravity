@@ -174,7 +174,7 @@ const CRMAnalysisSection = () => {
   };
 
   return (
-    <section className="px-6 py-20 bg-gradient-to-br from-gray-50 to-blue-50/30 relative overflow-hidden">
+    <section className="px-4 sm:px-6 py-12 sm:py-20 bg-gradient-to-br from-gray-50 to-blue-50/30 relative overflow-hidden">
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
@@ -189,13 +189,13 @@ const CRMAnalysisSection = () => {
           </p>
         </div>
 
-        {/* CRM Selection Tabs */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        {/* CRM Selection Tabs - Mobile Responsive */}
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8 sm:mb-12 px-2">
           {cardDetails.map((crm, index) => (
             <button
               key={crm.id}
               onClick={() => goToCard(index)}
-              className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
+              className={`px-3 sm:px-6 py-2 sm:py-3 rounded-lg sm:rounded-xl text-sm sm:text-base font-semibold transition-all duration-300 transform hover:scale-105 ${
                 currentCardIndex === index
                   ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-lg'
                   : 'bg-white text-gray-700 border border-gray-200 hover:border-blue-300 hover:shadow-md'
@@ -208,10 +208,10 @@ const CRMAnalysisSection = () => {
 
         {/* Current CRM Analysis */}
         <div className="space-y-12">
-          {/* CRM Header */}
+          {/* CRM Header - Mobile Responsive */}
           <div className="text-center">
-            <div className="flex items-center justify-center space-x-4 mb-6">
-              <div className="w-20 h-20 bg-white rounded-2xl shadow-lg flex items-center justify-center p-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 mb-6">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-2xl shadow-lg flex items-center justify-center p-3 sm:p-4">
                 <Image 
                   src={cardDetails[currentCardIndex].logo}
                   alt={`${cardDetails[currentCardIndex].name} logo`}
@@ -220,128 +220,128 @@ const CRMAnalysisSection = () => {
                   className="object-contain"
                 />
               </div>
-              <div className="text-left">
-                <h3 className="text-3xl font-bold text-gray-900 mb-2">
+              <div className="text-center">
+                <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
                   {cardDetails[currentCardIndex].name}
                 </h3>
-                <p className="text-xl text-gray-600 max-w-2xl">
+                <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
                   {cardDetails[currentCardIndex].description}
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Pros and Cons Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Pros and Cons Grid - Mobile Responsive */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
             {/* Pros Column */}
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
-                  <CheckCircle className="text-green-600" size={28} />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-green-100 rounded-xl flex items-center justify-center">
+                  <CheckCircle className="text-green-600" size={24} />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900">Pros & Advantages</h3>
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Pros & Advantages</h3>
               </div>
               
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 {cardDetails[currentCardIndex].pros.map((pro, index) => (
-                  <div key={index} className="flex items-start space-x-4 p-4 bg-green-50 rounded-xl border border-green-200">
-                    <CheckCircle className="text-green-500 mt-1 flex-shrink-0" size={20} />
-                    <span className="text-gray-700 text-lg">{pro}</span>
+                  <div key={index} className="flex items-start space-x-3 sm:space-x-4 p-3 sm:p-4 bg-green-50 rounded-xl border border-green-200">
+                    <CheckCircle className="text-green-500 mt-1 flex-shrink-0" size={18} />
+                    <span className="text-gray-700 text-base sm:text-lg">{pro}</span>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* Cons Column */}
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center">
-                  <X className="text-red-600" size={28} />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-red-100 rounded-xl flex items-center justify-center">
+                  <X className="text-red-600" size={24} />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900">Cons & Limitations</h3>
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Cons & Limitations</h3>
               </div>
               
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 {cardDetails[currentCardIndex].cons.map((con, index) => (
-                  <div key={index} className="flex items-start space-x-4 p-4 bg-red-50 rounded-xl border border-red-200">
-                    <AlertCircle className="text-red-500 mt-1 flex-shrink-0" size={20} />
-                    <span className="text-gray-700 text-lg">{con}</span>
+                  <div key={index} className="flex items-start space-x-3 sm:space-x-4 p-3 sm:p-4 bg-red-50 rounded-xl border border-red-200">
+                    <AlertCircle className="text-red-500 mt-1 flex-shrink-0" size={18} />
+                    <span className="text-gray-700 text-base sm:text-lg">{con}</span>
                   </div>
                 ))}
               </div>
             </div>
           </div>
 
-          {/* Key Features */}
-          <div className="space-y-6">
+          {/* Key Features - Mobile Responsive */}
+          <div className="space-y-4 sm:space-y-6">
             <div className="flex items-center space-x-3">
-              <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
-                <Sparkles className="text-blue-600" size={28} />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+                <Sparkles className="text-blue-600" size={24} />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900">Key Features</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Key Features</h3>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
               {cardDetails[currentCardIndex].keyFeatures.map((feature, index) => (
-                <div key={index} className="flex items-center space-x-3 p-4 bg-blue-50 rounded-xl border border-blue-200">
-                  <CheckCircle className="text-blue-500 flex-shrink-0" size={20} />
-                  <span className="text-gray-700">{feature}</span>
+                <div key={index} className="flex items-center space-x-3 p-3 sm:p-4 bg-blue-50 rounded-xl border border-blue-200">
+                  <CheckCircle className="text-blue-500 flex-shrink-0" size={18} />
+                  <span className="text-gray-700 text-sm sm:text-base">{feature}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Additional Information */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="space-y-6">
+          {/* Additional Information - Mobile Responsive */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+            <div className="space-y-4 sm:space-y-6">
               <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
-                  <Target className="text-purple-600" size={28} />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-purple-100 rounded-xl flex items-center justify-center">
+                  <Target className="text-purple-600" size={24} />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900">Best For</h3>
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Best For</h3>
               </div>
               
-              <div className="p-6 bg-purple-50 rounded-xl border border-purple-200">
-                <p className="text-gray-700 text-lg leading-relaxed">
+              <div className="p-4 sm:p-6 bg-purple-50 rounded-xl border border-purple-200">
+                <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
                   {cardDetails[currentCardIndex].bestFor}
                 </p>
               </div>
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center">
-                  <Target className="text-amber-600" size={28} />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-amber-100 rounded-xl flex items-center justify-center">
+                  <Target className="text-amber-600" size={24} />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900">Pricing</h3>
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Pricing</h3>
               </div>
               
-              <div className="p-6 bg-amber-50 rounded-xl border border-amber-200">
-                <p className="text-gray-700 text-lg leading-relaxed">
+              <div className="p-4 sm:p-6 bg-amber-50 rounded-xl border border-amber-200">
+                <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
                   {cardDetails[currentCardIndex].pricing}
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Navigation */}
-          <div className="flex items-center justify-between pt-8 border-t border-gray-200">
+          {/* Navigation - Mobile Responsive */}
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 sm:pt-8 border-t border-gray-200">
             <button
               onClick={prevCard}
-              className="flex items-center space-x-3 px-8 py-4 bg-white border border-gray-300 rounded-xl hover:bg-gray-50 transition-all duration-300 transform hover:-translate-x-1 text-lg font-semibold"
+              className="w-full sm:w-auto flex items-center justify-center space-x-2 sm:space-x-3 px-4 sm:px-8 py-3 sm:py-4 bg-white border border-gray-300 rounded-lg sm:rounded-xl hover:bg-gray-50 transition-all duration-300 transform hover:-translate-x-1 text-base sm:text-lg font-semibold"
             >
               <span>← Previous</span>
             </button>
             
-            <div className="flex items-center space-x-4">
-              <span className="text-gray-600 text-lg">
+            <div className="flex items-center space-x-4 order-first sm:order-none">
+              <span className="text-gray-600 text-base sm:text-lg">
                 {currentCardIndex + 1} of {cardDetails.length}
               </span>
             </div>
             
             <button
               onClick={nextCard}
-              className="flex items-center space-x-3 px-8 py-4 bg-white border border-gray-300 rounded-xl hover:bg-gray-50 transition-all duration-300 transform hover:translate-x-1 text-lg font-semibold"
+              className="w-full sm:w-auto flex items-center justify-center space-x-2 sm:space-x-3 px-4 sm:px-8 py-3 sm:py-4 bg-white border border-gray-300 rounded-lg sm:rounded-xl hover:bg-gray-50 transition-all duration-300 transform hover:translate-x-1 text-base sm:text-lg font-semibold"
             >
               <span>Next →</span>
             </button>

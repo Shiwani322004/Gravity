@@ -27,7 +27,7 @@ const CRMFeaturesSection = () => {
   ];
 
   return (
-    <section className="px-6 py-20 max-w-7xl mx-auto relative z-10">
+    <section className="px-4 sm:px-6 py-12 sm:py-20 max-w-7xl mx-auto relative z-10">
       <div className="text-center mb-16">
         <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
           Powerful Features for{' '}
@@ -40,11 +40,11 @@ const CRMFeaturesSection = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         {features.map((feature, index) => (
           <div
             key={index}
-            className="group bg-white rounded-2xl p-6 border border-gray-200/60 shadow-lg hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-500 transform hover:-translate-y-2 cursor-pointer hover:border-blue-300 relative overflow-hidden"
+            className="group bg-white rounded-2xl p-4 sm:p-6 border border-gray-200/60 shadow-lg hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-500 transform hover:-translate-y-2 cursor-pointer hover:border-blue-300 relative overflow-hidden"
           >
             {/* Blue overlay on hover */}
             <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-cyan-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
@@ -54,10 +54,10 @@ const CRMFeaturesSection = () => {
               <div className="mb-4 transform group-hover:scale-110 transition-transform duration-300">
                 {feature.icon}
               </div>
-              <h3 className="text-xl font-semibold mb-3 text-gray-900 group-hover:text-blue-600">
+              <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-gray-900 group-hover:text-blue-600">
                 {feature.title}
               </h3>
-              <p className="text-gray-600 leading-relaxed group-hover:text-gray-700">
+              <p className="text-sm sm:text-base text-gray-600 leading-relaxed group-hover:text-gray-700">
                 {feature.description}
               </p>
               <div className="mt-4 w-0 group-hover:w-8 h-0.5 bg-gradient-to-r from-blue-600 to-cyan-600 transition-all duration-500"></div>

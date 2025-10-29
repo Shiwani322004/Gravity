@@ -4,7 +4,7 @@ import { CheckCircle } from 'lucide-react';
 
 const CRMAutomationSection = () => {
   return (
-    <section className="px-6 py-20 max-w-7xl mx-auto relative z-10">
+    <section className="px-4 sm:px-6 py-12 sm:py-20 max-w-7xl mx-auto relative z-10">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div className="relative">
           <div className="bg-white rounded-2xl p-8 border border-gray-200/60 shadow-lg">
