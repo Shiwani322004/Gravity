@@ -120,7 +120,7 @@ export default function PlatformComparison({ onOpenQuestionnaire }) {
         "Not a full BI platform"
       ],
       description: "ActivTrak is a workforce analytics platform that provides insights into employee productivity and helps organizations optimize team performance.",
-      logo: "/images/Activtrak.png" // Add your image path here
+      logo: "/images/Activ.png" // Add your image path here
     }
   ];
 
