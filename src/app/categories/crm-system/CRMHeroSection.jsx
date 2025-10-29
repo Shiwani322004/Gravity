@@ -339,43 +339,60 @@ export default function CRMHeroSection() {
         </div>
 
         <div className="max-w-7xl mx-auto px-6 relative z-10">
-          {/* Header Section - Perfectly Centered */}
-          <div className="mb-16 w-full flex justify-center">
-            <div className={`text-center max-w-4xl mx-auto transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-              {/* Main Heading - Centered */}
-              <div className="mb-8">
-                <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                  <span className={`inline-block transition-all duration-700 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                    Find the Perfect{' '}
-                  </span>
-                  <span className={`inline-block bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent transition-all duration-700 delay-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                    CRM Software
-                  </span>
-                </h1>
-              </div>
+              {/* Header Section - Perfectly Centered */}
+<div className="mb-16 w-full flex justify-center">
+  <div className={`max-w-4xl mx-auto transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+    {/* Main Heading - Left Aligned */}
+    <div className="mb-8 text-left">
+      <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+        <span className={`inline-block transition-all duration-700 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+          Find the Perfect&nbsp;
+        </span>
+        <span className={`inline-block bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent transition-all duration-700 delay-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+          CRM Software
+        </span>
+      </h1>
+    </div>
 
-              {/* Description Paragraph - Centered with Left-Aligned Button */}
-              <div className={`mb-8 transition-all duration-700 delay-900 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                <div className="text-center">
-                  <p className="text-lg text-gray-600 leading-relaxed text-justify mx-auto">
-                    {isExpanded ? descriptionContent : truncatedContent}
-                  </p>
-                  
-                  {/* MORE + Button - Left-aligned within centered container */}
-                  <div className="pt-4 flex justify-center">
-                    <div className="text-left w-full max-w-4xl">
-                      <button
-                        onClick={toggleExpand}
-                        className="px-6 py-2 bg-gradient-to-r from-[#007bff] to-blue-600 text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300"
-                      >
-                        {isExpanded ? "LESS -" : "MORE +"}
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+    {/* Description Paragraph - Left Aligned */}
+    <div className={`mb-8 transition-all duration-700 delay-900 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+      <div className="text-left">
+        {isExpanded ? (
+          <div className="space-y-4">
+            <p className="text-lg text-gray-600 leading-relaxed">
+              Finding the right CRM software is crucial for streamlining your sales process, improving customer relationships, and driving business growth. Our platform compares the top CRM solutions in the market to help you make an informed decision. Whether you're a small business looking for basic contact management or an enterprise needing advanced automation and analytics, we've got you covered.
+            </p>
+            <p className="text-lg text-gray-600 leading-relaxed">
+              The modern CRM landscape offers solutions for every business need - from sales force automation and marketing campaign management to customer service and analytics. With features like AI-powered insights, workflow automation, and seamless third-party integrations, the right CRM can transform how you engage with customers and manage your sales pipeline.
+            </p>
+            <p className="text-lg text-gray-600 leading-relaxed">
+              Our comparison tool evaluates key factors including pricing, features, scalability, integration capabilities, and customer support. We analyze user reviews, industry reports, and feature sets to provide you with unbiased recommendations tailored to your specific business requirements and budget constraints.
+            </p>
           </div>
+        ) : (
+          <div className="space-y-4">
+            <p className="text-lg text-gray-600 leading-relaxed">
+              Finding the right CRM software is crucial for streamlining your sales process, improving customer relationships, and driving business growth. Our platform compares the top CRM solutions in the market to help you make an informed decision. Whether you're a small business looking for basic contact management or an enterprise needing advanced automation and analytics, we've got you covered.
+            </p>
+            <p className="text-lg text-gray-600 leading-relaxed">
+              The modern CRM landscape offers solutions for every business need - from sales force automation and marketing campaign management to customer service and analytics.
+            </p>
+          </div>
+        )}
+        
+        {/* MORE + Button - Left-aligned */}
+        <div className="pt-4">
+          <button
+            onClick={toggleExpand}
+            className="px-6 py-2 bg-gradient-to-r from-[#007bff] to-blue-600 text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300"
+          >
+            {isExpanded ? "LESS -" : "MORE +"}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
           {/* Enhanced CRM Provider Cards Grid - 5 Cards Horizontal */}
           <div className={`transition-all duration-1000 delay-500 ${isVisible ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-10 opacity-0 scale-95'}`}>
