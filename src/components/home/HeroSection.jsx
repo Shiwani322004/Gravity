@@ -221,15 +221,15 @@ const HeroSection = () => {
       <div 
         ref={containerRef}
         onMouseMove={handleMouseMove}
-        className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 min-h-screen flex items-center"
+        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex items-center py-8 lg:py-0"
       >
-        <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center w-full">
           
           {/* Left Side - Text Content */}
-          <div className="space-y-8 animate-fade-slide">
+          <div className="space-y-6 lg:space-y-8 animate-fade-slide order-2 lg:order-1">
             {/* Main Heading */}
             <div className="text-reveal">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-black text-white leading-tight">
                 We Help You
                 <span className="block mt-2 bg-gradient-to-r from-[#007BFF] to-[#00BFFF] bg-clip-text text-transparent">
                   Grow Better
@@ -238,11 +238,11 @@ const HeroSection = () => {
             </div>
 
             {/* Sliding Text Content */}
-            <div className="relative min-h-[140px]">
+            <div className="relative min-h-[120px] sm:min-h-[140px]">
               {slides.map((slide, idx) => (
                 <p 
                   key={idx}
-                  className={`text-lg text-white/70 leading-relaxed absolute inset-0 transition-all duration-700 ${
+                  className={`text-base sm:text-lg text-white/70 leading-relaxed absolute inset-0 transition-all duration-700 ${
                     idx === currentSlide
                       ? 'opacity-100 translate-x-0'
                       : idx < currentSlide
@@ -273,29 +273,26 @@ const HeroSection = () => {
 
             {/* CTA Button with Link */}
             <div className="flex flex-wrap gap-4 pt-4">
-              {/* Option 1: Using Next.js Link (recommended for Next.js) */}
-              <Link href="/contact" className="group relative bg-[#007BFF] text-white px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 hover:shadow-2xl hover:shadow-[#007BFF]/50 hover:-translate-y-1 overflow-hidden block">
-                <span className="relative z-10 flex items-center gap-2">
+              <Link href="/contact" className="group relative bg-[#007BFF] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg transition-all duration-300 hover:shadow-2xl hover:shadow-[#007BFF]/50 hover:-translate-y-1 overflow-hidden block w-full sm:w-auto text-center">
+                <span className="relative z-10 flex items-center gap-2 justify-center">
                   Get Started
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
                 </span>
                 <div className="absolute inset-0 shimmer-effect"></div>
               </Link>
-
-              
             </div>
           </div>
 
-          {/* Right Side - Smooth 3D Image Card */}
+          {/* Right Side - Responsive 3D Image Card */}
           <div 
-            className="relative animate-fade-slide transform-3d"
+            className="relative animate-fade-slide transform-3d order-1 lg:order-2 mb-8 lg:mb-0"
             style={{ animationDelay: '0.3s' }}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
             {/* Main Image Container with Smooth Movements */}
             <div 
-              className={`relative transition-all duration-700 ease-out transform-3d ${
+              className={`relative transition-all duration-700 ease-out transform-3d mx-auto ${
                 isTransitioning 
                   ? 'animate-elegant-flip' 
                   : !isHovering 
@@ -303,6 +300,7 @@ const HeroSection = () => {
                   : ''
               }`}
               style={{
+                maxWidth: '500px', // Constrain maximum size
                 transform: isHovering && !isTransitioning
                   ? `perspective(1200px) 
                      rotateY(${mousePos.x * 8}deg) 
@@ -319,16 +317,16 @@ const HeroSection = () => {
             >
               {/* Smooth Glow Effect */}
               <div 
-                className="absolute -inset-6 bg-gradient-to-r from-[#007BFF]/30 via-[#00BFFF]/20 to-[#007BFF]/30 rounded-3xl blur-3xl transition-all duration-1000"
+                className="absolute -inset-4 sm:-inset-6 bg-gradient-to-r from-[#007BFF]/30 via-[#00BFFF]/20 to-[#007BFF]/30 rounded-3xl blur-3xl transition-all duration-1000"
                 style={{
                   transform: isHovering ? 'translateZ(-40px) scale(1.05)' : 'translateZ(-30px) scale(1)',
                   opacity: isHovering ? 0.7 : 0.5
                 }}
               ></div>
 
-              {/* 3D Image Card */}
+              {/* Responsive 3D Image Card */}
               <div 
-                className="relative rounded-3xl overflow-hidden border border-white/20 shadow-2xl h-[500px] lg:h-[600px] backdrop-blur-sm transform-3d transition-all duration-700"
+                className="relative rounded-3xl overflow-hidden border border-white/20 shadow-2xl h-[300px] xs:h-[350px] sm:h-[400px] md:h-[450px] lg:h-[400px] xl:h-[500px] 2xl:h-[550px] backdrop-blur-sm transform-3d transition-all duration-700"
                 style={{
                   transform: isHovering ? 'translateZ(25px)' : 'translateZ(15px)',
                   boxShadow: isHovering 
@@ -379,7 +377,7 @@ const HeroSection = () => {
 
               {/* Subtle Shadow */}
               <div 
-                className="absolute -inset-4 bg-black/20 rounded-3xl blur-xl transition-all duration-700 -z-10"
+                className="absolute -inset-3 sm:-inset-4 bg-black/20 rounded-3xl blur-xl transition-all duration-700 -z-10"
                 style={{
                   transform: isHovering 
                     ? 'translateZ(-50px) scale(0.92)' 
@@ -390,15 +388,15 @@ const HeroSection = () => {
             </div>
 
             {/* Navigation Dots */}
-            <div className="flex justify-center gap-3 mt-8 transform-3d">
+            <div className="flex justify-center gap-3 mt-6 lg:mt-8 transform-3d">
               {slides.map((_, idx) => (
                 <button
                   key={idx}
                   onClick={() => handleNavigationClick(idx)}
                   className={`transition-all duration-500 rounded-full backdrop-blur-sm transform-3d ${
                     idx === currentSlide 
-                      ? 'w-12 h-3 bg-gradient-to-r from-[#007BFF] to-[#00BFFF] shadow-lg shadow-[#007BFF]/50 translateZ(10px)' 
-                      : 'w-3 h-3 bg-white/20 hover:bg-white/40 hover:scale-110 translateZ(5px)'
+                      ? 'w-8 sm:w-12 h-2 sm:h-3 bg-gradient-to-r from-[#007BFF] to-[#00BFFF] shadow-lg shadow-[#007BFF]/50 translateZ(10px)' 
+                      : 'w-2 sm:w-3 h-2 sm:h-3 bg-white/20 hover:bg-white/40 hover:scale-110 translateZ(5px)'
                   }`}
                   style={{
                     transformStyle: 'preserve-3d'
