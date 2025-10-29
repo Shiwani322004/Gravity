@@ -1,5 +1,5 @@
-
 'use client';
+
 import { 
   BarChart3, 
   Users, 
@@ -339,39 +339,44 @@ export default function CRMHeroSection() {
         </div>
 
         <div className="max-w-7xl mx-auto px-6 relative z-10">
-          {/* Header Section - Shifted right with ml-40 */}
-<div className="mb-16 ml-40">
-  <div className={`transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-    {/* Main Heading */}
-    <div className="mb-8">
-      <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight text-left">
-        <span className={`inline transition-all duration-700 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-          Find the Perfect{" "}
-        </span>
-        <span className={`inline bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent transition-all duration-700 delay-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-          CRM Software
-        </span>
-      </h1>
-    </div>
+          {/* Header Section - Perfectly Centered */}
+          <div className="mb-16 w-full flex justify-center">
+            <div className={`text-center max-w-4xl mx-auto transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+              {/* Main Heading - Centered */}
+              <div className="mb-8">
+                <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                  <span className={`inline-block transition-all duration-700 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                    Find the Perfect{' '}
+                  </span>
+                  <span className={`inline-block bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent transition-all duration-700 delay-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                    CRM Software
+                  </span>
+                </h1>
+              </div>
 
-    {/* Description Paragraph */}
-    <div className={`mb-8 transition-all duration-700 delay-900 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-      <p className="text-lg text-gray-600 leading-relaxed text-left max-w-4xl">
-        {isExpanded ? descriptionContent : truncatedContent}
-      </p>
-      
-      {/* MORE + Button with blue UI */}
-      <div className="pt-4">
-        <button
-          onClick={toggleExpand}
-          className="px-6 py-2 bg-gradient-to-r from-[#007bff] to-blue-600 text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300"
-        >
-          {isExpanded ? "LESS -" : "MORE +"}
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
+              {/* Description Paragraph - Centered with Left-Aligned Button */}
+              <div className={`mb-8 transition-all duration-700 delay-900 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                <div className="text-center">
+                  <p className="text-lg text-gray-600 leading-relaxed text-justify mx-auto">
+                    {isExpanded ? descriptionContent : truncatedContent}
+                  </p>
+                  
+                  {/* MORE + Button - Left-aligned within centered container */}
+                  <div className="pt-4 flex justify-center">
+                    <div className="text-left w-full max-w-4xl">
+                      <button
+                        onClick={toggleExpand}
+                        className="px-6 py-2 bg-gradient-to-r from-[#007bff] to-blue-600 text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300"
+                      >
+                        {isExpanded ? "LESS -" : "MORE +"}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Enhanced CRM Provider Cards Grid - 5 Cards Horizontal */}
           <div className={`transition-all duration-1000 delay-500 ${isVisible ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-10 opacity-0 scale-95'}`}>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
