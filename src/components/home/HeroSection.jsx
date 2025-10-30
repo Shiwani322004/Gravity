@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const slides = [
@@ -79,7 +79,7 @@ const HeroSection = () => {
     setIsTransitioning(true);
     const slideDistance = getCardWidth();
     setOffset(-slideDistance);
-    
+
     setTimeout(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
       setOffset(0);
@@ -90,10 +90,10 @@ const HeroSection = () => {
   const handlePrevious = () => {
     setIsTransitioning(true);
     const slideDistance = getCardWidth();
-    setOffset(-slideDistance);
-    
+    setOffset(slideDistance);
+
     setTimeout(() => {
-      setCurrentSlide((prev) => prev === 0 ? slides.length - 1 : prev - 1);
+      setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
       setOffset(0);
       setIsTransitioning(false);
     }, 700);
@@ -101,13 +101,17 @@ const HeroSection = () => {
 
   const handleNavigationClick = (index) => {
     if (index === currentSlide) return;
-    handleNext();
+    if (index > currentSlide) {
+      handleNext();
+    } else {
+      handlePrevious();
+    }
   };
 
   const getVisibleCards = () => {
     const visible = [];
     const cardsToShow = isMobile ? 2 : 3; // Show 2 cards on mobile, 3 on larger screens
-    
+
     for (let i = 0; i < cardsToShow; i++) {
       const index = (currentSlide + i) % slides.length;
       visible.push({
@@ -126,11 +130,11 @@ const HeroSection = () => {
   };
 
   const getCardGap = () => {
-    return isMobile ? 'gap-2' : 'gap-3 sm:gap-4';
+    return isMobile ? 'gap-3' : 'gap-5 sm:gap-6';
   };
 
   return (
-    <div className="relative min-h-screen overflow-hidden">
+    <div className="relative min-h-screen overflow-hidden bg-black">
       <style jsx>{`
         @keyframes fadeIn {
           from {
@@ -182,9 +186,31 @@ const HeroSection = () => {
         .card-carousel-no-transition {
           transition: none;
         }
+        .nav-button {
+          background: rgba(255,255,255,0.15);
+          backdrop-filter: blur(10px);
+          border: 1.5px solid rgba(255,255,255,0.3);
+          color: white;
+          transition: all 0.3s ease;
+          box-shadow: 0 8px 15px -5px rgba(0,123,255,0.6);
+        }
+        .nav-button:hover:not(:disabled) {
+          background: rgba(0,123,255,0.8);
+          box-shadow: 0 10px 20px -5px #007bffcc;
+          transform: scale(1.15);
+          border-color: #00bfff;
+          color: white;
+        }
+        .nav-button:disabled {
+          opacity: 0.45;
+          cursor: not-allowed;
+          box-shadow: none;
+          background: rgba(255,255,255,0.08);
+          border-color: rgba(255,255,255,0.1);
+        }
       `}</style>
 
-      {/* Full Screen Background Image with Dark Overlay */}
+      {/* Background Images with Dark Overlay */}
       <div className="absolute inset-0 z-0">
         {slides.map((slide, idx) => (
           <div
@@ -195,44 +221,38 @@ const HeroSection = () => {
           >
             <div 
               className="absolute inset-0 bg-cover bg-center"
-              style={{
-                backgroundImage: `url(${slide.image})`,
-              }}
+              style={{ backgroundImage: `url(${slide.image})` }}
             />
-            {/* Dark overlay for readability */}
-            <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/60 to-black/70" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40" />
+            <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-black/70" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/50" />
           </div>
         ))}
       </div>
 
-      {/* Main Content Container */}
-      <div className="relative z-10 min-h-screen flex flex-col justify-between px-3 xs:px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-4 xs:py-6 sm:py-8 lg:py-10 xl:py-12">
-        
-        {/* Top Left - Text Content */}
+      {/* Main Content */}
+      <div className="relative z-10 min-h-screen flex flex-col justify-between px-6 sm:px-10 lg:px-16 xl:px-24 py-8 sm:py-12 lg:py-16">
+        {/* Text Content */}
         <div className="max-w-full xs:max-w-xl sm:max-w-2xl lg:max-w-3xl animate-fade-in-up mt-8 xs:mt-12 sm:mt-16 lg:mt-20">
-          {/* Main Heading */}
-          <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-black text-white leading-[1.05] tracking-tight mb-3 xs:mb-4 sm:mb-6 lg:mb-8">
+          <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-black text-white leading-[1.05] tracking-tight mb-4 xs:mb-6 sm:mb-8 lg:mb-10">
             We Help You
-            <span className="block mt-1 xs:mt-2 bg-gradient-to-r from-[#007BFF] via-[#0099FF] to-[#00BFFF] bg-clip-text text-transparent">
+            <span className="block mt-2 xs:mt-3 bg-gradient-to-r from-[#007BFF] via-[#0099FF] to-[#00BFFF] bg-clip-text text-transparent">
               Grow Better
             </span>
           </h1>
 
-          {/* Sliding Description Text */}
-          <div className={`relative mb-4 xs:mb-6 sm:mb-8 ${
-            isMobile ? 'min-h-[80px] xs:min-h-[90px]' : 
-            isTablet ? 'min-h-[100px] sm:min-h-[110px]' : 
-            'min-h-[120px] lg:min-h-[140px] xl:min-h-[160px]'
+          <div className={`relative mb-6 xs:mb-8 sm:mb-10 ${
+            isMobile ? 'min-h-[90px] xs:min-h-[100px]' : 
+            isTablet ? 'min-h-[110px] sm:min-h-[120px]' : 
+            'min-h-[140px] lg:min-h-[160px] xl:min-h-[180px]'
           }`}>
             {slides.map((slide, idx) => (
               <p 
                 key={idx}
                 className={`${
-                  isMobile ? 'text-xs xs:text-sm' : 
-                  isTablet ? 'text-sm sm:text-base' : 
-                  'text-base lg:text-lg xl:text-xl'
-                } text-white/85 leading-relaxed absolute inset-0 transition-all duration-700 ${
+                  isMobile ? 'text-sm xs:text-base' : 
+                  isTablet ? 'text-base sm:text-lg' : 
+                  'text-lg lg:text-xl xl:text-2xl'
+                } text-white/90 leading-relaxed absolute inset-0 transition-all duration-700 ${
                   idx === currentSlide
                     ? 'opacity-100 translate-x-0'
                     : 'opacity-0 -translate-x-full'
@@ -243,136 +263,115 @@ const HeroSection = () => {
             ))}
           </div>
 
-          {/* CTA Button */}
           <div>
             <a 
               href="/contact"
-              className="group relative inline-flex items-center justify-center gap-2 xs:gap-3 bg-gradient-to-r from-[#007BFF] to-[#0099FF] text-white px-5 xs:px-6 sm:px-8 lg:px-10 py-2 xs:py-3 sm:py-4 lg:py-5 rounded-full font-bold text-xs xs:text-sm sm:text-base lg:text-lg transition-all duration-300 hover:shadow-2xl hover:shadow-[#007BFF]/50 hover:scale-105 overflow-hidden"
+              className="group relative inline-flex items-center justify-center gap-3 bg-gradient-to-r from-[#007BFF] to-[#0099FF] text-white px-8 xs:px-10 sm:px-12 lg:px-14 py-3 xs:py-4 sm:py-5 lg:py-6 rounded-full font-bold text-sm xs:text-base sm:text-lg lg:text-xl transition-all duration-300 hover:shadow-2xl hover:shadow-[#007BFF]/60 hover:scale-105 overflow-hidden"
             >
-              <span className="relative z-10 flex items-center gap-1 xs:gap-2 sm:gap-3">
+              <span className="relative z-10 flex items-center gap-2 xs:gap-3 sm:gap-4">
                 Get in Touch
-                <ArrowRight className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                <ArrowRight className="w-5 h-5 xs:w-6 xs:h-6 sm:w-7 sm:h-7 group-hover:translate-x-2 transition-transform duration-300" />
               </span>
               <div className="absolute inset-0 shimmer-effect" />
             </a>
           </div>
         </div>
 
-        {/* Bottom Right - Shifting Card Carousel with Navigation Arrows - Pushed up by 15px */}
-        <div className="flex flex-col items-center sm:items-end justify-center sm:justify-end animate-fade-in mt-6 xs:mt-8 sm:mt-0 mb-8" style={{ animationDelay: '0.3s' }}>
-          
-          {/* Card Carousel and Arrows Container */}
-          <div className="relative w-full sm:w-auto flex flex-col items-center sm:items-end">
-            {/* Card Carousel Container */}
-            <div className="relative overflow-hidden w-full sm:w-auto flex justify-center sm:justify-end" style={{ maxWidth: '100%' }}>
-              <div 
-                className={`flex ${getCardGap()} ${isTransitioning ? 'card-carousel' : 'card-carousel-no-transition'}`}
-                style={{
-                  transform: `translateX(${offset}px)`,
-                }}
-              >
-                {getVisibleCards().map((card, idx) => (
-                  <div
-                    key={`card-${card.originalIndex}-${idx}`}
-                    onClick={() => handleNavigationClick(card.originalIndex)}
-                    className={`flex-shrink-0 cursor-pointer group transition-all duration-300 ${
-                      card.position === 0 
-                        ? 'animate-smooth-float' 
-                        : 'hover:scale-100'
-                    }`}
-                    style={{ 
-                      animationDelay: `${idx * 0.1}s`,
-                      width: isMobile ? 'clamp(120px, 45vw, 160px)' : 
-                             isTablet ? 'clamp(150px, 30vw, 180px)' : 
-                             'clamp(180px, 25vw, 240px)',
-                      minWidth: isMobile ? 'clamp(120px, 45vw, 160px)' : 
-                                isTablet ? 'clamp(150px, 30vw, 180px)' : 
-                                'clamp(180px, 25vw, 240px)',
-                      opacity: (isMobile && card.position === 1) ? '0.6' : 
-                              (!isMobile && card.position === 2) ? '0.6' : '1',
-                      transform: `scale(${card.position === 0 ? 1 : 0.95})`
-                    }}
-                  >
-                    <div className={`relative w-full ${getCardHeight()} rounded-lg xs:rounded-xl sm:rounded-2xl overflow-hidden shadow-xl transition-all duration-500 ${
-                      card.position === 0
-                        ? 'border-2 border-[#00BFFF] shadow-2xl shadow-[#007BFF]/50 ring-2 ring-[#00BFFF]/30' 
-                        : 'border border-white/30 hover:border-white/50'
-                    }`}>
-                      {/* Card Image */}
-                      <img 
-                        src={card.image}
-                        alt={card.title}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                      
-                      {/* Gradient Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-                      
-                      {/* Accent Glow */}
-                      <div 
-                        className={`absolute inset-0 transition-opacity duration-500 ${
-                          card.position === 0 ? 'opacity-40' : 'opacity-20 group-hover:opacity-30'
-                        }`}
-                        style={{
-                          background: `linear-gradient(135deg, ${card.accent}50, transparent 60%)`
-                        }}
-                      />
-                      
-                      {/* Card Title */}
-                      <div className="absolute bottom-0 left-0 right-0 p-2 xs:p-3 sm:p-4">
-                        <h3 className="text-white font-bold text-xs xs:text-sm sm:text-base lg:text-lg truncate">
-                          {card.title}
-                        </h3>
-                        <p className="text-white/70 text-xs mt-0.5 xs:mt-1 hidden xs:block">Explore more</p>
-                      </div>
-
-                      {/* Active Indicator */}
-                      {card.position === 0 && (
-                        <div className="absolute top-1.5 xs:top-2 sm:top-3 right-1.5 xs:right-2 sm:right-3 w-2 xs:w-2.5 sm:w-3 h-2 xs:h-2.5 sm:h-3 bg-[#00BFFF] rounded-full shadow-lg shadow-[#00BFFF]/50 animate-smooth-float" />
-                      )}
+        {/* Card Carousel */}
+        <div className="flex flex-col items-center justify-center mt-10 sm:mt-16 mb-12">
+          <div className="relative overflow-hidden w-full max-w-6xl flex justify-center">
+            <div 
+              className={`flex ${getCardGap()} ${isTransitioning ? 'card-carousel' : 'card-carousel-no-transition'}`}
+              style={{ transform: `translateX(${offset}px)` }}
+            >
+              {getVisibleCards().map((card, idx) => (
+                <div
+                  key={`card-${card.originalIndex}-${idx}`}
+                  onClick={() => handleNavigationClick(card.originalIndex)}
+                  className={`flex-shrink-0 cursor-pointer group transition-transform duration-300 ${
+                    card.position === 0 
+                      ? 'animate-smooth-float' 
+                      : 'hover:scale-105'
+                  }`}
+                  style={{ 
+                    animationDelay: `${idx * 0.1}s`,
+                    width: isMobile ? 'clamp(140px, 45vw, 160px)' : 
+                           isTablet ? 'clamp(180px, 30vw, 200px)' : 
+                           'clamp(220px, 25vw, 260px)',
+                    minWidth: isMobile ? 'clamp(140px, 45vw, 160px)' : 
+                              isTablet ? 'clamp(180px, 30vw, 200px)' : 
+                              'clamp(220px, 25vw, 260px)',
+                    opacity: (isMobile && card.position === 1) ? '0.65' : 
+                             (!isMobile && card.position === 2) ? '0.65' : '1',
+                    transform: `scale(${card.position === 0 ? 1 : 0.95})`
+                  }}
+                >
+                  <div className={`relative w-full ${getCardHeight()} rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 ${
+                    card.position === 0
+                    ? 'border-4 border-[#00BFFF] shadow-[#007BFF]/70 ring-4 ring-[#00BFFF]/50' 
+                    : 'border-2 border-white/30 hover:border-white/60'
+                  }`}>
+                    <img 
+                      src={card.image}
+                      alt={card.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
+                    <div 
+                      className={`absolute inset-0 transition-opacity duration-500 ${
+                        card.position === 0 ? 'opacity-50' : 'opacity-25 group-hover:opacity-40'
+                      }`}
+                      style={{ background: `linear-gradient(135deg, ${card.accent}80, transparent 65%)` }}
+                    />
+                    <div className="absolute bottom-3 left-3 right-3 px-3">
+                      <h3 className="text-white font-extrabold text-sm xs:text-base sm:text-lg lg:text-xl truncate">
+                        {card.title}
+                      </h3>
+                      <p className="text-white/75 text-xs mt-1 xs:mt-1.5 sm:mt-2 hidden xs:block select-none">Explore more</p>
                     </div>
+                    {card.position === 0 && (
+                      <div className="absolute top-2 right-3 w-3 xs:w-4 sm:w-5 h-3 xs:h-4 sm:h-5 bg-[#00BFFF] rounded-full shadow-lg shadow-[#00BFFF]/70 animate-smooth-float" />
+                    )}
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
+          </div>
 
-            {/* Navigation Arrows */}
-            <div className={`flex gap-1.5 xs:gap-2 sm:gap-3 mt-3 xs:mt-4 ${
-              isMobile ? 'justify-center w-full' : ''
-            }`} style={!isMobile ? { 
-              marginRight: `calc(${isTablet ? 'clamp(150px, 30vw, 180px)' : 'clamp(180px, 25vw, 240px)'} / 2 + ${isTablet ? '8px' : '12px'} - 20px)` 
-            } : {}}>
-              <button
-                onClick={handlePrevious}
-                disabled={isTransitioning}
-                className="w-7 h-7 xs:w-8 xs:h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 lg:w-12 lg:h-12 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                <ChevronLeft className="w-3 h-3 xs:w-4 xs:h-4 sm:w-4 sm:h-4 md:w-5 md:h-5 lg:w-6 lg:h-6" />
-              </button>
-              <button
-                onClick={handleNext}
-                disabled={isTransitioning}
-                className="w-7 h-7 xs:w-8 xs:h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 lg:w-12 lg:h-12 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                <ChevronRight className="w-3 h-3 xs:w-4 xs:h-4 sm:w-4 sm:h-4 md:w-5 md:h-5 lg:w-6 lg:h-6" />
-              </button>
-            </div>
+          {/* Centered Navigation Arrows */}
+          <div className="flex gap-6 mt-6">
+            <button
+              onClick={handlePrevious}
+              disabled={isTransitioning}
+              aria-label="Previous Slide"
+              className="nav-button w-14 h-14 sm:w-16 sm:h-16 md:w-18 md:h-18 rounded-full flex items-center justify-center shadow-md"
+            >
+              <ChevronLeft className="w-7 h-7 sm:w-9 sm:h-9 md:w-10 md:h-10" />
+            </button>
+            <button
+              onClick={handleNext}
+              disabled={isTransitioning}
+              aria-label="Next Slide"
+              className="nav-button w-14 h-14 sm:w-16 sm:h-16 md:w-18 md:h-18 rounded-full flex items-center justify-center shadow-md"
+            >
+              <ChevronRight className="w-7 h-7 sm:w-9 sm:h-9 md:w-10 md:h-10" />
+            </button>
           </div>
         </div>
 
-        {/* Progress Bars - Bottom Center - Pushed up by 5px */}
-        <div className="absolute bottom-1 xs:bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 flex gap-1 xs:gap-1.5 sm:gap-2 lg:gap-3 animate-fade-in px-4" style={{ animationDelay: '0.5s' }}>
+        {/* Progress Bars - Bottom Center */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 lg:gap-4 animate-fade-in px-6">
           {slides.map((_, idx) => (
             <div 
               key={idx} 
-              className="w-6 xs:w-8 sm:w-10 md:w-12 lg:w-16 h-0.5 xs:h-1 bg-white/20 rounded-full overflow-hidden backdrop-blur-sm"
+              className="w-8 sm:w-10 md:w-14 h-1 sm:h-2 bg-white/20 rounded-full overflow-hidden backdrop-blur-sm"
             >
               <div 
                 className={`h-full bg-gradient-to-r from-[#007BFF] to-[#00BFFF] transition-all ${
                   idx === currentSlide ? 'w-full' : idx < currentSlide ? 'w-full' : 'w-0'
                 }`}
                 style={{
-                  transition: idx === currentSlide ? `width ${TRANSITION_DELAY}ms linear` : 'width 0.3s ease'
+                  transition: idx === currentSlide ? `width ${TRANSITION_DELAY}ms linear` : 'width 0.4s ease'
                 }}
               />
             </div>
