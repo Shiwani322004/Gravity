@@ -33,18 +33,18 @@ export default function BIConclusion() {
   }, []);
 
   return (
-    <section className="py-16 md:py-20 bg-gradient-to-br from-blue-50 to-cyan-50 overflow-hidden">
+    <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-blue-50 to-cyan-50 overflow-x-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
             Transform Data into <span className="text-[#007bff]">Actionable Insights</span>
           </h2>
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
             Real-time analytics dashboard empowering data-driven decisions for your business growth
           </p>
         </div>
 
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl md:rounded-3xl p-6 md:p-8 border border-white/20 shadow-2xl">
+        <div className="bg-white/80 backdrop-blur-sm rounded-xl lg:rounded-2xl xl:rounded-3xl p-4 sm:p-6 lg:p-8 border border-white/20 shadow-2xl">
           {/* Moving Analytics Bars */}
           <div className="space-y-4 md:space-y-6 mb-6 md:mb-8">
             {movingData.map((item) => (
@@ -89,7 +89,7 @@ export default function BIConclusion() {
         </div>
 
         {/* Key Features */}
-        <div className="grid md:grid-cols-3 gap-6 md:gap-8 mt-10 md:mt-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mt-8 sm:mt-10 lg:mt-12">
           <div className="text-center p-5 md:p-6 bg-white rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl hover:border-blue-200 transition-all duration-300">
             <div className="w-14 h-14 md:w-16 md:h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
               <TrendingUp className="text-blue-600" size={28} />

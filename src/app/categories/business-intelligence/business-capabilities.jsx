@@ -26,27 +26,27 @@ export default function BusinessCapabilities() {
   }, []);
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-12 sm:py-16 lg:py-20 bg-white overflow-x-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
             Business Intelligence Platform <span className="text-[#007bff]">Capabilities</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
             Comprehensive analysis of key BI platform features and their performance metrics
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
           {/* Enhanced Vertical Bar Graph */}
-          <div className="bg-gradient-to-br from-slate-50 via-white to-slate-50 rounded-2xl p-8 border border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-500">
-            <div className="flex items-center justify-between mb-8">
+          <div className="bg-gradient-to-br from-slate-50 via-white to-slate-50 rounded-xl lg:rounded-2xl p-4 sm:p-6 lg:p-8 border border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-500">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 sm:mb-8 gap-4">
               <div>
-                <h3 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
-                  <BarChart3 className="text-[#007bff]" size={28} />
+                <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 flex items-center gap-2">
+                  <BarChart3 className="text-[#007bff]" size={24} />
                   Feature Performance
                 </h3>
-                <p className="text-sm text-gray-500 mt-1">Operational efficiency metrics</p>
+                <p className="text-xs sm:text-sm text-gray-500 mt-1">Operational efficiency metrics</p>
               </div>
               <div className="px-4 py-2 bg-[#007bff]/10 rounded-lg">
                 <span className="text-xs font-semibold text-[#007bff]">Q4 2024</span>
@@ -54,7 +54,7 @@ export default function BusinessCapabilities() {
             </div>
             
             {/* Professional Graph Container */}
-            <div className="relative bg-white rounded-xl p-6 border border-gray-100">
+            <div className="relative bg-white rounded-lg lg:rounded-xl p-3 sm:p-4 lg:p-6 border border-gray-100 overflow-x-auto">
               {/* Grid lines */}
               <div className="absolute left-16 right-6 top-6 bottom-24 pointer-events-none">
                 <div className="h-full w-full relative">
@@ -153,14 +153,14 @@ export default function BusinessCapabilities() {
           </div>
 
           {/* Enhanced Feature Details */}
-          <div className="space-y-5">
-            <div className="bg-white rounded-xl p-6 shadow-md border border-gray-200 hover:shadow-xl hover:border-blue-300 transition-all duration-300 group cursor-pointer">
-              <div className="flex items-start gap-4">
-                <div className="w-14 h-14 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-sm">
-                  <Database className="text-blue-600" size={26} />
+          <div className="space-y-4 sm:space-y-5">
+            <div className="bg-white rounded-lg lg:rounded-xl p-4 sm:p-6 shadow-md border border-gray-200 hover:shadow-xl hover:border-blue-300 transition-all duration-300 group cursor-pointer">
+              <div className="flex items-start gap-3 sm:gap-4">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg sm:rounded-xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-sm flex-shrink-0">
+                  <Database className="text-blue-600" size={20} />
                 </div>
-                <div className="flex-1">
-                  <h4 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-[#007bff] transition-colors duration-300">Advanced Data Processing</h4>
+                <div className="flex-1 min-w-0">
+                  <h4 className="text-base sm:text-lg font-bold text-gray-900 mb-2 group-hover:text-[#007bff] transition-colors duration-300">Advanced Data Processing</h4>
                   <p className="text-sm text-gray-600 leading-relaxed">
                     Handle large datasets with efficient processing algorithms and real-time data streaming capabilities. Supports batch and stream processing with optimized performance.
                   </p>

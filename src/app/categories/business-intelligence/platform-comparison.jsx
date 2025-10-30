@@ -1,6 +1,6 @@
 'use client';
 
-import { ChevronLeft, ChevronRight, CheckCircle, X, Zap, ArrowRight } from 'lucide-react';
+import { CheckCircle, X, Zap, ArrowRight } from 'lucide-react';
 import { useState } from 'react';
 
 export default function PlatformComparison({ onOpenQuestionnaire }) {
@@ -124,17 +124,7 @@ export default function PlatformComparison({ onOpenQuestionnaire }) {
     }
   ];
 
-  const nextCard = () => {
-    setCurrentCardIndex((prevIndex) => 
-      prevIndex === providerCards.length - 1 ? 0 : prevIndex + 1
-    );
-  };
-
-  const prevCard = () => {
-    setCurrentCardIndex((prevIndex) => 
-      prevIndex === 0 ? providerCards.length - 1 : prevIndex - 1
-    );
-  };
+  // Removed pagination functions as we now show all platforms in a grid
 
   return (
     <section className="py-16 bg-white">
@@ -148,48 +138,41 @@ export default function PlatformComparison({ onOpenQuestionnaire }) {
           </p>
         </div>
 
-        {/* Platform Header */}
-        <div className="bg-gradient-to-r from-blue-50 to-cyan-50 px-8 py-8 rounded-lg mb-8">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-6">
-              {/* Company Logo - Replace with actual image */}
-              <div className="w-24 h-24 bg-white rounded-lg flex items-center justify-center shadow-sm border border-blue-100">
-                {providerCards[currentCardIndex].logo ? (
-                  <img 
-                    src={providerCards[currentCardIndex].logo} 
-                    alt={`${providerCards[currentCardIndex].provider} logo`}
-                    className="w-16 h-16 object-contain"
-                  />
-                ) : (
-                  <div className="text-3xl font-bold text-blue-600">
-                    {providerCards[currentCardIndex].provider.charAt(0)}
-                  </div>
-                )}
-              </div>
-              <div>
-                <h3 className="text-3xl font-bold text-gray-900">
-                  {providerCards[currentCardIndex].provider}
+        {/* All Platforms Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-6 mb-8">
+          {providerCards.map((card, index) => (
+            <div
+              key={card.provider}
+              onClick={() => setCurrentCardIndex(index)}
+              className={`cursor-pointer bg-gradient-to-r from-blue-50 to-cyan-50 p-4 sm:p-6 rounded-lg border-2 transition-all duration-300 hover:shadow-lg ${
+                index === currentCardIndex 
+                  ? 'border-blue-500 shadow-lg scale-105' 
+                  : 'border-transparent hover:border-blue-300'
+              }`}
+            >
+              <div className="flex flex-col items-center text-center">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-lg flex items-center justify-center shadow-sm border border-blue-100 mb-3 sm:mb-4">
+                  {card.logo ? (
+                    <img 
+                      src={card.logo} 
+                      alt={`${card.provider} logo`}
+                      className="w-12 h-12 sm:w-16 sm:h-16 object-contain"
+                    />
+                  ) : (
+                    <div className="text-xl sm:text-2xl font-bold text-blue-600">
+                      {card.provider.charAt(0)}
+                    </div>
+                  )}
+                </div>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">
+                  {card.provider}
                 </h3>
-                <p className="text-xl text-blue-600 font-semibold mt-2">
-                  {providerCards[currentCardIndex].price}
+                <p className="text-sm sm:text-base text-blue-600 font-semibold">
+                  {card.price}
                 </p>
               </div>
             </div>
-            <div className="flex gap-3">
-              <button
-                onClick={prevCard}
-                className="p-4 rounded-lg bg-white hover:bg-blue-100 text-gray-600 hover:text-blue-600 transition-all duration-300 shadow-sm border border-gray-200"
-              >
-                <ChevronLeft size={24} />
-              </button>
-              <button
-                onClick={nextCard}
-                className="p-4 rounded-lg bg-white hover:bg-blue-100 text-gray-600 hover:text-blue-600 transition-all duration-300 shadow-sm border border-gray-200"
-              >
-                <ChevronRight size={24} />
-              </button>
-            </div>
-          </div>
+          ))}
         </div>
 
         {/* Description */}
@@ -256,17 +239,15 @@ export default function PlatformComparison({ onOpenQuestionnaire }) {
 
         
 
-        {/* Navigation Dots */}
-        <div className="flex justify-center gap-3">
-          {providerCards.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentCardIndex(index)}
-              className={`w-4 h-4 rounded-full transition-all duration-300 ${
-                index === currentCardIndex ? 'bg-blue-600 scale-125' : 'bg-gray-300 hover:bg-gray-400'
-              }`}
-            />
-          ))}
+        {/* Get Quote CTA */}
+        <div className="text-center mt-8">
+          <button
+            onClick={onOpenQuestionnaire}
+            className="px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-2 mx-auto"
+          >
+            Get Personalized Quotes
+            <ArrowRight size={18} />
+          </button>
         </div>
       </div>
     </section>

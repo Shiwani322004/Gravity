@@ -83,7 +83,7 @@ export default function BusinessImpact() {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-hidden">
+    <section className="py-12 sm:py-16 lg:py-24 bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-x-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-[500px] h-[500px] bg-blue-300/20 rounded-full blur-3xl animate-pulse"></div>
@@ -93,30 +93,30 @@ export default function BusinessImpact() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Hero Section with Animation */}
-        <div className={`text-center mb-20 transition-all duration-1000 ${visibleElements.hero ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}>
+        <div className={`text-center mb-12 sm:mb-16 lg:mb-20 transition-all duration-1000 ${visibleElements.hero ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}>
           
-          <h2 className="text-4xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">
             Business Intelligence <span className="text-[#007bff]">Impact</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
             Discover how our Business Intelligence platform drives measurable improvements across key business metrics, 
             transforms decision-making processes, and delivers exceptional ROI for organizations of all sizes
           </p>
         </div>
 
         {/* Main Content Grid */}
-        <div className="grid lg:grid-cols-2 gap-10 mb-16">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 mb-12 sm:mb-16">
           {/* Left Column - Performance Metrics with Slide-in from Left */}
-          <div className={`space-y-8 transition-all duration-1000 delay-200 ${visibleElements.leftCards ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-20'}`}>
+          <div className={`space-y-6 sm:space-y-8 transition-all duration-1000 delay-200 ${visibleElements.leftCards ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-20'}`}>
             {/* Interactive Graph Card */}
-            <div className="bg-white rounded-3xl shadow-xl p-8 border border-gray-100 hover:shadow-2xl transition-all duration-500 group">
-              <div className="flex items-center justify-between mb-8">
+            <div className="bg-white rounded-2xl lg:rounded-3xl shadow-xl p-4 sm:p-6 lg:p-8 border border-gray-100 hover:shadow-2xl transition-all duration-500 group">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 sm:mb-8 gap-4">
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
-                    <BarChart className="text-[#007bff]" size={28} />
+                  <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 flex items-center gap-2">
+                    <BarChart className="text-[#007bff]" size={24} />
                     Performance Metrics
                   </h3>
-                  <p className="text-gray-500 text-sm mt-2">Real-time impact visualization across key business areas</p>
+                  <p className="text-gray-500 text-xs sm:text-sm mt-2">Real-time impact visualization across key business areas</p>
                 </div>
                 <div className="flex items-center gap-3">
                   <button 
@@ -194,7 +194,7 @@ export default function BusinessImpact() {
             </div>
 
             {/* Quick Stats Cards */}
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
               {[
                 { value: `+${stats.roi}%`, label: 'Average ROI', gradient: 'from-blue-500 to-cyan-500', delay: 0 },
                 { value: stats.companies > 0 ? '5K+' : '0', label: 'Businesses', gradient: 'from-green-500 to-emerald-500', delay: 100 },
@@ -202,11 +202,11 @@ export default function BusinessImpact() {
               ].map((stat, index) => (
                 <div 
                   key={stat.label}
-                  className={`bg-gradient-to-br ${stat.gradient} text-white rounded-2xl p-5 text-center shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-500 cursor-pointer`}
+                  className={`bg-gradient-to-br ${stat.gradient} text-white rounded-xl lg:rounded-2xl p-4 sm:p-5 text-center shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-500 cursor-pointer`}
                   style={{ transitionDelay: `${stat.delay}ms` }}
                 >
-                  <div className="text-3xl font-bold mb-1">{stat.value}</div>
-                  <div className="text-white/90 text-xs font-medium">{stat.label}</div>
+                  <div className="text-2xl sm:text-3xl font-bold mb-1">{stat.value}</div>
+                  <div className="text-white/90 text-xs sm:text-sm font-medium">{stat.label}</div>
                 </div>
               ))}
             </div>

@@ -273,7 +273,7 @@ export default function BusinessIntelligencePage() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white overflow-x-hidden">
       <BusinessHero onOpenQuestionnaire={handleOpenQuestionnaire} />
       <PlatformComparison onOpenQuestionnaire={handleOpenQuestionnaire} />
       <BusinessImpact />
@@ -285,35 +285,35 @@ export default function BusinessIntelligencePage() {
 
       {/* Questionnaire Popup */}
       {showQuestionnaire && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full mx-auto transform transition-all duration-300 scale-100 max-h-[90vh] overflow-y-auto">
-            <div className="flex items-center justify-between p-6 border-b border-gray-200 sticky top-0 bg-white z-10">
-              <h3 className="text-xl font-bold text-gray-900">
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 z-50">
+          <div className="bg-white rounded-xl sm:rounded-2xl shadow-2xl max-w-xs sm:max-w-sm md:max-w-md w-full mx-auto transform transition-all duration-300 scale-100 max-h-[90vh] overflow-y-auto">
+            <div className="flex items-center justify-between p-4 sm:p-6 border-b border-gray-200 sticky top-0 bg-white z-10">
+              <h3 className="text-lg sm:text-xl font-bold text-gray-900">
                 {isCompleted ? "Thank You!" : "Find Your Perfect BI Platform"}
               </h3>
               <button
                 onClick={handleCloseQuestionnaire}
-                className="p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200"
+                className="p-1 sm:p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200"
               >
-                <div className="w-5 h-5 text-gray-500">×</div>
+                <div className="w-4 h-4 sm:w-5 sm:h-5 text-gray-500">×</div>
               </button>
             </div>
             
             {!isCompleted && (
-              <div className="px-6 pt-4">
+              <div className="px-4 sm:px-6 pt-3 sm:pt-4">
                 <div className="w-full bg-gray-200 rounded-full h-2">
                   <div
                     className="bg-gradient-to-r from-blue-500 to-cyan-500 h-2 rounded-full transition-all duration-500"
                     style={{ width: `${((currentQuestion + 1) / 7) * 100}%` }}
                   ></div>
                 </div>
-                <p className="text-sm text-gray-500 mt-2 text-right">
+                <p className="text-xs sm:text-sm text-gray-500 mt-2 text-right">
                   Step {currentQuestion + 1} of 7
                 </p>
               </div>
             )}
             
-            <div className="p-6">
+            <div className="p-4 sm:p-6">
               {renderQuestionnaireContent()}
             </div>
           </div>

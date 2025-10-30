@@ -42,22 +42,22 @@ export default function BusinessAnalysis() {
   }, [animationPhase]);
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-900 to-blue-900 text-white">
+    <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-900 to-blue-900 text-white overflow-x-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
             Predictive Analytics <span className="text-cyan-400">Wave Patterns</span>
           </h2>
-          <p className="text-xl text-blue-200 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-blue-200 max-w-3xl mx-auto">
             Visualize cyclical business patterns and seasonal trends with real-time sine wave analytics
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Sine Wave Visualization */}
-          <div className="bg-gray-800/50 backdrop-blur-sm rounded-3xl p-8 border border-gray-700/50 shadow-2xl">
-            <div className="flex items-center justify-between mb-8">
-              <h3 className="text-2xl font-bold text-white">Real-time Pattern Analysis</h3>
+          <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl lg:rounded-3xl p-4 sm:p-6 lg:p-8 border border-gray-700/50 shadow-2xl">
+            <div className="flex items-center justify-between mb-6 sm:mb-8">
+              <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white">Real-time Pattern Analysis</h3>
               <div className="flex items-center gap-2 text-cyan-400">
                 <Activity size={20} />
                 <span className="text-sm font-medium">LIVE</span>
@@ -65,7 +65,7 @@ export default function BusinessAnalysis() {
             </div>
 
             {/* Sine Wave Container */}
-            <div className="relative h-64 bg-gray-900/50 rounded-xl border border-gray-700/50 p-4">
+            <div className="relative h-48 sm:h-56 lg:h-64 bg-gray-900/50 rounded-xl border border-gray-700/50 p-2 sm:p-4">
               <div className="absolute inset-4">
                 {/* Grid Lines */}
                 <div className="absolute inset-0 opacity-20">
@@ -175,8 +175,8 @@ export default function BusinessAnalysis() {
         </div>
 
         {/* Additional Info Cards */}
-        <div className="grid md:grid-cols-3 gap-6 mt-12">
-          <div className="bg-gray-800/30 rounded-2xl p-6 text-center border border-gray-700/30 hover:border-blue-500/50 transition-all duration-300">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mt-8 sm:mt-12">
+          <div className="bg-gray-800/30 rounded-xl lg:rounded-2xl p-4 sm:p-6 text-center border border-gray-700/30 hover:border-blue-500/50 transition-all duration-300">
             <div className="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
               <LineChart className="text-blue-400" size={24} />
             </div>
