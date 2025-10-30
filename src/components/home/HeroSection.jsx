@@ -259,7 +259,7 @@ const HeroSection = () => {
         </div>
 
         {/* Bottom Right - Shifting Card Carousel with Navigation Arrows - Pushed up by 15px */}
-        <div className="flex flex-col items-center sm:items-end justify-center sm:justify-end animate-fade-in mt-6 xs:mt-8 sm:mt-0 -mb-4" style={{ animationDelay: '0.3s' }}>
+        <div className="flex flex-col items-center sm:items-end justify-center sm:justify-end animate-fade-in mt-6 xs:mt-8 sm:mt-0 mb-8" style={{ animationDelay: '0.3s' }}>
           
           {/* Card Carousel and Arrows Container */}
           <div className="relative w-full sm:w-auto flex flex-col items-center sm:items-end">
@@ -360,8 +360,8 @@ const HeroSection = () => {
           </div>
         </div>
 
-        {/* Progress Bars - Bottom Center - Also adjusted upward */}
-        <div className="absolute bottom-2 xs:bottom-3 sm:bottom-5 left-1/2 -translate-x-1/2 flex gap-1 xs:gap-1.5 sm:gap-2 lg:gap-3 animate-fade-in px-4" style={{ animationDelay: '0.5s' }}>
+        {/* Progress Bars - Bottom Center - Pushed up by 5px */}
+        <div className="absolute bottom-1 xs:bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 flex gap-1 xs:gap-1.5 sm:gap-2 lg:gap-3 animate-fade-in px-4" style={{ animationDelay: '0.5s' }}>
           {slides.map((_, idx) => (
             <div 
               key={idx} 
