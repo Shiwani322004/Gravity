@@ -21,7 +21,15 @@ const CategoriesSection = () => {
       subcategories: ["Employee Management", "Tax Compliance", "Time Tracking"],
       image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
     },
-    
+    {
+  title: "Discover Powerful Business Resources",
+  description: "Access tools, guides, and strategies to streamline business operations and boost productivity.",
+  icon: "Resources",
+  link: "/resources",
+  subcategories: ["Business Guides", "Marketing Templates", "Automation Tools"],
+  image: "https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+}
+
   ];
 
   const allCategories = [...categories, ...additionalCategories];
