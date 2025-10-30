@@ -233,7 +233,7 @@ const HeroSection = () => {
       <div className="relative z-10 min-h-screen flex flex-col justify-between px-6 sm:px-10 lg:px-16 xl:px-24 py-8 sm:py-12 lg:py-16">
         {/* Text Content */}
         <div className="max-w-full xs:max-w-xl sm:max-w-2xl lg:max-w-3xl animate-fade-in-up mt-8 xs:mt-12 sm:mt-16 lg:mt-20">
-          <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-black text-white leading-[1.05] tracking-tight mb-4 xs:mb-6 sm:mb-8 lg:mb-10">
+          <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-4xl xl:text-4xl 2xl:text-6xl font-black text-white leading-[1.05] tracking-tight mb-4 xs:mb-6 sm:mb-8 lg:mb-10">
             We Help You
             <span className="block mt-2 xs:mt-3 bg-gradient-to-r from-[#007BFF] via-[#0099FF] to-[#00BFFF] bg-clip-text text-transparent">
               Grow Better
