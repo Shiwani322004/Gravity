@@ -16,7 +16,7 @@ const slides = [
   },
   {
     text: "Drive growth and maximize your ROI with data-driven strategies tailored to your business goals. Our analytics-focused approach ensures every marketing dollar is optimized for maximum impact.",
-    image: "/images/h3.png",
+    image: "/images/h4.png",
     accent: "#0088EE",
     title: "Growth Strategy",
   },
