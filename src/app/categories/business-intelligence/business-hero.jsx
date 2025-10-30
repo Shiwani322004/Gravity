@@ -302,7 +302,7 @@ export default function BusinessHero({ onOpenQuestionnaire }) {
           </div>
         </div>
 
-        {/* Provider Cards Grid - Responsive */}
+        {/* Provider Cards Grid - Fully Responsive */}
         <div className={`transition-all duration-1000 delay-1100 ${isVisible ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-10 opacity-0 scale-95'}`}>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-6 mb-12 lg:mb-16">
             {providerCards.map((card, index) => (
