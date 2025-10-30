@@ -391,19 +391,19 @@ import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 const slides = [
   {
     text: "Transform your digital presence with cutting-edge marketing strategies that drive real results. Our expert team crafts personalized campaigns that resonate with your audience and deliver measurable outcomes.",
-    image: "/images/hero1.png",
+    image: "/images/h1.png",
     accent: "#007BFF",
     title: "Digital Marketing",
   },
   {
     text: "Elevate your brand with innovative solutions designed to capture attention and engage your audience. We leverage the latest technologies and marketing trends to create compelling experiences that convert.",
-    image: "/images/hero2.png",
+    image: "/images/h2.png",
     accent: "#0099FF",
     title: "Brand Innovation",
   },
   {
     text: "Drive growth and maximize your ROI with data-driven strategies tailored to your business goals. Our analytics-focused approach ensures every marketing dollar is optimized for maximum impact.",
-    image: "/images/herodemo3.png",
+    image: "/images/h3.png",
     accent: "#0088EE",
     title: "Growth Strategy",
   },
@@ -733,24 +733,8 @@ const HeroSection = () => {
               ))}
             </div>
           </div>
-          {/* Progress Bars - Left Aligned */}
-          <div className="flex gap-2 px-6 mt-4">
-            {slides.map((_, idx) => (
-              <div 
-                key={idx} 
-                className="w-8 sm:w-10 h-1 sm:h-2 bg-white/20 rounded-full overflow-hidden backdrop-blur-sm"
-              >
-                <div 
-                  className={`h-full bg-gradient-to-r from-[#007BFF] to-[#00BFFF] transition-all ${
-                    idx === currentSlide ? 'w-full' : idx < currentSlide ? 'w-full' : 'w-0'
-                  }`}
-                  style={{
-                    transition: idx === currentSlide ? `width ${TRANSITION_DELAY}ms linear` : 'width 0.4s ease'
-                  }}
-                />
-              </div>
-            ))}
-          </div>
+   
+          
         </div>
 
         {/* Right Sidebar CARDS */}
