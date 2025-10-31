@@ -25,8 +25,8 @@ const ServicesSection = () => {
         <div className="text-center mb-20">
           <h2 className="text-5xl md:text-6xl font-black mb-6 bg-gradient-to-r from-gray-900 to-blue-900 bg-clip-text text-transparent">
             Solutions That{' '}
-            <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
-              Drive Excellence
+            <span className="bg-gradient-to-r from-[#007BFF] to-[#007BFF] bg-clip-text text-transparent">
+              Drive Excellence   
             </span>
           </h2>
           
@@ -59,7 +59,7 @@ const ServicesSection = () => {
                 {/* Icon with Enhanced Design */}
                 <div className="relative mb-6">
                   <div className="absolute -inset-4 bg-blue-500/10 rounded-2xl transform group-hover:scale-110 transition-transform duration-300"></div>
-                  <div className="relative bg-gradient-to-br from-blue-600 to-blue-800 p-4 rounded-2xl shadow-lg w-16 h-16 flex items-center justify-center">
+                  <div className="relative bg-gradient-to-br  bg-[#0056b3] p-4 rounded-2xl shadow-lg w-16 h-16 flex items-center justify-center">
                     <service.icon className="w-8 h-8 text-white" />
                   </div>
                 </div>
@@ -88,7 +88,7 @@ const ServicesSection = () => {
                   <div className="mt-auto pt-4">
                     <button
                       onClick={() => handleExploreService(service.link)}
-                      className="group/btn inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-3 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-blue-500/25 border border-blue-500/20 w-full justify-center"
+                      className="group/btn inline-flex items-center gap-3 bg-gradient-to-r from-[#007BFF] to-[#0056b3] hover:from-[#0056b3] hover:to-[#004494] text-white px-6 py-3 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-blue-500/25 border border-blue-500/20 w-full justify-center"
                     >
                       <span>Explore More</span>
                       <ArrowRight className="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform duration-200" />

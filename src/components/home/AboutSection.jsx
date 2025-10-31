@@ -64,7 +64,7 @@ const AboutSection = () => {
 
             <a
               href="/about"
-              className="group inline-flex items-center justify-center gap-3 bg-[#007BFF] hover:bg-[#0056b3] text-white px-8 py-4 rounded-2xl font-bold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl hover:shadow-[#007BFF]/25"
+              className="group inline-flex items-center justify-center gap-3 bg-[#0056b3] hover:bg-[#0056b3] text-white px-8 py-4 rounded-2xl font-bold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl hover:shadow-[#007BFF]/25"
             >
               Learn More About Us
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

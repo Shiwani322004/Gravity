@@ -292,7 +292,7 @@ const HeroSection = () => {
             </div>
             <a 
               href="/contact"
-              className="group relative inline-flex items-center justify-center gap-3 bg-gradient-to-r from-[#007BFF] to-[#0099FF] text-white px-8 sm:px-12 py-4 sm:py-5 rounded-full font-bold text-base sm:text-lg xl:text-xl transition-all duration-300 hover:shadow-2xl hover:shadow-[#007BFF]/60 hover:scale-105 overflow-hidden"
+              className="group relative inline-flex items-center justify-center gap-3 bg-gradient-to-r from-[#007BFF] to-[#0056b3] text-white px-8 sm:px-12 py-4 sm:py-5 rounded-full font-bold text-base sm:text-lg xl:text-xl transition-all duration-300 hover:shadow-2xl hover:shadow-[#007BFF]/60 hover:scale-105 overflow-hidden"
             >
               <span className="relative z-10 flex items-center gap-3">
                 Get in Touch
