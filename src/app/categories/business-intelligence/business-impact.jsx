@@ -324,13 +324,7 @@ export default function BusinessImpact() {
                   <p className="text-sm text-gray-600 leading-relaxed mb-4 line-clamp-3">
                     {benefit.description}
                   </p>
-                  <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                    <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-lg text-xs font-semibold text-[#007bff]">
-                      <Sparkles size={12} />
-                      {benefit.stats}
-                    </div>
-                    <ChevronRight size={18} className="text-gray-400 group-hover:text-[#007bff] group-hover:translate-x-1 transition-all duration-300" />
-                  </div>
+                  
                 </div>
               </div>
             ))}
