@@ -400,7 +400,7 @@ export default function GPSHero() {
                           alt={`${card.provider} Logo`}
                           width={150}
                           height={80}
-                          className="object-contain"
+                          className="object-contain max-w-full max-h-full"
                           priority
                         />
                       </div>
