@@ -74,8 +74,15 @@ const LogoScroll = () => {
       <div className="max-w-7xl mx-auto px-4">
         {/* Added the "Clients" heading and subheading */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-black mb-2">Meet our renowned Clients</h2>
-          <p className="text-lg sm:text-xl text-black">We cater to some renowned brands</p>
+          <h2 className="text-4xl sm:text-5xl font-bold mb-2">
+            <span className="text-[black]">
+              Meet our{' '}
+              </span>
+            <span className="text-[#007BFF]">
+              Clients
+              </span>
+          </h2>
+          <p className="text-lg sm:text-2xl text-black">We cater to some renowned brands</p>
         </div>
 
         <div className="relative w-full overflow-hidden bg-white">
