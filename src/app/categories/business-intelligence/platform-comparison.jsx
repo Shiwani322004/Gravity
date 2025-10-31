@@ -1,7 +1,8 @@
 'use client';
 
-import { CheckCircle, X, Zap, ArrowRight } from 'lucide-react';
+import { CheckCircle, X, Zap, ArrowRight, BarChart3, Star, Cpu, Database, Brain, Target } from 'lucide-react';
 import { useState } from 'react';
+import Image from 'next/image';
 
 export default function PlatformComparison({ onOpenQuestionnaire }) {
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
@@ -9,7 +10,10 @@ export default function PlatformComparison({ onOpenQuestionnaire }) {
   const providerCards = [
     {
       provider: "Tableau",
-      price: "Starts at $70 per user/month",
+      price: "$70",
+      period: "/user/month",
+      rating: 4.5,
+      reviews: "3.2K reviews",
       features: [
         "Quick, attractive data visualization",
         "Drag-and-drop interface",
@@ -27,12 +31,18 @@ export default function PlatformComparison({ onOpenQuestionnaire }) {
         "Steeper learning curve for advanced features",
         "Limited customization options"
       ],
-      description: "Tableau is a powerful data visualization tool that helps businesses see and understand their data through interactive dashboards.",
-      logo: "/images/tableau.png" // Add your image path here
+      logo: "/images/tableau.png",
+      tagline: "Tableau is a powerful data visualization tool that helps businesses see and understand their data through interactive dashboards. Advanced analytics platform with industry-leading visualization capabilities for enterprise data intelligence.",
+      color: "from-blue-700 to-purple-700",
+      badgeColor: "bg-gradient-to-r from-blue-600 to-purple-600",
+      icon: <BarChart3 className="w-6 h-6" />
     },
     {
       provider: "Sisense",
-      price: "Custom pricing available",
+      price: "Custom",
+      period: "pricing",
+      rating: 4.3,
+      reviews: "1.8K reviews",
       features: [
         "Embedded analytics",
         "AI-powered Ask Data feature",
@@ -50,12 +60,18 @@ export default function PlatformComparison({ onOpenQuestionnaire }) {
         "Complex setup process",
         "Limited out-of-the-box templates"
       ],
-      description: "Sisense is an analytics platform that simplifies complex data and transforms it into actionable insights for businesses.",
-      logo: "/images/sisense.png" // Add your image path here
+      logo: "/images/sisense.png",
+      tagline: "Sisense is an analytics platform that simplifies complex data and transforms it into actionable insights for businesses. Enterprise-grade embedded analytics with AI-powered data exploration and insights.",
+      color: "from-green-600 to-teal-600",
+      badgeColor: "bg-gradient-to-r from-green-500 to-teal-500",
+      icon: <Cpu className="w-6 h-6" />
     },
     {
       provider: "Qlik Sense",
-      price: "Starts at $30 per user/month",
+      price: "$30",
+      period: "/user/month",
+      rating: 4.2,
+      reviews: "2.1K reviews",
       features: [
         "Powerful visualization tools",
         "Associative data model",
@@ -73,12 +89,18 @@ export default function PlatformComparison({ onOpenQuestionnaire }) {
         "UI can be confusing for beginners",
         "Slower performance with large datasets"
       ],
-      description: "Qlik Sense offers associative analytics that allows users to explore data freely without predefined queries or paths.",
-      logo: "/images/qlikicon.png" // Add your image path here
+      logo: "/images/qlikicon.png",
+      tagline: "Qlik Sense offers associative analytics that allows users to explore data freely without predefined queries or paths. Associative analytics engine for free-form data exploration and guided analytics.",
+      color: "from-orange-600 to-red-600",
+      badgeColor: "bg-gradient-to-r from-orange-500 to-red-500",
+      icon: <Brain className="w-6 h-6" />
     },
     {
       provider: "Zoho Analytics",
-      price: "Starts at $24 per user/month",
+      price: "$24",
+      period: "/user/month",
+      rating: 4.4,
+      reviews: "2.5K reviews",
       features: [
         "Generative AI-Infused BI",
         "Top-notch collaboration tools",
@@ -96,12 +118,18 @@ export default function PlatformComparison({ onOpenQuestionnaire }) {
         "Less enterprise-focused",
         "Smaller community and resources"
       ],
-      description: "Zoho Analytics is a self-service BI and analytics platform that helps users create insightful dashboards and reports.",
-      logo: "/images/zoho copy.png" // Add your image path here
+      logo: "/images/zoho copy.png",
+      tagline: "Zoho Analytics is a self-service BI and analytics platform that helps users create insightful dashboards and reports. Self-service business intelligence with AI-powered analytics and collaborative dashboard creation.",
+      color: "from-indigo-600 to-blue-600",
+      badgeColor: "bg-gradient-to-r from-indigo-500 to-blue-500",
+      icon: <Database className="w-6 h-6" />
     },
-   {
+    {
       provider: "ActivTrak",
-      price: "Starts at $10 per user/month",
+      price: "$10",
+      period: "/user/month",
+      rating: 4.1,
+      reviews: "1.2K reviews",
       features: [
         "Workforce analytics and productivity insights",
         "Real-time activity monitoring",
@@ -119,16 +147,32 @@ export default function PlatformComparison({ onOpenQuestionnaire }) {
         "May raise employee privacy concerns",
         "Not a full BI platform"
       ],
-      description: "ActivTrak is a workforce analytics platform that provides insights into employee productivity and helps organizations optimize team performance.",
-      logo: "/images/Activ.png" // Add your image path here
+      logo: "/images/Activ.png",
+      tagline: "ActivTrak is a workforce analytics platform that provides insights into employee productivity and helps organizations optimize team performance. Workforce productivity analytics with privacy-focused employee monitoring and optimization insights.",
+      color: "from-purple-600 to-pink-600",
+      badgeColor: "bg-gradient-to-r from-purple-500 to-pink-500",
+      icon: <Target className="w-6 h-6" />
     }
   ];
 
-  // Removed pagination functions as we now show all platforms in a grid
+  const renderStars = (rating) => {
+    return (
+      <div className="flex items-center gap-0.5">
+        {[1, 2, 3, 4, 5].map((star) => (
+          <Star
+            key={star}
+            size={14}
+            className={star <= rating ? "text-yellow-400 fill-yellow-400" : "text-gray-300"}
+          />
+        ))}
+      </div>
+    );
+  };
 
   return (
     <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header Section */}
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
             Compare Top <span className="text-[#007bff]">Business Intelligence</span> Platforms
@@ -153,11 +197,23 @@ export default function PlatformComparison({ onOpenQuestionnaire }) {
               <div className="flex flex-col items-center text-center">
                 <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-lg flex items-center justify-center shadow-sm border border-blue-100 mb-3 sm:mb-4">
                   {card.logo ? (
-                    <img 
-                      src={card.logo} 
-                      alt={`${card.provider} logo`}
-                      className="w-12 h-12 sm:w-16 sm:h-16 object-contain"
-                    />
+                    <div className="relative w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center">
+                      <Image 
+                        src={card.logo} 
+                        alt={`${card.provider} logo`}
+                        width={64}
+                        height={64}
+                        className="object-contain w-full h-full"
+                        onError={(e) => {
+                          e.target.style.display = 'none';
+                          e.target.nextSibling.style.display = 'block';
+                        }}
+                      />
+                      {/* Fallback text */}
+                      <div className="hidden text-lg font-bold text-blue-600">
+                        {card.provider.charAt(0)}
+                      </div>
+                    </div>
                   ) : (
                     <div className="text-xl sm:text-2xl font-bold text-blue-600">
                       {card.provider.charAt(0)}
@@ -167,19 +223,59 @@ export default function PlatformComparison({ onOpenQuestionnaire }) {
                 <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">
                   {card.provider}
                 </h3>
-                <p className="text-sm sm:text-base text-blue-600 font-semibold">
-                  {card.price}
-                </p>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Description */}
+        {/* Enhanced Tagline Section */}
         <div className="mb-10">
-          <p className="text-lg text-gray-700 leading-relaxed text-center max-w-4xl mx-auto">
-            {providerCards[currentCardIndex].description}
-          </p>
+          <div className={`bg-gradient-to-r ${providerCards[currentCardIndex].color} p-8 rounded-2xl shadow-lg relative overflow-hidden transition-all duration-500 hover:shadow-xl`}>
+            {/* Rating and Price Badge - Top Right Corner */}
+            <div className="absolute top-6 right-6">
+              <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-white/20 transition-all duration-300 hover:scale-105 hover:shadow-xl">
+                <div className="text-center">
+                  {/* Star Rating */}
+                  <div className="flex items-center justify-center gap-1 mb-2">
+                    {renderStars(providerCards[currentCardIndex].rating)}
+                    <span className="text-sm font-semibold text-gray-700 ml-1">
+                      {providerCards[currentCardIndex].rating}
+                    </span>
+                  </div>
+                  <div className="text-xs text-gray-500 mb-3">
+                    {providerCards[currentCardIndex].reviews}
+                  </div>
+                  
+                  {/* Price */}
+                  <div className="flex items-baseline justify-center gap-1">
+                    <span className="text-2xl font-bold text-gray-900">
+                      {providerCards[currentCardIndex].price}
+                    </span>
+                    <span className="text-sm text-gray-600">
+                      {providerCards[currentCardIndex].period}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Main Content */}
+            <div className="max-w-4xl mx-auto pr-32">
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 flex items-center gap-3">
+                <div className="bg-white/20 p-2 rounded-lg backdrop-blur-sm border border-white/30">
+                  {providerCards[currentCardIndex].icon}
+                </div>
+                {providerCards[currentCardIndex].provider} Business Intelligence
+              </h3>
+              <p className="text-xl text-white/90 leading-relaxed">
+                {providerCards[currentCardIndex].tagline}
+              </p>
+            </div>
+
+            {/* Subtle decorative elements */}
+            <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-white/10 rounded-full blur-xl"></div>
+            <div className="absolute -top-4 -left-4 w-20 h-20 bg-white/5 rounded-full blur-lg"></div>
+          </div>
         </div>
 
         {/* Pros and Cons Grid */}
@@ -236,8 +332,6 @@ export default function PlatformComparison({ onOpenQuestionnaire }) {
             ))}
           </div>
         </div>
-
-        
 
         {/* Get Quote CTA */}
         <div className="text-center mt-8">

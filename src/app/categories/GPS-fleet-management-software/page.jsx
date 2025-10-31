@@ -1,6 +1,7 @@
 // 'use client'
 // import React from 'react';
 // import GPSHero from './GPSHero';
+// import GPSComparison from './GPSComparison';
 // import GPSBenefits from './GPSBenefits';
 // import GPSFeatures from './GPSFeatures';
 // import LogoScroll from '@/app/services/lead-generation/LogoScroll';
@@ -10,6 +11,7 @@
 //   return (
 //     <div className="min-h-screen bg-white">
 //       <GPSHero />
+//       <GPSComparison />
 //       <GPSBenefits />
 //       <GPSFeatures />
 //       <LogoScroll />

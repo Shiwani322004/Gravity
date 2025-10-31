@@ -1,167 +1,172 @@
 'use client';
 
-import { CheckCircle, X, Zap, ArrowRight, Star, Calculator, Users, Shield, FileText, DollarSign } from 'lucide-react';
+import { CheckCircle, X, Zap, ArrowRight, Star, Navigation, MapPin, Car, Shield, Gauge } from 'lucide-react';
 import { useState } from 'react';
 import Image from 'next/image';
 
-export default function PayrollComparison({ onOpenQuestionnaire }) {
+export default function GPSFleetComparison({ onOpenQuestionnaire }) {
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
 
   const providerCards = [
     {
-      provider: "ADP",
-      price: "$10",
-      period: "/user/month + $50 base",
-      rating: 4.5,
-      reviews: "2.8K reviews",
+      provider: "Azuga",
+      price: "$25",
+      period: "/month/vehicle",
+      rating: 4.4,
+      reviews: "1.8K reviews",
       features: [
-        "Full-service payroll & tax filing",
-        "Best for Large Enterprises",
-        "Dedicated specialist support",
-        "Comprehensive HR integration",
-        "Advanced compliance management"
+        "30-second refresh rate (15 sec option)",
+        "Best for Midsize and Larger Fleets",
+        "24/7 support (email, phone, ticket)",
+        "Fuel management and reporting",
+        "Driver safety scoring"
       ],
       pros: [
-        "Industry leader with extensive experience and reliability",
-        "Comprehensive HR and payroll integration",
-        "Strong compliance support and regulatory updates",
-        "Scalable solutions for businesses of all sizes"
+        "Excellent for midsize to large fleets",
+        "Flexible refresh rate options",
+        "Comprehensive support channels",
+        "Advanced fuel management",
+        "Reliable performance tracking"
       ],
       cons: [
-        "Higher cost compared to competitors",
-        "Complex pricing structure with add-on fees",
-        "Steep learning curve for new users",
-        "Long-term contracts may be required"
+        "Higher starting price point",
+        "May be complex for small fleets",
+        "Limited basic plan features",
+        "Setup requires technical knowledge"
       ],
-      logo: "/images/adp.png",
-      tagline: "ADP provides comprehensive payroll and HR solutions for businesses of all sizes. Industry-leading platform with robust compliance features, tax filing services, and integrated human resources management.",
+      logo: "/images/azuga.png",
+      tagline: "Azuga provides comprehensive GPS fleet management solutions with advanced tracking and fuel management capabilities. Best suited for midsize to larger fleets requiring detailed analytics and robust support systems.",
       color: "from-blue-600 to-indigo-600",
       badgeColor: "bg-gradient-to-r from-blue-500 to-indigo-500",
-      icon: <Calculator className="w-6 h-6" />
+      icon: <Navigation className="w-6 h-6" />
     },
     {
-      provider: "Zoho Payroll",
-      price: "$25",
-      period: "/user/month",
-      rating: 4.3,
-      reviews: "1.9K reviews",
-      features: [
-        "Automated payroll & compliance",
-        "Best for Small Businesses",
-        "Email and chat support",
-        "Seamless Zoho ecosystem integration",
-        "Mobile app access"
-      ],
-      pros: [
-        "Affordable pricing for small businesses",
-        "Easy integration with Zoho ecosystem",
-        "User-friendly interface and setup",
-        "Good customer support options"
-      ],
-      cons: [
-        "Limited advanced enterprise features",
-        "Fewer customization options",
-        "Basic reporting capabilities",
-        "Limited third-party integrations"
-      ],
-      logo: "/images/zopayroll.png",
-      tagline: "Zoho Payroll offers automated payroll solutions designed for small to medium businesses. Seamlessly integrates with Zoho's ecosystem providing comprehensive business management tools.",
-      color: "from-orange-500 to-red-500",
-      badgeColor: "bg-gradient-to-r from-orange-400 to-red-400",
-      icon: <Users className="w-6 h-6" />
-    },
-    {
-      provider: "BambooHR",
+      provider: "Motive",
       price: "Custom",
       period: "pricing",
       rating: 4.6,
-      reviews: "2.4K reviews",
+      reviews: "2.3K reviews",
       features: [
-        "Payroll + HR platform integration",
-        "Best for HR Integration",
-        "24/7 customer support",
-        "Employee self-service portal",
-        "Performance management tools"
+        "1-3 second refresh rate",
+        "Best for Accountability and Automation",
+        "24/7 email/phone support",
+        "AI-powered safety features",
+        "Electronic logging device (ELD)"
       ],
       pros: [
-        "Excellent HR and payroll integration",
-        "User-friendly interface design",
-        "Strong employee self-service features",
-        "Comprehensive reporting and analytics"
+        "Ultra-fast data refresh rates",
+        "Excellent automation capabilities",
+        "Strong focus on driver accountability",
+        "AI-driven safety insights",
+        "Comprehensive ELD compliance"
       ],
       cons: [
         "Custom pricing can be expensive",
-        "Limited standalone payroll features",
-        "Setup requires HR expertise",
-        "Fewer accounting integrations"
+        "Requires commitment for best pricing",
+        "Advanced features need training",
+        "Mobile app could be improved"
       ],
-      logo: "/images/bam.png",
-      tagline: "BambooHR delivers integrated HR and payroll platform with comprehensive employee management. Ideal for companies prioritizing human resources alongside payroll processing.",
+      logo: "/images/motive.png",
+      tagline: "Motive delivers high-performance fleet management with ultra-fast tracking and AI-powered automation. Ideal for businesses prioritizing driver accountability, safety compliance, and operational automation.",
       color: "from-green-600 to-emerald-600",
       badgeColor: "bg-gradient-to-r from-green-500 to-emerald-500",
-      icon: <Shield className="w-6 h-6" />
+      icon: <Gauge className="w-6 h-6" />
     },
     {
-      provider: "OnPay",
-      price: "$36",
-      period: "+ $4/user/month",
-      rating: 4.7,
-      reviews: "2.1K reviews",
+      provider: "Telematics",
+      price: "Custom",
+      period: "pricing",
+      rating: 4.3,
+      reviews: "1.5K reviews",
       features: [
-        "Unlimited payroll runs",
-        "Best for SMBs with contractors",
-        "Phone and email support",
-        "Benefits administration",
-        "Tax filing services"
+        "1-second data refresh rate",
+        "Best for Maintenance and Safety",
+        "Video capacity: 1000",
+        "Predictive maintenance alerts",
+        "Advanced safety monitoring"
       ],
       pros: [
-        "Simple, transparent pricing structure",
-        "Excellent customer service and support",
-        "Comprehensive features at competitive price",
-        "No long-term contracts required"
+        "Industry-leading refresh rate",
+        "Excellent maintenance features",
+        "High video storage capacity",
+        "Predictive analytics",
+        "Strong safety focus"
       ],
       cons: [
-        "Limited international capabilities",
-        "Fewer enterprise-level features",
-        "Smaller company with less brand recognition",
-        "Integration options still growing"
+        "Premium pricing structure",
+        "Complex feature set",
+        "Steeper learning curve",
+        "Limited entry-level options"
       ],
-      logo: "/images/onpay.png",
-      tagline: "OnPay offers all-in-one payroll platform with transparent pricing and excellent support. Modern solution providing comprehensive features without complex contracts or hidden fees.",
-      color: "from-teal-600 to-cyan-600",
-      badgeColor: "bg-gradient-to-r from-teal-500 to-cyan-500",
-      icon: <DollarSign className="w-6 h-6" />
-    },
-    {
-      provider: "QuickBooks Payroll",
-      price: "$45",
-      period: "/month + $5/user",
-      rating: 4.4,
-      reviews: "2.6K reviews",
-      features: [
-        "Automatic tax calculations",
-        "Best for Accounting Sync",
-        "24/7 expert support",
-        "Same-day direct deposit",
-        "QuickBooks seamless integration"
-      ],
-      pros: [
-        "Perfect integration with QuickBooks accounting",
-        "Easy setup and user-friendly interface",
-        "Good for existing QuickBooks users",
-        "Reliable tax calculation and filing"
-      ],
-      cons: [
-        "Limited standalone functionality",
-        "Higher cost for full-service features",
-        "Less comprehensive HR features",
-        "Mobile app functionality limited"
-      ],
-      logo: "/images/quickbooks.png",
-      tagline: "QuickBooks Payroll provides integrated payroll solution seamlessly connecting with QuickBooks accounting. Ideal for small businesses already using QuickBooks seeking streamlined financial management.",
+      logo: "/images/tele.png",
+      tagline: "Telematics offers premium fleet management with real-time tracking and advanced safety features. Perfect for companies focused on vehicle maintenance, driver safety, and comprehensive operational oversight.",
       color: "from-purple-600 to-pink-600",
       badgeColor: "bg-gradient-to-r from-purple-500 to-pink-500",
-      icon: <FileText className="w-6 h-6" />
+      icon: <Car className="w-6 h-6" />
+    },
+    {
+      provider: "Verizon Connect",
+      price: "$20",
+      period: "/vehicle/month",
+      rating: 4.2,
+      reviews: "2.1K reviews",
+      features: [
+        "30-second data refresh rate",
+        "Best for Midsize Fleets Services",
+        "24/7 customer support",
+        "Route optimization",
+        "Fuel and maintenance tracking"
+      ],
+      pros: [
+        "Competitive pricing",
+        "Reliable Verizon network",
+        "Good for midsize operations",
+        "Comprehensive route planning",
+        "Strong customer support"
+      ],
+      cons: [
+        "Basic refresh rate",
+        "Limited advanced features",
+        "Mobile experience could be better",
+        "Integration limitations"
+      ],
+      logo: "/images/verizon.png",
+      tagline: "Verizon Connect provides reliable fleet management solutions backed by robust network infrastructure. Excellent choice for midsize fleets seeking dependable tracking, route optimization, and comprehensive support.",
+      color: "from-red-600 to-orange-600",
+      badgeColor: "bg-gradient-to-r from-red-500 to-orange-500",
+      icon: <MapPin className="w-6 h-6" />
+    },
+    {
+      provider: "Samsara",
+      price: "$44",
+      period: "/vehicle/month",
+      rating: 4.7,
+      reviews: "2.8K reviews",
+      features: [
+        "1-second data refresh rate",
+        "Best for Sustainability and Safety",
+        "24/7 customer support",
+        "AI safety cameras",
+        "Environmental compliance"
+      ],
+      pros: [
+        "Industry-leading technology",
+        "Excellent sustainability features",
+        "Advanced AI safety systems",
+        "Comprehensive compliance tools",
+        "Superior data accuracy"
+      ],
+      cons: [
+        "Premium pricing",
+        "Complex implementation",
+        "Requires training for full utilization",
+        "May be overkill for small fleets"
+      ],
+      logo: "/images/samsara.png",
+      tagline: "Samsara delivers enterprise-grade fleet management with AI-powered safety and sustainability features. The top choice for large fleets prioritizing environmental compliance, advanced safety, and cutting-edge technology.",
+      color: "from-teal-600 to-cyan-600",
+      badgeColor: "bg-gradient-to-r from-teal-500 to-cyan-500",
+      icon: <Shield className="w-6 h-6" />
     }
   ];
 
@@ -185,10 +190,10 @@ export default function PayrollComparison({ onOpenQuestionnaire }) {
         {/* Header Section */}
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Compare Top <span className="text-[#007bff]">Payroll Software</span> Platforms
+            Compare Top <span className="text-[#007bff]">GPS Fleet Management</span> Systems
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Detailed comparison of features, pros, and cons to help you choose the right payroll solution for your business
+            Detailed comparison of features, pros, and cons to help you choose the right fleet management platform for your business
           </p>
         </div>
 
@@ -275,7 +280,7 @@ export default function PayrollComparison({ onOpenQuestionnaire }) {
                 <div className="bg-white/20 p-2 rounded-lg backdrop-blur-sm border border-white/30">
                   {providerCards[currentCardIndex].icon}
                 </div>
-                {providerCards[currentCardIndex].provider} Payroll Solutions
+                {providerCards[currentCardIndex].provider} Fleet Management
               </h3>
               <p className="text-xl text-white/90 leading-relaxed">
                 {providerCards[currentCardIndex].tagline}
