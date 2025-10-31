@@ -1,19 +1,19 @@
 // 'use client'
 // import React from 'react';
-// import ERPHero from './ERPHero';
-// import ERPFeatures from './ERPFeatures';
-// import ERPPlatform from './ERPPlatform';
+// import PayrollHero from './PayrollHero';
+// import PayrollFeatures from './PayrollFeatures';
+// import PayrollPlatform from './PayrollPlatform';
 // import LogoScroll from '@/app/services/lead-generation/LogoScroll';
-// import ERPAction from './ERPAction';
+// import PayrollAction from './PayrollAction';
 
-// export default function ERPSolutionsPage() {
+// export default function PayrollSoftwarePage() {
 //   return (
-//     <div className="min-h-screen bg-white">
-//       <ERPHero />
-//       <ERPFeatures />
-//       <ERPPlatform />
+//     <div className="min-h-screen bg-white overflow-x-hidden">
+//       <PayrollHero />
+//       <PayrollFeatures />
+//       <PayrollPlatform />
 //       <LogoScroll />
-//       <ERPAction />
+//       <PayrollAction />
       
 //       <style jsx>{`
 //         @keyframes fade-in {

@@ -13,7 +13,7 @@ import Image from 'next/image';
 
 export const dynamic = 'force-dynamic';
 
-export default function ERPSolutions() {
+export default function PayrollSolutions() {
   const sectionRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
   const [showQuestionnaire, setShowQuestionnaire] = useState(false);
@@ -154,27 +154,27 @@ export default function ERPSolutions() {
       key: "industry"
     },
     {
-      question: "How many users need ERP access?",
+      question: "How many employees need payroll processing?",
       options: ["1-25", "26-100", "101-500", "500+"],
       key: "userCount"
     },
     {
-      question: "What's your primary goal with ERP?",
+      question: "What's your primary goal with payroll software?",
       options: [
-        "Streamline Operations",
-        "Improve Financial Management",
-        "Enhance Customer Experience",
+        "Streamline Payroll Operations",
+        "Improve Tax Compliance",
+        "Enhance Employee Experience",
         "Scale Business Growth"
       ],
       key: "primaryGoal"
     },
     {
-      question: "Which modules are most important?",
+      question: "Which features are most important?",
       options: [
-        "Finance & Accounting",
-        "Supply Chain & Inventory",
-        "CRM & Sales",
-        "HR & Payroll"
+        "Tax Filing & Compliance",
+        "Employee Self-Service",
+        "Time & Attendance",
+        "Benefits Administration"
       ],
       key: "importantModules"
     }
@@ -227,8 +227,8 @@ export default function ERPSolutions() {
         user_count: answers.userCount || 'Not specified',
         primary_goal: answers.primaryGoal || 'Not specified',
         important_modules: answers.importantModules || 'Not specified',
-        subject: `ERP Solutions Inquiry from ${formData.name}`,
-        from_name: 'ERP Solutions Finder'
+        subject: `Payroll Software Inquiry from ${formData.name}`,
+        from_name: 'Payroll Software Finder'
       };
 
       const response = await fetch('https://api.web3forms.com/submit', {
@@ -299,36 +299,36 @@ export default function ERPSolutions() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* ERP Solutions Hero Section */}
+      {/* Payroll Software Hero Section */}
       <section
         ref={sectionRef}
-        className="relative bg-gradient-to-br from-blue-50 via-white to-cyan-50 py-16 lg:py-24 overflow-hidden"
+        className="relative bg-gradient-to-br from-blue-50 via-white to-cyan-50 py-12 sm:py-16 lg:py-24 overflow-hidden"
       >
         {/* Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-cyan-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-indigo-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+          <div className="absolute -top-40 -right-40 w-64 h-64 sm:w-80 sm:h-80 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+          <div className="absolute -bottom-40 -left-40 w-64 h-64 sm:w-80 sm:h-80 bg-cyan-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 sm:w-80 sm:h-80 bg-indigo-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Professional Content Section */}
-          <div className={`max-w-4xl mx-auto mb-16 transition-all duration-1000 delay-600 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            <h2 className="text-5xl font-bold mb-8 text-left">
+          <div className={`max-w-4xl mx-auto mb-12 sm:mb-16 transition-all duration-1000 delay-600 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 lg:mb-8 text-left">
               <span className="text-black">The Best </span>
-              <span className="text-[#007bff]">ERP Solutions</span>
+              <span className="text-[#007bff]">Payroll Software</span>
               <span className="text-black"> of 2025</span>
             </h2>
             
-            <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
+            <div className="space-y-4 sm:space-y-6 text-gray-700 leading-relaxed text-base sm:text-lg">
               <p>
-                At <strong className="text-[#007bff]">B2B Gravity</strong>, we believe managing your business operations should be seamless and integrated. Our ERP solutions bring together all your business processes - from finance and inventory to sales and human resources - into one unified system. Whether you're a growing startup or an established enterprise, we help you find the perfect ERP platform that drives efficiency and growth.
+                At <strong className="text-[#007bff]">B2B Gravity</strong>, we believe managing your payroll should be seamless and automated. Our payroll software solutions bring together all your payroll processes - from salary calculations and tax filing to employee self-service and compliance management - into one unified system. Whether you're a growing startup or an established enterprise, we help you find the perfect payroll platform that drives efficiency and accuracy.
               </p>
 
               {!showMore ? (
                 <>
                   <p>
-                    Running a business involves managing multiple departments and processes. An effective ERP system eliminates data silos and provides real-time visibility across your entire organization. You'll have accurate information at your fingertips, enabling better decision-making and streamlined operations across finance, supply chain, manufacturing, and customer relationships...
+                    Running payroll involves managing complex calculations, tax compliance, and employee data. An effective payroll system eliminates manual errors and provides real-time visibility across your entire payroll process. You'll have accurate information at your fingertips, enabling better decision-making and streamlined operations across payroll, benefits, time tracking, and employee management...
                   </p>
                   <div className="pt-4">
                     <button
@@ -342,36 +342,36 @@ export default function ERPSolutions() {
               ) : (
                 <>
                   <p>
-                    Running a business involves managing multiple departments and processes. An effective ERP system eliminates data silos and provides real-time visibility across your entire organization. You'll have accurate information at your fingertips, enabling better decision-making and streamlined operations across finance, supply chain, manufacturing, and customer relationships.
+                    Running payroll involves managing complex calculations, tax compliance, and employee data. An effective payroll system eliminates manual errors and provides real-time visibility across your entire payroll process. You'll have accurate information at your fingertips, enabling better decision-making and streamlined operations across payroll, benefits, time tracking, and employee management.
                   </p>
                   <p>
-                    At <strong className="text-[#007bff]">B2B Gravity</strong>, we help you navigate the complex ERP landscape to find solutions that match your specific business needs. From cloud-based systems for flexibility to on-premise solutions for control, we connect you with platforms that offer the right features, scalability, and integration capabilities for your unique requirements.
+                    At <strong className="text-[#007bff]">B2B Gravity</strong>, we help you navigate the complex payroll software landscape to find solutions that match your specific business needs. From cloud-based systems for flexibility to comprehensive platforms for control, we connect you with payroll solutions that offer the right features, scalability, and integration capabilities for your unique requirements.
                   </p>
 
-                  <div className="space-y-6 pt-4">
-                    <h3 className="text-2xl font-bold text-gray-900 mt-8 mb-6">
-                      Key Benefits of Modern ERP Systems
+                  <div className="space-y-4 sm:space-y-6 pt-4">
+                    <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mt-6 sm:mt-8 mb-4 sm:mb-6">
+                      Key Benefits of Modern Payroll Software
                     </h3>
                     
-                    <div className="space-y-4">
+                    <div className="space-y-3 sm:space-y-4">
                       <div className="flex items-start gap-3">
                         <div className="w-2 h-2 bg-[#007bff] rounded-full mt-3 flex-shrink-0"></div>
                         <div>
-                          <strong className="text-[#007bff]">Unified Business View:</strong> Get a 360-degree view of your operations with integrated data from all departments.
+                          <strong className="text-[#007bff]">Automated Payroll Processing:</strong> Streamline salary calculations, deductions, and payments with automated payroll runs.
                         </div>
                       </div>
                       
                       <div className="flex items-start gap-3">
                         <div className="w-2 h-2 bg-[#007bff] rounded-full mt-3 flex-shrink-0"></div>
                         <div>
-                          <strong className="text-[#007bff]">Automated Processes:</strong> Streamline workflows and reduce manual data entry with automated business processes.
+                          <strong className="text-[#007bff]">Tax Compliance Management:</strong> Stay compliant with federal, state, and local tax requirements with automated filing.
                         </div>
                       </div>
                       
                       <div className="flex items-start gap-3">
                         <div className="w-2 h-2 bg-[#007bff] rounded-full mt-3 flex-shrink-0"></div>
                         <div>
-                          <strong className="text-[#007bff]">Real-time Analytics:</strong> Make data-driven decisions with real-time reporting and business intelligence.
+                          <strong className="text-[#007bff]">Employee Self-Service:</strong> Empower employees with access to pay stubs, tax documents, and personal information.
                         </div>
                       </div>
                       
@@ -385,13 +385,13 @@ export default function ERPSolutions() {
                       <div className="flex items-start gap-3">
                         <div className="w-2 h-2 bg-[#007bff] rounded-full mt-3 flex-shrink-0"></div>
                         <div>
-                          <strong className="text-[#007bff]">Regulatory Compliance:</strong> Stay compliant with industry regulations and financial reporting requirements.
+                          <strong className="text-[#007bff]">Integration Capabilities:</strong> Connect seamlessly with accounting, HR, and time tracking systems.
                         </div>
                       </div>
                     </div>
 
-                    <p className="text-lg font-semibold text-gray-900 mt-8 pt-6 border-t border-gray-200">
-                      Discover our top ERP solutions below. Compare features, pricing, and get personalized recommendations to transform your business operations.
+                    <p className="text-base sm:text-lg font-semibold text-gray-900 mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-gray-200">
+                      Discover our top payroll software solutions below. Compare features, pricing, and get personalized recommendations to transform your payroll operations.
                     </p>
                   </div>
                 </>
@@ -399,23 +399,23 @@ export default function ERPSolutions() {
             </div>
           </div>
 
-          {/* Provider Cards Grid */}
+          {/* Provider Cards Grid - Responsive */}
           <div className={`transition-all duration-1000 delay-1100 ${isVisible ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-10 opacity-0 scale-95'}`}>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-16">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-6 mb-12 sm:mb-16">
               {providerCards.map((card, index) => (
                 <div
-                  key={card.provider}
-                  className="group relative bg-white rounded-3xl border-2 border-gray-100 shadow-xl hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-500 transform hover:-translate-y-3 p-6 flex flex-col h-full hover:border-blue-200"
+                  key={index}
+                  className="group relative bg-white rounded-2xl lg:rounded-3xl border-2 border-gray-100 shadow-xl hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-500 transform hover:-translate-y-3 p-4 sm:p-6 flex flex-col h-full hover:border-blue-200"
                 >
                   {/* Content Section */}
                   <div className="flex-1">
                     {/* Provider Logo */}
-                    <div className="flex justify-center mb-6">
-                      <div className="relative w-full h-20 rounded-xl bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-100 flex items-center justify-center p-4 group-hover:scale-105 transition-transform duration-300">
+                    <div className="flex justify-center mb-4 sm:mb-6">
+                      <div className="relative w-full h-16 sm:h-20 rounded-xl bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-100 flex items-center justify-center p-3 sm:p-4 group-hover:scale-105 transition-transform duration-300">
                         <div className="relative w-full h-full flex items-center justify-center">
                           <Image 
                             src={card.vendorLogo}
-                            alt={`${card.provider} logo`}
+                            alt="Payroll software logo"
                             width={80}
                             height={40}
                             className="object-contain w-full h-full"
@@ -425,45 +425,40 @@ export default function ERPSolutions() {
                             }}
                           />
                           {/* Fallback text - hidden by default */}
-                          <div className="hidden text-2xl font-bold text-blue-600">
-                            {card.provider}
+                          <div className="hidden text-xl sm:text-2xl font-bold text-blue-600">
+                            PS
                           </div>
                         </div>
                       </div>
                     </div>
 
-                    {/* Provider Name */}
-                    <h3 className="text-xl font-bold text-gray-900 text-center mb-4 group-hover:text-blue-600 transition-colors duration-300">
-                      {card.provider}
-                    </h3>
-
                     {/* Price */}
-                    <div className="text-center mb-6">
-                      <p className="text-lg font-semibold text-gray-900 bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                    <div className="text-center mb-4 sm:mb-6">
+                      <p className="text-base sm:text-lg font-semibold text-gray-900 bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
                         {card.price}
                       </p>
                     </div>
 
                     {/* Features */}
-                    <div className="space-y-3 mb-6">
+                    <div className="space-y-2 sm:space-y-3 mb-4 sm:mb-6">
                       {card.features.map((feature, featureIndex) => (
-                        <div key={featureIndex} className="flex items-center gap-3 text-gray-700 group/feature">
-                          <CheckCircle size={14} className="text-green-500 flex-shrink-0 group-hover/feature:scale-110 transition-transform duration-300" />
-                          <span className="text-sm leading-tight">{feature}</span>
+                        <div key={featureIndex} className="flex items-center gap-2 sm:gap-3 text-gray-700 group/feature">
+                          <CheckCircle size={12} className="text-green-500 flex-shrink-0 group-hover/feature:scale-110 transition-transform duration-300" />
+                          <span className="text-xs sm:text-sm leading-tight">{feature}</span>
                         </div>
                       ))}
                     </div>
                   </div>
 
                   {/* CTA Button */}
-                  <div className="mt-auto pt-6 border-t border-gray-100">
+                  <div className="mt-auto pt-4 sm:pt-6 border-t border-gray-100">
                     <button 
                       onClick={handleOpenQuestionnaire}
-                      className="w-full py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-2 group/btn overflow-hidden relative"
+                      className="w-full py-3 sm:py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-2 group/btn overflow-hidden relative text-sm sm:text-base"
                     >
                       <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-cyan-700 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
-                      <span className="relative text-sm font-medium">{card.buttonText}</span>
-                      <ArrowRight size={16} className="relative group-hover/btn:translate-x-1 transition-transform duration-300" />
+                      <span className="relative font-medium">{card.buttonText}</span>
+                      <ArrowRight size={14} className="relative group-hover/btn:translate-x-1 transition-transform duration-300" />
                     </button>
                   </div>
                 </div>
@@ -472,19 +467,19 @@ export default function ERPSolutions() {
           </div>
 
           {/* Bottom CTA - Centered on the page */}
-          <div className={`text-center mt-16 transition-all duration-700 delay-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-200/60 shadow-lg max-w-2xl mx-auto relative overflow-hidden">
+          <div className={`text-center mt-12 sm:mt-16 transition-all duration-700 delay-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-gray-200/60 shadow-lg max-w-2xl mx-auto relative overflow-hidden">
               {/* Background Accent */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full -translate-y-16 translate-x-16"></div>
               
               <div className="relative z-10">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Need Help Choosing the Right ERP Solution?</h3>
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">Need Help Choosing the Right Payroll Software?</h3>
                 <p className="text-gray-600 mb-6">
-                  Our experts will help you compare features and pricing from top ERP vendors to find the perfect solution for your business operations and growth needs.
+                  Our experts will help you compare features and pricing from top payroll vendors to find the perfect solution for your payroll operations and business needs.
                 </p>
                 <button 
                   onClick={handleOpenQuestionnaire}
-                  className="px-8 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-0.5 flex items-center gap-2 group/cta mx-auto"
+                  className="px-6 sm:px-8 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-0.5 flex items-center gap-2 group/cta mx-auto"
                 >
                   Get Free Quotes
                   <ArrowRight size={18} className="group-hover/cta:translate-x-1 transition-transform duration-300" />
@@ -495,48 +490,48 @@ export default function ERPSolutions() {
         </div>
       </section>
 
-      {/* Questionnaire Popup */}
+      {/* Questionnaire Popup - Responsive */}
       {showQuestionnaire && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full mx-auto transform transition-all duration-300 scale-100 max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 z-50">
+          <div className="bg-white rounded-xl sm:rounded-2xl shadow-2xl max-w-xs sm:max-w-sm md:max-w-md w-full mx-auto transform transition-all duration-300 scale-100 max-h-[90vh] overflow-y-auto">
             {/* Header */}
-            <div className="flex items-center justify-between p-6 border-b border-gray-200 sticky top-0 bg-white z-10">
-              <h3 className="text-xl font-bold text-gray-900">
-                {isCompleted ? "Thank You!" : "Find Your Perfect ERP Solution"}
+            <div className="flex items-center justify-between p-4 sm:p-6 border-b border-gray-200 sticky top-0 bg-white z-10">
+              <h3 className="text-lg sm:text-xl font-bold text-gray-900">
+                {isCompleted ? "Thank You!" : "Find Your Perfect Payroll Software"}
               </h3>
               <button
                 onClick={handleCloseQuestionnaire}
-                className="p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200"
+                className="p-1 sm:p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200"
               >
-                <X size={20} className="text-gray-500" />
+                <X size={18} className="text-gray-500" />
               </button>
             </div>
             {/* Progress Bar */}
             {!isCompleted && (
-              <div className="px-6 pt-4">
+              <div className="px-4 sm:px-6 pt-3 sm:pt-4">
                 <div className="w-full bg-gray-200 rounded-full h-2">
                   <div
                     className="bg-gradient-to-r from-blue-500 to-cyan-500 h-2 rounded-full transition-all duration-500"
                     style={{ width: `${((currentQuestion + 1) / 7) * 100}%` }}
                   ></div>
                 </div>
-                <p className="text-sm text-gray-500 mt-2 text-right">
+                <p className="text-xs sm:text-sm text-gray-500 mt-2 text-right">
                   Step {currentQuestion + 1} of 7
                 </p>
               </div>
             )}
             {/* Content */}
-            <div className="p-6">
+            <div className="p-4 sm:p-6">
               {isCompleted ? (
-                <div className="text-center py-8">
-                  <CheckCircle size={48} className="text-green-500 mx-auto mb-4" />
-                  <h4 className="text-lg font-semibold text-gray-900 mb-2">Perfect ERP Solution Found!</h4>
-                  <p className="text-gray-600 mb-6">
-                    Based on your responses, you'll receive personalized ERP solution recommendations and quotes in your inbox soon.
+                <div className="text-center py-6 sm:py-8">
+                  <CheckCircle size={40} className="text-green-500 mx-auto mb-3 sm:mb-4" />
+                  <h4 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">Perfect Payroll Software Found!</h4>
+                  <p className="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base">
+                    Based on your responses, you'll receive personalized payroll software recommendations and quotes in your inbox soon.
                   </p>
                   <button
                     onClick={handleCloseQuestionnaire}
-                    className="w-full py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300"
+                    className="w-full py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 text-sm sm:text-base"
                   >
                     Close
                   </button>
@@ -544,19 +539,19 @@ export default function ERPSolutions() {
               ) : currentQuestion < questions.length ? (
                 // Core Q&A steps
                 <>
-                  <h4 className="text-lg font-semibold text-gray-900 mb-6 text-center">
+                  <h4 className="text-base sm:text-lg font-semibold text-gray-900 mb-4 sm:mb-6 text-center">
                     {questions[currentQuestion].question}
                   </h4>
-                  <div className="space-y-3">
+                  <div className="space-y-2 sm:space-y-3">
                     {questions[currentQuestion].options.map((option, idx) => (
                       <button
                         key={idx}
                         onClick={() => handleAnswer(option)}
-                        className="w-full p-4 text-left border border-gray-200 rounded-xl hover:border-blue-500 hover:bg-blue-50 transition-all duration-200 hover:shadow-md group"
+                        className="w-full p-3 sm:p-4 text-left border border-gray-200 rounded-xl hover:border-blue-500 hover:bg-blue-50 transition-all duration-200 hover:shadow-md group text-sm sm:text-base"
                       >
                         <div className="flex items-center justify-between">
                           <span className="font-medium text-gray-900">{option}</span>
-                          <ArrowRight size={16} className="text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                          <ArrowRight size={14} className="text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex-shrink-0" />
                         </div>
                       </button>
                     ))}
@@ -564,19 +559,19 @@ export default function ERPSolutions() {
                   {currentQuestion > 0 && (
                     <button
                       onClick={handleBack}
-                      className="w-full mt-4 py-3 text-gray-600 font-medium rounded-xl hover:bg-gray-100 transition-all duration-200 border border-gray-200"
+                      className="w-full mt-3 sm:mt-4 py-3 text-gray-600 font-medium rounded-xl hover:bg-gray-100 transition-all duration-200 border border-gray-200 text-sm sm:text-base"
                     >
                       Back
                     </button>
                   )}
                 </>
               ) : currentQuestion === 4 ? (
-                <form onSubmit={e => { e.preventDefault(); setCurrentQuestion(5); }} className="space-y-4">
-                  <h4 className="text-lg font-semibold text-gray-900 mb-4 text-center">
+                <form onSubmit={e => { e.preventDefault(); setCurrentQuestion(5); }} className="space-y-3 sm:space-y-4">
+                  <h4 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4 text-center">
                     Your Contact Information
                   </h4>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-2">
                       Full Name *
                     </label>
                     <input
@@ -585,12 +580,12 @@ export default function ERPSolutions() {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-sm sm:text-base"
                       placeholder="John Doe"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-2">
                       Email Address *
                     </label>
                     <input
@@ -599,12 +594,12 @@ export default function ERPSolutions() {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-sm sm:text-base"
                       placeholder="john@company.com"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-2">
                       Phone Number *
                     </label>
                     <input
@@ -613,35 +608,35 @@ export default function ERPSolutions() {
                       value={formData.phone}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-sm sm:text-base"
                       placeholder="+1 (555) 123-4567"
                     />
                   </div>
-                  <div className="flex gap-3 pt-4">
+                  <div className="flex gap-2 sm:gap-3 pt-3 sm:pt-4">
                     <button
                       type="button"
                       onClick={handleBack}
-                      className="flex-1 py-3 text-gray-600 font-medium rounded-xl hover:bg-gray-100 transition-all duration-200 border border-gray-200"
+                      className="flex-1 py-2 sm:py-3 text-gray-600 font-medium rounded-xl hover:bg-gray-100 transition-all duration-200 border border-gray-200 text-sm sm:text-base"
                     >
                       Back
                     </button>
                     <button
                       type="submit"
                       disabled={!formData.name || !formData.email || !formData.phone}
-                      className="flex-1 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                      className="flex-1 py-2 sm:py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-sm sm:text-base"
                     >
                       Next
-                      <ArrowRight size={16} />
+                      <ArrowRight size={14} />
                     </button>
                   </div>
                 </form>
               ) : currentQuestion === 5 ? (
-                <form onSubmit={e => { e.preventDefault(); setCurrentQuestion(6); }} className="space-y-4">
-                  <h4 className="text-lg font-semibold text-gray-900 mb-4 text-center">
+                <form onSubmit={e => { e.preventDefault(); setCurrentQuestion(6); }} className="space-y-3 sm:space-y-4">
+                  <h4 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4 text-center">
                     Company Information
                   </h4>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-2">
                       Company Name *
                     </label>
                     <input
@@ -650,12 +645,12 @@ export default function ERPSolutions() {
                       value={formData.company}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-sm sm:text-base"
                       placeholder="Your Company Inc."
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-2">
                       Country *
                     </label>
                     <select
@@ -663,14 +658,14 @@ export default function ERPSolutions() {
                       value={formData.country}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white"
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white text-sm sm:text-base"
                     >
                       <option value="US">United States</option>
                       <option value="IN">India</option>
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-2">
                       {formData.country === 'US' ? 'ZIP Code' : 'PIN Code'} *
                     </label>
                     <input
@@ -680,7 +675,7 @@ export default function ERPSolutions() {
                       onChange={handleInputChange}
                       required
                       maxLength={formData.country === 'US' ? 10 : 6}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-sm sm:text-base"
                       placeholder={formData.country === 'US' ? '12345 or 12345-6789' : '123456'}
                     />
                     <p className="text-xs text-gray-500 mt-1">
@@ -689,48 +684,48 @@ export default function ERPSolutions() {
                         : 'Enter 6 digit PIN code (e.g., 411001)'}
                     </p>
                   </div>
-                  <div className="flex gap-3 pt-4">
+                  <div className="flex gap-2 sm:gap-3 pt-3 sm:pt-4">
                     <button
                       type="button"
                       onClick={handleBack}
-                      className="flex-1 py-3 text-gray-600 font-medium rounded-xl hover:bg-gray-100 transition-all duration-200 border border-gray-200"
+                      className="flex-1 py-2 sm:py-3 text-gray-600 font-medium rounded-xl hover:bg-gray-100 transition-all duration-200 border border-gray-200 text-sm sm:text-base"
                     >
                       Back
                     </button>
                     <button
                       type="submit"
                       disabled={!formData.company || !formData.zipCode}
-                      className="flex-1 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                      className="flex-1 py-2 sm:py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-sm sm:text-base"
                     >
                       Next
-                      <ArrowRight size={16} />
+                      <ArrowRight size={14} />
                     </button>
                   </div>
                 </form>
               ) : currentQuestion === 6 ? (
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <h4 className="text-lg font-semibold text-gray-900 mb-4 text-center">
+                <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
+                  <h4 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4 text-center">
                     Security Verification
                   </h4>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-2">
                       Security Question *
                     </label>
-                    <div className="bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-200 rounded-xl p-4">
-                      <div className="flex items-center justify-between mb-3">
-                        <div className="flex items-center gap-3">
-                          <Shield className="text-blue-500" size={24} />
-                          <span className="text-lg font-bold text-gray-900">
+                    <div className="bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-200 rounded-xl p-3 sm:p-4">
+                      <div className="flex items-center justify-between mb-2 sm:mb-3">
+                        <div className="flex items-center gap-2 sm:gap-3">
+                          <Shield className="text-blue-500" size={20} />
+                          <span className="text-base sm:text-lg font-bold text-gray-900">
                             {captchaQuestion.num1} + {captchaQuestion.num2} = ?
                           </span>
                         </div>
                         <button
                           type="button"
                           onClick={generateCaptcha}
-                          className="p-2 hover:bg-white/50 rounded-lg transition-colors duration-200"
+                          className="p-1 sm:p-2 hover:bg-white/50 rounded-lg transition-colors duration-200"
                           title="Generate new question"
                         >
-                          <RefreshCw size={18} className="text-blue-500" />
+                          <RefreshCw size={16} className="text-blue-500" />
                         </button>
                       </div>
                       <input
@@ -738,19 +733,19 @@ export default function ERPSolutions() {
                         value={captchaInput}
                         onChange={e => verifyCaptcha(e.target.value)}
                         required
-                        className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 transition-all duration-200 ${captchaInput && (captchaValid ? 'border-green-500 bg-green-50' : 'border-red-500 bg-red-50')}`}
+                        className={`w-full px-3 sm:px-4 py-2 sm:py-3 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 transition-all duration-200 text-sm sm:text-base ${captchaInput && (captchaValid ? 'border-green-500 bg-green-50' : 'border-red-500 bg-red-50')}`}
                         placeholder="Enter your answer"
                       />
                       {captchaInput && (
-                        <div className={`mt-2 text-sm flex items-center gap-2 ${captchaValid ? 'text-green-600' : 'text-red-600'}`}>
+                        <div className={`mt-2 text-xs sm:text-sm flex items-center gap-2 ${captchaValid ? 'text-green-600' : 'text-red-600'}`}>
                           {captchaValid ? (
                             <>
-                              <CheckCircle size={16} />
+                              <CheckCircle size={14} />
                               <span>Correct!</span>
                             </>
                           ) : (
                             <>
-                              <X size={16} />
+                              <X size={14} />
                               <span>Incorrect, please try again</span>
                             </>
                           )}
@@ -758,22 +753,22 @@ export default function ERPSolutions() {
                       )}
                     </div>
                   </div>
-                  <div className="flex gap-3 pt-4">
+                  <div className="flex gap-2 sm:gap-3 pt-3 sm:pt-4">
                     <button
                       type="button"
                       onClick={handleBack}
-                      className="flex-1 py-3 text-gray-600 font-medium rounded-xl hover:bg-gray-100 transition-all duration-200 border border-gray-200"
+                      className="flex-1 py-2 sm:py-3 text-gray-600 font-medium rounded-xl hover:bg-gray-100 transition-all duration-200 border border-gray-200 text-sm sm:text-base"
                     >
                       Back
                     </button>
                     <button
                       type="submit"
                       disabled={isSubmitting || !captchaValid}
-                      className="flex-1 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                      className="flex-1 py-2 sm:py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-sm sm:text-base"
                     >
                       {isSubmitting
-                        ? (<><div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div> Submitting...</>)
-                        : (<>Submit <ArrowRight size={16} /></>)
+                        ? (<><div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div> Submitting...</>)
+                        : (<>Submit <ArrowRight size={14} /></>)
                       }
                     </button>
                   </div>
