@@ -12,13 +12,92 @@ import {
   Video,
   Bot,
   Cloud,
-  MessageCircle
+  MessageCircle,
+  ArrowRight,
+  RefreshCw
 } from 'lucide-react';
 import { useState } from 'react';
 import Image from 'next/image';
 
 const CRMAnalysisSection = () => {
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
+  const [showQuestionnaire, setShowQuestionnaire] = useState(false);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [isCompleted, setIsCompleted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [captchaValid, setCaptchaValid] = useState(false);
+  const [captchaInput, setCaptchaInput] = useState('');
+  const [captchaQuestion, setCaptchaQuestion] = useState({ num1: 0, num2: 0, answer: 0 });
+
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    phone: '',
+    country: 'US',
+    zipCode: '',
+    requirements: ''
+  });
+
+  // Generate CAPTCHA question
+  const generateCaptcha = () => {
+    const num1 = Math.floor(Math.random() * 10) + 1;
+    const num2 = Math.floor(Math.random() * 10) + 1;
+    setCaptchaQuestion({
+      num1,
+      num2,
+      answer: num1 + num2
+    });
+  };
+
+  // Verify CAPTCHA
+  const verifyCaptcha = (input) => {
+    setCaptchaInput(input);
+    setCaptchaValid(parseInt(input) === captchaQuestion.answer);
+  };
+
+  const questions = [
+    {
+      question: "What's your company size?",
+      options: [
+        "1-10 employees",
+        "11-50 employees", 
+        "51-200 employees",
+        "201-1000 employees",
+        "1000+ employees"
+      ]
+    },
+    {
+      question: "What's your primary need for a CRM?",
+      options: [
+        "Sales pipeline management",
+        "Customer service & support",
+        "Marketing automation",
+        "Lead generation & tracking",
+        "All of the above"
+      ]
+    },
+    {
+      question: "What's your monthly budget per user?",
+      options: [
+        "Under $10",
+        "$10 - $25", 
+        "$25 - $50",
+        "$50 - $100",
+        "$100+"
+      ]
+    },
+    {
+      question: "Which features are most important to you?",
+      options: [
+        "Easy to use interface",
+        "Advanced automation",
+        "Third-party integrations",
+        "Mobile app access",
+        "Custom reporting"
+      ]
+    }
+  ];
 
   const providerCards = [
     {
@@ -187,6 +266,73 @@ const CRMAnalysisSection = () => {
       icon: <BarChart3 className="w-6 h-6" />
     }
   ];
+
+  // Open questionnaire
+  const onOpenQuestionnaire = () => {
+    setShowQuestionnaire(true);
+    setCurrentQuestion(0);
+    setIsCompleted(false);
+    setIsSubmitting(false);
+    setCaptchaValid(false);
+    setCaptchaInput('');
+    generateCaptcha();
+    setFormData({
+      name: '',
+      email: '',
+      company: '',
+      phone: '',
+      country: 'US',
+      zipCode: '',
+      requirements: ''
+    });
+  };
+
+  // Close questionnaire
+  const handleCloseQuestionnaire = () => {
+    setShowQuestionnaire(false);
+  };
+
+  // Handle answer selection
+  const handleAnswer = (answer) => {
+    if (currentQuestion < questions.length - 1) {
+      setCurrentQuestion(currentQuestion + 1);
+    } else {
+      setCurrentQuestion(4); // Move to contact info step
+    }
+  };
+
+  // Handle back button
+  const handleBack = () => {
+    if (currentQuestion > 0) {
+      setCurrentQuestion(currentQuestion - 1);
+    }
+  };
+
+  // Handle input change
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!captchaValid) return;
+
+    setIsSubmitting(true);
+    
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    
+    setIsCompleted(true);
+    setIsSubmitting(false);
+    
+    // You can add your actual form submission logic here
+    console.log('Form submitted:', formData);
+  };
 
   const renderStars = (rating) => {
     return (
@@ -400,7 +546,338 @@ const CRMAnalysisSection = () => {
             </div>
           </div>
         </div>
+
+        {/* Get Quote CTA */}
+        <div className="text-center mt-8">
+          <button
+            onClick={onOpenQuestionnaire}
+            className="px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-2 mx-auto"
+          >
+            Get Personalized Quotes
+            <ArrowRight size={18} />
+          </button>
+        </div>
       </div>
+
+      {/* Questionnaire Popup with 7 Steps */}
+      {showQuestionnaire && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full mx-auto transform transition-all duration-300 scale-100 max-h-[90vh] overflow-y-auto">
+            {/* Header */}
+            <div className="flex items-center justify-between p-6 border-b border-gray-200 sticky top-0 bg-white z-10">
+              <h3 className="text-xl font-bold text-gray-900">
+                {isCompleted ? "Thank You!" : "Help Us Find Your Perfect CRM"}
+              </h3>
+              <button
+                onClick={handleCloseQuestionnaire}
+                className="p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200"
+              >
+                <X size={20} className="text-gray-500" />
+              </button>
+            </div>
+
+            {/* Progress Bar */}
+            {!isCompleted && (
+              <div className="px-6 pt-4">
+                <div className="w-full bg-gray-200 rounded-full h-2">
+                  <div 
+                    className="bg-gradient-to-r from-blue-600 to-cyan-600 h-2 rounded-full transition-all duration-500"
+                    style={{ width: `${((currentQuestion + 1) / 7) * 100}%` }}
+                  ></div>
+                </div>
+                <p className="text-sm text-gray-500 mt-2 text-right">
+                  Step {currentQuestion + 1} of 7
+                </p>
+              </div>
+            )}
+
+            {/* Content */}
+            <div className="p-6">
+              {isCompleted ? (
+                <div className="text-center py-8">
+                  <CheckCircle size={48} className="text-green-500 mx-auto mb-4" />
+                  <h4 className="text-lg font-semibold text-gray-900 mb-2">Perfect Match Found!</h4>
+                  <p className="text-gray-600 mb-6">
+                    Based on your answers, we're finding the best CRM solutions for your business. You'll receive personalized quotes shortly.
+                  </p>
+                  <button
+                    onClick={handleCloseQuestionnaire}
+                    className="w-full py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300"
+                  >
+                    Close
+                  </button>
+                </div>
+              ) : currentQuestion < questions.length ? (
+                // Steps 1-4: CRM Questions
+                <>
+                  <h4 className="text-lg font-semibold text-gray-900 mb-6 text-center">
+                    {questions[currentQuestion].question}
+                  </h4>
+                  
+                  <div className="space-y-3">
+                    {questions[currentQuestion].options.map((option, index) => (
+                      <button
+                        key={index}
+                        onClick={() => handleAnswer(option)}
+                        className="w-full p-4 text-left border border-gray-200 rounded-xl hover:border-blue-500 hover:bg-blue-50/50 transition-all duration-200 hover:shadow-md group"
+                      >
+                        <div className="flex items-center justify-between">
+                          <span className="font-medium text-gray-900">{option}</span>
+                          <ArrowRight size={16} className="text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* Back Button */}
+                  {currentQuestion > 0 && (
+                    <button
+                      onClick={handleBack}
+                      className="w-full mt-4 py-3 text-gray-600 font-medium rounded-xl hover:bg-gray-100 transition-all duration-200 border border-gray-200"
+                    >
+                      Back
+                    </button>
+                  )}
+                </>
+              ) : currentQuestion === 4 ? (
+                // Step 5: Name, Email, Phone
+                <form onSubmit={(e) => { e.preventDefault(); setCurrentQuestion(5); }} className="space-y-4">
+                  <h4 className="text-lg font-semibold text-gray-900 mb-4 text-center">
+                    Your Contact Information
+                  </h4>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Full Name *
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                      placeholder="John Doe"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Email Address *
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                      placeholder="john@company.com"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Phone Number *
+                    </label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                      placeholder="+1 (555) 123-4567"
+                    />
+                  </div>
+
+                  {/* Buttons */}
+                  <div className="flex gap-3 pt-4">
+                    <button
+                      type="button"
+                      onClick={handleBack}
+                      className="flex-1 py-3 text-gray-600 font-medium rounded-xl hover:bg-gray-100 transition-all duration-200 border border-gray-200"
+                    >
+                      Back
+                    </button>
+                    <button
+                      type="submit"
+                      disabled={!formData.name || !formData.email || !formData.phone}
+                      className="flex-1 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    >
+                      Next
+                      <ArrowRight size={16} />
+                    </button>
+                  </div>
+                </form>
+              ) : currentQuestion === 5 ? (
+                // Step 6: Company, Country, ZIP Code
+                <form onSubmit={(e) => { e.preventDefault(); setCurrentQuestion(6); }} className="space-y-4">
+                  <h4 className="text-lg font-semibold text-gray-900 mb-4 text-center">
+                    Business Information
+                  </h4>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Company Name *
+                    </label>
+                    <input
+                      type="text"
+                      name="company"
+                      value={formData.company}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                      placeholder="Your Company Inc."
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Country *
+                    </label>
+                    <select
+                      name="country"
+                      value={formData.country}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white"
+                    >
+                      <option value="US">United States</option>
+                      <option value="IN">India</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      {formData.country === 'US' ? 'ZIP Code' : 'PIN Code'} *
+                    </label>
+                    <input
+                      type="text"
+                      name="zipCode"
+                      value={formData.zipCode}
+                      onChange={handleInputChange}
+                      required
+                      maxLength={formData.country === 'US' ? 10 : 6}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                      placeholder={formData.country === 'US' ? '12345 or 12345-6789' : '123456'}
+                    />
+                    <p className="text-xs text-gray-500 mt-1">
+                      {formData.country === 'US' 
+                        ? 'Enter 5 or 9 digit ZIP code (e.g., 12345 or 12345-6789)' 
+                        : 'Enter 6 digit PIN code (e.g., 411001)'}
+                    </p>
+                  </div>
+
+                  {/* Buttons */}
+                  <div className="flex gap-3 pt-4">
+                    <button
+                      type="button"
+                      onClick={handleBack}
+                      className="flex-1 py-3 text-gray-600 font-medium rounded-xl hover:bg-gray-100 transition-all duration-200 border border-gray-200"
+                    >
+                      Back
+                    </button>
+                    <button
+                      type="submit"
+                      disabled={!formData.company || !formData.zipCode}
+                      className="flex-1 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    >
+                      Next
+                      <ArrowRight size={16} />
+                    </button>
+                  </div>
+                </form>
+              ) : currentQuestion === 6 ? (
+                // Step 7: Security Verification
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <h4 className="text-lg font-semibold text-gray-900 mb-4 text-center">
+                    Security Verification
+                  </h4>
+
+                  {/* Manual CAPTCHA */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Security Verification *
+                    </label>
+                    <div className="bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-200 rounded-xl p-4">
+                      <div className="flex items-center justify-between mb-3">
+                        <div className="flex items-center gap-3">
+                          <Shield className="text-blue-600" size={24} />
+                          <span className="text-lg font-bold text-gray-900">
+                            {captchaQuestion.num1} + {captchaQuestion.num2} = ?
+                          </span>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={generateCaptcha}
+                          className="p-2 hover:bg-white/50 rounded-lg transition-colors duration-200"
+                          title="Generate new question"
+                        >
+                          <RefreshCw size={18} className="text-blue-600" />
+                        </button>
+                      </div>
+                      <input
+                        type="number"
+                        value={captchaInput}
+                        onChange={(e) => verifyCaptcha(e.target.value)}
+                        required
+                        className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 transition-all duration-200 ${
+                          captchaInput && (captchaValid ? 'border-green-500 bg-green-50' : 'border-red-500 bg-red-50')
+                        }`}
+                        placeholder="Enter your answer"
+                      />
+                      {captchaInput && (
+                        <div className={`mt-2 text-sm flex items-center gap-2 ${captchaValid ? 'text-green-600' : 'text-red-600'}`}>
+                          {captchaValid ? (
+                            <>
+                              <CheckCircle size={16} />
+                              <span>Correct!</span>
+                            </>
+                          ) : (
+                            <>
+                              <X size={16} />
+                              <span>Incorrect, please try again</span>
+                            </>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Buttons */}
+                  <div className="flex gap-3 pt-4">
+                    <button
+                      type="button"
+                      onClick={handleBack}
+                      className="flex-1 py-3 text-gray-600 font-medium rounded-xl hover:bg-gray-100 transition-all duration-200 border border-gray-200"
+                    >
+                      Back
+                    </button>
+                    <button
+                      type="submit"
+                      disabled={isSubmitting || !captchaValid}
+                      className="flex-1 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                          Submitting...
+                        </>
+                      ) : (
+                        <>
+                          Submit
+                          <ArrowRight size={16} />
+                        </>
+                      )}
+                    </button>
+                  </div>
+                </form>
+              ) : null}
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
