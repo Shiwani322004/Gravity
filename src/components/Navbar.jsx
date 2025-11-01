@@ -177,36 +177,46 @@ const Navbar = () => {
                           )}
                         </button>
                         
-                        {/* Enhanced dropdown with cascading animation */}
-                        <div className={`absolute top-full left-0 mt-3 w-72 bg-white rounded-2xl shadow-2xl py-3 text-slate-800 border border-slate-100 overflow-hidden transition-all duration-500 ease-out origin-top ${
+                        {/* Enhanced dropdown with true ladder falling animation */}
+                        <div className={`absolute top-full left-0 mt-3 w-72 bg-white rounded-2xl shadow-2xl py-3 text-slate-800 border border-slate-100 overflow-hidden transition-all duration-300 ease-out origin-top ${
                           activeDropdown === item.id 
                             ? 'opacity-100 translate-y-0 scale-y-100 pointer-events-auto' 
                             : 'opacity-0 -translate-y-3 scale-y-95 pointer-events-none'
                         }`}>
                           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#0a2540] via-[#007bff] to-[#0056b3] transition-all duration-500"></div>
-                          <div className="space-y-1.5 mt-2 px-3">
+                          <div className="space-y-0 mt-2">
                             {item.dropdownItems.map((subpage, idx) => {
                               const isSubpageActive = pathname === subpage.href;
+                              const isLastItem = idx === item.dropdownItems.length - 1;
                               return (
-                                <a
-                                  key={idx}
-                                  href={subpage.href}
-                                  onClick={handleLinkClick}
-                                  className={`block px-4 py-3.5 rounded-xl transition-all duration-500 ease-out group relative overflow-hidden transform hover:scale-[1.02] border border-transparent ${
-                                    isSubpageActive
-                                      ? 'text-white bg-gradient-to-r from-[#0a2540] to-[#007bff] shadow-md'
-                                      : 'text-slate-700 hover:text-[#007bff] hover:bg-slate-50 hover:shadow-sm hover:border-slate-200'
-                                  }`}
-                                  style={{ 
-                                    transitionDelay: `${idx * 80}ms`,
-                                    animation: activeDropdown === item.id ? `dropdownSlideIn 0.5s ease-out ${idx * 0.08}s both` : 'none'
-                                  }}
-                                >
-                                  <div className="relative z-10 font-medium text-[14px] transition-all duration-400">{subpage.name}</div>
-                                  {!isSubpageActive && (
-                                    <div className="absolute inset-0 bg-gradient-to-r from-[#007bff]/5 to-[#0056b3]/5 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500 ease-out rounded-xl"></div>
+                                <div key={idx} className="relative">
+                                  <a
+                                    href={subpage.href}
+                                    onClick={handleLinkClick}
+                                    className={`block px-4 py-3.5 mx-3 rounded-xl transition-all duration-500 ease-out group relative overflow-hidden transform ${
+                                      isSubpageActive
+                                        ? 'text-white bg-gradient-to-r from-[#0a2540] to-[#007bff] shadow-md'
+                                        : 'text-slate-700 hover:text-[#007bff] hover:bg-slate-50 hover:shadow-sm hover:border-slate-200'
+                                    } ${
+                                      activeDropdown === item.id 
+                                        ? 'animate-ladder-fall' 
+                                        : ''
+                                    }`}
+                                    style={{ 
+                                      animationDelay: `${idx * 100}ms`,
+                                      border: isSubpageActive ? 'none' : '1px solid transparent'
+                                    }}
+                                  >
+                                    <div className="relative z-10 font-medium text-[14px] transition-all duration-400">{subpage.name}</div>
+                                    {!isSubpageActive && (
+                                      <div className="absolute inset-0 bg-gradient-to-r from-[#007bff]/5 to-[#0056b3]/5 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500 ease-out rounded-xl"></div>
+                                    )}
+                                  </a>
+                                  {/* Subtle separator line between items */}
+                                  {!isLastItem && (
+                                    <div className="h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent mx-4 my-1 opacity-60"></div>
                                   )}
-                                </a>
+                                </div>
                               );
                             })}
                           </div>
@@ -313,26 +323,32 @@ const Navbar = () => {
                             opacity: mobileDropdowns[item.id] ? 1 : 0
                           }}
                         >
-                          <div className="px-4 pb-4 space-y-2">
+                          <div className="px-4 pb-4 space-y-0">
                             {item.dropdownItems.map((subpage, idx) => {
                               const isSubpageActive = pathname === subpage.href;
+                              const isLastItem = idx === item.dropdownItems.length - 1;
                               return (
-                                <a
-                                  key={idx}
-                                  href={subpage.href}
-                                  onClick={handleLinkClick}
-                                  className={`block py-3.5 px-5 rounded-xl transition-all duration-500 ease-out border transform hover:scale-[1.02] ${
-                                    isSubpageActive
-                                      ? 'text-white bg-gradient-to-r from-[#0a2540] to-[#007bff] border-transparent shadow-md'
-                                      : 'text-slate-700 hover:text-[#007bff] hover:bg-white border-slate-200 hover:border-[#007bff] hover:shadow-md'
-                                  }`}
-                                  style={{
-                                    transitionDelay: mobileDropdowns[item.id] ? `${idx * 60}ms` : '0ms',
-                                    animation: mobileDropdowns[item.id] ? `mobileDropdownSlideIn 0.4s ease-out ${idx * 0.06}s both` : 'none'
-                                  }}
-                                >
-                                  <span className="font-semibold text-[15px] transition-all duration-400">{subpage.name}</span>
-                                </a>
+                                <div key={idx} className="relative">
+                                  <a
+                                    href={subpage.href}
+                                    onClick={handleLinkClick}
+                                    className={`block py-3.5 px-5 rounded-xl transition-all duration-500 ease-out border transform hover:scale-[1.02] ${
+                                      isSubpageActive
+                                        ? 'text-white bg-gradient-to-r from-[#0a2540] to-[#007bff] border-transparent shadow-md'
+                                        : 'text-slate-700 hover:text-[#007bff] hover:bg-white border-slate-200 hover:border-[#007bff] hover:shadow-md'
+                                    }`}
+                                    style={{
+                                      transitionDelay: mobileDropdowns[item.id] ? `${idx * 60}ms` : '0ms',
+                                      animation: mobileDropdowns[item.id] ? `mobileDropdownSlideIn 0.4s ease-out ${idx * 0.06}s both` : 'none'
+                                    }}
+                                  >
+                                    <span className="font-semibold text-[15px] transition-all duration-400">{subpage.name}</span>
+                                  </a>
+                                  {/* Subtle separator line for mobile */}
+                                  {!isLastItem && (
+                                    <div className="h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent mx-3 my-1 opacity-50"></div>
+                                  )}
+                                </div>
                               );
                             })}
                           </div>
@@ -360,15 +376,24 @@ const Navbar = () => {
       </div>
 
       <style jsx>{`
-        @keyframes dropdownSlideIn {
-          from {
+        @keyframes ladder-fall {
+          0% {
             opacity: 0;
-            transform: translateY(-12px) scale(0.95);
+            transform: translateY(-20px) scale(0.95);
           }
-          to {
+          60% {
+            opacity: 0.8;
+            transform: translateY(2px) scale(1.01);
+          }
+          100% {
             opacity: 1;
             transform: translateY(0) scale(1);
           }
+        }
+
+        .animate-ladder-fall {
+          animation: ladder-fall 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+          opacity: 0;
         }
 
         @keyframes mobileDropdownSlideIn {
