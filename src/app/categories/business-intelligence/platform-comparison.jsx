@@ -228,55 +228,58 @@ export default function PlatformComparison({ onOpenQuestionnaire }) {
           ))}
         </div>
 
-        {/* Enhanced Tagline Section */}
-        <div className="mb-10">
-          <div className={`bg-gradient-to-r ${providerCards[currentCardIndex].color} p-8 rounded-2xl shadow-lg relative overflow-hidden transition-all duration-500 hover:shadow-xl`}>
-            {/* Rating and Price Badge - Top Right Corner */}
-            <div className="absolute top-6 right-6">
-              <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-white/20 transition-all duration-300 hover:scale-105 hover:shadow-xl">
-                <div className="text-center">
-                  {/* Star Rating */}
-                  <div className="flex items-center justify-center gap-1 mb-2">
-                    {renderStars(providerCards[currentCardIndex].rating)}
-                    <span className="text-sm font-semibold text-gray-700 ml-1">
-                      {providerCards[currentCardIndex].rating}
-                    </span>
-                  </div>
-                  <div className="text-xs text-gray-500 mb-3">
-                    {providerCards[currentCardIndex].reviews}
-                  </div>
-                  
-                  {/* Price */}
-                  <div className="flex items-baseline justify-center gap-1">
-                    <span className="text-2xl font-bold text-gray-900">
-                      {providerCards[currentCardIndex].price}
-                    </span>
-                    <span className="text-sm text-gray-600">
-                      {providerCards[currentCardIndex].period}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Main Content */}
-            <div className="max-w-4xl mx-auto pr-32">
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 flex items-center gap-3">
-                <div className="bg-white/20 p-2 rounded-lg backdrop-blur-sm border border-white/30">
-                  {providerCards[currentCardIndex].icon}
-                </div>
-                {providerCards[currentCardIndex].provider} Business Intelligence
-              </h3>
-              <p className="text-xl text-white/90 leading-relaxed">
-                {providerCards[currentCardIndex].tagline}
-              </p>
-            </div>
-
-            {/* Subtle decorative elements */}
-            <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-white/10 rounded-full blur-xl"></div>
-            <div className="absolute -top-4 -left-4 w-20 h-20 bg-white/5 rounded-full blur-lg"></div>
+        {/* Enhanced Tagline Section - Made Fully Responsive */}
+<div className="mb-8 sm:mb-10">
+  <div className={`bg-gradient-to-r ${providerCards[currentCardIndex].color} p-4 sm:p-6 lg:p-8 rounded-xl lg:rounded-2xl shadow-lg relative overflow-hidden transition-all duration-500 hover:shadow-xl`}>
+    
+    {/* Rating and Price Badge - Responsive Positioning */}
+    <div className="absolute top-3 right-3 xs:top-4 xs:right-4 sm:top-5 sm:right-5 lg:top-6 lg:right-6 xl:top-8 xl:right-8">
+      <div className="bg-white/95 backdrop-blur-sm rounded-lg sm:rounded-xl lg:rounded-2xl p-2 sm:p-3 lg:p-4 shadow-lg border border-white/20 transition-all duration-300 hover:scale-105 hover:shadow-xl max-w-[120px] xs:max-w-[140px] sm:max-w-[160px]">
+        <div className="text-center">
+          {/* Star Rating */}
+          <div className="flex items-center justify-center gap-0.5 sm:gap-1 mb-1 sm:mb-2">
+            {renderStars(providerCards[currentCardIndex].rating)}
+            <span className="text-xs sm:text-sm font-semibold text-gray-700 ml-0.5 sm:ml-1">
+              {providerCards[currentCardIndex].rating}
+            </span>
+          </div>
+          <div className="text-[10px] xs:text-xs sm:text-xs text-gray-500 mb-1 sm:mb-2 lg:mb-3 leading-tight">
+            {providerCards[currentCardIndex].reviews}
+          </div>
+          
+          {/* Price */}
+          <div className="flex items-baseline justify-center gap-0.5 sm:gap-1">
+            <span className="text-base xs:text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
+              {providerCards[currentCardIndex].price}
+            </span>
+            <span className="text-[10px] xs:text-xs sm:text-sm text-gray-600 leading-tight">
+              {providerCards[currentCardIndex].period}
+            </span>
           </div>
         </div>
+      </div>
+    </div>
+
+    {/* Main Content */}
+    <div className="pr-24 xs:pr-28 sm:pr-32 md:pr-36 lg:pr-40 xl:pr-48 2xl:pr-56">
+      <h3 className="text-lg xs:text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-white mb-2 sm:mb-3 lg:mb-4 flex items-start gap-2 sm:gap-3">
+        <div className="bg-white/20 p-1.5 sm:p-2 rounded-md sm:rounded-lg backdrop-blur-sm border border-white/30 flex-shrink-0 mt-0.5 sm:mt-1">
+          {providerCards[currentCardIndex].icon}
+        </div>
+        <span className="break-words leading-tight sm:leading-normal">
+          {providerCards[currentCardIndex].provider} Business Intelligence
+        </span>
+      </h3>
+      <p className="text-sm xs:text-sm sm:text-base lg:text-lg xl:text-xl text-white/90 leading-relaxed sm:leading-loose lg:leading-loose">
+        {providerCards[currentCardIndex].tagline}
+      </p>
+    </div>
+
+    {/* Subtle decorative elements - Responsive scaling */}
+    <div className="absolute -bottom-3 -right-3 xs:-bottom-4 xs:-right-4 sm:-bottom-5 sm:-right-5 lg:-bottom-6 lg:-right-6 w-12 h-12 xs:w-16 xs:h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28 bg-white/10 rounded-full blur-xl"></div>
+    <div className="absolute -top-3 -left-3 xs:-top-4 xs:-left-4 sm:-top-5 sm:-left-5 lg:-top-6 lg:-left-6 w-10 h-10 xs:w-12 xs:h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 xl:w-24 xl:h-24 bg-white/5 rounded-full blur-lg"></div>
+  </div>
+</div>
 
         {/* Pros and Cons Grid */}
         <div className="grid lg:grid-cols-2 gap-8 mb-10">
