@@ -27,8 +27,8 @@ export default function SitemapPage() {
         { name: "Phone System", url: "/categories/phone-system" },
         { name: "CRM System", url: "/categories/crm-system" },
         { name: "Business Intelligence", url: "/categories/business-intelligence" },
-        { name: "Contact Center", url: "/categories/contact-center" },
-        { name: "ERP Solutions", url: "/categories/erp-solutions" },
+        { name: "GPS fleet management software", url: "/categories/GPS-fleet-management-software" },
+        { name: "Payroll-software", url: "/categories/payroll-software" },
       ]
     },
     {
