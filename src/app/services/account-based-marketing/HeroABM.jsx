@@ -78,7 +78,7 @@ const HeroABM = () => {
     { icon: TrendingUp, value: "67%", label: "Higher Win Rates", color: "from-green-400 to-emerald-500" },
     { icon: Award, value: "3.2x", label: "Larger Deal Size", color: "from-purple-400 to-violet-500" },
     { icon: Zap, value: "45%", label: "Shorter Sales Cycles", color: "from-orange-400 to-red-500" },
-    { icon: Users, value: "500+", label: "Enterprise Clients", color: "from-blue-400 to-cyan-500" }
+    //{ icon: Users, value: "500+", label: "Enterprise Clients", color: "from-blue-400 to-cyan-500" }
   ];
 
   const nextImage = () => {

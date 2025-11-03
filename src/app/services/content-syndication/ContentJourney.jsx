@@ -1,6 +1,6 @@
 'use client'
 import React from 'react';
-import { FileText, Share2, Users, BarChart, TrendingUp, Zap, Target, CheckCircle } from 'lucide-react';
+import { FileText, Share2, Users, BarChart, TrendingUp, Zap, Target, CheckCircle, Globe, Rocket, Award } from 'lucide-react';
 
 const ContentJourney = () => {
   const steps = [
@@ -88,17 +88,17 @@ const ContentJourney = () => {
 
   const benefits = [
     {
-      icon: <TrendingUp className="w-8 h-8" />,
+      icon: <Globe className="w-8 h-8 text-white" />,
       title: "Exponential Market Expansion",
       description: "Access untapped market segments and audience demographics that were previously inaccessible. Expand your global footprint and establish presence in new vertical markets through our extensive B2B network."
     },
     {
-      icon: <Zap className="w-8 h-8" />,
+      icon: <Rocket className="w-8 h-8 text-white" />,
       title: "Revenue Pipeline Acceleration",
       description: "Generate a consistent, predictable flow of high-intent leads to accelerate your sales cycle. Reduce time-to-close and increase conversion rates with pre-qualified prospects actively seeking solutions."
     },
     {
-      icon: <Target className="w-8 h-8" />,
+      icon: <Award className="w-8 h-8 text-white" />,
       title: "Industry Authority & Credibility",
       description: "Establish your organization as a recognized thought leader and industry authority. Build trust and credibility through strategic content visibility across premium industry channels and publications."
     },
@@ -206,9 +206,9 @@ const ContentJourney = () => {
               Our content syndication platform is more than just distribution infrastructure; it's a comprehensive strategic growth engine designed to drive measurable business outcomes and sustainable market expansion.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {benefits.map(benefit => (
+              {benefits.map((benefit, index) => (
                 <div key={benefit.title} className="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-gray-200/80 text-left transform hover:-translate-y-1">
-                  <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-5" style={{backgroundColor: '#007BFF', color: '#007BFF'}}>
+                  <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-5" style={{backgroundColor: '#007BFF'}}>
                     {benefit.icon}
                   </div>
                   <h4 className="text-xl font-bold text-gray-900 mb-2">{benefit.title}</h4>

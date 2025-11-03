@@ -78,7 +78,7 @@ const HeroEmail = () => {
     { icon: TrendingUp, value: "3-5x", label: "Higher Engagement", color: "from-green-400 to-emerald-500" },
     { icon: Award, value: "98%", label: "Delivery Rate", color: "from-purple-400 to-violet-500" },
     { icon: Zap, value: "45%", label: "More Conversions", color: "from-orange-400 to-red-500" },
-    { icon: Users, value: "10K+", label: "Active Users", color: "from-blue-400 to-cyan-500" }
+    //{ icon: Users, value: "10K+", label: "Active Users", color: "from-blue-400 to-cyan-500" }
   ];
 
   const nextImage = () => {
