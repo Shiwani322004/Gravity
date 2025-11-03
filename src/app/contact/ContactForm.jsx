@@ -6,7 +6,8 @@ import {
   CheckCircle,
   Users,
   Target,
-  BarChart3
+  BarChart3,
+  ChevronDown
 } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 
@@ -24,6 +25,7 @@ export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [visibleElements, setVisibleElements] = useState([]);
+  const [focusedField, setFocusedField] = useState(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -41,7 +43,6 @@ export default function ContactForm() {
 
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
-      // Observe all child elements for individual animations
       const elements = sectionRef.current.querySelectorAll('.animate-on-scroll');
       elements.forEach(el => observer.observe(el));
     }
@@ -57,16 +58,22 @@ export default function ContactForm() {
     }));
   };
 
+  const handleFocus = (fieldName) => {
+    setFocusedField(fieldName);
+  };
+
+  const handleBlur = () => {
+    setFocusedField(null);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
       
-      // Reset form after 5 seconds
       setTimeout(() => {
         setIsSubmitted(false);
         setFormData({
@@ -127,6 +134,48 @@ export default function ContactForm() {
     { value: "support", label: "Ongoing Support" }
   ];
 
+  // Custom dropdown component for better animations
+  const CustomSelect = ({ id, name, value, onChange, onFocus, onBlur, options, placeholder, isFocused }) => {
+    return (
+      <div className="relative">
+        <select
+          id={id}
+          name={name}
+          value={value}
+          onChange={onChange}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          className="w-full px-5 py-4 border border-gray-300 rounded-xl focus:ring-3 focus:ring-[#007bff]/20 focus:border-[#007bff] transition-all duration-500 bg-white/50 backdrop-blur-sm appearance-none cursor-pointer hover:border-gray-400 hover:shadow-md transform hover:scale-[1.02]"
+          style={{
+            transform: isFocused ? 'scale(1.02)' : 'scale(1)',
+            borderColor: isFocused ? '#007bff' : value ? '#10b981' : '#d1d5db',
+            boxShadow: isFocused ? '0 0 0 3px rgba(0, 123, 255, 0.1)' : value ? '0 0 0 1px #10b98140' : 'none'
+          }}
+        >
+          <option value="">{placeholder}</option>
+          {options.map(option => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+        <div className="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none transition-transform duration-300">
+          <ChevronDown 
+            size={20} 
+            className={`text-gray-500 transition-transform duration-300 ${isFocused ? 'rotate-180 text-[#007bff]' : ''}`}
+          />
+        </div>
+        
+        {/* Animated label effect */}
+        {value && (
+          <div className="absolute -top-2 left-3 px-2 bg-white text-xs font-medium text-[#007bff] transition-all duration-300">
+            {placeholder}
+          </div>
+        )}
+      </div>
+    );
+  };
+
   return (
     <section 
       id="contact-form"
@@ -142,8 +191,6 @@ export default function ContactForm() {
           {/* Left Content */}
           <div>
             <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 ease-out">
-              
-              
               <h2 className="text-5xl font-bold text-[#007bff] mb-6 leading-tight">
                 Start the Conversation
               </h2>
@@ -190,7 +237,7 @@ export default function ContactForm() {
           
           {/* Form */}
           <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 ease-out">
-            <div className="bg-white/70 backdrop-blur-sm rounded-3xl shadow-2xl shadow-[#007bff]/10 p-10 border border-gray-200/60 hover:shadow-2xl hover:shadow-[#007bff]/20 transition-all duration-500">
+            <div className="bg-white/70 backdrop-blur-sm rounded-3xl shadow-2xl shadow-[#007bff]/10 p-8 lg:p-10 border border-gray-200/60 hover:shadow-2xl hover:shadow-[#007bff]/20 transition-all duration-500">
               {isSubmitted ? (
                 <div className="text-center py-12">
                   <div className="w-24 h-24 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-8 shadow-lg shadow-green-500/25">
@@ -209,10 +256,10 @@ export default function ContactForm() {
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit}>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                    <div className="group">
-                      <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-3">
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="group relative">
+                      <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-3 transition-all duration-300">
                         Full Name *
                       </label>
                       <input
@@ -221,13 +268,20 @@ export default function ContactForm() {
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
+                        onFocus={() => handleFocus('name')}
+                        onBlur={handleBlur}
                         required
-                        className="w-full px-5 py-4 border border-gray-300 rounded-xl focus:ring-3 focus:ring-[#007bff]/20 focus:border-[#007bff] transition-all duration-300 bg-white/50 backdrop-blur-sm"
+                        className="w-full px-5 py-4 border border-gray-300 rounded-xl focus:ring-3 focus:ring-[#007bff]/20 focus:border-[#007bff] transition-all duration-500 bg-white/50 backdrop-blur-sm hover:border-gray-400 hover:shadow-md transform hover:scale-[1.02]"
+                        style={{
+                          transform: focusedField === 'name' ? 'scale(1.02)' : 'scale(1)',
+                          borderColor: focusedField === 'name' ? '#007bff' : formData.name ? '#10b981' : '#d1d5db',
+                          boxShadow: focusedField === 'name' ? '0 0 0 3px rgba(0, 123, 255, 0.1)' : formData.name ? '0 0 0 1px #10b98140' : 'none'
+                        }}
                         placeholder="Your full name"
                       />
                     </div>
-                    <div className="group">
-                      <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-3">
+                    <div className="group relative">
+                      <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-3 transition-all duration-300">
                         Email Address *
                       </label>
                       <input
@@ -236,16 +290,23 @@ export default function ContactForm() {
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
+                        onFocus={() => handleFocus('email')}
+                        onBlur={handleBlur}
                         required
-                        className="w-full px-5 py-4 border border-gray-300 rounded-xl focus:ring-3 focus:ring-[#007bff]/20 focus:border-[#007bff] transition-all duration-300 bg-white/50 backdrop-blur-sm"
+                        className="w-full px-5 py-4 border border-gray-300 rounded-xl focus:ring-3 focus:ring-[#007bff]/20 focus:border-[#007bff] transition-all duration-500 bg-white/50 backdrop-blur-sm hover:border-gray-400 hover:shadow-md transform hover:scale-[1.02]"
+                        style={{
+                          transform: focusedField === 'email' ? 'scale(1.02)' : 'scale(1)',
+                          borderColor: focusedField === 'email' ? '#007bff' : formData.email ? '#10b981' : '#d1d5db',
+                          boxShadow: focusedField === 'email' ? '0 0 0 3px rgba(0, 123, 255, 0.1)' : formData.email ? '0 0 0 1px #10b98140' : 'none'
+                        }}
                         placeholder="your.email@example.com"
                       />
                     </div>
                   </div>
                   
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                    <div className="group">
-                      <label htmlFor="company" className="block text-sm font-semibold text-gray-700 mb-3">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="group relative">
+                      <label htmlFor="company" className="block text-sm font-semibold text-gray-700 mb-3 transition-all duration-300">
                         Company Name
                       </label>
                       <input
@@ -254,12 +315,19 @@ export default function ContactForm() {
                         name="company"
                         value={formData.company}
                         onChange={handleChange}
-                        className="w-full px-5 py-4 border border-gray-300 rounded-xl focus:ring-3 focus:ring-[#007bff]/20 focus:border-[#007bff] transition-all duration-300 bg-white/50 backdrop-blur-sm"
+                        onFocus={() => handleFocus('company')}
+                        onBlur={handleBlur}
+                        className="w-full px-5 py-4 border border-gray-300 rounded-xl focus:ring-3 focus:ring-[#007bff]/20 focus:border-[#007bff] transition-all duration-500 bg-white/50 backdrop-blur-sm hover:border-gray-400 hover:shadow-md transform hover:scale-[1.02]"
+                        style={{
+                          transform: focusedField === 'company' ? 'scale(1.02)' : 'scale(1)',
+                          borderColor: focusedField === 'company' ? '#007bff' : formData.company ? '#10b981' : '#d1d5db',
+                          boxShadow: focusedField === 'company' ? '0 0 0 3px rgba(0, 123, 255, 0.1)' : formData.company ? '0 0 0 1px #10b98140' : 'none'
+                        }}
                         placeholder="Your company name"
                       />
                     </div>
-                    <div className="group">
-                      <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-3">
+                    <div className="group relative">
+                      <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-3 transition-all duration-300">
                         Phone Number
                       </label>
                       <input
@@ -268,55 +336,56 @@ export default function ContactForm() {
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="w-full px-5 py-4 border border-gray-300 rounded-xl focus:ring-3 focus:ring-[#007bff]/20 focus:border-[#007bff] transition-all duration-300 bg-white/50 backdrop-blur-sm"
+                        onFocus={() => handleFocus('phone')}
+                        onBlur={handleBlur}
+                        className="w-full px-5 py-4 border border-gray-300 rounded-xl focus:ring-3 focus:ring-[#007bff]/20 focus:border-[#007bff] transition-all duration-500 bg-white/50 backdrop-blur-sm hover:border-gray-400 hover:shadow-md transform hover:scale-[1.02]"
+                        style={{
+                          transform: focusedField === 'phone' ? 'scale(1.02)' : 'scale(1)',
+                          borderColor: focusedField === 'phone' ? '#007bff' : formData.phone ? '#10b981' : '#d1d5db',
+                          boxShadow: focusedField === 'phone' ? '0 0 0 3px rgba(0, 123, 255, 0.1)' : formData.phone ? '0 0 0 1px #10b98140' : 'none'
+                        }}
                         placeholder="Your phone number"
                       />
                     </div>
                   </div>
 
                   {/* Category Dropdown */}
-                  <div className="mb-6">
-                    <label htmlFor="category" className="block text-sm font-semibold text-gray-700 mb-3">
+                  <div className="group relative">
+                    <label htmlFor="category" className="block text-sm font-semibold text-gray-700 mb-3 transition-all duration-300">
                       Select Category
                     </label>
-                    <select
+                    <CustomSelect
                       id="category"
                       name="category"
                       value={formData.category}
                       onChange={handleChange}
-                      className="w-full px-5 py-4 border border-gray-300 rounded-xl focus:ring-3 focus:ring-[#007bff]/20 focus:border-[#007bff] transition-all duration-300 bg-white/50 backdrop-blur-sm appearance-none"
-                    >
-                      <option value="">Select a category</option>
-                      {categories.map(category => (
-                        <option key={category.value} value={category.value}>
-                          {category.label}
-                        </option>
-                      ))}
-                    </select>
+                      onFocus={() => handleFocus('category')}
+                      onBlur={handleBlur}
+                      options={categories}
+                      placeholder="Select a category"
+                      isFocused={focusedField === 'category'}
+                    />
                   </div>
                   
-                  <div className="mb-6">
-                    <label htmlFor="service" className="block text-sm font-semibold text-gray-700 mb-3">
+                  <div className="group relative">
+                    <label htmlFor="service" className="block text-sm font-semibold text-gray-700 mb-3 transition-all duration-300">
                       Service of Interest
                     </label>
-                    <select
+                    <CustomSelect
                       id="service"
                       name="service"
                       value={formData.service}
                       onChange={handleChange}
-                      className="w-full px-5 py-4 border border-gray-300 rounded-xl focus:ring-3 focus:ring-[#007bff]/20 focus:border-[#007bff] transition-all duration-300 bg-white/50 backdrop-blur-sm appearance-none"
-                    >
-                      <option value="">Select a service</option>
-                      {services.map(service => (
-                        <option key={service.value} value={service.value}>
-                          {service.label}
-                        </option>
-                      ))}
-                    </select>
+                      onFocus={() => handleFocus('service')}
+                      onBlur={handleBlur}
+                      options={services}
+                      placeholder="Select a service"
+                      isFocused={focusedField === 'service'}
+                    />
                   </div>
                   
-                  <div className="mb-8">
-                    <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-3">
+                  <div className="group relative">
+                    <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-3 transition-all duration-300">
                       Your Message *
                     </label>
                     <textarea
@@ -324,9 +393,16 @@ export default function ContactForm() {
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
+                      onFocus={() => handleFocus('message')}
+                      onBlur={handleBlur}
                       required
                       rows="5"
-                      className="w-full px-5 py-4 border border-gray-300 rounded-xl focus:ring-3 focus:ring-[#007bff]/20 focus:border-[#007bff] transition-all duration-300 bg-white/50 backdrop-blur-sm resize-none"
+                      className="w-full px-5 py-4 border border-gray-300 rounded-xl focus:ring-3 focus:ring-[#007bff]/20 focus:border-[#007bff] transition-all duration-500 bg-white/50 backdrop-blur-sm resize-none hover:border-gray-400 hover:shadow-md transform hover:scale-[1.02]"
+                      style={{
+                        transform: focusedField === 'message' ? 'scale(1.02)' : 'scale(1)',
+                        borderColor: focusedField === 'message' ? '#007bff' : formData.message ? '#10b981' : '#d1d5db',
+                        boxShadow: focusedField === 'message' ? '0 0 0 3px rgba(0, 123, 255, 0.1)' : formData.message ? '0 0 0 1px #10b98140' : 'none'
+                      }}
                       placeholder="Tell us about your project, challenges, and goals..."
                     ></textarea>
                   </div>
@@ -334,7 +410,7 @@ export default function ContactForm() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-[#007bff] to-[#0a2540] text-white py-5 px-8 rounded-xl font-semibold flex items-center justify-center gap-3 hover:shadow-2xl hover:shadow-[#007bff]/25 hover:scale-105 transition-all duration-300 disabled:opacity-70 group"
+                    className="w-full bg-gradient-to-r from-[#007bff] to-[#0a2540] text-white py-5 px-8 rounded-xl font-semibold flex items-center justify-center gap-3 hover:shadow-2xl hover:shadow-[#007bff]/25 hover:scale-105 transition-all duration-500 disabled:opacity-70 disabled:hover:scale-100 disabled:hover:shadow-none group transform hover:translate-y-[-2px] active:translate-y-0"
                   >
                     {isSubmitting ? (
                       <>
@@ -372,6 +448,17 @@ export default function ContactForm() {
         .animate-on-scroll.animate-slide-in {
           opacity: 1;
           transform: translateY(0);
+        }
+        
+        /* Custom select styling */
+        select {
+          background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+          background-position: right 0.5rem center;
+          background-repeat: no-repeat;
+          background-size: 1.5em 1.5em;
+          padding-right: 2.5rem;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
         }
       `}</style>
     </section>
