@@ -5,7 +5,7 @@ import { MapPin, ArrowRight, Users } from 'lucide-react'; // Added Users import
 export default function PhoneSystemAction() {
   const [activeFeature, setActiveFeature] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
-  const CRM_SYSTEM_URL = "/crm-system"; // Update this with your actual CRM URL
+  const CRM_SYSTEM_URL = "/categories/crm-system"; // Update this with your actual CRM URL
 
   const demoFeatures = [
     {
