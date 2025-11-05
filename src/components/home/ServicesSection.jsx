@@ -1,4 +1,3 @@
-'use client';
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { services } from '@/data/homeData';
@@ -25,9 +24,9 @@ const ServicesSection = () => {
         {/* Enhanced Header */}
         <div className="text-center mb-20">
           <h2 className="text-5xl md:text-6xl font-black mb-6 bg-gradient-to-r from-gray-900 to-blue-900 bg-clip-text text-transparent">
-            B2B Marketing{' '}
+            Solutions That{' '}
             <span className="bg-gradient-to-r from-[#007BFF] to-[#007BFF] bg-clip-text text-transparent">
-              Automation Suite   
+              Drive Excellence   
             </span>
           </h2>
           
@@ -38,8 +37,8 @@ const ServicesSection = () => {
           </div>
           
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Automate your entire B2B marketing funnel with AI-powered lead generation, email marketing automation, and CRM integration 
-            designed to deliver <span className="font-semibold text-blue-600">3x more qualified leads</span> and accelerate sales cycles
+            Transform your B2B marketing with our comprehensive suite of data-driven services 
+            designed to deliver <span className="font-semibold text-blue-600">measurable results</span> and accelerate growth
           </p>
         </div>
 
@@ -91,7 +90,7 @@ const ServicesSection = () => {
                       onClick={() => handleExploreService(service.link)}
                       className="group/btn inline-flex items-center gap-3 bg-gradient-to-r from-[#007BFF] to-[#0056b3] hover:from-[#0056b3] hover:to-[#004494] text-white px-6 py-3 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-blue-500/25 border border-blue-500/20 w-full justify-center"
                     >
-                      <span>Automate Now</span>
+                      <span>Explore More</span>
                       <ArrowRight className="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform duration-200" />
                     </button>
                   </div>

@@ -4,44 +4,44 @@ import { ArrowRight, ChevronLeft, ChevronRight, Target, FileText, Mail, Users, P
 
 const slides = [
   {
-    text: "Automate your B2B lead generation with AI-powered marketing tools that convert prospects into customers. Our platform delivers qualified leads directly to your sales team with advanced targeting and CRM integration.",
+    text: "Transform your digital presence with cutting-edge marketing strategies that drive real results. Our expert team crafts personalized campaigns that resonate with your audience and deliver measurable outcomes.",
     image: "/images/h1.png",
     accent: "#007BFF",
-    title: "B2B Lead Generation",
+    title: "Digital Marketing",
   },
   {
-    text: "Scale your email marketing campaigns with automated workflows and personalized messaging. Drive higher engagement rates and nurture leads through every stage of your sales funnel.",
+    text: "Elevate your brand with innovative solutions designed to capture attention and engage your audience. We leverage the latest technologies and marketing trends to create compelling experiences that convert.",
     image: "/images/h2.png",
     accent: "#0099FF",
-    title: "Email Marketing Automation",
+    title: "Brand Innovation",
   },
   {
-    text: "Streamline your sales pipeline with intelligent automation that tracks, scores, and routes leads to the right team members. Maximize your ROI with data-driven insights and performance analytics.",
+    text: "Drive growth and maximize your ROI with data-driven strategies tailored to your business goals. Our analytics-focused approach ensures every marketing dollar is optimized for maximum impact.",
     image: "/images/h4.png",
     accent: "#0088EE",
-    title: "Sales Pipeline Automation",
+    title: "Growth Strategy",
   },
   {
-    text: "Integrate seamlessly with your existing CRM and marketing tools. Our platform connects with HubSpot, Salesforce, and 50+ other business applications to centralize your B2B marketing operations.",
+    text: "Unlock new opportunities and reach your target market with our comprehensive digital marketing services. We specialize in identifying untapped potential and creating pathways to connect with your ideal customers.",
     image: "/images/hero4.png",
     accent: "#0077DD",
-    title: "CRM Integration",
+    title: "Market Reach",
   }
 ];
 
 const services = [
-  { name: 'B2B Lead Generation', link: '/services/lead-generation', icon: Target },
-  { name: 'Email Marketing Automation', link: '/services/email-marketing', icon: Mail },
+  { name: 'Lead Generation', link: '/services/lead-generation', icon: Target },
   { name: 'Content Syndication', link: '/services/content-syndication', icon: FileText },
+  { name: 'Email Marketing', link: '/services/email-marketing', icon: Mail },
   { name: 'Account-Based Marketing', link: '/services/account-based-marketing', icon: Users }
 ];
 
 const categories = [
-  { name: 'CRM Integration', link: '/categories/crm-system', icon: Database },
+  { name: 'Phone System', link: '/categories/phone-system', icon: Phone },
+  { name: 'CRM System', link: '/categories/crm-system', icon: Database },
   { name: 'Business Intelligence', link: '/categories/business-intelligence', icon: BarChart3 },
-  { name: 'Marketing Automation', link: '/services', icon: Target },
-  { name: 'Sales Analytics', link: '/categories/business-intelligence', icon: BarChart3 },
-  { name: 'Lead Scoring', link: '/services/lead-generation', icon: Users }
+  { name: 'GPS Fleet Management Software', link: '/categories/gps-fleet', icon: Truck },
+  { name: 'Payroll Software', link: '/categories/payroll-software', icon: DollarSign }
 ];
 
 const HeroSection = () => {
@@ -270,9 +270,9 @@ const HeroSection = () => {
         <div className="w-full lg:flex-1 animate-fade-in-up mt-8 lg:mt-12 xl:mt-20">
           <div className="max-w-full lg:max-w-2xl xl:max-w-3xl w-full">
             <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl xl:text-6xl font-black text-white leading-[1.05] tracking-tight mb-6 sm:mb-10">
-              AI-Powered B2B Marketing
+              We Help You
               <span className="block mt-3 bg-gradient-to-r from-[#007BFF] via-[#0099FF] to-[#00BFFF] bg-clip-text text-transparent">
-                Automation Platform
+                Grow Better
               </span>
             </h1>
             <div className={`relative mb-6 sm:mb-10 ${isMobile ? 'min-h-[90px] xs:min-h-[100px]' : isTablet ? 'min-h-[110px] sm:min-h-[120px]' : 'min-h-[140px] lg:min-h-[160px] xl:min-h-[180px]'}`}>
@@ -291,27 +291,16 @@ const HeroSection = () => {
                 </p>
               ))}
             </div>
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
-              <a 
-                href="/contact"
-                className="group relative inline-flex items-center justify-center gap-3 bg-gradient-to-r from-[#007BFF] to-[#0056b3] text-white px-8 sm:px-12 py-4 sm:py-5 rounded-full font-bold text-base sm:text-lg xl:text-xl transition-all duration-300 hover:shadow-2xl hover:shadow-[#007BFF]/60 hover:scale-105 overflow-hidden"
-              >
-                <span className="relative z-10 flex items-center gap-3">
-                  Start Free Trial
-                  <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" />
-                </span>
-                <div className="absolute inset-0 shimmer-effect" />
-              </a>
-              <a 
-                href="/contact"
-                className="group relative inline-flex items-center justify-center gap-3 bg-transparent border-2 border-white/30 text-white px-8 sm:px-12 py-4 sm:py-5 rounded-full font-bold text-base sm:text-lg xl:text-xl transition-all duration-300 hover:bg-white/10 hover:border-white/60 hover:scale-105"
-              >
-                <span className="relative z-10 flex items-center gap-3">
-                  Book a Demo
-                  <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" />
-                </span>
-              </a>
-            </div>
+            <a 
+              href="/contact"
+              className="group relative inline-flex items-center justify-center gap-3 bg-gradient-to-r from-[#007BFF] to-[#0056b3] text-white px-8 sm:px-12 py-4 sm:py-5 rounded-full font-bold text-base sm:text-lg xl:text-xl transition-all duration-300 hover:shadow-2xl hover:shadow-[#007BFF]/60 hover:scale-105 overflow-hidden"
+            >
+              <span className="relative z-10 flex items-center gap-3">
+                Get in Touch
+                <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" />
+              </span>
+              <div className="absolute inset-0 shimmer-effect" />
+            </a>
           </div>
 
           {/* Carousel - Centered */}
@@ -415,7 +404,7 @@ const HeroSection = () => {
           <div className="card-3d w-full max-w-xs lg:max-w-none" style={{ animationDelay: '0s' }}>
             <div className="card-3d-inner">
               <div className="card-3d-content bg-white/20 backdrop-blur-2xl rounded-3xl card-shadow-3d border border-blue-100/20 p-6 flex flex-col gap-4 transition-all duration-300 hover:bg-white/25">
-                <div className="text-blue-300 font-bold text-xl mb-2 tracking-wide">B2B Solutions</div>
+                <div className="text-blue-300 font-bold text-xl mb-2 tracking-wide">Our Services</div>
                 <ul className="flex flex-col gap-3">
                   {services.map((service) => {
                     const Icon = service.icon;
@@ -443,7 +432,7 @@ const HeroSection = () => {
           <div className="card-3d w-full max-w-xs lg:max-w-none" style={{ animationDelay: '0.3s' }}>
             <div className="card-3d-inner">
               <div className="card-3d-content bg-white/20 backdrop-blur-2xl rounded-3xl card-shadow-3d border border-purple-100/20 p-6 flex flex-col gap-4 transition-all duration-300 hover:bg-white/25">
-                <div className="text-purple-300 font-bold text-xl mb-2 tracking-wide">Platform Features</div>
+                <div className="text-purple-300 font-bold text-xl mb-2 tracking-wide">Categories</div>
                 <ul className="flex flex-col gap-3">
                   {categories.map((category) => {
                     const Icon = category.icon;

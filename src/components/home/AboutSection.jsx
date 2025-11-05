@@ -5,26 +5,26 @@ const AboutSection = () => {
   const features = [
     {
       icon: Lightbulb,
-      title: "AI-Powered Automation",
-      description: "Smart lead scoring & routing",
+      title: "Innovation",
+      description: "Cutting-edge strategies",
       delay: "0"
     },
     {
       icon: Target,
-      title: "Precision Targeting",
-      description: "Advanced B2B segmentation",
+      title: "Precision",
+      description: "Data-driven targeting",
       delay: "100"
     },
     {
       icon: Rocket,
-      title: "Accelerated Growth",
-      description: "3x faster lead conversion",
+      title: "Growth",
+      description: "Accelerated results",
       delay: "200"
     },
     {
       icon: Globe,
-      title: "CRM Integration",
-      description: "50+ platform connections",
+      title: "Global Reach",
+      description: "40+ countries",
       delay: "300"
     }
   ];
@@ -44,29 +44,29 @@ const AboutSection = () => {
           <div className="relative">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight">
               <span className="text-[#082540]">
-                Automate Your B2B
+                Connecting You With
               </span>
               <br />
               <span className="text-[#007BFF]">
-                Marketing Success
+                The World
               </span>
             </h2>
             
             <div className="w-24 h-1 bg-[#007BFF] mb-8 rounded-full"></div>
 
             <p className="text-lg text-gray-700 leading-relaxed mb-6 bg-white/50 backdrop-blur-sm p-4 rounded-2xl border border-gray-100">
-              B2B Gravity is the leading AI-powered marketing automation platform that helps enterprise and technology companies generate qualified leads, automate email campaigns, and integrate seamlessly with existing CRM systems to maximize ROI.
+              B2B Gravity is a global B2B marketing company that caters to Enterprise and Technology companies across the globe to improve ROI on your marketing spend and shorten sales cycles with market insight and demand generation services.
             </p>
             
             <p className="text-lg text-gray-700 leading-relaxed mb-8 bg-white/50 backdrop-blur-sm p-4 rounded-2xl border border-gray-100">
-              Our intelligent automation workflows are powered by machine learning algorithms that optimize lead scoring, personalize email sequences, and provide actionable insights to accelerate your sales pipeline.
+              Our intelligent marketing strategies are driven by research and data, fueled by a powerful content engine, producing creative and dynamic client brand experiences.
             </p>
 
             <a
               href="/about"
               className="group inline-flex items-center justify-center gap-3 bg-[#0056b3] hover:bg-[#0056b3] text-white px-8 py-4 rounded-2xl font-bold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl hover:shadow-[#007BFF]/25"
             >
-              Boost Your B2B Leads
+              Learn More About Us
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </a>
           </div>
