@@ -1,6 +1,5 @@
 'use client'
 import React from 'react';
-
 const AboutHeroSection = () => {
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-[#082540] via-[#0a2a46] to-[#0c2f4c] overflow-hidden">

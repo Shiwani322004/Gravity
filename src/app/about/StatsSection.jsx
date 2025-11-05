@@ -24,6 +24,6 @@ const StatsSection = () => {
       </div>
     </section>
   );
-};
+}; 
 
-export default StatsSection;
+export default StatsSection;  

@@ -118,6 +118,8 @@ export default function ConnectSection() {
     }
   ];
 
+
+  
   return (
     <section 
       id="communication"
