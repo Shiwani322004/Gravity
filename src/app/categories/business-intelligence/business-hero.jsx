@@ -250,7 +250,7 @@ export default function BusinessHero({ onOpenQuestionnaire }) {
             <span className="text-[#007bff]">Business Intelligence?</span>
           </h2>
           
-          <div className="space-y-4 lg:space-y-6 text-gray-700 leading-relaxed text-base sm:text-lg">
+          <div className="space-y-4 lg:space-y-6 text-gray-700 leading-relaxed text-base sm:text-base">
             <p>
               <strong className="text-[#007bff]">Business intelligence (BI) software</strong> is any application that collects and processes large amounts of unstructured data from internal and external systems and prepares data for analysis. The software is generally used for querying and reporting complex business data. The ultimate goal of BI software is to drive better business decisions, increase revenue, improve operational efficiency, and gain competitive advantages.
             </p>
