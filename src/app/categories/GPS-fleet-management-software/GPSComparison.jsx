@@ -17,6 +17,7 @@ export default function GPSFleetComparison() {
     company: '',
     country: 'US',
     zipCode: ''
+
   });
   const [captchaQuestion, setCaptchaQuestion] = useState({ num1: 0, num2: 0 });
   const [captchaInput, setCaptchaInput] = useState('');
@@ -296,6 +297,8 @@ export default function GPSFleetComparison() {
     );
   };
 
+
+  
   return (
     <>
       <section className="py-16 bg-white">

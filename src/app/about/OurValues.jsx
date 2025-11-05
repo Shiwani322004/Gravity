@@ -6,8 +6,6 @@ import { ArrowRight, Award, Sparkles, Star, Heart, Shield, Globe } from 'lucide-
 const OurValues = () => {
   return (
     <section className="relative py-20 bg-gradient-to-br from-white to-gray-50/30 overflow-hidden">
-      
-
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Enhanced Header */}
         <div className="text-center mb-16">

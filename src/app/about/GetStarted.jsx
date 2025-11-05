@@ -1,6 +1,8 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 
+
+
 const GetStarted = () => {
   return (
     <section className="py-20 bg-gradient-to-b from-[#FFFFFF] to-[#007BFF]/5">

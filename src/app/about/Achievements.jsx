@@ -13,6 +13,7 @@ const Achievements = () => {
           <div className="w-24 h-1 bg-[#007BFF] mx-auto mb-8 rounded-full"></div>
         </div>
 
+
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {achievements.map((achievement, idx) => {
             const Icon = achievement.icon;
@@ -29,6 +30,8 @@ const Achievements = () => {
           })}
         </div>
       </div>
+
+
     </section>
   );
 };

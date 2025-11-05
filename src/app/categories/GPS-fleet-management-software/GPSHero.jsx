@@ -27,6 +27,8 @@ export default function GPSHero() {
     country: 'US'
   });
 
+
+
   const [captchaQuestion, setCaptchaQuestion] = useState({ num1: 0, num2: 0, answer: 0 });
   const [captchaInput, setCaptchaInput] = useState('');
   const [captchaValid, setCaptchaValid] = useState(false);
@@ -45,6 +47,8 @@ export default function GPSHero() {
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
+
+
 
   useEffect(() => {
     if (!hasAutoPopupShown && !showQuestionnaire) {
@@ -195,7 +199,6 @@ export default function GPSHero() {
         : 'Please enter a valid Indian PIN code (6 digits)');
       return;
     }
-
     if (!captchaValid) {
       alert('Please complete the security verification correctly');
       return;
@@ -274,6 +277,7 @@ export default function GPSHero() {
     resetQuestionnaire();
     setHasAutoPopupShown(true);
   };
+
 
   const handleBack = () => {
     if (currentQuestion > 0) setCurrentQuestion(currentQuestion - 1);
@@ -440,6 +444,7 @@ export default function GPSHero() {
               ))}
             </div>
           </div>
+         
 
           {/* Bottom CTA - Centered on the page */}
           <div className={`text-center mt-16 transition-all duration-700 delay-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
