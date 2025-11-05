@@ -4,7 +4,6 @@ import GPSHero from './GPSHero';
 import GPSComparison from './GPSComparison';
 import GPSBenefits from './GPSBenefits';
 import GPSFeatures from './GPSFeatures';
-import LogoScroll from '@/app/services/lead-generation/LogoScroll';
 import GPSAction from './GPSAction';
 
 export default function GPSFleetManagementPage() {
@@ -14,7 +13,6 @@ export default function GPSFleetManagementPage() {
       <GPSComparison />
       <GPSBenefits />
       <GPSFeatures />
-      <LogoScroll />
       <GPSAction />
       
       <style jsx>{`

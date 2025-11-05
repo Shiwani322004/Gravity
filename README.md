@@ -467,8 +467,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - 💼 LinkedIn: [Gravity B2B Solutions](https://linkedin.com/company/gravity-b2b)
 
 ### Core Team
-- Shiwani (Lead Developer) - [@Shiwani322004](https://github.com/Shiwani322004)
-- [Other team members...]
+- Gafru  (Lead Developer) - [@Shiwani322004](https://github.com/Shiwani322004)
+- Shiwani-Frontend design 
+
 
 ## 🙏 Acknowledgments
 

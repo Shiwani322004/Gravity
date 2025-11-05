@@ -8,7 +8,6 @@ import {
   Shield
 } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
-import Image from 'next/image';
 
 export default function GPSHero() {
   const sectionRef = useRef(null);
@@ -399,13 +398,10 @@ export default function GPSHero() {
                   <div className="flex-1">
                     <div className="flex justify-center mb-6">
                       <div className="relative w-full h-20 rounded-xl bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-100 flex items-center justify-center p-4 group-hover:scale-105 transition-transform duration-300">
-                        <Image
+                        <img
                           src={card.vendorLogo}
                           alt={`${card.provider} Logo`}
-                          width={150}
-                          height={80}
                           className="object-contain max-w-full max-h-full"
-                          priority
                         />
                       </div>
                     </div>
