@@ -6,7 +6,7 @@ import ArrowNavigation from '@/components/ArrowNavigation';
 export const dynamic = 'force-dynamic'
 
 export const metadata = {
-  title: "Technology Advice",
+  title: "B2B Gravity - Tech Blog for B2B Professionals",
   description: "Get the latest tech advice and insights",
 };
 
