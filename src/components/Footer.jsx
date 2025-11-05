@@ -16,7 +16,7 @@ export default function Footer() {
   return (
     <footer className="bg-[#0a2540] text-white relative overflow-hidden">
       {/* Animated Background Elements */}
-      <div className="absolute inset-0 opacity-10">
+      <div className="absolute inset-0 opacity-10 pointer-events-none select-none">
         <div className="absolute top-10 left-10 w-64 h-64 bg-[#007bff] rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#007bff] rounded-full blur-3xl animate-pulse delay-1000"></div>
         <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-[#007bff] rounded-full blur-3xl animate-pulse delay-2000"></div>
@@ -34,11 +34,12 @@ export default function Footer() {
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-10 h-10 bg-gradient-to-br from-[#007bff] to-[#0a2540] rounded-lg flex items-center justify-center shrink-0 overflow-hidden">
                   <Image 
-                    src="/images/5.png" // Update this path to your logo
+                    src="/images/5.png"
                     alt="B2B Gravity Logo"
                     width={40}
                     height={40}
                     className="w-full h-full object-contain"
+                    priority
                   />
                 </div>
                 <h3 className="font-bold text-2xl bg-gradient-to-r from-[#007bff] to-white bg-clip-text text-transparent whitespace-nowrap">
@@ -58,32 +59,32 @@ export default function Footer() {
             <div className="flex space-x-4 mt-6">
               <a 
                 href="https://www.linkedin.com/company/b2bgravity" 
-                target="_blank"
-                rel="noopener noreferrer"
+                target="_blank" rel="noopener noreferrer"
+                aria-label="LinkedIn"
                 className="w-10 h-10 bg-white/10 hover:bg-[#007bff] rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110"
               >
                 <Linkedin size={18} />
               </a>
               <a 
                 href="https://twitter.com/b2bgravity" 
-                target="_blank"
-                rel="noopener noreferrer"
+                target="_blank" rel="noopener noreferrer"
+                aria-label="Twitter"
                 className="w-10 h-10 bg-white/10 hover:bg-[#007bff] rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110"
               >
                 <Twitter size={18} />
               </a>
               <a 
                 href="https://facebook.com/b2bgravity" 
-                target="_blank"
-                rel="noopener noreferrer"
+                target="_blank" rel="noopener noreferrer"
+                aria-label="Facebook"
                 className="w-10 h-10 bg-white/10 hover:bg-[#007bff] rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110"
               >
                 <Facebook size={18} />
               </a>
               <a 
                 href="https://instagram.com/b2bgravity" 
-                target="_blank"
-                rel="noopener noreferrer"
+                target="_blank" rel="noopener noreferrer"
+                aria-label="Instagram"
                 className="w-10 h-10 bg-white/10 hover:bg-[#007bff] rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110"
               >
                 <Instagram size={18} />
@@ -151,10 +152,10 @@ export default function Footer() {
               <li>
                 <a 
                   href="/services/content-syndication" 
-                  className="group flex items-start gap-2 text-white/80 hover:text-[#007bff] transition-all duration-300"
+                  className="group flex items-center gap-2 text-white/80 hover:text-[#007bff] transition-all duration-300"
                 >
-                  <div className="w-1.5 h-1.5 rounded-full bg-[#007bff] opacity-60 group-hover:opacity-100 group-hover:scale-150 transition-all duration-300 shrink-0 mt-1.5"></div>
-                  <span className="group-hover:translate-x-1 transition-transform duration-300 font-semibold leading-tight">Content Syndication</span>
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#007bff] opacity-60 group-hover:opacity-100 group-hover:scale-150 transition-all duration-300 shrink-0"></div>
+                  <span className="group-hover:translate-x-1 transition-transform duration-300 font-semibold">Content Syndication</span>
                 </a>
               </li>
               <li>
@@ -165,10 +166,6 @@ export default function Footer() {
                   <div className="w-1.5 h-1.5 rounded-full bg-[#007bff] opacity-60 group-hover:opacity-100 group-hover:scale-150 transition-all duration-300 shrink-0"></div>
                   <span className="group-hover:translate-x-1 transition-transform duration-300 font-semibold">Email Marketing</span>
                 </a>
-              </li>
-              <li>
-              
-               
               </li>
               <li>
                 <a 
@@ -212,19 +209,19 @@ export default function Footer() {
               <li>
                 <a 
                   href="/categories/business-intelligence" 
-                  className="group flex items-start gap-2 text-white/80 hover:text-[#007bff] transition-all duration-300"
+                  className="group flex items-center gap-2 text-white/80 hover:text-[#007bff] transition-all duration-300"
                 >
-                  <div className="w-1.5 h-1.5 rounded-full bg-[#007bff] opacity-60 group-hover:opacity-100 group-hover:scale-150 transition-all duration-300 shrink-0 mt-1.5"></div>
-                  <span className="group-hover:translate-x-1 transition-transform duration-300 font-semibold leading-tight">Business Intelligence</span>
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#007bff] opacity-60 group-hover:opacity-100 group-hover:scale-150 transition-all duration-300 shrink-0"></div>
+                  <span className="group-hover:translate-x-1 transition-transform duration-300 font-semibold">Business Intelligence</span>
                 </a>
               </li>
               <li>
                 <a 
                   href="/categories/GPS-fleet-management-software" 
-                  className="group flex items-start gap-2 text-white/80 hover:text-[#007bff] transition-all duration-300"
+                  className="group flex items-center gap-2 text-white/80 hover:text-[#007bff] transition-all duration-300"
                 >
-                  <div className="w-1.5 h-1.5 rounded-full bg-[#007bff] opacity-60 group-hover:opacity-100 group-hover:scale-150 transition-all duration-300 shrink-0 mt-1.5"></div>
-                  <span className="group-hover:translate-x-1 transition-transform duration-300 font-semibold leading-tight">GPS Fleet Management Software</span>
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#007bff] opacity-60 group-hover:opacity-100 group-hover:scale-150 transition-all duration-300 shrink-0"></div>
+                  <span className="group-hover:translate-x-1 transition-transform duration-300 font-semibold">GPS Fleet Management Software</span>
                 </a>
               </li>
               <li>
@@ -236,7 +233,6 @@ export default function Footer() {
                   <span className="group-hover:translate-x-1 transition-transform duration-300 font-semibold">Payroll Software</span>
                 </a>
               </li>
-
             </ul>
           </div>
 
@@ -254,7 +250,7 @@ export default function Footer() {
               <h4 className="font-semibold mb-3 text-xs uppercase tracking-wider text-white/90">Call Us</h4>
               <a 
                 href="tel:+18005551234" 
-                className="flex items-start gap-3 text-[#007bff] hover:text-white transition-all duration-300 group"
+                className="flex items-start gap-3 text-[#007bff] hover:text-white transition-all duration-300"
               >
                 <span className="w-9 h-9 flex items-center justify-center rounded-lg bg-[#007bff]/20 group-hover:bg-gradient-to-br group-hover:from-[#007bff] group-hover:to-[#0a2540] transition-all duration-300 shrink-0 mt-0.5">
                   <Phone className="text-[#007bff] group-hover:text-white transition-colors duration-300" size={14} />
@@ -270,7 +266,7 @@ export default function Footer() {
               <h4 className="font-semibold mb-3 text-xs uppercase tracking-wider text-white/90">Email Us</h4>
               <a 
                 href="mailto:info@b2bgravity.com" 
-                className="flex items-start gap-3 text-[#007bff] hover:text-white transition-all duration-300 group"
+                className="flex items-start gap-3 text-[#007bff] hover:text-white transition-all duration-300"
               >
                 <span className="w-9 h-9 flex items-center justify-center rounded-lg bg-[#007bff]/20 group-hover:bg-gradient-to-br group-hover:from-[#007bff] group-hover:to-[#0a2540] transition-all duration-300 shrink-0 mt-0.5">
                   <Mail className="text-[#007bff] group-hover:text-white transition-colors duration-300" size={14} />
@@ -319,7 +315,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="text-center mt-8 pt-8 border-t border-white/10">
           <p className="text-sm text-white/70">
-            © {currentYear} <span className="text-[#007bff] font-bold">B2B Gravity</span>. All rights reserved. | 
+            © {currentYear} <span className="text-[#007bff] font-bold">B2B Gravity</span>. All rights reserved. |
             <span className="text-white/60 ml-1">Empowering Business Growth</span>
           </p>
           <p className="text-xs text-white/50 mt-2">
