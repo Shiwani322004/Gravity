@@ -320,7 +320,7 @@ export default function PayrollSolutions() {
               <span className="text-black"> of 2025</span>
             </h2>
             
-            <div className="space-y-4 sm:space-y-6 text-gray-700 leading-relaxed text-base sm:text-lg">
+            <div className="space-y-4 sm:space-y-6 text-gray-700 leading-relaxed text-base sm:text-base">
               <p>
                 At <strong className="text-[#007bff]">B2B Gravity</strong>, we believe managing your payroll should be seamless and automated. Our payroll software solutions bring together all your payroll processes - from salary calculations and tax filing to employee self-service and compliance management - into one unified system. Whether you're a growing startup or an established enterprise, we help you find the perfect payroll platform that drives efficiency and accuracy.
               </p>
