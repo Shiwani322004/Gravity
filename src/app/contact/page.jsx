@@ -3,7 +3,7 @@
 import ContactHero from './ContactHero';
 import ConnectSection from './ConnectSection';
 import ContactForm from './ContactForm';
-import GlobalSection from './GlobalSection';
+
 
 export default function ContactPage() {
   return (
@@ -11,7 +11,7 @@ export default function ContactPage() {
       <ContactHero />
       <ConnectSection />
       <ContactForm />
-      <GlobalSection />
+
       
       <style jsx>{`
         @keyframes fade-in {
