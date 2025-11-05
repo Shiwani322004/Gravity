@@ -52,7 +52,7 @@ const CategoriesSection = () => {
             </span>
           </h2>
           <div className="w-24 h-1 bg-[#007BFF] mx-auto mb-8 rounded-full"></div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-sm sm:text-base text-gray-600 max-w-3xl mx-auto">
             Comprehensive technology categories designed to meet all your business requirements
           </p>
         </div>
@@ -76,7 +76,7 @@ const CategoriesSection = () => {
                 <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-[#007BFF] transition-colors">
                   {category.title}
                 </h3>
-                <p className="text-gray-600 mb-6 leading-relaxed flex-grow">
+                <p className="text-gray-600 mb-6 leading-relaxed text-sm flex-grow">
                   {category.description}
                 </p>
                 

@@ -25,7 +25,7 @@ const ContactSection = () => {
           </span>
         </h2>
         <div className="w-24 h-1 bg-[#007BFF] mx-auto mb-8 rounded-full"></div>
-        <p className="text-xl text-gray-700 mb-12 max-w-3xl mx-auto leading-relaxed">
+        <p className="text-sm sm:text-base text-gray-700 mb-12 max-w-3xl mx-auto leading-relaxed">
           Partner with B2B Gravity and discover how our data-driven strategies can transform your marketing ROI. 
           Let's find those opportunities together.
         </p>

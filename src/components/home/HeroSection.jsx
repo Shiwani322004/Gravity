@@ -279,9 +279,7 @@ const HeroSection = () => {
               {slides.map((slide, idx) => (
                 <p 
                   key={idx}
-                  className={`${
-                    isMobile ? 'text-sm xs:text-base' : isTablet ? 'text-base sm:text-lg' : 'text-lg lg:text-xl xl:text-2xl'
-                  } text-white/90 leading-relaxed absolute inset-0 transition-all duration-700 ${
+                  className={`text-sm sm:text-base text-white/90 leading-relaxed absolute inset-0 transition-all duration-700 ${
                     idx === currentSlide
                       ? 'opacity-100 translate-x-0'
                       : 'opacity-0 -translate-x-full'

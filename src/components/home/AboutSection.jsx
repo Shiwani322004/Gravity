@@ -54,11 +54,11 @@ const AboutSection = () => {
             
             <div className="w-24 h-1 bg-[#007BFF] mb-8 rounded-full"></div>
 
-            <p className="text-lg text-gray-700 leading-relaxed mb-6 bg-white/50 backdrop-blur-sm p-4 rounded-2xl border border-gray-100">
+            <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-6 bg-white/50 backdrop-blur-sm p-4 rounded-2xl border border-gray-100">
               B2B Gravity is a global B2B marketing company that caters to Enterprise and Technology companies across the globe to improve ROI on your marketing spend and shorten sales cycles with market insight and demand generation services.
             </p>
             
-            <p className="text-lg text-gray-700 leading-relaxed mb-8 bg-white/50 backdrop-blur-sm p-4 rounded-2xl border border-gray-100">
+            <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-8 bg-white/50 backdrop-blur-sm p-4 rounded-2xl border border-gray-100">
               Our intelligent marketing strategies are driven by research and data, fueled by a powerful content engine, producing creative and dynamic client brand experiences.
             </p>
 
