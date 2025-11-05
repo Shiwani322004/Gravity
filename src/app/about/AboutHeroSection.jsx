@@ -37,11 +37,11 @@ const AboutHeroSection = () => {
             
             {/* Enhanced Description */}
             <div className="space-y-4 md:space-y-6">
-              <p className="text-base sm:text-lg md:text-xl text-white/80 leading-relaxed font-light">
+              <p className="text-sm sm:text-base text-white/80 leading-relaxed font-light">
                 We specialize in <span className="text-[#00D4FF] font-semibold">B2B digital marketing</span> and publishing, 
                 connecting businesses with innovative solutions that drive growth and success in the digital landscape.
               </p>
-              <p className="text-sm sm:text-base md:text-lg text-white/70 leading-relaxed">
+              <p className="text-sm text-white/70 leading-relaxed">
                 Our expertise helps companies navigate the complex world of digital transformation 
                 with strategic approaches and cutting-edge technologies.
               </p>
@@ -106,7 +106,7 @@ const AboutHeroSection = () => {
                       <h3 className="text-lg md:text-xl font-semibold text-white mb-2 md:mb-3 transition-all duration-300 group-hover:text-[#00D4FF] truncate">
                         {card.title}
                       </h3>
-                      <p className="text-white/70 leading-relaxed text-sm md:text-base transition-all duration-300 group-hover:text-white/90 line-clamp-2">
+                      <p className="text-white/70 leading-relaxed text-sm transition-all duration-300 group-hover:text-white/90 line-clamp-2">
                         {card.description}
                       </p>
                     </div>
