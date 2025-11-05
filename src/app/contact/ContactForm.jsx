@@ -111,9 +111,8 @@ export default function ContactForm() {
     { value: "phone-system", label: "Phone System" },
     { value: "crm-system", label: "CRM System" },
     { value: "business-intelligence", label: "Business Intelligence" },
-    { value: "contact-center", label: "Contact Center" },
-    { value: "erp", label: "ERP" },
-    { value: "video-conferencing", label: "Video Conferencing" }
+    { value: "gps-fleet-management", label: "GPS Fleet Management Software" },
+    { value: "payroll-software", label: "Payroll Software" }
   ];
 
   const stats = [
