@@ -19,51 +19,50 @@ import {
 
 export const headlines = [
   {
-    title: "Transform Your B2B Marketing",
-    subtitle: "Data-driven strategies that deliver qualified leads and measurable ROI",
+    title: "AI-Powered B2B Marketing Automation",
+    subtitle: "Automate lead generation, email campaigns, and CRM integration for 3x faster growth",
   },
   {
-    title: "Connect With Decision Makers",
-    subtitle: "Reach the right audience at the right time with precision targeting",
+    title: "Automate Your Sales Pipeline",
+    subtitle: "Smart lead scoring and routing that converts prospects into customers automatically",
   },
   {
-    title: "Accelerate Your Sales Cycle",
-    subtitle: "Shorten time-to-close with intelligent demand generation",
+    title: "Scale Your B2B Lead Generation",
+    subtitle: "Generate qualified leads 24/7 with intelligent automation workflows",
   },
   {
-    title: "Fuel Growth With Content",
-    subtitle: "Strategic content that engages, educates, and converts",
+    title: "Integrate All Your Marketing Tools",
+    subtitle: "Connect HubSpot, Salesforce, and 50+ platforms in one unified automation system",
   }
 ];
 
 export const services = [
   {
     icon: TrendingUp,
-    title: "Lead Generation",
-    description: "Generate high-quality, sales-ready leads with our proven multi-channel approach",
+    title: "B2B Lead Generation Automation",
+    description: "AI-powered lead generation that identifies, scores, and routes qualified prospects automatically to your sales team",
     link: "/services/lead-generation",
     image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
   },
   {
+    icon: Mail,
+    title: "Email Marketing Automation",
+    description: "Automated email sequences with personalization, A/B testing, and advanced analytics to nurture leads through your sales funnel",
+    link: "/services/email-marketing",
+    image: "https://images.unsplash.com/photo-1498049794561-7780e7231661?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+  },
+  {
     icon: FileText,
-    title: "Content Syndication",
-    description: "Amplify your content reach and engage decision-makers across premium networks",
+    title: "Content Syndication Platform",
+    description: "Distribute your content across premium B2B networks with automated tracking and lead capture integration",
     link: "/services/content-syndication",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
   },
   {
-    icon: Mail,
-    title: "Email Marketing",
-    description: "Targeted email campaigns that nurture prospects and drive conversions",
-    link: "/services/email-marketing",
-    image: "https://images.unsplash.com/photo-1498049794561-7780e7231661?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-  },
-  
-  {
     icon: Target,
-    title: "Account-Based Marketing",
-    description: "Personalized campaigns targeting high-value accounts with precision",
-    link: "/services/abm",
+    title: "Account-Based Marketing Automation",
+    description: "Personalized multi-channel campaigns targeting high-value accounts with automated workflows and CRM synchronization",
+    link: "/services/account-based-marketing",
     image: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
   }
 ];
@@ -106,8 +105,8 @@ export const categories = [
 ];
 
 export const stats = [
-  { number: "500+", label: "Enterprise Clients", icon: Users },
-  { number: "95%", label: "Client Retention", icon: Star },
-  { number: "50M+", label: "Leads Generated", icon: Target },
-  { number: "40+", label: "Countries Served", icon: Globe }
+  { number: "500+", label: "B2B Companies Automated", icon: Users },
+  { number: "3x", label: "Faster Lead Conversion", icon: Star },
+  { number: "50M+", label: "Qualified Leads Generated", icon: Target },
+  { number: "50+", label: "CRM Integrations", icon: Globe }
 ];

@@ -9,6 +9,7 @@ import LogoScroll from '../services/lead-generation/LogoScroll'
 import GetStarted from './GetStarted'
 
 
+
 export default function About() {
   return (
     <div className="min-h-screen">

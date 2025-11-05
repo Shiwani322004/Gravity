@@ -91,25 +91,45 @@
 
 // export default B2BGravityHomepage;
 
-'use client';
 import React from 'react';
-import dynamicImport from 'next/dynamic';
-
-export const dynamic = 'force-dynamic'
-
-// Lazy load components to reduce initial bundle size
-const HeroSection = dynamicImport(() => import('@/components/home/HeroSection'), {
-  loading: () => <div className="h-screen bg-gray-100 animate-pulse"></div>
-});
-const AboutSection = dynamicImport(() => import('@/components/home/AboutSection'));
-const ServicesSection = dynamicImport(() => import('@/components/home/ServicesSection'));
-const CategoriesSection = dynamicImport(() => import('@/components/home/CategoriesSection'));
-const ContactSection = dynamicImport(() => import('@/components/home/ContactSection'));
+import HeroSection from '@/components/home/HeroSection';
+import AboutSection from '@/components/home/AboutSection';
+import ServicesSection from '@/components/home/ServicesSection';
+import CategoriesSection from '@/components/home/CategoriesSection';
+import ContactSection from '@/components/home/ContactSection';
 
 const B2BGravityHomepage = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#FFFFFF] to-[#FFFFFF]">
-      {/* Move styles to a separate CSS file or Tailwind config */}
+    <>
+      {/* SEO-optimized page structure */}
+      <main className="min-h-screen bg-gradient-to-b from-[#FFFFFF] to-[#FFFFFF]">
+        {/* Hero Section - Above the fold content */}
+        <section aria-label="B2B Marketing Automation Platform">
+          <HeroSection />
+        </section>
+        
+        {/* About Section */}
+        <section aria-label="About B2B Gravity" id="about">
+          <AboutSection />
+        </section>
+        
+        {/* Services Section */}
+        <section aria-label="B2B Marketing Services" id="services">
+          <ServicesSection />
+        </section>
+        
+        {/* Categories Section */}
+        <section aria-label="Business Solutions Categories" id="solutions">
+          <CategoriesSection />
+        </section>
+        
+        {/* Contact Section */}
+        <section aria-label="Contact B2B Gravity" id="contact">
+          <ContactSection />
+        </section>
+      </main>
+      
+      {/* Inline styles for animations */}
       <style jsx>{`
         @keyframes float {
           0%, 100% { transform: translateY(0px) rotate(0deg); }
@@ -144,13 +164,7 @@ const B2BGravityHomepage = () => {
         .animate-float { animation: float 6s ease-in-out infinite; }
         .animate-float-fast { animation: float-fast 4s ease-in-out infinite; }
       `}</style>
-
-      <HeroSection />
-      <AboutSection />
-      <ServicesSection />
-      <CategoriesSection />
-      <ContactSection />
-    </div>
+    </>
   );
 };
 

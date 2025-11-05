@@ -14,6 +14,8 @@ const AboutHeroSection = () => {
       </div>
 
 
+
+
       {/* Main Content Container */}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex items-center">
         <div className="grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center w-full py-8 md:py-16">
@@ -45,6 +47,7 @@ const AboutHeroSection = () => {
               </p>
             </div>
           </div>
+
 
           {/* Right Content - Enhanced Animated Cards */}
           <div className="flex justify-center lg:justify-end mt-8 lg:mt-0">
@@ -165,6 +168,7 @@ const AboutHeroSection = () => {
           -webkit-box-orient: vertical;
           overflow: hidden;
         }
+
 
         /* Mobile-first responsive design */
         @media (max-width: 640px) {

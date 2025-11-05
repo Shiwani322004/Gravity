@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://b2bgravity.com/sitemap.xml
+
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /private/
+
+# Allow important pages
+Allow: /services/
+Allow: /categories/
+Allow: /about/
+Allow: /contact/
+Allow: /pricing/
+Allow: /blog/
+
+# Crawl delay
+Crawl-delay: 1
