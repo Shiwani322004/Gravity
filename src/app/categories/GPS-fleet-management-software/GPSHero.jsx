@@ -309,7 +309,7 @@ export default function GPSHero() {
               <span className="text-black"> of 2025</span>
             </h2>
 
-            <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
+            <div className="space-y-6 text-gray-700 leading-relaxed text-base">
               <p>
                 At <strong className="text-[#007bff]">B2B Gravity</strong>, we understand the importance of efficient logistics for your business. That's why we recommend the best GPS fleet management systems that provide real-time visibility and control over your vehicles. The best fleet management solutions offer AI-driven route optimization, advanced telematics, and real-time tracking to help you manage your fleet more effectively. Whether you're running a small delivery service or a large transportation company, the right GPS tracking system can transform how you monitor, maintain, and optimize your fleet operations.
               </p>

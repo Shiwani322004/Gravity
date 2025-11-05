@@ -301,7 +301,7 @@ export default function Categories() {
               <span className="text-black"> of 2025</span>
             </h2>
             
-            <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
+            <div className="space-y-6 text-gray-700 leading-relaxed text-base">
               <p>
                 At <strong className="text-[#007bff]">B2B Gravity</strong>, finding the right phone solution is the key to transforming the way your team connects and collaborates. We handpick the <strong className="text-[#007bff]">best phone systems</strong> for reliability, advanced VoIP capabilities, cost savings, and easy integrations to boost productivity.
               </p>
