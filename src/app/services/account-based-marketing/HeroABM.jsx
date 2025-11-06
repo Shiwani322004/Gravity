@@ -58,17 +58,17 @@ const HeroABM = () => {
 
   const heroImages = [
     {
-      url: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      url: "/images/ab1.png",
       title: "Targeted Account Strategy",
       description: "Focus on high-value accounts with personalized outreach"
     },
     {
-      url: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      url: "/images/ab2.png",
       title: "Multi-Channel Engagement",
       description: "Reach decision makers across multiple touchpoints"
     },
     {
-      url: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      url: "/images/ab3.png",
       title: "Revenue Intelligence",
       description: "Track engagement and pipeline growth in real-time"
     }

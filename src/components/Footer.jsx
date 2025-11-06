@@ -245,21 +245,7 @@ export default function Footer() {
               <div className="w-16 h-1 bg-gradient-to-r from-[#007bff] to-[#0a2540] rounded-full"></div>
             </div>
 
-            {/* Phone Section */}
-            <div className="group mb-6">
-              <h4 className="font-semibold mb-3 text-xs uppercase tracking-wider text-white/90">Call Us</h4>
-              <a 
-                href="tel:+18005551234" 
-                className="flex items-start gap-3 text-[#007bff] hover:text-white transition-all duration-300"
-              >
-                <span className="w-9 h-9 flex items-center justify-center rounded-lg bg-[#007bff]/20 group-hover:bg-gradient-to-br group-hover:from-[#007bff] group-hover:to-[#0a2540] transition-all duration-300 shrink-0 mt-0.5">
-                  <Phone className="text-[#007bff] group-hover:text-white transition-colors duration-300" size={14} />
-                </span>
-                <span className="group-hover:translate-x-1 transition-transform duration-300 text-sm font-medium leading-tight">
-                  +1 (800) 555-1234
-                </span>
-              </a>
-            </div>
+            
 
             {/* Email Section */}
             <div className="group mb-8">
