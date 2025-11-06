@@ -269,7 +269,7 @@ const HeroSection = () => {
         {/* Main Content - Left Aligned */}
         <div className="w-full lg:flex-1 animate-fade-in-up mt-8 lg:mt-12 xl:mt-20">
           <div className="max-w-full lg:max-w-2xl xl:max-w-3xl w-full">
-            <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl xl:text-6xl font-black text-white leading-[1.05] tracking-tight mb-6 sm:mb-10">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-white leading-[1.05] tracking-tight mb-6 sm:mb-10">
               We Help You
               <span className="block mt-3 bg-gradient-to-r from-[#007BFF] via-[#0099FF] to-[#00BFFF] bg-clip-text text-transparent">
                 Grow Better

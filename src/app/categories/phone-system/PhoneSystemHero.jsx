@@ -295,18 +295,18 @@ export default function Categories() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Professional Content Section */}
           <div className={`max-w-4xl mx-auto mb-16 transition-all duration-1000 delay-600 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            <h2 className="text-5xl font-bold mb-8 text-left">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-8 text-left">
               <span className="text-black">The Best </span>
               <span className="text-[#007bff]">Phone System</span>
               <span className="text-black"> of 2025</span>
             </h2>
             
-            <div className="space-y-6 text-gray-700 leading-relaxed text-base">
+            <div className="space-y-6 text-gray-700 leading-relaxed text-sm sm:text-base">
               <p>
                 At <strong className="text-[#007bff]">B2B Gravity</strong>, finding the right phone solution is the key to transforming the way your team connects and collaborates. We handpick the <strong className="text-[#007bff]">best phone systems</strong> for reliability, advanced VoIP capabilities, cost savings, and easy integrations to boost productivity.
               </p>
 
-              <h3 className="text-2xl font-bold text-gray-900 mt-8">Why Upgrade Your Phone System?</h3>
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mt-8">Why Upgrade Your Phone System?</h3>
               <p>
                 Modern phone systems go beyond just calling. Get virtual receptionists, powerful analytics, CRM integrations, and seamless mobile access—features that help your team stay agile and reachable everywhere.
               </p>
@@ -325,7 +325,7 @@ export default function Categories() {
                 </div>
               ) : (
                 <>
-                  <h3 className="text-2xl font-bold text-gray-900 mt-8">Tailored Solutions for Your Business</h3>
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mt-8">Tailored Solutions for Your Business</h3>
                   <p>
                     Whether you want a robust system for a large contact center or something flexible for remote teams, <strong className="text-[#007bff]">B2B Gravity</strong> guides you to solutions with clear pricing, transparent support, and flexible feature sets.
                   </p>

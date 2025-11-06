@@ -55,14 +55,14 @@ const HeroServices = () => {
             <ArrowRight className="w-4 h-4" />
           </div>
           
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black mb-6 leading-tight">
             B2B Marketing
             <span className="block bg-gradient-to-r from-[#007BFF] to-[#00D4FF] bg-clip-text text-transparent">
               Excellence
             </span>
           </h1>
           
-          <p className="text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg text-blue-100 max-w-3xl mx-auto leading-relaxed">
             Comprehensive marketing solutions designed to generate quality leads, 
             amplify your reach, and accelerate revenue growth through proven strategies.
           </p>
@@ -79,8 +79,8 @@ const HeroServices = () => {
               <div className="w-14 h-14 bg-gradient-to-br from-[#007BFF] to-[#00A3FF] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                 <service.icon className="w-7 h-7 text-white" />
               </div>
-              <h3 className="text-2xl font-black text-white mb-4">{service.title}</h3>
-              <p className="text-blue-100 mb-6 leading-relaxed">{service.description}</p>
+              <h3 className="text-lg sm:text-xl font-black text-white mb-4">{service.title}</h3>
+              <p className="text-sm sm:text-base text-blue-100 mb-6 leading-relaxed">{service.description}</p>
               <div className="flex items-center gap-2 text-[#00D4FF] font-semibold group-hover:gap-3 transition-all duration-300">
                 <span>Learn more</span>
                 <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -100,8 +100,8 @@ const HeroServices = () => {
               <div className="w-14 h-14 bg-gradient-to-br from-[#007BFF] to-[#00A3FF] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                 <service.icon className="w-7 h-7 text-white" />
               </div>
-              <h3 className="text-2xl font-black text-white mb-4">{service.title}</h3>
-              <p className="text-blue-100 mb-6 leading-relaxed">{service.description}</p>
+              <h3 className="text-lg sm:text-xl font-black text-white mb-4">{service.title}</h3>
+              <p className="text-sm sm:text-base text-blue-100 mb-6 leading-relaxed">{service.description}</p>
               <div className="flex items-center gap-2 text-[#00D4FF] font-semibold group-hover:gap-3 transition-all duration-300">
                 <span>Learn more</span>
                 <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

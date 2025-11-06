@@ -23,7 +23,7 @@ const ServicesSection = () => {
       <div className="relative max-w-7xl mx-auto px-6">
         {/* Enhanced Header */}
         <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-black mb-6 bg-gradient-to-r from-gray-900 to-blue-900 bg-clip-text text-transparent">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black mb-6 bg-gradient-to-r from-gray-900 to-blue-900 bg-clip-text text-transparent">
             Solutions That{' '}
             <span className="bg-gradient-to-r from-[#007BFF] to-[#007BFF] bg-clip-text text-transparent">
               Drive Excellence   
@@ -77,10 +77,10 @@ const ServicesSection = () => {
                 
                 {/* Content Section - This will grow and push button to bottom */}
                 <div className="flex flex-col flex-grow">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-blue-700 transition-colors duration-300 leading-tight">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 group-hover:text-blue-700 transition-colors duration-300 leading-tight">
                     {service.title}
                   </h3>
-                  <p className="text-gray-600 mb-6 leading-relaxed text-sm flex-grow">
+                  <p className="text-gray-600 mb-6 leading-relaxed text-sm sm:text-base flex-grow">
                     {service.description}
                   </p>
                   

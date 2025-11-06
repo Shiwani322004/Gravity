@@ -25,7 +25,7 @@ const AboutHeroSection = () => {
             
             {/* Enhanced Main Heading */}
             <div className="space-y-3 md:space-y-4">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight">
                 We Are
                 <span className="block text-transparent bg-gradient-to-r from-[#007BFF] via-[#00A3FF] to-[#00D4FF] bg-clip-text animate-gradient-x">
                   Digital
@@ -41,7 +41,7 @@ const AboutHeroSection = () => {
                 We specialize in <span className="text-[#00D4FF] font-semibold">B2B digital marketing</span> and publishing, 
                 connecting businesses with innovative solutions that drive growth and success in the digital landscape.
               </p>
-              <p className="text-sm text-white/70 leading-relaxed">
+              <p className="text-sm sm:text-base text-white/70 leading-relaxed">
                 Our expertise helps companies navigate the complex world of digital transformation 
                 with strategic approaches and cutting-edge technologies.
               </p>

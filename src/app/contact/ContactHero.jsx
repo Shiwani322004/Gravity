@@ -366,7 +366,7 @@ export default function ContactHero() {
                 {/* Enhanced Header with Staggered Animation */}
                 <div className="space-y-4">
                   <div className="space-y-2">
-                    <h1 className="text-6xl lg:text-7xl font-bold leading-tight">
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
                       <span className={`block transition-all duration-700 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
                         Let's Start
                       </span>
@@ -378,7 +378,7 @@ export default function ContactHero() {
                 </div>
 
                 {/* Enhanced Description */}
-                <p className={`text-xl lg:text-2xl text-white/80 leading-relaxed transition-all duration-700 delay-900 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                <p className={`text-sm sm:text-base md:text-lg lg:text-lg text-white/80 leading-relaxed transition-all duration-700 delay-900 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
                   Ready to transform your business with data-driven solutions? 
                   Our expert team is here to help you achieve <span className="text-[#007bff] font-semibold">remarkable growth</span> 
                   and measurable results.
@@ -400,7 +400,7 @@ export default function ContactHero() {
             <div className="lg:w-2/5">
               <div className={`bg-white/10 rounded-3xl p-8 border border-white/20 backdrop-blur-sm shadow-2xl shadow-black/20 transition-all duration-1000 delay-500 ${isVisible ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-10 opacity-0 scale-95'}`}>
                 <div className="text-center mb-8">
-                  <h3 className="text-2xl lg:text-3xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                     Why Choose B2B Gravity?
                   </h3>
                   <div className="w-24 h-1 bg-gradient-to-r from-[#007bff] to-[#00d4ff] rounded-full mx-auto mt-4"></div>

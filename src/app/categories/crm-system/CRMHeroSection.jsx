@@ -344,7 +344,7 @@ export default function CRMHeroSection() {
   <div className={`max-w-4xl mx-auto transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
     {/* Main Heading - Left Aligned */}
     <div className="mb-8 text-left">
-      <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+      <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight">
         <span className={`inline-block transition-all duration-700 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
           Find the Perfect&nbsp;
         </span>
@@ -365,16 +365,16 @@ export default function CRMHeroSection() {
             <p className="text-base text-gray-600 leading-relaxed">
               The modern CRM landscape offers solutions for every business need - from sales force automation and marketing campaign management to customer service and analytics. With features like AI-powered insights, workflow automation, and seamless third-party integrations, the right CRM can transform how you engage with customers and manage your sales pipeline.
             </p>
-            <p className="text-lg text-gray-600 leading-relaxed">
+            <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
               Our comparison tool evaluates key factors including pricing, features, scalability, integration capabilities, and customer support. We analyze user reviews, industry reports, and feature sets to provide you with unbiased recommendations tailored to your specific business requirements and budget constraints.
             </p>
           </div>
         ) : (
           <div className="space-y-4">
-            <p className="text-lg text-gray-600 leading-relaxed">
+            <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
               Finding the right CRM software is crucial for streamlining your sales process, improving customer relationships, and driving business growth. Our platform compares the top CRM solutions in the market to help you make an informed decision. Whether you're a small business looking for basic contact management or an enterprise needing advanced automation and analytics, we've got you covered.
             </p>
-            <p className="text-lg text-gray-600 leading-relaxed">
+            <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
               The modern CRM landscape offers solutions for every business need - from sales force automation and marketing campaign management to customer service and analytics.
             </p>
           </div>

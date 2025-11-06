@@ -177,17 +177,17 @@ const HeroContent = () => {
             <div className={`space-y-6 sm:space-y-10 transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
               
               <div className="space-y-4 sm:space-y-6">
-                <h1 className="text-4xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-6xl font-black leading-tight tracking-tight">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black leading-tight tracking-tight">
                   <span className="block">CONTENT</span>
                   <span className="block bg-gradient-to-r from-[#00D4FF] via-[#007BFF] to-[#00A3FF] bg-clip-text text-transparent animate-pulse">
                     SYNDICATION
                   </span>
-                  <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mt-2 sm:mt-4 text-gray-300">
+                  <span className="block text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mt-2 sm:mt-4 text-gray-300">
                     AMPLIFIED
                   </span>
                 </h1>
                 
-                <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-blue-100 leading-relaxed max-w-2xl font-light">
+                <p className="text-sm sm:text-base md:text-lg lg:text-lg text-blue-100 leading-relaxed max-w-2xl font-light">
                   Maximize your content's potential with strategic distribution across premium platforms. 
                   <span className="text-cyan-300 font-semibold"> Reach wider audiences</span>, 
                   <span className="text-cyan-300 font-semibold"> generate quality leads</span>, and 

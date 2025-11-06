@@ -314,13 +314,13 @@ export default function PayrollSolutions() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Professional Content Section */}
           <div className={`max-w-4xl mx-auto mb-12 sm:mb-16 transition-all duration-1000 delay-600 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 lg:mb-8 text-left">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 lg:mb-8 text-left">
               <span className="text-black">The Best </span>
               <span className="text-[#007bff]">Payroll Software</span>
               <span className="text-black"> of 2025</span>
             </h2>
             
-            <div className="space-y-4 sm:space-y-6 text-gray-700 leading-relaxed text-base sm:text-base">
+            <div className="space-y-4 sm:space-y-6 text-gray-700 leading-relaxed text-sm sm:text-base">
               <p>
                 At <strong className="text-[#007bff]">B2B Gravity</strong>, we believe managing your payroll should be seamless and automated. Our payroll software solutions bring together all your payroll processes - from salary calculations and tax filing to employee self-service and compliance management - into one unified system. Whether you're a growing startup or an established enterprise, we help you find the perfect payroll platform that drives efficiency and accuracy.
               </p>
@@ -349,7 +349,7 @@ export default function PayrollSolutions() {
                   </p>
 
                   <div className="space-y-4 sm:space-y-6 pt-4">
-                    <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mt-6 sm:mt-8 mb-4 sm:mb-6">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mt-6 sm:mt-8 mb-4 sm:mb-6">
                       Key Benefits of Modern Payroll Software
                     </h3>
                     
@@ -390,7 +390,7 @@ export default function PayrollSolutions() {
                       </div>
                     </div>
 
-                    <p className="text-base sm:text-lg font-semibold text-gray-900 mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-gray-200">
+                    <p className="text-sm sm:text-base md:text-lg font-semibold text-gray-900 mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-gray-200">
                       Discover our top payroll software solutions below. Compare features, pricing, and get personalized recommendations to transform your payroll operations.
                     </p>
                   </div>

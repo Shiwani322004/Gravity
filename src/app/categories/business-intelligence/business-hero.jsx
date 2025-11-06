@@ -245,12 +245,12 @@ export default function BusinessHero({ onOpenQuestionnaire }) {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Professional Content Section - Responsive */}
         <div className={`max-w-4xl mx-auto mb-12 lg:mb-16 transition-all duration-1000 delay-600 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 lg:mb-8 text-left">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 lg:mb-8 text-left">
             <span className="text-black">What is </span>
             <span className="text-[#007bff]">Business Intelligence?</span>
           </h2>
           
-          <div className="space-y-4 lg:space-y-6 text-gray-700 leading-relaxed text-base sm:text-base">
+          <div className="space-y-4 lg:space-y-6 text-gray-700 leading-relaxed text-sm sm:text-base">
             <p>
               <strong className="text-[#007bff]">Business intelligence (BI) software</strong> is any application that collects and processes large amounts of unstructured data from internal and external systems and prepares data for analysis. The software is generally used for querying and reporting complex business data. The ultimate goal of BI software is to drive better business decisions, increase revenue, improve operational efficiency, and gain competitive advantages.
             </p>
@@ -276,7 +276,7 @@ export default function BusinessHero({ onOpenQuestionnaire }) {
                 </p>
 
                 <div className="space-y-4 lg:space-y-6 pt-4">
-                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mt-6 lg:mt-8 mb-4 lg:mb-6">
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mt-6 lg:mt-8 mb-4 lg:mb-6">
                     My Top Picks for Business Intelligence Software
                   </h3>
                   
@@ -297,7 +297,7 @@ export default function BusinessHero({ onOpenQuestionnaire }) {
                     ))}
                   </div>
 
-                  <p className="text-base sm:text-lg font-semibold text-gray-900 mt-6 lg:mt-8 pt-4 lg:pt-6 border-t border-gray-200">
+                  <p className="text-sm sm:text-base md:text-lg font-semibold text-gray-900 mt-6 lg:mt-8 pt-4 lg:pt-6 border-t border-gray-200">
                     Check out my picks for the top business intelligence software below. Compare features, pricing, and get personalized recommendations for your business needs.
                   </p>
                 </div>

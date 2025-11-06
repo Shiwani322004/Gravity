@@ -303,13 +303,13 @@ export default function GPSHero() {
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className={`max-w-4xl mx-auto mb-16 transition-all duration-1000 delay-600 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            <h2 className="text-5xl font-bold mb-8 text-left">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-8 text-left">
               <span className="text-black">The Best </span>
               <span className="text-[#007bff]">GPS Fleet Management Systems</span>
               <span className="text-black"> of 2025</span>
             </h2>
 
-            <div className="space-y-6 text-gray-700 leading-relaxed text-base">
+            <div className="space-y-6 text-gray-700 leading-relaxed text-sm sm:text-base">
               <p>
                 At <strong className="text-[#007bff]">B2B Gravity</strong>, we understand the importance of efficient logistics for your business. That's why we recommend the best GPS fleet management systems that provide real-time visibility and control over your vehicles. The best fleet management solutions offer AI-driven route optimization, advanced telematics, and real-time tracking to help you manage your fleet more effectively. Whether you're running a small delivery service or a large transportation company, the right GPS tracking system can transform how you monitor, maintain, and optimize your fleet operations.
               </p>
@@ -338,7 +338,7 @@ export default function GPSHero() {
                   </p>
 
                   <div className="space-y-6 pt-4">
-                    <h3 className="text-2xl font-bold text-gray-900 mt-8 mb-6">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mt-8 mb-6">
                       Key Features to Look For in GPS Fleet Management
                     </h3>
 
@@ -379,7 +379,7 @@ export default function GPSHero() {
                       </div>
                     </div>
 
-                    <p className="text-lg font-semibold text-gray-900 mt-8 pt-6 border-t border-gray-200">
+                    <p className="text-sm sm:text-base md:text-lg font-semibold text-gray-900 mt-8 pt-6 border-t border-gray-200">
                       Explore our top picks for GPS fleet management systems below. Compare features, pricing, and get personalized recommendations tailored to your specific business requirements.
                     </p>
                   </div>
