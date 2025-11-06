@@ -58,17 +58,17 @@ const HeroEmail = () => {
 
   const heroImages = [
     {
-      url: "https://images.unsplash.com/photo-1611605698335-8b1569810432?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      url: "/images/e.png",
       title: "Smart Automation",
       description: "Automate your email campaigns with AI"
     },
     {
-      url: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      url: "/images/e2.png",
       title: "Advanced Analytics",
       description: "Track performance in real-time"
     },
     {
-      url: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      url: "/images/e3.png",
       title: "Beautiful Templates",
       description: "Professionally designed email templates"
     }

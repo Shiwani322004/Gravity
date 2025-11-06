@@ -2,7 +2,7 @@
 import React from 'react';
 import HeroEmail from './HeroEmail';
 import EmailFeatures from './EmailFeatures';
-import EmailTemplates from './EmailTemplates';
+
 import EmailProcess from './EmailProcess';
 import EmailAnalytics from './EmailAnalytics';
 import LogoScroll from '../lead-generation/LogoScroll';
@@ -13,7 +13,7 @@ const EmailMarketingPage = () => {
     <div className="min-h-screen bg-gradient-to-br from-white via-blue-50/30 to-gray-50/20 overflow-hidden">
       <HeroEmail />
       <EmailFeatures />
-      <EmailTemplates />
+     
       <EmailProcess />
       <EmailAnalytics />
       <LogoScroll />

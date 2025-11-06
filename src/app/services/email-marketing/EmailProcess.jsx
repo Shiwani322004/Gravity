@@ -29,7 +29,7 @@ const EmailMarketingProcess = () => {
       title: "Strategy & Discovery",
       description: "Comprehensive analysis of your business objectives and target audience to build a data-driven strategy.",
       features: ["Audience Analysis", "Goal Alignment", "KPI Framework", "Competitive Research"],
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: "/images/es1.png",
       stats: "2-3 days",
       icon: Target,
       color: "from-blue-500 to-blue-600"
@@ -38,7 +38,7 @@ const EmailMarketingProcess = () => {
       title: "Audience Segmentation",
       description: "Advanced segmentation strategies to deliver personalized content for higher engagement rates.",
       features: ["Behavioral Segmentation", "Demographic Profiling", "Engagement Scoring", "Personalization"],
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: "/images/es2.png",
       stats: "1-2 weeks",
       icon: Users,
       color: "from-cyan-500 to-blue-500"
@@ -47,7 +47,7 @@ const EmailMarketingProcess = () => {
       title: "Campaign Creation",
       description: "Professional design and development of high-converting email campaigns with optimized content.",
       features: ["Template Design", "Content Strategy", "A/B Testing", "Mobile Optimization"],
-      image: "https://images.unsplash.com/photo-1611605698335-8b1569810432?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: "/images/es3.png",
       stats: "2-3 weeks",
       icon: Zap,
       color: "from-purple-500 to-blue-500"
@@ -56,7 +56,7 @@ const EmailMarketingProcess = () => {
       title: "Automation Setup",
       description: "Intelligent automation workflows that engage customers with timely, relevant messaging.",
       features: ["Welcome Series", "Lead Nurturing", "Re-engagement", "Behavioral Triggers"],
-      image: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: "/images/es4.png",
       stats: "1-2 weeks",
       icon: Rocket,
       color: "from-green-500 to-cyan-500"
@@ -65,7 +65,7 @@ const EmailMarketingProcess = () => {
       title: "Performance Analytics",
       description: "Comprehensive tracking and analysis with actionable insights to optimize campaign performance.",
       features: ["Real-time Dashboard", "ROI Tracking", "Conversion Analysis", "Performance Reports"],
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: "/images/es.png",
       stats: "Ongoing",
       icon: BarChart3,
       color: "from-orange-500 to-red-500"
@@ -74,7 +74,7 @@ const EmailMarketingProcess = () => {
       title: "Optimization & Scaling",
       description: "Continuous optimization and strategic scaling of successful campaigns for sustainable growth.",
       features: ["Performance Optimization", "Scale Strategy", "Testing Framework", "Growth Planning"],
-      image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: "/images/ess.png",
       stats: "Continuous",
       icon: TrendingUp,
       color: "from-indigo-500 to-purple-500"
