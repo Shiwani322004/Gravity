@@ -1,76 +1,87 @@
 'use client'
 import React from 'react';
-import { FileText, Users, Eye } from 'lucide-react';
+import { FileText, Users, Eye, CheckCircle } from 'lucide-react';
 
 const ContentTypes = () => {
   const contentTypes = [
     {
       title: "Whitepapers & eBooks",
-      description: "Strategic distribution of in-depth content to establish thought leadership",
+      description: "Strategic distribution of in-depth content to establish thought leadership and attract high-quality prospects at scale.",
       icon: FileText,
-      image: "/images/ct1.png",
-      metrics: ["3-5x Engagement", "High-Quality Leads", "Expert Positioning"]
+      image: "/images/ct1.png", // Ensure this path points to your image
+      metrics: ["High-Quality Leads", "Expert Positioning", "3-5x Engagement Lift"]
     },
     {
       title: "Case Studies",
-      description: "Amplify success stories to build credibility and attract similar clients",
+      description: "Amplify your proven success stories to build instant credibility, accelerate the sales cycle, and attract similar clients.",
       icon: Users,
-      image: "/images/ct2.png",
-      metrics: ["45% Conversion", "Social Proof", "Trust Building"]
+      image: "/images/ct2.png", // Ensure this path points to your image
+      metrics: ["Accelerated Trust Building", "Strong Social Proof", "Up to 45% Conversion Increase"]
     },
     {
       title: "Blog Content",
-      description: "Extend your blog's reach and drive traffic through strategic syndication",
+      description: "Extend your blog's organic reach and drive massive traffic through strategic syndication to premium content hubs.",
       icon: Eye,
-      image: "/images/ct3.png",
-      metrics: ["2.8x ROI", "SEO Benefits", "Thought Leadership"]
+      image: "/images/ct3.png", // Ensure this path points to your image
+      metrics: ["Significant SEO Benefits", "Thought Leadership Growth", "2.8x Average ROI"]
     }
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
+    <section className="py-24 md:py-32 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-6">
+        <div className="text-center mb-16 md:mb-20">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-6">
             Content Types We
-            <span className="block bg-gradient-to-r from-[#007BFF] to-[#00D4FF] bg-clip-text text-transparent">
-              Amplify
+            <span className="block bg-gradient-to-r from-[#007BFF] to-[#00D4FF] bg-clip-text text-transparent font-black mt-2">
+              Amplify for Maximum Impact
             </span>
           </h2>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            We specialize in distributing your most valuable assets to the right audience, ensuring every piece of content drives measurable business results.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
           {contentTypes.map((type, index) => (
             <div 
               key={index}
-              className="group relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200 hover:border-[#007BFF] cursor-pointer transform hover:-translate-y-2"
+              className="group relative bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-[#007BFF] cursor-pointer transform hover:-translate-y-2"
             >
-              <div className="relative h-48 overflow-hidden">
+              {/* Increased Image Area Height */}
+              <div className="relative h-64 overflow-hidden"> 
                 <img 
                   src={type.image}
                   alt={type.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent group-hover:from-black/40" />
-                <div className="absolute top-4 right-4 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center group-hover:bg-[#007BFF] transition-all duration-300">
-                  <type.icon className="w-6 h-6 text-white" />
+                {/* Subtle Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" /> 
+
+                {/* Floating Icon Badge */}
+                <div className="absolute top-6 right-6 w-14 h-14 bg-white/30 backdrop-blur-sm rounded-xl flex items-center justify-center group-hover:bg-[#007BFF] transition-all duration-300 shadow-md">
+                  <type.icon className="w-7 h-7 text-white" />
                 </div>
                 
-                {/* Hover Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#007BFF]/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end justify-center pb-6">
-                  <span className="text-white font-black text-lg">Explore {type.title.split(' ')[0]}</span>
+                {/* Title and Hover Overlay - More Prominent */}
+                <div className="absolute bottom-0 left-0 p-6">
+                    <h3 className="text-2xl font-black text-white mb-1">{type.title}</h3>
+                </div>
+
+                {/* Full-Card Hover Overlay for Call-to-Action */}
+                <div className="absolute inset-0 bg-[#007BFF]/95 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <span className="text-white font-black text-xl tracking-wider uppercase">Amplify Now</span>
                 </div>
               </div>
               
-              <div className="p-8">
-                <h3 className="text-2xl font-black text-gray-900 mb-3 group-hover:text-[#007BFF] transition-colors duration-300">{type.title}</h3>
-                <p className="text-gray-600 mb-6 leading-relaxed">{type.description}</p>
+              <div className="p-8 md:p-10">
+                <p className="text-gray-600 mb-8 leading-relaxed text-base">{type.description}</p>
                 
-                <div className="space-y-2">
+                <div className="space-y-3">
                   {type.metrics.map((metric, idx) => (
-                    <div key={idx} className="flex items-center gap-3 group-hover:translate-x-1 transition-transform duration-300" style={{ transitionDelay: `${idx * 50}ms` }}>
-                      <div className="w-2 h-2 bg-[#007BFF] rounded-full group-hover:scale-150 transition-transform duration-300"></div>
-                      <span className="text-gray-700 font-medium text-sm">{metric}</span>
+                    <div key={idx} className="flex items-start gap-3 group-hover:translate-x-1 transition-transform duration-300" style={{ transitionDelay: `${idx * 50}ms` }}>
+                      <CheckCircle className="w-5 h-5 text-[#007BFF] mt-0.5 flex-shrink-0" />
+                      <span className="text-gray-800 font-semibold text-base">{metric}</span>
                     </div>
                   ))}
                 </div>
