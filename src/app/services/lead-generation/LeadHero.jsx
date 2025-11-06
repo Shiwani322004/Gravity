@@ -61,17 +61,17 @@ const LeadHero = () => {
 
   const heroImages = [
     {
-      url: "https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      url: "/images/l1.png",
       title: "Analytics Dashboard",
       description: "Real-time data insights"
     },
     {
-      url: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      url: "/images/l2.png",
       title: "Team Collaboration",
       description: "Seamless workflow"
     },
     {
-      url: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      url: "/images/l3.png",
       title: "Growth Metrics",
       description: "Track your success"
     }
