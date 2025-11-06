@@ -11,7 +11,7 @@ const OurMission = () => {
       description: "Established with a vision to transform digital marketing landscape",
       milestone: "Start",
       achievements: ["First client onboarded", "Core team formed", "Initial strategy developed"],
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+      image: "/images/a1.png"
     },
     {
       year: "2015",
@@ -19,7 +19,7 @@ const OurMission = () => {
       description: "Expanded operations globally with innovative solutions",
       milestone: "Expansion",
       achievements: ["20+ countries", "50+ team members", "Revenue growth 300%"],
-      image: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+      image: "/images/a2.png"
     },
     {
       year: "2020",
@@ -27,7 +27,7 @@ const OurMission = () => {
       description: "Became industry leaders in AI-driven marketing solutions",
       milestone: "Leadership",
       achievements: ["AI integration", "Industry awards", "100+ clients"],
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+      image: "/images/a3.png"
     },
     {
       year: "2025",
@@ -35,7 +35,7 @@ const OurMission = () => {
       description: "Pioneering next-generation digital transformation solutions",
       milestone: "Innovation",
       achievements: ["Global dominance", "Tech innovation", "Market leadership"],
-      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+      image: "/images/a4.png"
     }
   ];
 

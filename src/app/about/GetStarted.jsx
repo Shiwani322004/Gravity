@@ -21,12 +21,7 @@ const GetStarted = () => {
             Get Started Today
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </a>
-          <a
-            href="/services"
-            className="bg-[#FFFFFF] hover:bg-gray-50 text-[#082540] px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 border-2 border-[#007BFF] hover:border-[#0056b3] shadow-lg hover:shadow-xl"
-          >
-            Explore Services
-          </a>
+         
         </div>
       </div>
     </section>
