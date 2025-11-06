@@ -3,7 +3,7 @@ import React from 'react';
 import HeroContent from './HeroContent';
 import FeaturesContent from './FeaturesContent';
 import ContentTypes from './ContentTypes';
-import ContentJourney from './ContentJourney';
+
 import ContentFormSection from './ContentFormSection';
 import LogoScroll from '../lead-generation/LogoScroll';
 
@@ -13,7 +13,7 @@ const ContentSyndicationPage = () => {
       <HeroContent />
       <FeaturesContent />
       <ContentTypes />
-      <ContentJourney />
+
       <LogoScroll />
       <ContentFormSection />
     </div>
