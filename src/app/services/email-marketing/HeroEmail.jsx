@@ -174,12 +174,12 @@ const HeroEmail = () => {
             <div className={`space-y-6 sm:space-y-10 transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
               
               <div className="space-y-4 sm:space-y-6">
-                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black leading-tight tracking-tight">
-                  <span className="block">EMAIL</span>
-                  <span className="block bg-gradient-to-r from-[#00D4FF] via-[#007BFF] to-[#00A3FF] bg-clip-text text-transparent animate-pulse">
+                <h1 className="text-4xl font-black leading-tight tracking-tight text-left">
+                  <span className="block text-4xl">EMAIL</span>
+                  <span className="block text-4xl bg-gradient-to-r from-[#00D4FF] via-[#007BFF] to-[#00A3FF] bg-clip-text text-transparent">
                     MARKETING
                   </span>
-                  <span className="block text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mt-2 sm:mt-4 text-gray-300">
+                  <span className="block text-4xl font-bold mt-2 text-gray-300">
                     REINVENTED
                   </span>
                 </h1>
