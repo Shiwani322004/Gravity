@@ -8,21 +8,21 @@ const ContentTypes = () => {
       title: "Whitepapers & eBooks",
       description: "Strategic distribution of in-depth content to establish thought leadership",
       icon: FileText,
-      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      image: "/images/ct1.png",
       metrics: ["3-5x Engagement", "High-Quality Leads", "Expert Positioning"]
     },
     {
       title: "Case Studies",
       description: "Amplify success stories to build credibility and attract similar clients",
       icon: Users,
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      image: "/images/ct2.png",
       metrics: ["45% Conversion", "Social Proof", "Trust Building"]
     },
     {
       title: "Blog Content",
       description: "Extend your blog's reach and drive traffic through strategic syndication",
       icon: Eye,
-      image: "https://images.unsplash.com/photo-1616588181828-71dca6d32e9f?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070",
+      image: "/images/ct3.png",
       metrics: ["2.8x ROI", "SEO Benefits", "Thought Leadership"]
     }
   ];

@@ -8,25 +8,25 @@ const FeaturesContent = () => {
       icon: Share2,
       title: "Multi-Platform Distribution",
       description: "Simultaneously publish across 500+ premium B2B platforms and industry networks",
-      image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+      image: "/images/ca1.png"
     },
     {
       icon: BarChart,
       title: "Performance Analytics",
       description: "Comprehensive tracking with real-time insights and ROI measurement",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+      image: "/images/ca2.png"
     },
     {
       icon: Shield,
       title: "Brand Safety",
       description: "Guaranteed placement on reputable, brand-safe platforms only",
-      image: "https://images.unsplash.com/photo-1678132218412-0f18fab9b537?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070"
+      image: "/images/ca3.png"
     },
     {
       icon: Filter,
       title: "Smart Targeting",
       description: "AI-powered audience targeting for maximum engagement",
-      image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+      image: "/images/ca4.png"
     }
   ];
 

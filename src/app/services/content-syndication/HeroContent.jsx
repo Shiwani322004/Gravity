@@ -62,17 +62,17 @@ const HeroContent = () => {
 
   const heroImages = [
     {
-      url: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      url: "/images/cc1.png",
       title: "Content Distribution",
       description: "Reach millions across platforms"
     },
     {
-      url: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      url: "/images/cc2.png",
       title: "Analytics Dashboard",
       description: "Real-time performance tracking"
     },
     {
-      url: "https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      url: "/images/cc3.png",
       title: "Global Reach",
       description: "Worldwide content amplification"
     }
