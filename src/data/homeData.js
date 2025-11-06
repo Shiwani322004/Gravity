@@ -42,21 +42,21 @@ export const services = [
     title: "Lead Generation",
     description: "Generate high-quality, sales-ready leads with our proven multi-channel approach",
     link: "/services/lead-generation",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+    image: "/images/hh1.png"
   },
   {
     icon: FileText,
     title: "Content Syndication",
     description: "Amplify your content reach and engage decision-makers across premium networks",
     link: "/services/content-syndication",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+    image: "/images/hh2.png"
   },
   {
     icon: Mail,
     title: "Email Marketing",
     description: "Targeted email campaigns that nurture prospects and drive conversions",
     link: "/services/email-marketing",
-    image: "https://images.unsplash.com/photo-1498049794561-7780e7231661?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+    image: "/images/hh3.png"
   },
   
   {
@@ -64,7 +64,7 @@ export const services = [
     title: "Account-Based Marketing",
     description: "Personalized campaigns targeting high-value accounts with precision",
     link: "/services/abm",
-    image: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+    image: "/images/hh4.png"
   }
 ];
 
@@ -75,7 +75,7 @@ export const categories = [
     icon: Phone,
     link: "/categories/phone-system",
     subcategories: ["VoIP", "Unified Communications", "Call Center"],
-    image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+    image: "/images/s1.png"
   },
   {
     title: "CRM Systems",
@@ -83,7 +83,7 @@ export const categories = [
     icon: Users,
     link: "/categories/crm-system",
     subcategories: ["Sales CRM", "Marketing Automation", "Analytics"],
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+    image: "/images/s2.png"
   },
   {
     title: "Business Intelligence",
@@ -91,7 +91,7 @@ export const categories = [
     icon: BarChart3,
     link: "/categories/business-intelligence",
     subcategories: ["Analytics", "Reporting", "Dashboards"],
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+    image: "/images/s3.png"
   },
   {
     title: "GPS Fleet Management",
@@ -99,7 +99,7 @@ export const categories = [
     icon: MessageSquare,
     link: "/categories/GPS-fleet-management-software",
     subcategories: ["Omnichannel", "AI Support", "Workforce Management"],
-    image: "https://images.unsplash.com/photo-1565688534245-05d6b5be184a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+    image: "/images/s4.png"
   },
   
   

@@ -19,17 +19,16 @@ const CategoriesSection = () => {
       icon: "Payroll",
       link: "/categories/payroll-software",
       subcategories: ["Employee Management", "Tax Compliance", "Time Tracking"],
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+      image: "/images/s.png"
     },
     {
-  title: "Discover Powerful Business Resources",
-  description: "Access tools, guides, and strategies to streamline business operations and boost productivity.",
-  icon: "Resources",
-  link: "/resources",
-  subcategories: ["Business Guides", "Marketing Templates", "Automation Tools"],
-  image: "https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-}
-
+      title: "Discover Powerful Business Resources",
+      description: "Access tools, guides, and strategies to streamline business operations and boost productivity.",
+      icon: "Resources",
+      link: "/resources",
+      subcategories: ["Business Guides", "Marketing Templates", "Automation Tools"],
+      image: "https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+    }
   ];
 
   const allCategories = [...categories, ...additionalCategories];
@@ -64,22 +63,25 @@ const CategoriesSection = () => {
               className="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-transparent hover:border-[#007BFF]/20 overflow-hidden flex flex-col h-full"
             >
               <div className="flex flex-col flex-grow">
-                <div className="relative h-48 mb-6 rounded-2xl overflow-hidden flex-shrink-0">
+                {/* 
+                  Height set to h-80 (20rem, 320px), 
+                  Remove padding on the image container,
+                  Use object-cover for edge-to-edge fill
+                */}
+                <div className="relative h-80 mb-6 rounded-2xl overflow-hidden flex-shrink-0 w-full">
                   <img 
                     src={category.image} 
                     alt={category.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/50 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/30 to-transparent pointer-events-none"></div>
                 </div>
-                
                 <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-[#007BFF] transition-colors">
                   {category.title}
                 </h3>
                 <p className="text-gray-600 mb-6 leading-relaxed text-sm flex-grow">
                   {category.description}
                 </p>
-                
                 <div className="space-y-3 mb-6">
                   {category.subcategories.map((sub, subIdx) => (
                     <div key={subIdx} className="flex items-center gap-3">
@@ -88,8 +90,6 @@ const CategoriesSection = () => {
                     </div>
                   ))}
                 </div>
-
-                {/* Button container with margin-top auto to push to bottom */}
                 <div className="mt-auto pt-4">
                   <button
                     onClick={() => handleExploreCategory(category.link)}
@@ -105,7 +105,7 @@ const CategoriesSection = () => {
         </div>
 
         <div className="text-center mt-12">
-          
+          {/* Additional content can go here */}
         </div>
       </div>
     </section>
